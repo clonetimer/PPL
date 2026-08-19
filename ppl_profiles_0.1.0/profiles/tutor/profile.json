@@ -1,0 +1,367 @@
+{
+  "schema": "ppl.profile/0.1",
+  "id": "tutor.adaptive-learning.default",
+  "title": "自适应学习导师",
+  "version": "0.1.0",
+  "kind": "tutor",
+  "personaBinding": {
+    "optional": true,
+    "role": "teaching-style-only"
+  },
+  "mission": {
+    "goal": "提高学习者对当前知识目标的可验证掌握度，而不是维持角色扮演体验。",
+    "success": [
+      "掌握度上升",
+      "错误概念减少",
+      "难度随掌握度适配"
+    ]
+  },
+  "interaction": {
+    "defaultMode": "hint-first",
+    "principles": [
+      "先诊断再提示",
+      "避免无条件泄露答案",
+      "通过 assessment 更新掌握度"
+    ]
+  },
+  "userModel": {
+    "owner": "profile-state",
+    "fields": [
+      "learner.mastery",
+      "learner.misconception",
+      "learner.confidence",
+      "learner.frustration"
+    ]
+  },
+  "domainPolicy": {
+    "realtimeFactsOwnedByHost": true,
+    "highRiskBoundary": "host-policy"
+  },
+  "capabilities": {
+    "required": [
+      "assessment-input"
+    ],
+    "optional": [
+      "retrieval",
+      "calculator",
+      "code-runner"
+    ]
+  },
+  "initialState": {
+    "learner": {
+      "mastery": 0.25,
+      "misconception": "fractions.common_denominator",
+      "confidence": 0.35,
+      "frustration": 0.2
+    },
+    "task": {
+      "objective": "fractions.addition",
+      "difficulty": 1
+    },
+    "pedagogy": {
+      "hintLevel": 1,
+      "mode": "hint-first"
+    },
+    "assessment": {
+      "lastScore": null,
+      "passed": false
+    }
+  },
+  "stateSchema": {
+    "learner.mastery": {
+      "type": "number",
+      "min": 0,
+      "max": 1,
+      "required": true,
+      "label": "掌握度"
+    },
+    "learner.misconception": {
+      "type": "string",
+      "required": false,
+      "label": "当前错误概念"
+    },
+    "learner.confidence": {
+      "type": "number",
+      "min": 0,
+      "max": 1,
+      "required": true,
+      "label": "学习信心"
+    },
+    "learner.frustration": {
+      "type": "number",
+      "min": 0,
+      "max": 1,
+      "required": true,
+      "label": "挫败度"
+    },
+    "task.objective": {
+      "type": "string",
+      "required": true,
+      "label": "当前目标"
+    },
+    "task.difficulty": {
+      "type": "number",
+      "min": 1,
+      "max": 5,
+      "required": true,
+      "label": "任务难度"
+    },
+    "pedagogy.hintLevel": {
+      "type": "number",
+      "min": 0,
+      "max": 3,
+      "required": true,
+      "label": "提示级别"
+    },
+    "pedagogy.mode": {
+      "type": "string",
+      "enum": [
+        "socratic",
+        "hint-first",
+        "explain",
+        "drill"
+      ],
+      "required": true,
+      "label": "教学模式"
+    },
+    "assessment.passed": {
+      "type": "boolean",
+      "required": true,
+      "label": "最近测评通过"
+    }
+  },
+  "rules": [
+    {
+      "id": "TUTOR_TASK_FAILED_HINT_UP",
+      "priority": 700,
+      "when": {
+        "source": "event",
+        "path": "type",
+        "op": "eq",
+        "value": "TASK_FAILED"
+      },
+      "effects": [
+        {
+          "op": "add",
+          "path": "pedagogy.hintLevel",
+          "value": 1,
+          "min": 0,
+          "max": 3
+        },
+        {
+          "op": "add",
+          "path": "learner.frustration",
+          "value": 0.1,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "op": "add",
+          "path": "learner.confidence",
+          "value": -0.05,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "op": "set",
+          "path": "pedagogy.mode",
+          "value": "explain"
+        }
+      ],
+      "rationale": "失败后提高提示强度并切换到解释模式。"
+    },
+    {
+      "id": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+      "priority": 800,
+      "when": {
+        "all": [
+          {
+            "source": "event",
+            "path": "type",
+            "op": "eq",
+            "value": "ASSESSMENT_PASSED"
+          },
+          {
+            "source": "event",
+            "path": "payload.score",
+            "op": "gte",
+            "value": 0.8
+          }
+        ]
+      },
+      "effects": [
+        {
+          "op": "set",
+          "path": "assessment.lastScore",
+          "valueFrom": "event.payload.score"
+        },
+        {
+          "op": "set",
+          "path": "assessment.passed",
+          "value": true
+        },
+        {
+          "op": "add",
+          "path": "learner.mastery",
+          "value": 0.25,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "op": "add",
+          "path": "learner.confidence",
+          "value": 0.15,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "op": "add",
+          "path": "learner.frustration",
+          "value": -0.1,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "op": "remove",
+          "path": "learner.misconception"
+        },
+        {
+          "op": "set",
+          "path": "pedagogy.mode",
+          "value": "drill"
+        }
+      ],
+      "rationale": "通过可验证 assessment 才更新掌握度。"
+    },
+    {
+      "id": "TUTOR_DIFFICULTY_ADAPT",
+      "priority": 600,
+      "when": {
+        "all": [
+          {
+            "source": "event",
+            "path": "type",
+            "op": "eq",
+            "value": "ASSESSMENT_PASSED"
+          },
+          {
+            "source": "event",
+            "path": "payload.score",
+            "op": "gte",
+            "value": 0.8
+          },
+          {
+            "source": "state",
+            "path": "learner.mastery",
+            "op": "gte",
+            "value": 0.45
+          }
+        ]
+      },
+      "effects": [
+        {
+          "op": "add",
+          "path": "task.difficulty",
+          "value": 1,
+          "min": 1,
+          "max": 5
+        },
+        {
+          "op": "add",
+          "path": "pedagogy.hintLevel",
+          "value": -1,
+          "min": 0,
+          "max": 3
+        }
+      ],
+      "rationale": "掌握度达到阈值后提高任务难度并减少提示。"
+    }
+  ],
+  "transactionPolicy": {
+    "commitEndReasons": [
+      "completed",
+      "max-tokens"
+    ],
+    "abortPolicy": "rollback"
+  },
+  "evaluation": {
+    "metrics": [
+      {
+        "id": "mastery",
+        "label": "当前掌握度",
+        "type": "path",
+        "path": "learner.mastery",
+        "target": 0.8
+      },
+      {
+        "id": "mastery_gain",
+        "label": "掌握度提升",
+        "type": "delta",
+        "path": "learner.mastery",
+        "target": 0.2
+      },
+      {
+        "id": "misconception_cleared",
+        "label": "错误概念已清除",
+        "type": "exists",
+        "path": "learner.misconception",
+        "target": false
+      },
+      {
+        "id": "difficulty",
+        "label": "当前难度",
+        "type": "path",
+        "path": "task.difficulty"
+      }
+    ]
+  },
+  "observability": {
+    "metrics": [
+      {
+        "path": "learner.mastery",
+        "label": "掌握度",
+        "hint": "可验证学习进展",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "path": "learner.confidence",
+        "label": "学习信心",
+        "hint": "学习者自信变化",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "path": "learner.frustration",
+        "label": "挫败度",
+        "hint": "越低越稳定",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "path": "task.difficulty",
+        "label": "任务难度",
+        "hint": "随掌握度适配",
+        "min": 1,
+        "max": 5
+      }
+    ],
+    "groups": [
+      {
+        "id": "learner",
+        "label": "学习者模型",
+        "prefix": "learner."
+      },
+      {
+        "id": "task",
+        "label": "任务状态",
+        "prefix": "task."
+      },
+      {
+        "id": "pedagogy",
+        "label": "教学策略",
+        "prefix": "pedagogy."
+      }
+    ]
+  }
+}

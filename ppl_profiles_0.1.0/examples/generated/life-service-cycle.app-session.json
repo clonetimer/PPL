@@ -1,0 +1,628 @@
+{
+  "schema": "ppl.app-session/0.2",
+  "title": "长期生活服务助手 · service-cycle",
+  "profile": {
+    "id": "life.service.default",
+    "title": "长期生活服务助手",
+    "kind": "life",
+    "version": "0.1.0"
+  },
+  "observability": {
+    "metrics": [
+      {
+        "path": "preferences.quietPlaces",
+        "label": "安静地点偏好",
+        "hint": "长期服务偏好"
+      },
+      {
+        "path": "preferences.morningPlanning",
+        "label": "晨间规划偏好",
+        "hint": "长期服务偏好"
+      },
+      {
+        "path": "service.escalationRequired",
+        "label": "高风险升级",
+        "hint": "是否需要权威层"
+      },
+      {
+        "path": "service.lastRealtimeFactStored",
+        "label": "实时事实长期存储",
+        "hint": "应保持 false"
+      }
+    ],
+    "groups": [
+      {
+        "id": "preferences",
+        "label": "长期偏好",
+        "prefix": "preferences."
+      },
+      {
+        "id": "plan",
+        "label": "计划",
+        "prefix": "plan."
+      },
+      {
+        "id": "service",
+        "label": "服务边界",
+        "prefix": "service."
+      }
+    ]
+  },
+  "entries": [
+    {
+      "snapshotSeq": 1,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.1",
+        "profile": {
+          "id": "life.service.default",
+          "title": "长期生活服务助手",
+          "kind": "life",
+          "version": "0.1.0",
+          "fingerprint": "d8efc758049132da7af34f711b51071014eec714fb8e31821e13300777ac2141"
+        },
+        "host": {
+          "turn": 1,
+          "step": 1
+        },
+        "event": {
+          "type": "PREFERENCE_SET",
+          "category": "preference",
+          "payload": {
+            "key": "quietPlaces",
+            "value": true
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.1",
+          "valid": true,
+          "baseState": {
+            "preferences": {
+              "quietPlaces": false,
+              "morningPlanning": false
+            },
+            "plan": {
+              "current": "",
+              "status": "none"
+            },
+            "service": {
+              "escalationRequired": false,
+              "boundary": "normal",
+              "lastRealtimeFactStored": false
+            }
+          },
+          "resolvedState": {
+            "preferences": {
+              "quietPlaces": true,
+              "morningPlanning": false
+            },
+            "plan": {
+              "current": "",
+              "status": "none"
+            },
+            "service": {
+              "escalationRequired": false,
+              "boundary": "normal",
+              "lastRealtimeFactStored": false
+            }
+          },
+          "activeRules": [
+            {
+              "id": "LIFE_PREFERENCE_QUIET_PLACES",
+              "priority": 700
+            }
+          ],
+          "mutations": [
+            {
+              "source": "LIFE_PREFERENCE_QUIET_PLACES",
+              "path": "preferences.quietPlaces",
+              "op": "set",
+              "before": false,
+              "after": true
+            }
+          ],
+          "trace": {
+            "preferences.quietPlaces": {
+              "path": "preferences.quietPlaces",
+              "base": false,
+              "final": true,
+              "steps": [
+                {
+                  "rule": "LIFE_PREFERENCE_QUIET_PLACES",
+                  "priority": 700,
+                  "op": "set",
+                  "before": false,
+                  "after": true
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.1",
+            "metrics": [
+              {
+                "id": "quiet_preference",
+                "label": "安静地点偏好",
+                "type": "path",
+                "path": "preferences.quietPlaces",
+                "value": true
+              },
+              {
+                "id": "plan_status",
+                "label": "计划状态",
+                "type": "path",
+                "path": "plan.status",
+                "value": "none"
+              },
+              {
+                "id": "realtime_fact_not_persisted",
+                "label": "实时事实未长期存储",
+                "type": "equals",
+                "path": "service.lastRealtimeFactStored",
+                "value": true,
+                "target": true
+              },
+              {
+                "id": "risk_escalation",
+                "label": "高风险已升级",
+                "type": "path",
+                "path": "service.escalationRequired",
+                "value": false
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 2,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.1",
+        "profile": {
+          "id": "life.service.default",
+          "title": "长期生活服务助手",
+          "kind": "life",
+          "version": "0.1.0",
+          "fingerprint": "d8efc758049132da7af34f711b51071014eec714fb8e31821e13300777ac2141"
+        },
+        "host": {
+          "turn": 2,
+          "step": 1
+        },
+        "event": {
+          "type": "PLAN_SET",
+          "category": "planning",
+          "payload": {
+            "plan": "周六上午去安静的咖啡馆学习"
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.1",
+          "valid": true,
+          "baseState": {
+            "preferences": {
+              "quietPlaces": true,
+              "morningPlanning": false
+            },
+            "plan": {
+              "current": "",
+              "status": "none"
+            },
+            "service": {
+              "escalationRequired": false,
+              "boundary": "normal",
+              "lastRealtimeFactStored": false
+            }
+          },
+          "resolvedState": {
+            "preferences": {
+              "quietPlaces": true,
+              "morningPlanning": false
+            },
+            "plan": {
+              "current": "周六上午去安静的咖啡馆学习",
+              "status": "active"
+            },
+            "service": {
+              "escalationRequired": false,
+              "boundary": "normal",
+              "lastRealtimeFactStored": false
+            }
+          },
+          "activeRules": [
+            {
+              "id": "LIFE_PLAN_SET",
+              "priority": 650
+            }
+          ],
+          "mutations": [
+            {
+              "source": "LIFE_PLAN_SET",
+              "path": "plan.current",
+              "op": "set",
+              "before": "",
+              "after": "周六上午去安静的咖啡馆学习"
+            },
+            {
+              "source": "LIFE_PLAN_SET",
+              "path": "plan.status",
+              "op": "set",
+              "before": "none",
+              "after": "active"
+            }
+          ],
+          "trace": {
+            "plan.current": {
+              "path": "plan.current",
+              "base": "",
+              "final": "周六上午去安静的咖啡馆学习",
+              "steps": [
+                {
+                  "rule": "LIFE_PLAN_SET",
+                  "priority": 650,
+                  "op": "set",
+                  "before": "",
+                  "after": "周六上午去安静的咖啡馆学习"
+                }
+              ]
+            },
+            "plan.status": {
+              "path": "plan.status",
+              "base": "none",
+              "final": "active",
+              "steps": [
+                {
+                  "rule": "LIFE_PLAN_SET",
+                  "priority": 650,
+                  "op": "set",
+                  "before": "none",
+                  "after": "active"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.1",
+            "metrics": [
+              {
+                "id": "quiet_preference",
+                "label": "安静地点偏好",
+                "type": "path",
+                "path": "preferences.quietPlaces",
+                "value": true
+              },
+              {
+                "id": "plan_status",
+                "label": "计划状态",
+                "type": "path",
+                "path": "plan.status",
+                "value": "active"
+              },
+              {
+                "id": "realtime_fact_not_persisted",
+                "label": "实时事实未长期存储",
+                "type": "equals",
+                "path": "service.lastRealtimeFactStored",
+                "value": true,
+                "target": true
+              },
+              {
+                "id": "risk_escalation",
+                "label": "高风险已升级",
+                "type": "path",
+                "path": "service.escalationRequired",
+                "value": false
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 3,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.1",
+        "profile": {
+          "id": "life.service.default",
+          "title": "长期生活服务助手",
+          "kind": "life",
+          "version": "0.1.0",
+          "fingerprint": "d8efc758049132da7af34f711b51071014eec714fb8e31821e13300777ac2141"
+        },
+        "host": {
+          "turn": 3,
+          "step": 1
+        },
+        "event": {
+          "type": "REALTIME_FACT_OBSERVED",
+          "category": "host-fact",
+          "payload": {
+            "weather": "rain"
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.1",
+          "valid": true,
+          "baseState": {
+            "preferences": {
+              "quietPlaces": true,
+              "morningPlanning": false
+            },
+            "plan": {
+              "current": "周六上午去安静的咖啡馆学习",
+              "status": "active"
+            },
+            "service": {
+              "escalationRequired": false,
+              "boundary": "normal",
+              "lastRealtimeFactStored": false
+            }
+          },
+          "resolvedState": {
+            "preferences": {
+              "quietPlaces": true,
+              "morningPlanning": false
+            },
+            "plan": {
+              "current": "周六上午去安静的咖啡馆学习",
+              "status": "active"
+            },
+            "service": {
+              "escalationRequired": false,
+              "boundary": "normal",
+              "lastRealtimeFactStored": false
+            }
+          },
+          "activeRules": [
+            {
+              "id": "LIFE_REALTIME_FACT_HOST_OWNED",
+              "priority": 900
+            }
+          ],
+          "mutations": [
+            {
+              "source": "LIFE_REALTIME_FACT_HOST_OWNED",
+              "path": "service.lastRealtimeFactStored",
+              "op": "set",
+              "before": false,
+              "after": false
+            }
+          ],
+          "trace": {
+            "service.lastRealtimeFactStored": {
+              "path": "service.lastRealtimeFactStored",
+              "base": false,
+              "final": false,
+              "steps": [
+                {
+                  "rule": "LIFE_REALTIME_FACT_HOST_OWNED",
+                  "priority": 900,
+                  "op": "set",
+                  "before": false,
+                  "after": false
+                }
+              ]
+            }
+          },
+          "diagnostics": [
+            {
+              "rule": "LIFE_REALTIME_FACT_HOST_OWNED",
+              "severity": "info",
+              "code": "REALTIME_FACT_HOST_OWNED",
+              "message": "实时事实只作为本轮 Host 输入，不写入长期 Profile 状态。"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.1",
+            "metrics": [
+              {
+                "id": "quiet_preference",
+                "label": "安静地点偏好",
+                "type": "path",
+                "path": "preferences.quietPlaces",
+                "value": true
+              },
+              {
+                "id": "plan_status",
+                "label": "计划状态",
+                "type": "path",
+                "path": "plan.status",
+                "value": "active"
+              },
+              {
+                "id": "realtime_fact_not_persisted",
+                "label": "实时事实未长期存储",
+                "type": "equals",
+                "path": "service.lastRealtimeFactStored",
+                "value": true,
+                "target": true
+              },
+              {
+                "id": "risk_escalation",
+                "label": "高风险已升级",
+                "type": "path",
+                "path": "service.escalationRequired",
+                "value": false
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 4,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.1",
+        "profile": {
+          "id": "life.service.default",
+          "title": "长期生活服务助手",
+          "kind": "life",
+          "version": "0.1.0",
+          "fingerprint": "d8efc758049132da7af34f711b51071014eec714fb8e31821e13300777ac2141"
+        },
+        "host": {
+          "turn": 4,
+          "step": 1
+        },
+        "event": {
+          "type": "HIGH_RISK_REQUEST",
+          "category": "risk",
+          "payload": {
+            "domain": "medical"
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.1",
+          "valid": true,
+          "baseState": {
+            "preferences": {
+              "quietPlaces": true,
+              "morningPlanning": false
+            },
+            "plan": {
+              "current": "周六上午去安静的咖啡馆学习",
+              "status": "active"
+            },
+            "service": {
+              "escalationRequired": false,
+              "boundary": "normal",
+              "lastRealtimeFactStored": false
+            }
+          },
+          "resolvedState": {
+            "preferences": {
+              "quietPlaces": true,
+              "morningPlanning": false
+            },
+            "plan": {
+              "current": "周六上午去安静的咖啡馆学习",
+              "status": "active"
+            },
+            "service": {
+              "escalationRequired": true,
+              "boundary": "authoritative-source-required",
+              "lastRealtimeFactStored": false
+            }
+          },
+          "activeRules": [
+            {
+              "id": "LIFE_HIGH_RISK_ESCALATION",
+              "priority": 1000,
+              "rationale": "医疗、法律、财务等高风险事实与建议交给外部权威/安全层。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "LIFE_HIGH_RISK_ESCALATION",
+              "path": "service.escalationRequired",
+              "op": "set",
+              "before": false,
+              "after": true
+            },
+            {
+              "source": "LIFE_HIGH_RISK_ESCALATION",
+              "path": "service.boundary",
+              "op": "set",
+              "before": "normal",
+              "after": "authoritative-source-required"
+            }
+          ],
+          "trace": {
+            "service.escalationRequired": {
+              "path": "service.escalationRequired",
+              "base": false,
+              "final": true,
+              "steps": [
+                {
+                  "rule": "LIFE_HIGH_RISK_ESCALATION",
+                  "priority": 1000,
+                  "op": "set",
+                  "before": false,
+                  "after": true
+                }
+              ]
+            },
+            "service.boundary": {
+              "path": "service.boundary",
+              "base": "normal",
+              "final": "authoritative-source-required",
+              "steps": [
+                {
+                  "rule": "LIFE_HIGH_RISK_ESCALATION",
+                  "priority": 1000,
+                  "op": "set",
+                  "before": "normal",
+                  "after": "authoritative-source-required"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.1",
+            "metrics": [
+              {
+                "id": "quiet_preference",
+                "label": "安静地点偏好",
+                "type": "path",
+                "path": "preferences.quietPlaces",
+                "value": true
+              },
+              {
+                "id": "plan_status",
+                "label": "计划状态",
+                "type": "path",
+                "path": "plan.status",
+                "value": "active"
+              },
+              {
+                "id": "realtime_fact_not_persisted",
+                "label": "实时事实未长期存储",
+                "type": "equals",
+                "path": "service.lastRealtimeFactStored",
+                "value": true,
+                "target": true
+              },
+              {
+                "id": "risk_escalation",
+                "label": "高风险已升级",
+                "type": "path",
+                "path": "service.escalationRequired",
+                "value": true
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,915 @@
+{
+  "schema": "ppl.profile-scenario-result/0.1",
+  "profile": {
+    "id": "tutor.adaptive-learning.default",
+    "kind": "tutor",
+    "version": "0.1.0"
+  },
+  "scenario": "learning-cycle",
+  "initialState": {
+    "learner": {
+      "mastery": 0.25,
+      "misconception": "fractions.common_denominator",
+      "confidence": 0.35,
+      "frustration": 0.2
+    },
+    "task": {
+      "objective": "fractions.addition",
+      "difficulty": 1
+    },
+    "pedagogy": {
+      "hintLevel": 1,
+      "mode": "hint-first"
+    },
+    "assessment": {
+      "lastScore": null,
+      "passed": false
+    }
+  },
+  "finalState": {
+    "learner": {
+      "mastery": 0.5,
+      "confidence": 0.44999999999999996,
+      "frustration": 0.20000000000000004
+    },
+    "task": {
+      "objective": "fractions.addition",
+      "difficulty": 2
+    },
+    "pedagogy": {
+      "hintLevel": 1,
+      "mode": "drill"
+    },
+    "assessment": {
+      "lastScore": 0.9,
+      "passed": true
+    }
+  },
+  "evaluation": {
+    "schema": "ppl.profile-evaluation/0.1",
+    "metrics": [
+      {
+        "id": "mastery",
+        "label": "当前掌握度",
+        "type": "path",
+        "path": "learner.mastery",
+        "value": 0.5,
+        "target": 0.8
+      },
+      {
+        "id": "mastery_gain",
+        "label": "掌握度提升",
+        "type": "delta",
+        "path": "learner.mastery",
+        "value": 0.25,
+        "target": 0.2
+      },
+      {
+        "id": "misconception_cleared",
+        "label": "错误概念已清除",
+        "type": "exists",
+        "path": "learner.misconception",
+        "value": false,
+        "target": false
+      },
+      {
+        "id": "difficulty",
+        "label": "当前难度",
+        "type": "path",
+        "path": "task.difficulty",
+        "value": 2
+      }
+    ]
+  },
+  "entries": [
+    {
+      "snapshotSeq": 1,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.1",
+        "profile": {
+          "id": "tutor.adaptive-learning.default",
+          "title": "自适应学习导师",
+          "kind": "tutor",
+          "version": "0.1.0",
+          "fingerprint": "bf5670ed475c48f9c64d96b4eacf5fcb8dd062bc3b0d86b1985841b86c7c0b4a"
+        },
+        "host": {
+          "turn": 1,
+          "step": 1
+        },
+        "event": {
+          "type": "TASK_FAILED",
+          "category": "learning",
+          "payload": {
+            "objective": "fractions.addition"
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.1",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "mastery": 0.25,
+              "misconception": "fractions.common_denominator",
+              "confidence": 0.35,
+              "frustration": 0.2
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "difficulty": 1
+            },
+            "pedagogy": {
+              "hintLevel": 1,
+              "mode": "hint-first"
+            },
+            "assessment": {
+              "lastScore": null,
+              "passed": false
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "mastery": 0.25,
+              "misconception": "fractions.common_denominator",
+              "confidence": 0.3,
+              "frustration": 0.30000000000000004
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "difficulty": 1
+            },
+            "pedagogy": {
+              "hintLevel": 2,
+              "mode": "explain"
+            },
+            "assessment": {
+              "lastScore": null,
+              "passed": false
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_TASK_FAILED_HINT_UP",
+              "priority": 700,
+              "rationale": "失败后提高提示强度并切换到解释模式。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_TASK_FAILED_HINT_UP",
+              "path": "pedagogy.hintLevel",
+              "op": "add",
+              "before": 1,
+              "after": 2
+            },
+            {
+              "source": "TUTOR_TASK_FAILED_HINT_UP",
+              "path": "learner.frustration",
+              "op": "add",
+              "before": 0.2,
+              "after": 0.30000000000000004
+            },
+            {
+              "source": "TUTOR_TASK_FAILED_HINT_UP",
+              "path": "learner.confidence",
+              "op": "add",
+              "before": 0.35,
+              "after": 0.3
+            },
+            {
+              "source": "TUTOR_TASK_FAILED_HINT_UP",
+              "path": "pedagogy.mode",
+              "op": "set",
+              "before": "hint-first",
+              "after": "explain"
+            }
+          ],
+          "trace": {
+            "pedagogy.hintLevel": {
+              "path": "pedagogy.hintLevel",
+              "base": 1,
+              "final": 2,
+              "steps": [
+                {
+                  "rule": "TUTOR_TASK_FAILED_HINT_UP",
+                  "priority": 700,
+                  "op": "add",
+                  "before": 1,
+                  "after": 2
+                }
+              ]
+            },
+            "learner.frustration": {
+              "path": "learner.frustration",
+              "base": 0.2,
+              "final": 0.30000000000000004,
+              "steps": [
+                {
+                  "rule": "TUTOR_TASK_FAILED_HINT_UP",
+                  "priority": 700,
+                  "op": "add",
+                  "before": 0.2,
+                  "after": 0.30000000000000004
+                }
+              ]
+            },
+            "learner.confidence": {
+              "path": "learner.confidence",
+              "base": 0.35,
+              "final": 0.3,
+              "steps": [
+                {
+                  "rule": "TUTOR_TASK_FAILED_HINT_UP",
+                  "priority": 700,
+                  "op": "add",
+                  "before": 0.35,
+                  "after": 0.3
+                }
+              ]
+            },
+            "pedagogy.mode": {
+              "path": "pedagogy.mode",
+              "base": "hint-first",
+              "final": "explain",
+              "steps": [
+                {
+                  "rule": "TUTOR_TASK_FAILED_HINT_UP",
+                  "priority": 700,
+                  "op": "set",
+                  "before": "hint-first",
+                  "after": "explain"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.1",
+            "metrics": [
+              {
+                "id": "mastery",
+                "label": "当前掌握度",
+                "type": "path",
+                "path": "learner.mastery",
+                "value": 0.25,
+                "target": 0.8
+              },
+              {
+                "id": "mastery_gain",
+                "label": "掌握度提升",
+                "type": "delta",
+                "path": "learner.mastery",
+                "value": 0,
+                "target": 0.2
+              },
+              {
+                "id": "misconception_cleared",
+                "label": "错误概念已清除",
+                "type": "exists",
+                "path": "learner.misconception",
+                "value": true,
+                "target": false
+              },
+              {
+                "id": "difficulty",
+                "label": "当前难度",
+                "type": "path",
+                "path": "task.difficulty",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 2,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.1",
+        "profile": {
+          "id": "tutor.adaptive-learning.default",
+          "title": "自适应学习导师",
+          "kind": "tutor",
+          "version": "0.1.0",
+          "fingerprint": "bf5670ed475c48f9c64d96b4eacf5fcb8dd062bc3b0d86b1985841b86c7c0b4a"
+        },
+        "host": {
+          "turn": 2,
+          "step": 1
+        },
+        "event": {
+          "type": "ASSESSMENT_PASSED",
+          "category": "assessment",
+          "payload": {
+            "score": 0.9
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.1",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "mastery": 0.25,
+              "misconception": "fractions.common_denominator",
+              "confidence": 0.3,
+              "frustration": 0.30000000000000004
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "difficulty": 1
+            },
+            "pedagogy": {
+              "hintLevel": 2,
+              "mode": "explain"
+            },
+            "assessment": {
+              "lastScore": null,
+              "passed": false
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "mastery": 0.5,
+              "confidence": 0.44999999999999996,
+              "frustration": 0.20000000000000004
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "difficulty": 2
+            },
+            "pedagogy": {
+              "hintLevel": 1,
+              "mode": "drill"
+            },
+            "assessment": {
+              "lastScore": 0.9,
+              "passed": true
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+              "priority": 800,
+              "rationale": "通过可验证 assessment 才更新掌握度。"
+            },
+            {
+              "id": "TUTOR_DIFFICULTY_ADAPT",
+              "priority": 600,
+              "rationale": "掌握度达到阈值后提高任务难度并减少提示。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+              "path": "assessment.lastScore",
+              "op": "set",
+              "before": null,
+              "after": 0.9
+            },
+            {
+              "source": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+              "path": "assessment.passed",
+              "op": "set",
+              "before": false,
+              "after": true
+            },
+            {
+              "source": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+              "path": "learner.mastery",
+              "op": "add",
+              "before": 0.25,
+              "after": 0.5
+            },
+            {
+              "source": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+              "path": "learner.confidence",
+              "op": "add",
+              "before": 0.3,
+              "after": 0.44999999999999996
+            },
+            {
+              "source": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+              "path": "learner.frustration",
+              "op": "add",
+              "before": 0.30000000000000004,
+              "after": 0.20000000000000004
+            },
+            {
+              "source": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+              "path": "learner.misconception",
+              "op": "remove",
+              "before": "fractions.common_denominator"
+            },
+            {
+              "source": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+              "path": "pedagogy.mode",
+              "op": "set",
+              "before": "explain",
+              "after": "drill"
+            },
+            {
+              "source": "TUTOR_DIFFICULTY_ADAPT",
+              "path": "task.difficulty",
+              "op": "add",
+              "before": 1,
+              "after": 2
+            },
+            {
+              "source": "TUTOR_DIFFICULTY_ADAPT",
+              "path": "pedagogy.hintLevel",
+              "op": "add",
+              "before": 2,
+              "after": 1
+            }
+          ],
+          "trace": {
+            "assessment.lastScore": {
+              "path": "assessment.lastScore",
+              "base": null,
+              "final": 0.9,
+              "steps": [
+                {
+                  "rule": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+                  "priority": 800,
+                  "op": "set",
+                  "before": null,
+                  "after": 0.9
+                }
+              ]
+            },
+            "assessment.passed": {
+              "path": "assessment.passed",
+              "base": false,
+              "final": true,
+              "steps": [
+                {
+                  "rule": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+                  "priority": 800,
+                  "op": "set",
+                  "before": false,
+                  "after": true
+                }
+              ]
+            },
+            "learner.mastery": {
+              "path": "learner.mastery",
+              "base": 0.25,
+              "final": 0.5,
+              "steps": [
+                {
+                  "rule": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+                  "priority": 800,
+                  "op": "add",
+                  "before": 0.25,
+                  "after": 0.5
+                }
+              ]
+            },
+            "learner.confidence": {
+              "path": "learner.confidence",
+              "base": 0.3,
+              "final": 0.44999999999999996,
+              "steps": [
+                {
+                  "rule": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+                  "priority": 800,
+                  "op": "add",
+                  "before": 0.3,
+                  "after": 0.44999999999999996
+                }
+              ]
+            },
+            "learner.frustration": {
+              "path": "learner.frustration",
+              "base": 0.30000000000000004,
+              "final": 0.20000000000000004,
+              "steps": [
+                {
+                  "rule": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+                  "priority": 800,
+                  "op": "add",
+                  "before": 0.30000000000000004,
+                  "after": 0.20000000000000004
+                }
+              ]
+            },
+            "learner.misconception": {
+              "path": "learner.misconception",
+              "base": "fractions.common_denominator",
+              "steps": [
+                {
+                  "rule": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+                  "priority": 800,
+                  "op": "remove",
+                  "before": "fractions.common_denominator"
+                }
+              ]
+            },
+            "pedagogy.mode": {
+              "path": "pedagogy.mode",
+              "base": "explain",
+              "final": "drill",
+              "steps": [
+                {
+                  "rule": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+                  "priority": 800,
+                  "op": "set",
+                  "before": "explain",
+                  "after": "drill"
+                }
+              ]
+            },
+            "task.difficulty": {
+              "path": "task.difficulty",
+              "base": 1,
+              "final": 2,
+              "steps": [
+                {
+                  "rule": "TUTOR_DIFFICULTY_ADAPT",
+                  "priority": 600,
+                  "op": "add",
+                  "before": 1,
+                  "after": 2
+                }
+              ]
+            },
+            "pedagogy.hintLevel": {
+              "path": "pedagogy.hintLevel",
+              "base": 2,
+              "final": 1,
+              "steps": [
+                {
+                  "rule": "TUTOR_DIFFICULTY_ADAPT",
+                  "priority": 600,
+                  "op": "add",
+                  "before": 2,
+                  "after": 1
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.1",
+            "metrics": [
+              {
+                "id": "mastery",
+                "label": "当前掌握度",
+                "type": "path",
+                "path": "learner.mastery",
+                "value": 0.5,
+                "target": 0.8
+              },
+              {
+                "id": "mastery_gain",
+                "label": "掌握度提升",
+                "type": "delta",
+                "path": "learner.mastery",
+                "value": 0.25,
+                "target": 0.2
+              },
+              {
+                "id": "misconception_cleared",
+                "label": "错误概念已清除",
+                "type": "exists",
+                "path": "learner.misconception",
+                "value": false,
+                "target": false
+              },
+              {
+                "id": "difficulty",
+                "label": "当前难度",
+                "type": "path",
+                "path": "task.difficulty",
+                "value": 2
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 3,
+      "kind": "profile",
+      "endReason": "aborted",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.1",
+        "profile": {
+          "id": "tutor.adaptive-learning.default",
+          "title": "自适应学习导师",
+          "kind": "tutor",
+          "version": "0.1.0",
+          "fingerprint": "bf5670ed475c48f9c64d96b4eacf5fcb8dd062bc3b0d86b1985841b86c7c0b4a"
+        },
+        "host": {
+          "turn": 3,
+          "step": 1
+        },
+        "event": {
+          "type": "ASSESSMENT_PASSED",
+          "category": "assessment",
+          "payload": {
+            "score": 0.95
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.1",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "mastery": 0.5,
+              "confidence": 0.44999999999999996,
+              "frustration": 0.20000000000000004
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "difficulty": 2
+            },
+            "pedagogy": {
+              "hintLevel": 1,
+              "mode": "drill"
+            },
+            "assessment": {
+              "lastScore": 0.9,
+              "passed": true
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "mastery": 0.75,
+              "confidence": 0.6,
+              "frustration": 0.10000000000000003
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "difficulty": 3
+            },
+            "pedagogy": {
+              "hintLevel": 0,
+              "mode": "drill"
+            },
+            "assessment": {
+              "lastScore": 0.95,
+              "passed": true
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+              "priority": 800,
+              "rationale": "通过可验证 assessment 才更新掌握度。"
+            },
+            {
+              "id": "TUTOR_DIFFICULTY_ADAPT",
+              "priority": 600,
+              "rationale": "掌握度达到阈值后提高任务难度并减少提示。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+              "path": "assessment.lastScore",
+              "op": "set",
+              "before": 0.9,
+              "after": 0.95
+            },
+            {
+              "source": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+              "path": "assessment.passed",
+              "op": "set",
+              "before": true,
+              "after": true
+            },
+            {
+              "source": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+              "path": "learner.mastery",
+              "op": "add",
+              "before": 0.5,
+              "after": 0.75
+            },
+            {
+              "source": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+              "path": "learner.confidence",
+              "op": "add",
+              "before": 0.44999999999999996,
+              "after": 0.6
+            },
+            {
+              "source": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+              "path": "learner.frustration",
+              "op": "add",
+              "before": 0.20000000000000004,
+              "after": 0.10000000000000003
+            },
+            {
+              "source": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+              "path": "learner.misconception",
+              "op": "remove"
+            },
+            {
+              "source": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+              "path": "pedagogy.mode",
+              "op": "set",
+              "before": "drill",
+              "after": "drill"
+            },
+            {
+              "source": "TUTOR_DIFFICULTY_ADAPT",
+              "path": "task.difficulty",
+              "op": "add",
+              "before": 2,
+              "after": 3
+            },
+            {
+              "source": "TUTOR_DIFFICULTY_ADAPT",
+              "path": "pedagogy.hintLevel",
+              "op": "add",
+              "before": 1,
+              "after": 0
+            }
+          ],
+          "trace": {
+            "assessment.lastScore": {
+              "path": "assessment.lastScore",
+              "base": 0.9,
+              "final": 0.95,
+              "steps": [
+                {
+                  "rule": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+                  "priority": 800,
+                  "op": "set",
+                  "before": 0.9,
+                  "after": 0.95
+                }
+              ]
+            },
+            "assessment.passed": {
+              "path": "assessment.passed",
+              "base": true,
+              "final": true,
+              "steps": [
+                {
+                  "rule": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+                  "priority": 800,
+                  "op": "set",
+                  "before": true,
+                  "after": true
+                }
+              ]
+            },
+            "learner.mastery": {
+              "path": "learner.mastery",
+              "base": 0.5,
+              "final": 0.75,
+              "steps": [
+                {
+                  "rule": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+                  "priority": 800,
+                  "op": "add",
+                  "before": 0.5,
+                  "after": 0.75
+                }
+              ]
+            },
+            "learner.confidence": {
+              "path": "learner.confidence",
+              "base": 0.44999999999999996,
+              "final": 0.6,
+              "steps": [
+                {
+                  "rule": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+                  "priority": 800,
+                  "op": "add",
+                  "before": 0.44999999999999996,
+                  "after": 0.6
+                }
+              ]
+            },
+            "learner.frustration": {
+              "path": "learner.frustration",
+              "base": 0.20000000000000004,
+              "final": 0.10000000000000003,
+              "steps": [
+                {
+                  "rule": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+                  "priority": 800,
+                  "op": "add",
+                  "before": 0.20000000000000004,
+                  "after": 0.10000000000000003
+                }
+              ]
+            },
+            "learner.misconception": {
+              "path": "learner.misconception",
+              "steps": [
+                {
+                  "rule": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+                  "priority": 800,
+                  "op": "remove"
+                }
+              ]
+            },
+            "pedagogy.mode": {
+              "path": "pedagogy.mode",
+              "base": "drill",
+              "final": "drill",
+              "steps": [
+                {
+                  "rule": "TUTOR_ASSESSMENT_PASS_PROGRESS",
+                  "priority": 800,
+                  "op": "set",
+                  "before": "drill",
+                  "after": "drill"
+                }
+              ]
+            },
+            "task.difficulty": {
+              "path": "task.difficulty",
+              "base": 2,
+              "final": 3,
+              "steps": [
+                {
+                  "rule": "TUTOR_DIFFICULTY_ADAPT",
+                  "priority": 600,
+                  "op": "add",
+                  "before": 2,
+                  "after": 3
+                }
+              ]
+            },
+            "pedagogy.hintLevel": {
+              "path": "pedagogy.hintLevel",
+              "base": 1,
+              "final": 0,
+              "steps": [
+                {
+                  "rule": "TUTOR_DIFFICULTY_ADAPT",
+                  "priority": 600,
+                  "op": "add",
+                  "before": 1,
+                  "after": 0
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.1",
+            "metrics": [
+              {
+                "id": "mastery",
+                "label": "当前掌握度",
+                "type": "path",
+                "path": "learner.mastery",
+                "value": 0.75,
+                "target": 0.8
+              },
+              {
+                "id": "mastery_gain",
+                "label": "掌握度提升",
+                "type": "delta",
+                "path": "learner.mastery",
+                "value": 0.5,
+                "target": 0.2
+              },
+              {
+                "id": "misconception_cleared",
+                "label": "错误概念已清除",
+                "type": "exists",
+                "path": "learner.misconception",
+                "value": false,
+                "target": false
+              },
+              {
+                "id": "difficulty",
+                "label": "当前难度",
+                "type": "path",
+                "path": "task.difficulty",
+                "value": 3
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "aborted",
+          "status": "discarded",
+          "committed": false
+        }
+      }
+    }
+  ]
+}

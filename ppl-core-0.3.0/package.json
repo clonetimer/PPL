@@ -1,0 +1,20 @@
+{
+  "name": "pplc-reference",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "ppl": "dist/src/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node dist/tests/run.js",
+    "check:refs": "npm run build && node dist/src/cli.js check examples/cetacea_girl/persona.ppl --module-root modules && node dist/src/cli.js check examples/zhuang_fangyi/persona.ppl --module-root modules && node dist/src/cli.js check examples/li_zhiyan/persona.ppl --module-root modules",
+    "test:refs": "npm run build && node dist/src/cli.js test examples/cetacea_girl/persona.ppl --module-root modules && node dist/src/cli.js test examples/zhuang_fangyi/persona.ppl --module-root modules && node dist/src/cli.js test examples/li_zhiyan/persona.ppl --module-root modules",
+    "demo:zhuang": "npm run build && node dist/src/cli.js render examples/zhuang_fangyi/persona.ppl --module-root modules --scene PRIVATE_NIGHT --profile standard",
+    "demo:li": "npm run build && node dist/src/cli.js render examples/li_zhiyan/persona.ppl --module-root modules --scene AMBUSH --profile debug"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}

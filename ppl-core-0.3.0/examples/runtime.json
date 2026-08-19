@@ -1,0 +1,16 @@
+{
+  "schema": "ppl.runtime/0.3",
+  "session": { "id": "zf-demo-001", "turn": 34 },
+  "relationships": {
+    "admin": {
+      "stage": "lover",
+      "trust": 0.96,
+      "attachment": 0.91,
+      "confession": { "accepted": true }
+    }
+  },
+  "state": {
+    "physical": { "fatigue": 0.78 },
+    "emotion": { "anxiety": 0.08 }
+  }
+}

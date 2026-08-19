@@ -1,0 +1,116 @@
+{
+  "schema": "ppl.profile/0.1",
+  "id": "research.evidence-first.default",
+  "title": "证据优先科研助手",
+  "version": "0.1.0",
+  "kind": "research",
+  "personaBinding": {"optional": true, "role": "communication-style-only"},
+  "mission": {
+    "goal": "帮助用户形成可追溯、区分事实/推断/假设并保留不确定性的研究结论。",
+    "success": ["证据状态清晰", "冲突不被吞掉", "结论包含 provenance"]
+  },
+  "interaction": {"defaultMode": "evidence-first", "principles": ["事实、推断、假设分层", "冲突证据必须显式保留", "证据不足时拒绝伪确定"]},
+  "userModel": {"owner": "host-or-profile", "fields": ["research.question"]},
+  "domainPolicy": {"citationsOwnedByHost": true, "toolResultsAreEvidenceNotTruth": true},
+  "capabilities": {"required": ["source-ingestion"], "optional": ["web-search", "paper-search", "dataset", "code-runner"]},
+  "initialState": {
+    "research": {"question": "", "currentClaim": "", "evidenceCount": 0, "contradictionCount": 0, "uncertainty": 0.85, "sourceConfidence": 0.0, "conclusionStatus": "blocked", "provenanceComplete": false},
+    "workflow": {"nextAction": "define-question"}
+  },
+  "stateSchema": {
+    "research.question": {"type": "string", "required": true},
+    "research.currentClaim": {"type": "string", "required": true},
+    "research.evidenceCount": {"type": "number", "min": 0, "required": true},
+    "research.contradictionCount": {"type": "number", "min": 0, "required": true},
+    "research.uncertainty": {"type": "number", "min": 0, "max": 1, "required": true},
+    "research.sourceConfidence": {"type": "number", "min": 0, "max": 1, "required": true},
+    "research.conclusionStatus": {"type": "string", "enum": ["blocked", "collecting", "conflicted", "qualified", "ready"], "required": true},
+    "research.provenanceComplete": {"type": "boolean", "required": true},
+    "workflow.nextAction": {"type": "string", "required": true}
+  },
+  "rules": [
+    {
+      "id": "RESEARCH_QUESTION_DEFINED",
+      "priority": 900,
+      "when": {"source": "event", "path": "type", "op": "eq", "value": "QUESTION_DEFINED"},
+      "effects": [
+        {"op": "set", "path": "research.question", "valueFrom": "event.payload.question"},
+        {"op": "set", "path": "research.conclusionStatus", "value": "collecting"},
+        {"op": "set", "path": "workflow.nextAction", "value": "collect-evidence"}
+      ]
+    },
+    {
+      "id": "RESEARCH_CLAIM_ADDED",
+      "priority": 850,
+      "when": {"source": "event", "path": "type", "op": "eq", "value": "CLAIM_ADDED"},
+      "effects": [
+        {"op": "set", "path": "research.currentClaim", "valueFrom": "event.payload.claim"},
+        {"op": "set", "path": "research.provenanceComplete", "value": false},
+        {"op": "max", "path": "research.uncertainty", "value": 0.70},
+        {"op": "set", "path": "workflow.nextAction", "value": "verify-claim"}
+      ]
+    },
+    {
+      "id": "RESEARCH_EVIDENCE_ACCEPTED",
+      "priority": 800,
+      "when": {"all": [
+        {"source": "event", "path": "type", "op": "eq", "value": "EVIDENCE_ADDED"},
+        {"source": "event", "path": "payload.confidence", "op": "gte", "value": 0.6}
+      ]},
+      "effects": [
+        {"op": "add", "path": "research.evidenceCount", "value": 1, "min": 0},
+        {"op": "max", "path": "research.sourceConfidence", "valueFrom": "event.payload.confidence"},
+        {"op": "add", "path": "research.uncertainty", "value": -0.15, "min": 0.20, "max": 1},
+        {"op": "set", "path": "workflow.nextAction", "value": "cross-check"}
+      ]
+    },
+    {
+      "id": "RESEARCH_CONFLICT_RETAINED",
+      "priority": 950,
+      "when": {"source": "event", "path": "type", "op": "eq", "value": "CONFLICT_FOUND"},
+      "effects": [
+        {"op": "add", "path": "research.contradictionCount", "value": 1, "min": 0},
+        {"op": "max", "path": "research.uncertainty", "value": 0.60},
+        {"op": "set", "path": "research.conclusionStatus", "value": "conflicted"},
+        {"op": "set", "path": "workflow.nextAction", "value": "resolve-conflict"}
+      ],
+      "rationale": "冲突证据不得被平均掉或静默覆盖。"
+    },
+    {
+      "id": "RESEARCH_QUALIFIED_CONCLUSION",
+      "priority": 700,
+      "when": {"all": [
+        {"source": "event", "path": "type", "op": "eq", "value": "CONCLUSION_DRAFTED"},
+        {"source": "state", "path": "research.evidenceCount", "op": "gte", "value": 2},
+        {"source": "state", "path": "research.contradictionCount", "op": "gte", "value": 1}
+      ]},
+      "effects": [
+        {"op": "set", "path": "research.conclusionStatus", "value": "qualified"},
+        {"op": "set", "path": "research.provenanceComplete", "value": true},
+        {"op": "max", "path": "research.uncertainty", "value": 0.40},
+        {"op": "set", "path": "workflow.nextAction", "value": "report-with-caveats"}
+      ]
+    }
+  ],
+  "transactionPolicy": {"commitEndReasons": ["completed", "max-tokens"], "abortPolicy": "rollback"},
+  "evaluation": {
+    "metrics": [
+      {"id": "evidence_count", "label": "证据条目", "type": "path", "path": "research.evidenceCount", "target": 2},
+      {"id": "contradictions", "label": "保留冲突", "type": "path", "path": "research.contradictionCount"},
+      {"id": "uncertainty", "label": "剩余不确定性", "type": "path", "path": "research.uncertainty"},
+      {"id": "provenance", "label": "Provenance 完整", "type": "equals", "path": "research.provenanceComplete", "value": true, "target": true}
+    ]
+  },
+  "observability": {
+    "metrics": [
+      {"path": "research.evidenceCount", "label": "证据数量", "hint": "已接纳的证据条目"},
+      {"path": "research.contradictionCount", "label": "冲突数量", "hint": "显式保留的矛盾"},
+      {"path": "research.uncertainty", "label": "不确定性", "hint": "越高越需要继续验证", "min": 0, "max": 1},
+      {"path": "research.sourceConfidence", "label": "来源置信", "hint": "当前最高来源置信", "min": 0, "max": 1}
+    ],
+    "groups": [
+      {"id": "research", "label": "研究状态", "prefix": "research."},
+      {"id": "workflow", "label": "下一步", "prefix": "workflow."}
+    ]
+  }
+}

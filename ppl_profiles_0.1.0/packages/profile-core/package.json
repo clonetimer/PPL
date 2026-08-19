@@ -1,0 +1,10 @@
+{
+  "name": "@ppl/profile-core",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Host-neutral PPL Profile validator, deterministic resolver, transaction policy and evaluator.",
+  "exports": "./src/index.mjs",
+  "files": [
+    "src"
+  ]
+}

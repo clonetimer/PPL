@@ -1,0 +1,45 @@
+{
+  "schema": "ppl.profile/0.1",
+  "id": "character.compatibility.default",
+  "title": "Character Profile 兼容层",
+  "version": "0.1.0",
+  "kind": "character",
+  "personaBinding": {"required": true, "program": "ZHUANG_FANGYI", "runtimeOwner": "PPL Runtime"},
+  "mission": {"goal": "把现有人格/关系类应用纳入 Profile 体系，但不取代 PPL Persona Runtime。"},
+  "interaction": {"defaultMode": "persona-driven", "principles": ["Persona 状态仍由 PPL Runtime 所有", "Profile 只表达应用目标与观察指标"]},
+  "userModel": {"owner": "persona-runtime"},
+  "domainPolicy": {"stateOwnership": "compatibility-example"},
+  "capabilities": {"required": [], "optional": []},
+  "initialState": {"relationship": {"stage": "trusted", "trust": 0.86}, "interaction": {"privateMode": false}},
+  "stateSchema": {
+    "relationship.stage": {"type": "string", "enum": ["acquaintance", "trusted", "lover"], "required": true},
+    "relationship.trust": {"type": "number", "min": 0, "max": 1, "required": true},
+    "interaction.privateMode": {"type": "boolean", "required": true}
+  },
+  "rules": [
+    {
+      "id": "CHARACTER_CONFESSION_STAGE",
+      "priority": 700,
+      "when": {"source": "event", "path": "type", "op": "eq", "value": "CONFESSION"},
+      "effects": [{"op": "set", "path": "relationship.stage", "value": "lover"}]
+    },
+    {
+      "id": "CHARACTER_COMFORT_TRUST",
+      "priority": 600,
+      "when": {"source": "event", "path": "type", "op": "eq", "value": "COMFORT"},
+      "effects": [
+        {"op": "add", "path": "relationship.trust", "value": 0.01, "min": 0, "max": 1},
+        {"op": "set", "path": "interaction.privateMode", "value": true}
+      ]
+    }
+  ],
+  "transactionPolicy": {"commitEndReasons": ["completed", "max-tokens"], "abortPolicy": "rollback"},
+  "evaluation": {"metrics": [
+    {"id": "stage", "label": "关系阶段", "type": "path", "path": "relationship.stage"},
+    {"id": "trust", "label": "信任", "type": "path", "path": "relationship.trust"}
+  ]},
+  "observability": {"metrics": [
+    {"path": "relationship.trust", "label": "信任", "hint": "兼容示例", "min": 0, "max": 1},
+    {"path": "interaction.privateMode", "label": "私下模式", "hint": "兼容示例"}
+  ], "groups": [{"id": "relationship", "label": "关系", "prefix": "relationship."}]}
+}

@@ -1,0 +1,258 @@
+{
+  "schema": "ppl.app-session/0.2",
+  "title": "Character Profile 兼容层 · relationship-cycle",
+  "profile": {
+    "id": "character.compatibility.default",
+    "title": "Character Profile 兼容层",
+    "kind": "character",
+    "version": "0.1.0"
+  },
+  "observability": {
+    "metrics": [
+      {
+        "path": "relationship.trust",
+        "label": "信任",
+        "hint": "兼容示例",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "path": "interaction.privateMode",
+        "label": "私下模式",
+        "hint": "兼容示例"
+      }
+    ],
+    "groups": [
+      {
+        "id": "relationship",
+        "label": "关系",
+        "prefix": "relationship."
+      }
+    ]
+  },
+  "entries": [
+    {
+      "snapshotSeq": 1,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.1",
+        "profile": {
+          "id": "character.compatibility.default",
+          "title": "Character Profile 兼容层",
+          "kind": "character",
+          "version": "0.1.0",
+          "fingerprint": "4dc9def06a15f13723e56caa12af2d7ab6e23cc513bfe1a12e539eb19f81a0b0"
+        },
+        "host": {
+          "turn": 1,
+          "step": 1
+        },
+        "event": {
+          "type": "CONFESSION",
+          "category": "relationship"
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.1",
+          "valid": true,
+          "baseState": {
+            "relationship": {
+              "stage": "trusted",
+              "trust": 0.86
+            },
+            "interaction": {
+              "privateMode": false
+            }
+          },
+          "resolvedState": {
+            "relationship": {
+              "stage": "lover",
+              "trust": 0.86
+            },
+            "interaction": {
+              "privateMode": false
+            }
+          },
+          "activeRules": [
+            {
+              "id": "CHARACTER_CONFESSION_STAGE",
+              "priority": 700
+            }
+          ],
+          "mutations": [
+            {
+              "source": "CHARACTER_CONFESSION_STAGE",
+              "path": "relationship.stage",
+              "op": "set",
+              "before": "trusted",
+              "after": "lover"
+            }
+          ],
+          "trace": {
+            "relationship.stage": {
+              "path": "relationship.stage",
+              "base": "trusted",
+              "final": "lover",
+              "steps": [
+                {
+                  "rule": "CHARACTER_CONFESSION_STAGE",
+                  "priority": 700,
+                  "op": "set",
+                  "before": "trusted",
+                  "after": "lover"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.1",
+            "metrics": [
+              {
+                "id": "stage",
+                "label": "关系阶段",
+                "type": "path",
+                "path": "relationship.stage",
+                "value": "lover"
+              },
+              {
+                "id": "trust",
+                "label": "信任",
+                "type": "path",
+                "path": "relationship.trust",
+                "value": 0.86
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 2,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.1",
+        "profile": {
+          "id": "character.compatibility.default",
+          "title": "Character Profile 兼容层",
+          "kind": "character",
+          "version": "0.1.0",
+          "fingerprint": "4dc9def06a15f13723e56caa12af2d7ab6e23cc513bfe1a12e539eb19f81a0b0"
+        },
+        "host": {
+          "turn": 2,
+          "step": 1
+        },
+        "event": {
+          "type": "COMFORT",
+          "category": "relationship"
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.1",
+          "valid": true,
+          "baseState": {
+            "relationship": {
+              "stage": "lover",
+              "trust": 0.86
+            },
+            "interaction": {
+              "privateMode": false
+            }
+          },
+          "resolvedState": {
+            "relationship": {
+              "stage": "lover",
+              "trust": 0.87
+            },
+            "interaction": {
+              "privateMode": true
+            }
+          },
+          "activeRules": [
+            {
+              "id": "CHARACTER_COMFORT_TRUST",
+              "priority": 600
+            }
+          ],
+          "mutations": [
+            {
+              "source": "CHARACTER_COMFORT_TRUST",
+              "path": "relationship.trust",
+              "op": "add",
+              "before": 0.86,
+              "after": 0.87
+            },
+            {
+              "source": "CHARACTER_COMFORT_TRUST",
+              "path": "interaction.privateMode",
+              "op": "set",
+              "before": false,
+              "after": true
+            }
+          ],
+          "trace": {
+            "relationship.trust": {
+              "path": "relationship.trust",
+              "base": 0.86,
+              "final": 0.87,
+              "steps": [
+                {
+                  "rule": "CHARACTER_COMFORT_TRUST",
+                  "priority": 600,
+                  "op": "add",
+                  "before": 0.86,
+                  "after": 0.87
+                }
+              ]
+            },
+            "interaction.privateMode": {
+              "path": "interaction.privateMode",
+              "base": false,
+              "final": true,
+              "steps": [
+                {
+                  "rule": "CHARACTER_COMFORT_TRUST",
+                  "priority": 600,
+                  "op": "set",
+                  "before": false,
+                  "after": true
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.1",
+            "metrics": [
+              {
+                "id": "stage",
+                "label": "关系阶段",
+                "type": "path",
+                "path": "relationship.stage",
+                "value": "lover"
+              },
+              {
+                "id": "trust",
+                "label": "信任",
+                "type": "path",
+                "path": "relationship.trust",
+                "value": 0.87
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    }
+  ]
+}

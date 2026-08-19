@@ -1,0 +1,1226 @@
+{
+  "schema": "ppl.profile-scenario-result/0.1",
+  "profile": {
+    "id": "research.evidence-first.default",
+    "kind": "research",
+    "version": "0.1.0"
+  },
+  "scenario": "evidence-cycle",
+  "initialState": {
+    "research": {
+      "question": "",
+      "currentClaim": "",
+      "evidenceCount": 0,
+      "contradictionCount": 0,
+      "uncertainty": 0.85,
+      "sourceConfidence": 0,
+      "conclusionStatus": "blocked",
+      "provenanceComplete": false
+    },
+    "workflow": {
+      "nextAction": "define-question"
+    }
+  },
+  "finalState": {
+    "research": {
+      "question": "方法 A 是否优于方法 B？",
+      "currentClaim": "方法 A 更优",
+      "evidenceCount": 2,
+      "contradictionCount": 1,
+      "uncertainty": 0.5499999999999999,
+      "sourceConfidence": 0.9,
+      "conclusionStatus": "qualified",
+      "provenanceComplete": true
+    },
+    "workflow": {
+      "nextAction": "report-with-caveats"
+    }
+  },
+  "evaluation": {
+    "schema": "ppl.profile-evaluation/0.1",
+    "metrics": [
+      {
+        "id": "evidence_count",
+        "label": "证据条目",
+        "type": "path",
+        "path": "research.evidenceCount",
+        "value": 2,
+        "target": 2
+      },
+      {
+        "id": "contradictions",
+        "label": "保留冲突",
+        "type": "path",
+        "path": "research.contradictionCount",
+        "value": 1
+      },
+      {
+        "id": "uncertainty",
+        "label": "剩余不确定性",
+        "type": "path",
+        "path": "research.uncertainty",
+        "value": 0.5499999999999999
+      },
+      {
+        "id": "provenance",
+        "label": "Provenance 完整",
+        "type": "equals",
+        "path": "research.provenanceComplete",
+        "value": true,
+        "target": true
+      }
+    ]
+  },
+  "entries": [
+    {
+      "snapshotSeq": 1,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.1",
+        "profile": {
+          "id": "research.evidence-first.default",
+          "title": "证据优先科研助手",
+          "kind": "research",
+          "version": "0.1.0",
+          "fingerprint": "d865f865a2e139af548678f4216e3c926f24f5d360b0c2033cf9074644a0ac1c"
+        },
+        "host": {
+          "turn": 1,
+          "step": 1
+        },
+        "event": {
+          "type": "QUESTION_DEFINED",
+          "category": "research",
+          "payload": {
+            "question": "方法 A 是否优于方法 B？"
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.1",
+          "valid": true,
+          "baseState": {
+            "research": {
+              "question": "",
+              "currentClaim": "",
+              "evidenceCount": 0,
+              "contradictionCount": 0,
+              "uncertainty": 0.85,
+              "sourceConfidence": 0,
+              "conclusionStatus": "blocked",
+              "provenanceComplete": false
+            },
+            "workflow": {
+              "nextAction": "define-question"
+            }
+          },
+          "resolvedState": {
+            "research": {
+              "question": "方法 A 是否优于方法 B？",
+              "currentClaim": "",
+              "evidenceCount": 0,
+              "contradictionCount": 0,
+              "uncertainty": 0.85,
+              "sourceConfidence": 0,
+              "conclusionStatus": "collecting",
+              "provenanceComplete": false
+            },
+            "workflow": {
+              "nextAction": "collect-evidence"
+            }
+          },
+          "activeRules": [
+            {
+              "id": "RESEARCH_QUESTION_DEFINED",
+              "priority": 900
+            }
+          ],
+          "mutations": [
+            {
+              "source": "RESEARCH_QUESTION_DEFINED",
+              "path": "research.question",
+              "op": "set",
+              "before": "",
+              "after": "方法 A 是否优于方法 B？"
+            },
+            {
+              "source": "RESEARCH_QUESTION_DEFINED",
+              "path": "research.conclusionStatus",
+              "op": "set",
+              "before": "blocked",
+              "after": "collecting"
+            },
+            {
+              "source": "RESEARCH_QUESTION_DEFINED",
+              "path": "workflow.nextAction",
+              "op": "set",
+              "before": "define-question",
+              "after": "collect-evidence"
+            }
+          ],
+          "trace": {
+            "research.question": {
+              "path": "research.question",
+              "base": "",
+              "final": "方法 A 是否优于方法 B？",
+              "steps": [
+                {
+                  "rule": "RESEARCH_QUESTION_DEFINED",
+                  "priority": 900,
+                  "op": "set",
+                  "before": "",
+                  "after": "方法 A 是否优于方法 B？"
+                }
+              ]
+            },
+            "research.conclusionStatus": {
+              "path": "research.conclusionStatus",
+              "base": "blocked",
+              "final": "collecting",
+              "steps": [
+                {
+                  "rule": "RESEARCH_QUESTION_DEFINED",
+                  "priority": 900,
+                  "op": "set",
+                  "before": "blocked",
+                  "after": "collecting"
+                }
+              ]
+            },
+            "workflow.nextAction": {
+              "path": "workflow.nextAction",
+              "base": "define-question",
+              "final": "collect-evidence",
+              "steps": [
+                {
+                  "rule": "RESEARCH_QUESTION_DEFINED",
+                  "priority": 900,
+                  "op": "set",
+                  "before": "define-question",
+                  "after": "collect-evidence"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.1",
+            "metrics": [
+              {
+                "id": "evidence_count",
+                "label": "证据条目",
+                "type": "path",
+                "path": "research.evidenceCount",
+                "value": 0,
+                "target": 2
+              },
+              {
+                "id": "contradictions",
+                "label": "保留冲突",
+                "type": "path",
+                "path": "research.contradictionCount",
+                "value": 0
+              },
+              {
+                "id": "uncertainty",
+                "label": "剩余不确定性",
+                "type": "path",
+                "path": "research.uncertainty",
+                "value": 0.85
+              },
+              {
+                "id": "provenance",
+                "label": "Provenance 完整",
+                "type": "equals",
+                "path": "research.provenanceComplete",
+                "value": false,
+                "target": true
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 2,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.1",
+        "profile": {
+          "id": "research.evidence-first.default",
+          "title": "证据优先科研助手",
+          "kind": "research",
+          "version": "0.1.0",
+          "fingerprint": "d865f865a2e139af548678f4216e3c926f24f5d360b0c2033cf9074644a0ac1c"
+        },
+        "host": {
+          "turn": 2,
+          "step": 1
+        },
+        "event": {
+          "type": "CLAIM_ADDED",
+          "category": "claim",
+          "payload": {
+            "claim": "方法 A 更优"
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.1",
+          "valid": true,
+          "baseState": {
+            "research": {
+              "question": "方法 A 是否优于方法 B？",
+              "currentClaim": "",
+              "evidenceCount": 0,
+              "contradictionCount": 0,
+              "uncertainty": 0.85,
+              "sourceConfidence": 0,
+              "conclusionStatus": "collecting",
+              "provenanceComplete": false
+            },
+            "workflow": {
+              "nextAction": "collect-evidence"
+            }
+          },
+          "resolvedState": {
+            "research": {
+              "question": "方法 A 是否优于方法 B？",
+              "currentClaim": "方法 A 更优",
+              "evidenceCount": 0,
+              "contradictionCount": 0,
+              "uncertainty": 0.85,
+              "sourceConfidence": 0,
+              "conclusionStatus": "collecting",
+              "provenanceComplete": false
+            },
+            "workflow": {
+              "nextAction": "verify-claim"
+            }
+          },
+          "activeRules": [
+            {
+              "id": "RESEARCH_CLAIM_ADDED",
+              "priority": 850
+            }
+          ],
+          "mutations": [
+            {
+              "source": "RESEARCH_CLAIM_ADDED",
+              "path": "research.currentClaim",
+              "op": "set",
+              "before": "",
+              "after": "方法 A 更优"
+            },
+            {
+              "source": "RESEARCH_CLAIM_ADDED",
+              "path": "research.provenanceComplete",
+              "op": "set",
+              "before": false,
+              "after": false
+            },
+            {
+              "source": "RESEARCH_CLAIM_ADDED",
+              "path": "research.uncertainty",
+              "op": "max",
+              "before": 0.85,
+              "after": 0.85
+            },
+            {
+              "source": "RESEARCH_CLAIM_ADDED",
+              "path": "workflow.nextAction",
+              "op": "set",
+              "before": "collect-evidence",
+              "after": "verify-claim"
+            }
+          ],
+          "trace": {
+            "research.currentClaim": {
+              "path": "research.currentClaim",
+              "base": "",
+              "final": "方法 A 更优",
+              "steps": [
+                {
+                  "rule": "RESEARCH_CLAIM_ADDED",
+                  "priority": 850,
+                  "op": "set",
+                  "before": "",
+                  "after": "方法 A 更优"
+                }
+              ]
+            },
+            "research.provenanceComplete": {
+              "path": "research.provenanceComplete",
+              "base": false,
+              "final": false,
+              "steps": [
+                {
+                  "rule": "RESEARCH_CLAIM_ADDED",
+                  "priority": 850,
+                  "op": "set",
+                  "before": false,
+                  "after": false
+                }
+              ]
+            },
+            "research.uncertainty": {
+              "path": "research.uncertainty",
+              "base": 0.85,
+              "final": 0.85,
+              "steps": [
+                {
+                  "rule": "RESEARCH_CLAIM_ADDED",
+                  "priority": 850,
+                  "op": "max",
+                  "before": 0.85,
+                  "after": 0.85
+                }
+              ]
+            },
+            "workflow.nextAction": {
+              "path": "workflow.nextAction",
+              "base": "collect-evidence",
+              "final": "verify-claim",
+              "steps": [
+                {
+                  "rule": "RESEARCH_CLAIM_ADDED",
+                  "priority": 850,
+                  "op": "set",
+                  "before": "collect-evidence",
+                  "after": "verify-claim"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.1",
+            "metrics": [
+              {
+                "id": "evidence_count",
+                "label": "证据条目",
+                "type": "path",
+                "path": "research.evidenceCount",
+                "value": 0,
+                "target": 2
+              },
+              {
+                "id": "contradictions",
+                "label": "保留冲突",
+                "type": "path",
+                "path": "research.contradictionCount",
+                "value": 0
+              },
+              {
+                "id": "uncertainty",
+                "label": "剩余不确定性",
+                "type": "path",
+                "path": "research.uncertainty",
+                "value": 0.85
+              },
+              {
+                "id": "provenance",
+                "label": "Provenance 完整",
+                "type": "equals",
+                "path": "research.provenanceComplete",
+                "value": false,
+                "target": true
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 3,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.1",
+        "profile": {
+          "id": "research.evidence-first.default",
+          "title": "证据优先科研助手",
+          "kind": "research",
+          "version": "0.1.0",
+          "fingerprint": "d865f865a2e139af548678f4216e3c926f24f5d360b0c2033cf9074644a0ac1c"
+        },
+        "host": {
+          "turn": 3,
+          "step": 1
+        },
+        "event": {
+          "type": "EVIDENCE_ADDED",
+          "category": "evidence",
+          "payload": {
+            "source": "paper-1",
+            "confidence": 0.82
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.1",
+          "valid": true,
+          "baseState": {
+            "research": {
+              "question": "方法 A 是否优于方法 B？",
+              "currentClaim": "方法 A 更优",
+              "evidenceCount": 0,
+              "contradictionCount": 0,
+              "uncertainty": 0.85,
+              "sourceConfidence": 0,
+              "conclusionStatus": "collecting",
+              "provenanceComplete": false
+            },
+            "workflow": {
+              "nextAction": "verify-claim"
+            }
+          },
+          "resolvedState": {
+            "research": {
+              "question": "方法 A 是否优于方法 B？",
+              "currentClaim": "方法 A 更优",
+              "evidenceCount": 1,
+              "contradictionCount": 0,
+              "uncertainty": 0.7,
+              "sourceConfidence": 0.82,
+              "conclusionStatus": "collecting",
+              "provenanceComplete": false
+            },
+            "workflow": {
+              "nextAction": "cross-check"
+            }
+          },
+          "activeRules": [
+            {
+              "id": "RESEARCH_EVIDENCE_ACCEPTED",
+              "priority": 800
+            }
+          ],
+          "mutations": [
+            {
+              "source": "RESEARCH_EVIDENCE_ACCEPTED",
+              "path": "research.evidenceCount",
+              "op": "add",
+              "before": 0,
+              "after": 1
+            },
+            {
+              "source": "RESEARCH_EVIDENCE_ACCEPTED",
+              "path": "research.sourceConfidence",
+              "op": "max",
+              "before": 0,
+              "after": 0.82
+            },
+            {
+              "source": "RESEARCH_EVIDENCE_ACCEPTED",
+              "path": "research.uncertainty",
+              "op": "add",
+              "before": 0.85,
+              "after": 0.7
+            },
+            {
+              "source": "RESEARCH_EVIDENCE_ACCEPTED",
+              "path": "workflow.nextAction",
+              "op": "set",
+              "before": "verify-claim",
+              "after": "cross-check"
+            }
+          ],
+          "trace": {
+            "research.evidenceCount": {
+              "path": "research.evidenceCount",
+              "base": 0,
+              "final": 1,
+              "steps": [
+                {
+                  "rule": "RESEARCH_EVIDENCE_ACCEPTED",
+                  "priority": 800,
+                  "op": "add",
+                  "before": 0,
+                  "after": 1
+                }
+              ]
+            },
+            "research.sourceConfidence": {
+              "path": "research.sourceConfidence",
+              "base": 0,
+              "final": 0.82,
+              "steps": [
+                {
+                  "rule": "RESEARCH_EVIDENCE_ACCEPTED",
+                  "priority": 800,
+                  "op": "max",
+                  "before": 0,
+                  "after": 0.82
+                }
+              ]
+            },
+            "research.uncertainty": {
+              "path": "research.uncertainty",
+              "base": 0.85,
+              "final": 0.7,
+              "steps": [
+                {
+                  "rule": "RESEARCH_EVIDENCE_ACCEPTED",
+                  "priority": 800,
+                  "op": "add",
+                  "before": 0.85,
+                  "after": 0.7
+                }
+              ]
+            },
+            "workflow.nextAction": {
+              "path": "workflow.nextAction",
+              "base": "verify-claim",
+              "final": "cross-check",
+              "steps": [
+                {
+                  "rule": "RESEARCH_EVIDENCE_ACCEPTED",
+                  "priority": 800,
+                  "op": "set",
+                  "before": "verify-claim",
+                  "after": "cross-check"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.1",
+            "metrics": [
+              {
+                "id": "evidence_count",
+                "label": "证据条目",
+                "type": "path",
+                "path": "research.evidenceCount",
+                "value": 1,
+                "target": 2
+              },
+              {
+                "id": "contradictions",
+                "label": "保留冲突",
+                "type": "path",
+                "path": "research.contradictionCount",
+                "value": 0
+              },
+              {
+                "id": "uncertainty",
+                "label": "剩余不确定性",
+                "type": "path",
+                "path": "research.uncertainty",
+                "value": 0.7
+              },
+              {
+                "id": "provenance",
+                "label": "Provenance 完整",
+                "type": "equals",
+                "path": "research.provenanceComplete",
+                "value": false,
+                "target": true
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 4,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.1",
+        "profile": {
+          "id": "research.evidence-first.default",
+          "title": "证据优先科研助手",
+          "kind": "research",
+          "version": "0.1.0",
+          "fingerprint": "d865f865a2e139af548678f4216e3c926f24f5d360b0c2033cf9074644a0ac1c"
+        },
+        "host": {
+          "turn": 4,
+          "step": 1
+        },
+        "event": {
+          "type": "CONFLICT_FOUND",
+          "category": "evidence",
+          "payload": {
+            "source": "paper-2"
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.1",
+          "valid": true,
+          "baseState": {
+            "research": {
+              "question": "方法 A 是否优于方法 B？",
+              "currentClaim": "方法 A 更优",
+              "evidenceCount": 1,
+              "contradictionCount": 0,
+              "uncertainty": 0.7,
+              "sourceConfidence": 0.82,
+              "conclusionStatus": "collecting",
+              "provenanceComplete": false
+            },
+            "workflow": {
+              "nextAction": "cross-check"
+            }
+          },
+          "resolvedState": {
+            "research": {
+              "question": "方法 A 是否优于方法 B？",
+              "currentClaim": "方法 A 更优",
+              "evidenceCount": 1,
+              "contradictionCount": 1,
+              "uncertainty": 0.7,
+              "sourceConfidence": 0.82,
+              "conclusionStatus": "conflicted",
+              "provenanceComplete": false
+            },
+            "workflow": {
+              "nextAction": "resolve-conflict"
+            }
+          },
+          "activeRules": [
+            {
+              "id": "RESEARCH_CONFLICT_RETAINED",
+              "priority": 950,
+              "rationale": "冲突证据不得被平均掉或静默覆盖。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "RESEARCH_CONFLICT_RETAINED",
+              "path": "research.contradictionCount",
+              "op": "add",
+              "before": 0,
+              "after": 1
+            },
+            {
+              "source": "RESEARCH_CONFLICT_RETAINED",
+              "path": "research.uncertainty",
+              "op": "max",
+              "before": 0.7,
+              "after": 0.7
+            },
+            {
+              "source": "RESEARCH_CONFLICT_RETAINED",
+              "path": "research.conclusionStatus",
+              "op": "set",
+              "before": "collecting",
+              "after": "conflicted"
+            },
+            {
+              "source": "RESEARCH_CONFLICT_RETAINED",
+              "path": "workflow.nextAction",
+              "op": "set",
+              "before": "cross-check",
+              "after": "resolve-conflict"
+            }
+          ],
+          "trace": {
+            "research.contradictionCount": {
+              "path": "research.contradictionCount",
+              "base": 0,
+              "final": 1,
+              "steps": [
+                {
+                  "rule": "RESEARCH_CONFLICT_RETAINED",
+                  "priority": 950,
+                  "op": "add",
+                  "before": 0,
+                  "after": 1
+                }
+              ]
+            },
+            "research.uncertainty": {
+              "path": "research.uncertainty",
+              "base": 0.7,
+              "final": 0.7,
+              "steps": [
+                {
+                  "rule": "RESEARCH_CONFLICT_RETAINED",
+                  "priority": 950,
+                  "op": "max",
+                  "before": 0.7,
+                  "after": 0.7
+                }
+              ]
+            },
+            "research.conclusionStatus": {
+              "path": "research.conclusionStatus",
+              "base": "collecting",
+              "final": "conflicted",
+              "steps": [
+                {
+                  "rule": "RESEARCH_CONFLICT_RETAINED",
+                  "priority": 950,
+                  "op": "set",
+                  "before": "collecting",
+                  "after": "conflicted"
+                }
+              ]
+            },
+            "workflow.nextAction": {
+              "path": "workflow.nextAction",
+              "base": "cross-check",
+              "final": "resolve-conflict",
+              "steps": [
+                {
+                  "rule": "RESEARCH_CONFLICT_RETAINED",
+                  "priority": 950,
+                  "op": "set",
+                  "before": "cross-check",
+                  "after": "resolve-conflict"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.1",
+            "metrics": [
+              {
+                "id": "evidence_count",
+                "label": "证据条目",
+                "type": "path",
+                "path": "research.evidenceCount",
+                "value": 1,
+                "target": 2
+              },
+              {
+                "id": "contradictions",
+                "label": "保留冲突",
+                "type": "path",
+                "path": "research.contradictionCount",
+                "value": 1
+              },
+              {
+                "id": "uncertainty",
+                "label": "剩余不确定性",
+                "type": "path",
+                "path": "research.uncertainty",
+                "value": 0.7
+              },
+              {
+                "id": "provenance",
+                "label": "Provenance 完整",
+                "type": "equals",
+                "path": "research.provenanceComplete",
+                "value": false,
+                "target": true
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 5,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.1",
+        "profile": {
+          "id": "research.evidence-first.default",
+          "title": "证据优先科研助手",
+          "kind": "research",
+          "version": "0.1.0",
+          "fingerprint": "d865f865a2e139af548678f4216e3c926f24f5d360b0c2033cf9074644a0ac1c"
+        },
+        "host": {
+          "turn": 5,
+          "step": 1
+        },
+        "event": {
+          "type": "EVIDENCE_ADDED",
+          "category": "evidence",
+          "payload": {
+            "source": "dataset-1",
+            "confidence": 0.9
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.1",
+          "valid": true,
+          "baseState": {
+            "research": {
+              "question": "方法 A 是否优于方法 B？",
+              "currentClaim": "方法 A 更优",
+              "evidenceCount": 1,
+              "contradictionCount": 1,
+              "uncertainty": 0.7,
+              "sourceConfidence": 0.82,
+              "conclusionStatus": "conflicted",
+              "provenanceComplete": false
+            },
+            "workflow": {
+              "nextAction": "resolve-conflict"
+            }
+          },
+          "resolvedState": {
+            "research": {
+              "question": "方法 A 是否优于方法 B？",
+              "currentClaim": "方法 A 更优",
+              "evidenceCount": 2,
+              "contradictionCount": 1,
+              "uncertainty": 0.5499999999999999,
+              "sourceConfidence": 0.9,
+              "conclusionStatus": "conflicted",
+              "provenanceComplete": false
+            },
+            "workflow": {
+              "nextAction": "cross-check"
+            }
+          },
+          "activeRules": [
+            {
+              "id": "RESEARCH_EVIDENCE_ACCEPTED",
+              "priority": 800
+            }
+          ],
+          "mutations": [
+            {
+              "source": "RESEARCH_EVIDENCE_ACCEPTED",
+              "path": "research.evidenceCount",
+              "op": "add",
+              "before": 1,
+              "after": 2
+            },
+            {
+              "source": "RESEARCH_EVIDENCE_ACCEPTED",
+              "path": "research.sourceConfidence",
+              "op": "max",
+              "before": 0.82,
+              "after": 0.9
+            },
+            {
+              "source": "RESEARCH_EVIDENCE_ACCEPTED",
+              "path": "research.uncertainty",
+              "op": "add",
+              "before": 0.7,
+              "after": 0.5499999999999999
+            },
+            {
+              "source": "RESEARCH_EVIDENCE_ACCEPTED",
+              "path": "workflow.nextAction",
+              "op": "set",
+              "before": "resolve-conflict",
+              "after": "cross-check"
+            }
+          ],
+          "trace": {
+            "research.evidenceCount": {
+              "path": "research.evidenceCount",
+              "base": 1,
+              "final": 2,
+              "steps": [
+                {
+                  "rule": "RESEARCH_EVIDENCE_ACCEPTED",
+                  "priority": 800,
+                  "op": "add",
+                  "before": 1,
+                  "after": 2
+                }
+              ]
+            },
+            "research.sourceConfidence": {
+              "path": "research.sourceConfidence",
+              "base": 0.82,
+              "final": 0.9,
+              "steps": [
+                {
+                  "rule": "RESEARCH_EVIDENCE_ACCEPTED",
+                  "priority": 800,
+                  "op": "max",
+                  "before": 0.82,
+                  "after": 0.9
+                }
+              ]
+            },
+            "research.uncertainty": {
+              "path": "research.uncertainty",
+              "base": 0.7,
+              "final": 0.5499999999999999,
+              "steps": [
+                {
+                  "rule": "RESEARCH_EVIDENCE_ACCEPTED",
+                  "priority": 800,
+                  "op": "add",
+                  "before": 0.7,
+                  "after": 0.5499999999999999
+                }
+              ]
+            },
+            "workflow.nextAction": {
+              "path": "workflow.nextAction",
+              "base": "resolve-conflict",
+              "final": "cross-check",
+              "steps": [
+                {
+                  "rule": "RESEARCH_EVIDENCE_ACCEPTED",
+                  "priority": 800,
+                  "op": "set",
+                  "before": "resolve-conflict",
+                  "after": "cross-check"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.1",
+            "metrics": [
+              {
+                "id": "evidence_count",
+                "label": "证据条目",
+                "type": "path",
+                "path": "research.evidenceCount",
+                "value": 2,
+                "target": 2
+              },
+              {
+                "id": "contradictions",
+                "label": "保留冲突",
+                "type": "path",
+                "path": "research.contradictionCount",
+                "value": 1
+              },
+              {
+                "id": "uncertainty",
+                "label": "剩余不确定性",
+                "type": "path",
+                "path": "research.uncertainty",
+                "value": 0.5499999999999999
+              },
+              {
+                "id": "provenance",
+                "label": "Provenance 完整",
+                "type": "equals",
+                "path": "research.provenanceComplete",
+                "value": false,
+                "target": true
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 6,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.1",
+        "profile": {
+          "id": "research.evidence-first.default",
+          "title": "证据优先科研助手",
+          "kind": "research",
+          "version": "0.1.0",
+          "fingerprint": "d865f865a2e139af548678f4216e3c926f24f5d360b0c2033cf9074644a0ac1c"
+        },
+        "host": {
+          "turn": 6,
+          "step": 1
+        },
+        "event": {
+          "type": "CONCLUSION_DRAFTED",
+          "category": "conclusion",
+          "payload": {}
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.1",
+          "valid": true,
+          "baseState": {
+            "research": {
+              "question": "方法 A 是否优于方法 B？",
+              "currentClaim": "方法 A 更优",
+              "evidenceCount": 2,
+              "contradictionCount": 1,
+              "uncertainty": 0.5499999999999999,
+              "sourceConfidence": 0.9,
+              "conclusionStatus": "conflicted",
+              "provenanceComplete": false
+            },
+            "workflow": {
+              "nextAction": "cross-check"
+            }
+          },
+          "resolvedState": {
+            "research": {
+              "question": "方法 A 是否优于方法 B？",
+              "currentClaim": "方法 A 更优",
+              "evidenceCount": 2,
+              "contradictionCount": 1,
+              "uncertainty": 0.5499999999999999,
+              "sourceConfidence": 0.9,
+              "conclusionStatus": "qualified",
+              "provenanceComplete": true
+            },
+            "workflow": {
+              "nextAction": "report-with-caveats"
+            }
+          },
+          "activeRules": [
+            {
+              "id": "RESEARCH_QUALIFIED_CONCLUSION",
+              "priority": 700
+            }
+          ],
+          "mutations": [
+            {
+              "source": "RESEARCH_QUALIFIED_CONCLUSION",
+              "path": "research.conclusionStatus",
+              "op": "set",
+              "before": "conflicted",
+              "after": "qualified"
+            },
+            {
+              "source": "RESEARCH_QUALIFIED_CONCLUSION",
+              "path": "research.provenanceComplete",
+              "op": "set",
+              "before": false,
+              "after": true
+            },
+            {
+              "source": "RESEARCH_QUALIFIED_CONCLUSION",
+              "path": "research.uncertainty",
+              "op": "max",
+              "before": 0.5499999999999999,
+              "after": 0.5499999999999999
+            },
+            {
+              "source": "RESEARCH_QUALIFIED_CONCLUSION",
+              "path": "workflow.nextAction",
+              "op": "set",
+              "before": "cross-check",
+              "after": "report-with-caveats"
+            }
+          ],
+          "trace": {
+            "research.conclusionStatus": {
+              "path": "research.conclusionStatus",
+              "base": "conflicted",
+              "final": "qualified",
+              "steps": [
+                {
+                  "rule": "RESEARCH_QUALIFIED_CONCLUSION",
+                  "priority": 700,
+                  "op": "set",
+                  "before": "conflicted",
+                  "after": "qualified"
+                }
+              ]
+            },
+            "research.provenanceComplete": {
+              "path": "research.provenanceComplete",
+              "base": false,
+              "final": true,
+              "steps": [
+                {
+                  "rule": "RESEARCH_QUALIFIED_CONCLUSION",
+                  "priority": 700,
+                  "op": "set",
+                  "before": false,
+                  "after": true
+                }
+              ]
+            },
+            "research.uncertainty": {
+              "path": "research.uncertainty",
+              "base": 0.5499999999999999,
+              "final": 0.5499999999999999,
+              "steps": [
+                {
+                  "rule": "RESEARCH_QUALIFIED_CONCLUSION",
+                  "priority": 700,
+                  "op": "max",
+                  "before": 0.5499999999999999,
+                  "after": 0.5499999999999999
+                }
+              ]
+            },
+            "workflow.nextAction": {
+              "path": "workflow.nextAction",
+              "base": "cross-check",
+              "final": "report-with-caveats",
+              "steps": [
+                {
+                  "rule": "RESEARCH_QUALIFIED_CONCLUSION",
+                  "priority": 700,
+                  "op": "set",
+                  "before": "cross-check",
+                  "after": "report-with-caveats"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.1",
+            "metrics": [
+              {
+                "id": "evidence_count",
+                "label": "证据条目",
+                "type": "path",
+                "path": "research.evidenceCount",
+                "value": 2,
+                "target": 2
+              },
+              {
+                "id": "contradictions",
+                "label": "保留冲突",
+                "type": "path",
+                "path": "research.contradictionCount",
+                "value": 1
+              },
+              {
+                "id": "uncertainty",
+                "label": "剩余不确定性",
+                "type": "path",
+                "path": "research.uncertainty",
+                "value": 0.5499999999999999
+              },
+              {
+                "id": "provenance",
+                "label": "Provenance 完整",
+                "type": "equals",
+                "path": "research.provenanceComplete",
+                "value": true,
+                "target": true
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    }
+  ]
+}

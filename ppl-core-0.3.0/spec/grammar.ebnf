@@ -1,0 +1,74 @@
+program          = { top_level_decl } ;
+top_level_decl   = persona_decl | module_decl | scene_decl ;
+
+persona_decl     = "persona" identifier [ "version" string ] "{" { persona_member } "}" ;
+module_decl      = "module" qualified_name [ "version" string ] "{" { module_member } "}" ;
+scene_decl       = "scene" identifier "{" context_block [ state_block ] "}" ;
+
+persona_member   = import_stmt | meta_block | identity_block | traits_block | values_block
+                 | preferences_block | relationship_block | context_block | state_block | style_block
+                 | behavior_block | rule_decl | transition_decl | invariant_decl | describe_decl
+                 | note_decl | example_decl | test_decl ;
+
+module_member    = import_stmt | traits_block | values_block | preferences_block | state_block
+                 | style_block | behavior_block | rule_decl | invariant_decl | note_decl | semantic_decl ;
+
+import_stmt      = "import" qualified_name [ "version" string ] [ "as" identifier ] ";" ;
+
+meta_block       = "meta" "{" { assignment } "}" ;
+identity_block   = "identity" "{" { assignment } "}" ;
+traits_block     = "traits" "{" { assignment } "}" ;
+values_block     = "values" "{" { assignment } "}" ;
+preferences_block = "preferences" "{" { assignment } "}" ;
+context_block    = "context" "{" { assignment } "}" ;
+state_block      = "state" "{" { assignment } "}" ;
+style_block      = "style" "{" { assignment } "}" ;
+relationship_block = "relationship" identifier "{" { assignment } "}" ;
+behavior_block   = "behavior" identifier "{" { assignment } "}" ;
+
+assignment       = path [ ":" type_ref ] "=" literal ";" ;
+type_ref         = primitive_type | qualified_name ;
+primitive_type   = "Bool" | "Int" | "Float" | "Float01" | "String" | "Symbol" ;
+
+rule_decl        = "rule" identifier [ "priority" integer ] "{" when_block [ effect_block ] [ commit_block ] "}" ;
+when_block       = "when" "{" expression ";" "}" ;
+effect_block     = "effect" "{" { effect_stmt } "}" ;
+commit_block     = "commit" "{" { commit_stmt } "}" ;
+effect_stmt      = path ( "=" | "+=" | "-=" ) expression ";"
+                 | ( "enable" | "disable" ) path ";" ;
+commit_stmt      = path ( "=" | "+=" | "-=" ) expression ";" ;
+
+transition_decl  = "transition" identifier "{"
+                   "target" path ";"
+                   "from" list_literal ";"
+                   "to" literal ";"
+                   when_block
+                   "}" ;
+
+invariant_decl   = "invariant" identifier [ "priority" integer ] "{"
+                   { "assert" expression ";" | "guide" string ";" }
+                   "}" ;
+
+describe_decl    = "describe" path [ "locale" identifier ] "{"
+                   { ( "label" | "priority" | "very_low" | "low" | "medium" | "high" | "very_high" ) "=" ( string | integer ) ";" }
+                   "}" ;
+
+semantic_decl    = "semantic" semantic_kind identifier "{" { assignment } "}" ;
+semantic_kind    = "trait" | "value" | "preference" | "relationship" | "context" | "state" | "style" | "behavior" ;
+
+note_decl        = "note" identifier "{" string "}" ;
+example_decl     = "example" identifier "{" given_block "output" "{" string "}" "}" ;
+test_decl        = "test" identifier "{" given_block "expect" "{" { expression ";" } "}" "}" ;
+given_block      = "given" "{" { path "=" literal ";" } "}" ;
+
+expression       = or_expr ;
+or_expr          = and_expr { "or" and_expr } ;
+and_expr         = unary_expr { "and" unary_expr } ;
+unary_expr       = [ "not" ] comparison_expr ;
+comparison_expr  = primary [ ( "==" | "!=" | ">" | "<" | ">=" | "<=" ) primary ] ;
+primary          = literal | path | "(" expression ")" ;
+
+literal          = string | number | "true" | "false" | identifier | list_literal ;
+list_literal     = "[" [ literal { "," literal } ] "]" ;
+path             = identifier { "." identifier } ;
+qualified_name   = identifier { "." identifier } ;

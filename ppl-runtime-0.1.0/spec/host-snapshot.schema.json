@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ppl.dev/schema/host-snapshot-0.1.json",
+  "title": "PPL Host Snapshot ABI 0.1",
+  "type": "object",
+  "required": ["schema", "persona", "host", "event", "context", "resolution"],
+  "properties": {
+    "schema": { "const": "ppl.host-snapshot/0.1" },
+    "persona": {
+      "type": "object",
+      "required": ["id", "irSha256"],
+      "properties": {
+        "id": { "type": "string" },
+        "version": { "type": "string" },
+        "irSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      },
+      "additionalProperties": false
+    },
+    "host": {
+      "type": "object",
+      "required": ["kind", "turn", "step"],
+      "properties": {
+        "kind": { "type": "string" },
+        "turn": { "type": "number" },
+        "step": { "type": "number" }
+      },
+      "additionalProperties": false
+    },
+    "turn": { "type": "number" },
+    "step": { "type": "number" },
+    "event": { "type": "object" },
+    "context": { "type": "object" },
+    "resolution": {
+      "type": "object",
+      "required": ["schema", "pendingCommits", "pendingTransitions", "valid"],
+      "properties": {
+        "schema": { "const": "ppl.host-resolution/0.1" },
+        "coreSchema": { "type": "string" },
+        "activeRules": { "type": "array" },
+        "activeTransitions": { "type": "array" },
+        "resolved": { "type": "object" },
+        "trace": { "type": "object" },
+        "pendingCommits": { "type": "array" },
+        "pendingTransitions": { "type": "array" },
+        "invariantResults": { "type": "array" },
+        "diagnostics": { "type": "array" },
+        "valid": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

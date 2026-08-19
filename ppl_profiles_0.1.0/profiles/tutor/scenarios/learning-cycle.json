@@ -1,0 +1,8 @@
+{
+  "id": "learning-cycle",
+  "steps": [
+    {"turn": 1, "event": {"type": "TASK_FAILED", "category": "learning", "payload": {"objective": "fractions.addition"}}, "endReason": "completed"},
+    {"turn": 2, "event": {"type": "ASSESSMENT_PASSED", "category": "assessment", "payload": {"score": 0.90}}, "endReason": "completed"},
+    {"turn": 3, "event": {"type": "ASSESSMENT_PASSED", "category": "assessment", "payload": {"score": 0.95}}, "endReason": "aborted"}
+  ]
+}

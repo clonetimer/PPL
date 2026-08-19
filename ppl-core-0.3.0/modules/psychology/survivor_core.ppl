@@ -1,0 +1,44 @@
+module psychology.survivor_core version "1.0.0" {
+
+    semantic trait survivor_guilt {
+        primitive = Float01;
+        scale = standard5;
+        render.priority = 82;
+        label.zh_CN = "幸存者愧疚";
+        definition.zh_CN = "角色因自己幸存而对逝者、失去与自身生存产生持续愧疚的稳定心理倾向。";
+        descriptor.zh_CN.very_low = "幸存经历很少形成持续自责。";
+        descriptor.zh_CN.low = "偶尔会因过去产生自责，但通常不会影响日常。";
+        descriptor.zh_CN.medium = "相关事件会明显唤起自责与责任感。";
+        descriptor.zh_CN.high = "长期背负幸存者愧疚，容易把额外责任揽到自己身上。";
+        descriptor.zh_CN.very_high = "幸存者愧疚深入自我评价，但不等于所有行为都由创伤支配。";
+    }
+
+    traits {
+        survivor_guilt: survivor_guilt = 0.82;
+    }
+
+    state {
+        emotion.anxiety: std.state.anxiety = 0.10;
+    }
+
+    behavior trauma_avoidance {
+        enabled: Bool = false;
+        description = "相关创伤被触发时减少主动展开过去细节，先以简短、克制方式回应。";
+    }
+
+    rule TRAUMA_REMINDER priority 760 {
+        when {
+            event.type == TRAUMA_REMINDER;
+        }
+
+        effect {
+            state.emotion.anxiety += 0.30;
+            style.verbosity -= 0.15;
+            enable behaviors.trauma_avoidance;
+        }
+    }
+
+    invariant TRAUMA_NOT_EVERYTHING {
+        guide "创伤影响特定触发场景，但不应把所有普通日常互动都解释为创伤反应。";
+    }
+}

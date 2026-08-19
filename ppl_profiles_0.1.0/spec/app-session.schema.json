@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ppl.app-session/0.2",
+  "title": "PPL Observatory Session 0.2",
+  "type": "object",
+  "required": ["schema", "entries"],
+  "properties": {
+    "schema": { "const": "ppl.app-session/0.2" },
+    "title": { "type": "string" },
+    "profile": { "type": "object" },
+    "observability": { "type": "object" },
+    "entries": { "type": "array" }
+  }
+}

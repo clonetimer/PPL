@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ppl.runtime/0.3",
+  "title": "PPL RuntimeStateInput 0.3",
+  "type": "object",
+  "properties": {
+    "schema": { "type": "string" },
+    "session": {
+      "type": "object",
+      "properties": { "id": { "type": "string" }, "turn": { "type": "integer", "minimum": 0 } }
+    },
+    "relationships": { "type": "object" },
+    "state": { "type": "object" }
+  },
+  "additionalProperties": true
+}

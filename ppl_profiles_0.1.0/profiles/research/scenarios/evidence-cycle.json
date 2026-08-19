@@ -1,0 +1,11 @@
+{
+  "id": "evidence-cycle",
+  "steps": [
+    {"turn": 1, "event": {"type": "QUESTION_DEFINED", "category": "research", "payload": {"question": "方法 A 是否优于方法 B？"}}, "endReason": "completed"},
+    {"turn": 2, "event": {"type": "CLAIM_ADDED", "category": "claim", "payload": {"claim": "方法 A 更优"}}, "endReason": "completed"},
+    {"turn": 3, "event": {"type": "EVIDENCE_ADDED", "category": "evidence", "payload": {"source": "paper-1", "confidence": 0.82}}, "endReason": "completed"},
+    {"turn": 4, "event": {"type": "CONFLICT_FOUND", "category": "evidence", "payload": {"source": "paper-2"}}, "endReason": "completed"},
+    {"turn": 5, "event": {"type": "EVIDENCE_ADDED", "category": "evidence", "payload": {"source": "dataset-1", "confidence": 0.90}}, "endReason": "completed"},
+    {"turn": 6, "event": {"type": "CONCLUSION_DRAFTED", "category": "conclusion", "payload": {}}, "endReason": "completed"}
+  ]
+}

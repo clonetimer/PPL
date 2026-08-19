@@ -1,0 +1,9 @@
+{
+  "id": "service-cycle",
+  "steps": [
+    {"turn": 1, "event": {"type": "PREFERENCE_SET", "category": "preference", "payload": {"key": "quietPlaces", "value": true}}, "endReason": "completed"},
+    {"turn": 2, "event": {"type": "PLAN_SET", "category": "planning", "payload": {"plan": "周六上午去安静的咖啡馆学习"}}, "endReason": "completed"},
+    {"turn": 3, "event": {"type": "REALTIME_FACT_OBSERVED", "category": "host-fact", "payload": {"weather": "rain"}}, "endReason": "completed"},
+    {"turn": 4, "event": {"type": "HIGH_RISK_REQUEST", "category": "risk", "payload": {"domain": "medical"}}, "endReason": "completed"}
+  ]
+}

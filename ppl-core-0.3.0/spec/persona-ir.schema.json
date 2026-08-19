@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ppl.persona-ir/0.3",
+  "title": "PPL StaticPersonaIR 0.3",
+  "type": "object",
+  "required": ["schema", "persona", "base", "runtimeInitial", "symbols", "rules", "transitions", "invariants", "semanticBindings", "semanticClosure"],
+  "properties": {
+    "schema": { "const": "ppl.persona-ir/0.3" },
+    "persona": {
+      "type": "object",
+      "required": ["id"],
+      "properties": { "id": { "type": "string" }, "version": { "type": "string" } },
+      "additionalProperties": false
+    },
+    "meta": { "type": "object" },
+    "identity": { "type": "object" },
+    "base": {
+      "type": "object",
+      "required": ["traits", "values", "preferences", "style", "behaviors"],
+      "properties": {
+        "traits": { "type": "object" },
+        "values": { "type": "object" },
+        "preferences": { "type": "object" },
+        "style": { "type": "object" },
+        "behaviors": { "type": "object" }
+      }
+    },
+    "contextDefaults": { "type": "object" },
+    "runtimeInitial": {
+      "type": "object",
+      "required": ["relationships", "state"],
+      "properties": { "relationships": { "type": "object" }, "state": { "type": "object" } }
+    },
+    "scenes": { "type": "object" },
+    "symbols": { "type": "object" },
+    "rules": { "type": "array" },
+    "transitions": { "type": "array" },
+    "invariants": { "type": "array" },
+    "notes": { "type": "array" },
+    "examples": { "type": "array" },
+    "tests": { "type": "array" },
+    "dependencies": { "type": "array" },
+    "semanticBindings": { "type": "object" },
+    "semanticClosure": {
+      "type": "object",
+      "required": ["registries", "types"],
+      "properties": {
+        "registries": { "type": "object", "additionalProperties": { "type": "string" } },
+        "types": { "type": "object" }
+      }
+    },
+    "diagnostics": { "type": "array" }
+  }
+}

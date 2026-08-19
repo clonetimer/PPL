@@ -1,0 +1,37 @@
+{
+  "schema": "ppl.profiles/stable-validation/0.1.0",
+  "passed": true,
+  "version": "0.1.0",
+  "date": "2026-08-19",
+  "tests": {
+    "passed": 10,
+    "failed": 0
+  },
+  "sourceOfflineInstall": true,
+  "validateAll": true,
+  "tarballIsolatedImport": true,
+  "contracts": [
+    "ppl.profile/0.1",
+    "ppl.profile-resolution/0.1",
+    "ppl.profile-snapshot/0.1",
+    "ppl.app-session/0.2"
+  ],
+  "profiles": [
+    "character",
+    "tutor",
+    "research",
+    "life"
+  ],
+  "invariants": {
+    "resolveDoesNotMutateDurableState": true,
+    "abortRollback": true,
+    "higherPriorityFirst": true,
+    "samePrioritySourceOrder": true
+  },
+  "crossDomain": {
+    "tutor": true,
+    "research": true,
+    "life": true,
+    "characterCompatibility": true
+  }
+}

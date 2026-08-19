@@ -1,0 +1,7 @@
+{
+  "id": "relationship-cycle",
+  "steps": [
+    {"turn": 1, "event": {"type": "CONFESSION", "category": "relationship"}, "endReason": "completed"},
+    {"turn": 2, "event": {"type": "COMFORT", "category": "relationship"}, "endReason": "completed"}
+  ]
+}

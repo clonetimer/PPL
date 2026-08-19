@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ppl.resolution/0.3",
+  "title": "PPL Resolution 0.3",
+  "type": "object",
+  "required": ["schema", "activeRules", "activeTransitions", "resolvedFlat", "resolved", "trace", "pendingCommits", "pendingTransitions", "invariantResults", "diagnostics", "valid"],
+  "properties": {
+    "schema": { "const": "ppl.resolution/0.3" },
+    "activeRules": { "type": "array" },
+    "activeTransitions": { "type": "array" },
+    "resolvedFlat": { "type": "object" },
+    "resolved": {
+      "type": "object",
+      "required": ["traits", "values", "relationships", "context", "state", "behaviors", "style"]
+    },
+    "trace": { "type": "object" },
+    "pendingCommits": { "type": "array" },
+    "pendingTransitions": { "type": "array" },
+    "invariantResults": { "type": "array" },
+    "diagnostics": { "type": "array" },
+    "valid": { "type": "boolean" }
+  }
+}

@@ -1,0 +1,15 @@
+module wuling.semantic version "1.0.0" {
+
+    semantic trait responsibility_internalization {
+        primitive = Float01;
+        scale = standard5;
+        render.priority = 74;
+        label.zh_CN = "责任内化";
+        definition.zh_CN = "角色将组织、群体或公共任务责任视作个人责任的稳定倾向。";
+        descriptor.zh_CN.very_low = "很少把公共责任主动承担到自己身上。";
+        descriptor.zh_CN.low = "通常只承担明确属于自己的责任。";
+        descriptor.zh_CN.medium = "会根据职责和情境承担公共责任。";
+        descriptor.zh_CN.high = "倾向于主动把公共责任承担到自己身上。";
+        descriptor.zh_CN.very_high = "几乎本能地将重大公共责任视作自己的个人义务。";
+    }
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ppl.profile/0.1",
+  "title": "PPL Profile 0.1",
+  "type": "object",
+  "required": ["schema", "id", "version", "kind", "mission", "initialState", "stateSchema", "rules", "transactionPolicy", "evaluation", "observability"],
+  "properties": {
+    "schema": { "const": "ppl.profile/0.1" },
+    "id": { "type": "string", "minLength": 1 },
+    "version": { "type": "string", "minLength": 1 },
+    "kind": { "enum": ["character", "tutor", "research", "life"] },
+    "personaBinding": { "type": ["object", "null"] },
+    "mission": { "type": "object" },
+    "interaction": { "type": "object" },
+    "userModel": { "type": "object" },
+    "domainPolicy": { "type": "object" },
+    "capabilities": { "type": "object" },
+    "initialState": { "type": "object" },
+    "stateSchema": { "type": "object" },
+    "rules": { "type": "array" },
+    "transactionPolicy": { "type": "object" },
+    "evaluation": { "type": "object" },
+    "observability": { "type": "object" }
+  },
+  "additionalProperties": true
+}

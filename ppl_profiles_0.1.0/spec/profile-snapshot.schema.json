@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ppl.profile-snapshot/0.1",
+  "title": "PPL Profile Snapshot 0.1",
+  "type": "object",
+  "required": ["schema", "profile", "host", "event", "resolution", "transaction"],
+  "properties": {
+    "schema": { "const": "ppl.profile-snapshot/0.1" },
+    "profile": { "type": "object" },
+    "host": { "type": "object" },
+    "event": { "type": "object" },
+    "resolution": { "type": "object" },
+    "transaction": { "type": "object" }
+  }
+}

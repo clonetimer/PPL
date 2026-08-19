@@ -1,0 +1,21 @@
+{
+  "name": "@ppl/adapter-dsh",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness host adapter for @ppl/runtime 0.1 Stable and PPL Core 0.3 Stable",
+  "type": "module",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./bridge": "./lib/bridge.js",
+    "./projection": "./lib/dsh-projection.js",
+    "./event-adapter": "./lib/event-adapter.js",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "@ppl/runtime": "0.1.0"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "schema": "ppl.stable-validation/0.1",
+  "date": "2026-08-19",
+  "passed": true,
+  "versions": {
+    "core": "0.3.0",
+    "runtime": "0.1.0",
+    "adapterDsh": "0.1.0",
+    "personaInspector": "0.1.0"
+  },
+  "localChecks": {
+    "coreConformance21of21": true,
+    "runtimeStableSelftest": true,
+    "runtimeTarballVersion": "0.1.0",
+    "adapterTarballVersion": "0.1.0",
+    "appSourceTarballVersion": "0.1.0",
+    "canonicalPayloadSourceConsistency": true,
+    "activeIntegrationScriptsSyntax": true,
+    "noNodeModulesShipped": true,
+    "runtimeStableSelftestReport": {
+      "stageAfterConfession": "lover",
+      "emotionalGuardComfort": 0.32,
+      "trustAfterCompletedComfort": 0.87,
+      "trustAfterAbortedComfort": 0.87,
+      "step2HumanSteeringResolved": true,
+      "maxTokensCommit": true,
+      "duplicateTurnStepSnapshotRejected": true
+    }
+  },
+  "externalReferenceHostEvidence": {
+    "host": "DeepSeek Harness 0.1.0-rc.7",
+    "commit": "99f6f02fecdb7dff40c3fbc9470f5907c29f74ca",
+    "preHandoffLivePersonaInspector": true,
+    "preHandoffLivePrivateThawTrace": true,
+    "runtimePackageSelftestPass": true,
+    "runtimeAgentLoopGateAPass": true,
+    "step2SteeringPass": true,
+    "maxTokensCommitPass": true,
+    "abortedTwoSnapshotRollbackPass": true,
+    "appRequiredGateStagesPass": true,
+    "appTargetedTests13of13": true,
+    "productionWebBuildPass": true,
+    "staticBrowserBundleGatePass": true
+  },
+  "promotionGateInterpretation": {
+    "originalRc1PromotionReviewRequiredRealBrowserSyntheticE2E": false,
+    "syntheticBrowserScaffoldReclassifiedNonBlocking": true,
+    "reason": "Original promotion review required targeted APP tests, full client build, production web build, and browser bundle gate. All passed. Pre-handoff APP shell already had real-browser live validation."
+  },
+  "semanticChangeFromRc1ToStable": false,
+  "coreChanged": false,
+  "artifacts": {
+    "dist/npm/ppl-runtime-0.1.0.tgz": {
+      "sha256": "0c6855b43013421b4c28df11670f4383ef5527ef103829fc2f6b84b751515fdf",
+      "bytes": 10412
+    },
+    "dist/npm/ppl-adapter-dsh-0.1.0.tgz": {
+      "sha256": "af3273621d53f786552758105a8c004950918938b283b2aa3fac03f01df57f09",
+      "bytes": 10194
+    },
+    "dist/source/ppl-app-dsh-persona-inspector-0.1.0-source.tgz": {
+      "sha256": "43d645484e957e307284398e2ddf89a8886153e818986d6e9432c8e1417aeb33",
+      "bytes": 13740
+    }
+  }
+}

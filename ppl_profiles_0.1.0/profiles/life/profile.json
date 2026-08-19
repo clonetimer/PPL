@@ -1,0 +1,95 @@
+{
+  "schema": "ppl.profile/0.1",
+  "id": "life.service.default",
+  "title": "长期生活服务助手",
+  "version": "0.1.0",
+  "kind": "life",
+  "personaBinding": {"optional": true, "role": "tone-only"},
+  "mission": {"goal": "长期记住服务偏好与计划边界，同时把实时事实和高风险判断交给 Host/权威工具。"},
+  "interaction": {"defaultMode": "service", "principles": ["偏好可持久化", "实时事实不伪造", "高风险请求升级"]},
+  "userModel": {"owner": "profile-state", "fields": ["preferences", "plan"]},
+  "domainPolicy": {"realtimeFactsOwnedByHost": true, "highRiskRequiresAuthoritativeLayer": true},
+  "capabilities": {"required": [], "optional": ["calendar", "weather", "maps", "reminders"]},
+  "initialState": {
+    "preferences": {"quietPlaces": false, "morningPlanning": false},
+    "plan": {"current": "", "status": "none"},
+    "service": {"escalationRequired": false, "boundary": "normal", "lastRealtimeFactStored": false}
+  },
+  "stateSchema": {
+    "preferences.quietPlaces": {"type": "boolean", "required": true},
+    "preferences.morningPlanning": {"type": "boolean", "required": true},
+    "plan.current": {"type": "string", "required": true},
+    "plan.status": {"type": "string", "enum": ["none", "active", "done"], "required": true},
+    "service.escalationRequired": {"type": "boolean", "required": true},
+    "service.boundary": {"type": "string", "enum": ["normal", "authoritative-source-required"], "required": true},
+    "service.lastRealtimeFactStored": {"type": "boolean", "required": true}
+  },
+  "rules": [
+    {
+      "id": "LIFE_PREFERENCE_QUIET_PLACES",
+      "priority": 700,
+      "when": {"all": [
+        {"source": "event", "path": "type", "op": "eq", "value": "PREFERENCE_SET"},
+        {"source": "event", "path": "payload.key", "op": "eq", "value": "quietPlaces"}
+      ]},
+      "effects": [{"op": "set", "path": "preferences.quietPlaces", "valueFrom": "event.payload.value"}]
+    },
+    {
+      "id": "LIFE_PREFERENCE_MORNING_PLANNING",
+      "priority": 700,
+      "when": {"all": [
+        {"source": "event", "path": "type", "op": "eq", "value": "PREFERENCE_SET"},
+        {"source": "event", "path": "payload.key", "op": "eq", "value": "morningPlanning"}
+      ]},
+      "effects": [{"op": "set", "path": "preferences.morningPlanning", "valueFrom": "event.payload.value"}]
+    },
+    {
+      "id": "LIFE_PLAN_SET",
+      "priority": 650,
+      "when": {"source": "event", "path": "type", "op": "eq", "value": "PLAN_SET"},
+      "effects": [
+        {"op": "set", "path": "plan.current", "valueFrom": "event.payload.plan"},
+        {"op": "set", "path": "plan.status", "value": "active"}
+      ]
+    },
+    {
+      "id": "LIFE_REALTIME_FACT_HOST_OWNED",
+      "priority": 900,
+      "when": {"source": "event", "path": "type", "op": "eq", "value": "REALTIME_FACT_OBSERVED"},
+      "effects": [{"op": "set", "path": "service.lastRealtimeFactStored", "value": false}],
+      "diagnostics": [{"severity": "info", "code": "REALTIME_FACT_HOST_OWNED", "message": "实时事实只作为本轮 Host 输入，不写入长期 Profile 状态。"}]
+    },
+    {
+      "id": "LIFE_HIGH_RISK_ESCALATION",
+      "priority": 1000,
+      "when": {"source": "event", "path": "type", "op": "eq", "value": "HIGH_RISK_REQUEST"},
+      "effects": [
+        {"op": "set", "path": "service.escalationRequired", "value": true},
+        {"op": "set", "path": "service.boundary", "value": "authoritative-source-required"}
+      ],
+      "rationale": "医疗、法律、财务等高风险事实与建议交给外部权威/安全层。"
+    }
+  ],
+  "transactionPolicy": {"commitEndReasons": ["completed", "max-tokens"], "abortPolicy": "rollback"},
+  "evaluation": {
+    "metrics": [
+      {"id": "quiet_preference", "label": "安静地点偏好", "type": "path", "path": "preferences.quietPlaces"},
+      {"id": "plan_status", "label": "计划状态", "type": "path", "path": "plan.status"},
+      {"id": "realtime_fact_not_persisted", "label": "实时事实未长期存储", "type": "equals", "path": "service.lastRealtimeFactStored", "value": false, "target": true},
+      {"id": "risk_escalation", "label": "高风险已升级", "type": "path", "path": "service.escalationRequired"}
+    ]
+  },
+  "observability": {
+    "metrics": [
+      {"path": "preferences.quietPlaces", "label": "安静地点偏好", "hint": "长期服务偏好"},
+      {"path": "preferences.morningPlanning", "label": "晨间规划偏好", "hint": "长期服务偏好"},
+      {"path": "service.escalationRequired", "label": "高风险升级", "hint": "是否需要权威层"},
+      {"path": "service.lastRealtimeFactStored", "label": "实时事实长期存储", "hint": "应保持 false"}
+    ],
+    "groups": [
+      {"id": "preferences", "label": "长期偏好", "prefix": "preferences."},
+      {"id": "plan", "label": "计划", "prefix": "plan."},
+      {"id": "service", "label": "服务边界", "prefix": "service."}
+    ]
+  }
+}
