@@ -1,0 +1,12 @@
+{
+  "name": "@ppl/profile-runtime",
+  "version": "0.2.0",
+  "type": "module",
+  "exports": "./src/index.mjs",
+  "dependencies": {
+    "@ppl/profile-core": "0.2.0",
+    "@ppl/profile-tutor": "0.2.0",
+    "@ppl/profile-research": "0.2.0"
+  },
+  "description": "Built-in domain resolver routing for PPL Profiles."
+}

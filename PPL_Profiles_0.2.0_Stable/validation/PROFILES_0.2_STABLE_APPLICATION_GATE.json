@@ -1,0 +1,584 @@
+{
+  "schema": "ppl.profiles/application-gate/0.3",
+  "release": "0.2.0",
+  "passed": true,
+  "tutor": {
+    "passed": true,
+    "dataset": {
+      "name": "ASSISTments 2009-2010 Skill Builder corrected public mirror subset",
+      "sourceFile": "applications/tutor/assistments-multiskill-real.csv",
+      "provenanceClass": "public-corrected-mirror-subset",
+      "limitation": "This gate is a broadened real-row replay and sanity check, not a full-dataset calibration or KT accuracy claim.",
+      "summary": {
+        "rows": 56,
+        "users": 7,
+        "skills": 4,
+        "validOutcomes": 56,
+        "hintedRows": 10,
+        "multipleAttemptRows": 17,
+        "bottomHintRows": 7,
+        "firstActionHintRows": 5,
+        "scaffoldingRows": 0,
+        "topUsers": [
+          {
+            "id": "70363",
+            "rows": 31
+          },
+          {
+            "id": "71066",
+            "rows": 8
+          },
+          {
+            "id": "70699",
+            "rows": 5
+          },
+          {
+            "id": "70729",
+            "rows": 5
+          },
+          {
+            "id": "70740",
+            "rows": 3
+          },
+          {
+            "id": "71179",
+            "rows": 2
+          },
+          {
+            "id": "71205",
+            "rows": 2
+          }
+        ],
+        "topSkills": [
+          {
+            "id": "Circle Graph",
+            "rows": 23
+          },
+          {
+            "id": "Box and Whisker",
+            "rows": 17
+          },
+          {
+            "id": "Number Line",
+            "rows": 11
+          },
+          {
+            "id": "Histogram as Table or Graph",
+            "rows": 5
+          }
+        ]
+      }
+    },
+    "widthChecks": {
+      "rowsAtLeast50": true,
+      "usersAtLeast7": true,
+      "skillsAtLeast4": true,
+      "hintedRowsAtLeast10": true,
+      "multiAttemptRowsAtLeast15": true,
+      "bottomHintRowsAtLeast5": true,
+      "tracesAtLeast10": true,
+      "selectedLongSessionsAtLeast4": true
+    },
+    "traces": [
+      {
+        "id": "70363:Number Line",
+        "userId": "70363",
+        "skillId": "Number Line",
+        "interactions": 11,
+        "correct": 3,
+        "incorrect": 8,
+        "assistedEvidence": 8,
+        "pplStart": 0.3333,
+        "pplFinal": 0.3087,
+        "pplUncertainty": 0.4587,
+        "evidenceWeight": 9.225,
+        "bktFinal": 0.4882,
+        "allCorrect": false,
+        "allIncorrect": false
+      },
+      {
+        "id": "70363:Circle Graph",
+        "userId": "70363",
+        "skillId": "Circle Graph",
+        "interactions": 9,
+        "correct": 5,
+        "incorrect": 4,
+        "assistedEvidence": 4,
+        "pplStart": 0.3333,
+        "pplFinal": 0.4715,
+        "pplUncertainty": 0.5193,
+        "evidenceWeight": 7.785,
+        "bktFinal": 0.9935,
+        "allCorrect": false,
+        "allIncorrect": false
+      },
+      {
+        "id": "71066:Circle Graph",
+        "userId": "71066",
+        "skillId": "Circle Graph",
+        "interactions": 8,
+        "correct": 4,
+        "incorrect": 4,
+        "assistedEvidence": 0,
+        "pplStart": 0.3333,
+        "pplFinal": 0.4242,
+        "pplUncertainty": 0.5246,
+        "evidenceWeight": 7.2,
+        "bktFinal": 0.2015,
+        "allCorrect": false,
+        "allIncorrect": false
+      },
+      {
+        "id": "70363:Box and Whisker",
+        "userId": "70363",
+        "skillId": "Box and Whisker",
+        "interactions": 6,
+        "correct": 4,
+        "incorrect": 2,
+        "assistedEvidence": 2,
+        "pplStart": 0.3333,
+        "pplFinal": 0.4991,
+        "pplUncertainty": 0.5721,
+        "evidenceWeight": 5.22,
+        "bktFinal": 0.9722,
+        "allCorrect": false,
+        "allIncorrect": false
+      },
+      {
+        "id": "70363:Histogram as Table or Graph",
+        "userId": "70363",
+        "skillId": "Histogram as Table or Graph",
+        "interactions": 5,
+        "correct": 3,
+        "incorrect": 2,
+        "assistedEvidence": 2,
+        "pplStart": 0.3333,
+        "pplFinal": 0.4534,
+        "pplUncertainty": 0.5907,
+        "evidenceWeight": 4.365,
+        "bktFinal": 0.9534,
+        "allCorrect": false,
+        "allIncorrect": false
+      },
+      {
+        "id": "70729:Box and Whisker",
+        "userId": "70729",
+        "skillId": "Box and Whisker",
+        "interactions": 5,
+        "correct": 3,
+        "incorrect": 2,
+        "assistedEvidence": 2,
+        "pplStart": 0.3333,
+        "pplFinal": 0.4534,
+        "pplUncertainty": 0.5907,
+        "evidenceWeight": 4.365,
+        "bktFinal": 0.8744,
+        "allCorrect": false,
+        "allIncorrect": false
+      },
+      {
+        "id": "70699:Circle Graph",
+        "userId": "70699",
+        "skillId": "Circle Graph",
+        "interactions": 3,
+        "correct": 0,
+        "incorrect": 3,
+        "assistedEvidence": 3,
+        "pplStart": 0.3333,
+        "pplFinal": 0.2335,
+        "pplUncertainty": 0.5472,
+        "evidenceWeight": 2.565,
+        "bktFinal": 0.1151,
+        "allCorrect": false,
+        "allIncorrect": true
+      },
+      {
+        "id": "70740:Circle Graph",
+        "userId": "70740",
+        "skillId": "Circle Graph",
+        "interactions": 3,
+        "correct": 2,
+        "incorrect": 1,
+        "assistedEvidence": 1,
+        "pplStart": 0.3333,
+        "pplFinal": 0.4413,
+        "pplUncertainty": 0.6407,
+        "evidenceWeight": 2.61,
+        "bktFinal": 0.7127,
+        "allCorrect": false,
+        "allIncorrect": false
+      },
+      {
+        "id": "70699:Box and Whisker",
+        "userId": "70699",
+        "skillId": "Box and Whisker",
+        "interactions": 2,
+        "correct": 2,
+        "incorrect": 0,
+        "assistedEvidence": 0,
+        "pplStart": 0.3333,
+        "pplFinal": 0.4872,
+        "pplUncertainty": 0.674,
+        "evidenceWeight": 1.8,
+        "bktFinal": 0.9294,
+        "allCorrect": true,
+        "allIncorrect": false
+      },
+      {
+        "id": "71179:Box and Whisker",
+        "userId": "71179",
+        "skillId": "Box and Whisker",
+        "interactions": 2,
+        "correct": 2,
+        "incorrect": 0,
+        "assistedEvidence": 0,
+        "pplStart": 0.3333,
+        "pplFinal": 0.4872,
+        "pplUncertainty": 0.674,
+        "evidenceWeight": 1.8,
+        "bktFinal": 0.9294,
+        "allCorrect": true,
+        "allIncorrect": false
+      },
+      {
+        "id": "71205:Box and Whisker",
+        "userId": "71205",
+        "skillId": "Box and Whisker",
+        "interactions": 2,
+        "correct": 2,
+        "incorrect": 0,
+        "assistedEvidence": 0,
+        "pplStart": 0.3333,
+        "pplFinal": 0.4872,
+        "pplUncertainty": 0.674,
+        "evidenceWeight": 1.8,
+        "bktFinal": 0.9294,
+        "allCorrect": true,
+        "allIncorrect": false
+      }
+    ],
+    "bktComparison": {
+      "schema": "ppl.tutor-bkt-comparison/0.1",
+      "role": "sanity-check-not-calibration-claim",
+      "traces": 11,
+      "spearman": 0.7981,
+      "severeAnomalies": [],
+      "passed": true
+    },
+    "bktRole": "advisory sanity baseline only; PPL Tutor does not claim to reproduce or outperform BKT.",
+    "observatorySessions": [
+      {
+        "userId": "70363",
+        "skillId": "Number Line",
+        "filename": "applications/tutor/assistments-70363-number_line.app-session.json",
+        "snapshots": 11
+      },
+      {
+        "userId": "70363",
+        "skillId": "Circle Graph",
+        "filename": "applications/tutor/assistments-70363-circle_graph.app-session.json",
+        "snapshots": 9
+      },
+      {
+        "userId": "71066",
+        "skillId": "Circle Graph",
+        "filename": "applications/tutor/assistments-71066-circle_graph.app-session.json",
+        "snapshots": 8
+      },
+      {
+        "userId": "70363",
+        "skillId": "Box and Whisker",
+        "filename": "applications/tutor/assistments-70363-box_and_whisker.app-session.json",
+        "snapshots": 6
+      },
+      {
+        "userId": "70699",
+        "skillId": "Circle Graph",
+        "filename": "applications/tutor/assistments-70699-circle_graph.app-session.json",
+        "snapshots": 3
+      }
+    ]
+  },
+  "research": {
+    "passed": true,
+    "checks": {
+      "ligoBlockedBeforeStrongValidation": true,
+      "ligoReadySupportAfterStrongValidation": true,
+      "egoStartsQualifiedSupport": true,
+      "egoBecomesInconclusiveMixed": true,
+      "egoRemainsInconclusiveUnderConflictingStrongReplication": true,
+      "realStrongNegativeCanBeReadyOppose": true
+    },
+    "ligo": {
+      "before": {
+        "status": "blocked",
+        "direction": "support"
+      },
+      "after": {
+        "status": "ready",
+        "direction": "support"
+      },
+      "claim": {
+        "id": "claim_gw_detection",
+        "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+        "kind": "empirical-claim",
+        "status": "ready",
+        "supportMass": 1.97,
+        "opposeMass": 0,
+        "neutralMass": 0,
+        "uncertainty": 0.3367,
+        "evidenceCount": 1,
+        "independentSourceCount": 2,
+        "sourceGroups": [
+          "GW150914",
+          "GW151226"
+        ],
+        "supportGroups": [
+          "GW150914",
+          "GW151226"
+        ],
+        "opposeGroups": [],
+        "provenanceComplete": true,
+        "validation": {
+          "attempts": 1,
+          "supportive": 1,
+          "opposing": 0,
+          "inconclusive": 0,
+          "reproducibleSupport": 1,
+          "reproducibleOppose": 0,
+          "strongSupport": 1,
+          "strongOppose": 0,
+          "last": {
+            "validationId": "doi:10.1103/PhysRevLett.116.241103",
+            "claimId": "claim_gw_detection",
+            "kind": "experiment",
+            "method": "independent-second-direct-observation",
+            "outcome": "support",
+            "confidence": 0.99,
+            "reproducible": true,
+            "strong": true,
+            "strongMethod": true,
+            "independenceGroup": "GW151226",
+            "provenanceComplete": true,
+            "provenance": {
+              "title": "GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence",
+              "publisher": "Physical Review Letters",
+              "doi": "10.1103/PhysRevLett.116.241103",
+              "locator": "doi:10.1103/PhysRevLett.116.241103"
+            },
+            "artifact": {
+              "locator": "LIGO-GW151226"
+            }
+          }
+        },
+        "decision": {
+          "status": "ready",
+          "direction": "support",
+          "reasons": [],
+          "counterRatio": 0,
+          "conflict": {
+            "present": false,
+            "supportMass": 1.97,
+            "opposeMass": 0,
+            "balanceRatio": 0,
+            "dominantStance": "support"
+          }
+        },
+        "conflict": {
+          "present": false,
+          "supportMass": 1.97,
+          "opposeMass": 0,
+          "balanceRatio": 0,
+          "dominantStance": "support"
+        }
+      }
+    },
+    "egoEvidenceFlip": {
+      "early": {
+        "status": "qualified",
+        "direction": "support"
+      },
+      "mid": {
+        "status": "inconclusive",
+        "direction": "mixed"
+      },
+      "late": {
+        "status": "inconclusive",
+        "direction": "mixed"
+      },
+      "claim": {
+        "id": "claim_ego_depletion",
+        "text": "Prior exertion of self-control produces a reliable, practically meaningful impairment on a subsequent self-control task.",
+        "kind": "empirical-claim",
+        "status": "inconclusive",
+        "supportMass": 2.959,
+        "opposeMass": 2.84,
+        "neutralMass": 0,
+        "uncertainty": 0.45,
+        "evidenceCount": 3,
+        "independentSourceCount": 7,
+        "sourceGroups": [
+          "Baumeister1998",
+          "Hagger2010-meta",
+          "early-literature-synthesis",
+          "Carter2015-meta",
+          "Hagger2016-RRR",
+          "Dang2021-multilab",
+          "Vohs2021-multisite"
+        ],
+        "supportGroups": [
+          "Baumeister1998",
+          "Hagger2010-meta",
+          "early-literature-synthesis",
+          "Dang2021-multilab"
+        ],
+        "opposeGroups": [
+          "Carter2015-meta",
+          "Hagger2016-RRR",
+          "Vohs2021-multisite"
+        ],
+        "provenanceComplete": true,
+        "validation": {
+          "attempts": 4,
+          "supportive": 2,
+          "opposing": 2,
+          "inconclusive": 0,
+          "reproducibleSupport": 1,
+          "reproducibleOppose": 2,
+          "strongSupport": 1,
+          "strongOppose": 2,
+          "last": {
+            "validationId": "doi:10.1177/0956797621989733",
+            "claimId": "claim_ego_depletion",
+            "kind": "replication",
+            "method": "36-site-preregistered-paradigmatic-test",
+            "outcome": "oppose",
+            "confidence": 0.96,
+            "reproducible": true,
+            "strong": true,
+            "strongMethod": true,
+            "independenceGroup": "Vohs2021-multisite",
+            "provenanceComplete": true,
+            "provenance": {
+              "doi": "10.1177/0956797621989733",
+              "locator": "doi:10.1177/0956797621989733"
+            },
+            "artifact": {
+              "locator": "36-sites-N3531"
+            }
+          }
+        },
+        "decision": {
+          "status": "inconclusive",
+          "direction": "mixed",
+          "reasons": [
+            "material-conflict-unresolved"
+          ],
+          "conflict": {
+            "present": true,
+            "supportMass": 2.959,
+            "opposeMass": 2.84,
+            "balanceRatio": 0.9598,
+            "dominantStance": "support"
+          }
+        },
+        "conflict": {
+          "present": true,
+          "supportMass": 2.959,
+          "opposeMass": 2.84,
+          "balanceRatio": 0.9598,
+          "dominantStance": "support"
+        }
+      }
+    },
+    "egoStrongRefutation": {
+      "status": "ready",
+      "direction": "oppose",
+      "nextAction": "report-refutation",
+      "claim": {
+        "id": "claim_ego_refutation",
+        "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+        "kind": "empirical-claim",
+        "status": "ready",
+        "supportMass": 0,
+        "opposeMass": 2.84,
+        "neutralMass": 0,
+        "uncertainty": 0.2604,
+        "evidenceCount": 1,
+        "independentSourceCount": 3,
+        "sourceGroups": [
+          "Carter2015-meta",
+          "Hagger2016-RRR",
+          "Vohs2021-multisite"
+        ],
+        "supportGroups": [],
+        "opposeGroups": [
+          "Carter2015-meta",
+          "Hagger2016-RRR",
+          "Vohs2021-multisite"
+        ],
+        "provenanceComplete": true,
+        "validation": {
+          "attempts": 2,
+          "supportive": 0,
+          "opposing": 2,
+          "inconclusive": 0,
+          "reproducibleSupport": 0,
+          "reproducibleOppose": 2,
+          "strongSupport": 0,
+          "strongOppose": 2,
+          "last": {
+            "validationId": "doi:10.1177/0956797621989733",
+            "claimId": "claim_ego_refutation",
+            "kind": "replication",
+            "method": "36-site-preregistered-paradigmatic-test",
+            "outcome": "oppose",
+            "confidence": 0.96,
+            "reproducible": true,
+            "strong": true,
+            "strongMethod": true,
+            "independenceGroup": "Vohs2021-multisite",
+            "provenanceComplete": true,
+            "provenance": {
+              "doi": "10.1177/0956797621989733",
+              "locator": "doi:10.1177/0956797621989733"
+            },
+            "artifact": {
+              "locator": "36-sites-N3531"
+            }
+          }
+        },
+        "decision": {
+          "status": "ready",
+          "direction": "oppose",
+          "reasons": [],
+          "counterRatio": 0,
+          "conflict": {
+            "present": false,
+            "supportMass": 0,
+            "opposeMass": 2.84,
+            "balanceRatio": 0,
+            "dominantStance": "oppose"
+          }
+        },
+        "conflict": {
+          "present": false,
+          "supportMass": 0,
+          "opposeMass": 2.84,
+          "balanceRatio": 0,
+          "dominantStance": "oppose"
+        }
+      }
+    },
+    "mechanismFinding": "Conclusion maturity and conclusion direction must be separate: strong validation can mature either a supporting conclusion or a refutation, while unresolved conflicting strong replications remain inconclusive/mixed."
+  },
+  "architecture": {
+    "coreChanged": false,
+    "runtimeChanged": false,
+    "sharedCoreRuntimeDefectObserved": false,
+    "profileLayerChanges": [
+      "Tutor BKT sanity reference + broadened real replay",
+      "Research conclusion direction separated from maturity status"
+    ]
+  }
+}

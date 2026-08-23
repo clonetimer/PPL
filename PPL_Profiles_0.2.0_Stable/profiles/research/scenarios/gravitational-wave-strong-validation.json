@@ -1,0 +1,104 @@
+{
+  "id": "research-gravitational-wave-strong-validation",
+  "steps": [
+    {
+      "turn": 1,
+      "event": {
+        "id": "q-gw",
+        "type": "QUESTION_DEFINED",
+        "payload": {
+          "question": "Are binary-black-hole merger gravitational-wave signals directly detectable by ground-based interferometers?"
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 2,
+      "event": {
+        "id": "claim-gw",
+        "type": "CLAIM_PROPOSED",
+        "payload": {
+          "claimId": "claim_gw_detection",
+          "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+          "kind": "empirical-claim"
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 3,
+      "event": {
+        "id": "gw150914",
+        "type": "EVIDENCE_RECORDED",
+        "payload": {
+          "evidenceId": "doi:10.1103/PhysRevLett.116.061102",
+          "claimId": "claim_gw_detection",
+          "stance": "support",
+          "summary": "GW150914 was reported as the first direct detection of gravitational waves and first observation of a binary black-hole merger.",
+          "source": {
+            "title": "Observation of Gravitational Waves from a Binary Black Hole Merger",
+            "publisher": "Physical Review Letters",
+            "doi": "10.1103/PhysRevLett.116.061102",
+            "locator": "doi:10.1103/PhysRevLett.116.061102"
+          },
+          "independenceGroup": "GW150914",
+          "quality": {
+            "relevance": 1,
+            "reliability": 0.98,
+            "independence": 1
+          }
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 4,
+      "event": {
+        "id": "conclusion-before-validation",
+        "type": "CONCLUSION_REQUESTED",
+        "payload": {
+          "claimId": "claim_gw_detection"
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 5,
+      "event": {
+        "id": "gw151226-validation",
+        "type": "VALIDATION_RESULT",
+        "payload": {
+          "validationId": "doi:10.1103/PhysRevLett.116.241103",
+          "claimId": "claim_gw_detection",
+          "kind": "experiment",
+          "method": "independent-second-direct-observation",
+          "outcome": "support",
+          "confidence": 0.99,
+          "reproducible": true,
+          "independenceGroup": "GW151226",
+          "provenance": {
+            "title": "GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence",
+            "publisher": "Physical Review Letters",
+            "doi": "10.1103/PhysRevLett.116.241103",
+            "locator": "doi:10.1103/PhysRevLett.116.241103"
+          },
+          "artifact": {
+            "locator": "LIGO-GW151226"
+          }
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 6,
+      "event": {
+        "id": "conclusion-after-validation",
+        "type": "CONCLUSION_REQUESTED",
+        "payload": {
+          "claimId": "claim_gw_detection"
+        }
+      },
+      "endReason": "completed"
+    }
+  ]
+}

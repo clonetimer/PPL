@@ -1,0 +1,16 @@
+{
+  "name": "ppl-app-observatory",
+  "version": "0.5.0",
+  "private": true,
+  "type": "module",
+  "description": "PPL Observatory 0.5.0 — lifecycle-audit visibility extension driven by real Application R1 evidence.",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "start": "node packages/app-standalone/server.mjs",
+    "smoke": "node bin/smoke.mjs",
+    "application-gate": "node bin/application-gate-stable.mjs"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}

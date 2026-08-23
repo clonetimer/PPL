@@ -1,0 +1,14 @@
+{
+  "name": "@ppl/profile-tutor",
+  "version": "0.2.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./assistments": "./src/adapters/assistments.mjs",
+    "./bkt": "./src/bkt.mjs"
+  },
+  "dependencies": {
+    "@ppl/profile-core": "0.2.0"
+  },
+  "description": "Uncertainty-aware tutoring state and turn-by-turn intervention verifier for PPL Profiles."
+}

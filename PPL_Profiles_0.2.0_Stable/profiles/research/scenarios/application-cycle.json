@@ -1,0 +1,184 @@
+{
+  "id": "research-hypothesis-validation-lifecycle-real-literature",
+  "notes": "Evidence metadata is grounded in named 2025 primary papers/proceedings. The cross-source validation deliberately stops at qualified: literature agreement is not treated as replication/experiment/formal proof. Decision status is a Profile reporting gate, not objective scientific truth.",
+  "steps": [
+    {
+      "turn": 1,
+      "event": {
+        "type": "QUESTION_DEFINED",
+        "payload": {
+          "question": "Should an LLM research agent keep hypothesis generation and validation as separate lifecycle stages, blocking unvalidated generated hypotheses from ready conclusions?"
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 2,
+      "event": {
+        "id": "claim:lifecycle-separation",
+        "type": "CLAIM_PROPOSED",
+        "payload": {
+          "claimId": "claim:lifecycle-separation",
+          "kind": "hypothesis",
+          "text": "Research agents should represent hypothesis generation, evidence acquisition and validation as separate states, and should block ready conclusions until validation gates are met."
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 3,
+      "event": {
+        "id": "evidence:hypobench",
+        "type": "EVIDENCE_RECORDED",
+        "payload": {
+          "evidenceId": "evidence:hypobench",
+          "claimId": "claim:lifecycle-separation",
+          "stance": "support",
+          "summary": "HypoBench reports substantial room for improvement in hypothesis discovery; harder synthetic settings recover only a minority of ground-truth hypotheses.",
+          "source": {
+            "id": "HypoBench",
+            "title": "HypoBench: Towards Systematic and Principled Benchmarking for Hypothesis Generation",
+            "arxivId": "2504.11524",
+            "publisher": "arXiv",
+            "independenceGroup": "hypobench"
+          },
+          "quality": {
+            "relevance": 0.92,
+            "reliability": 0.88,
+            "independence": 1.0
+          },
+          "independenceGroup": "hypobench"
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 4,
+      "event": {
+        "id": "evidence:truthhypo",
+        "type": "EVIDENCE_RECORDED",
+        "payload": {
+          "evidenceId": "evidence:truthhypo",
+          "claimId": "claim:lifecycle-separation",
+          "stance": "support",
+          "summary": "TruthHypo evaluates truthfulness/hallucination of generated hypotheses and uses groundedness verification, supporting a distinct verification stage.",
+          "source": {
+            "id": "TruthHypo",
+            "title": "Toward Reliable Scientific Hypothesis Generation: Evaluating Truthfulness and Hallucination in Large Language Models",
+            "doi": "10.24963/ijcai.2025/873",
+            "publisher": "IJCAI 2025",
+            "independenceGroup": "truthhypo"
+          },
+          "quality": {
+            "relevance": 0.96,
+            "reliability": 0.92,
+            "independence": 1.0
+          },
+          "independenceGroup": "truthhypo"
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 5,
+      "event": {
+        "id": "conclusion:premature",
+        "type": "CONCLUSION_REQUESTED",
+        "payload": {
+          "claimId": "claim:lifecycle-separation"
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 6,
+      "event": {
+        "id": "evidence:survey",
+        "type": "EVIDENCE_RECORDED",
+        "payload": {
+          "evidenceId": "evidence:survey",
+          "claimId": "claim:lifecycle-separation",
+          "stance": "support",
+          "summary": "A 2025 survey structures scientific hypothesis generation and validation as distinct methods/stages and emphasizes iterative assessment and uncertainty quantification.",
+          "source": {
+            "id": "HypothesisGenerationValidationSurvey",
+            "title": "Scientific Hypothesis Generation and Validation: Methods, Datasets, and Future Directions",
+            "arxivId": "2505.04651",
+            "publisher": "arXiv",
+            "independenceGroup": "survey-2505"
+          },
+          "quality": {
+            "relevance": 0.9,
+            "reliability": 0.82,
+            "independence": 0.9
+          },
+          "independenceGroup": "survey-2505"
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 7,
+      "event": {
+        "id": "validation:cross-source",
+        "type": "VALIDATION_RESULT",
+        "payload": {
+          "validationId": "validation:cross-source",
+          "claimId": "claim:lifecycle-separation",
+          "method": "cross-source-structural-check",
+          "outcome": "support",
+          "confidence": 0.82,
+          "reproducible": true,
+          "artifact": {
+            "sources": [
+              "arxiv:2505.04651",
+              "arxiv:2504.08066"
+            ],
+            "check": "Both describe iterative research workflows where hypothesis formulation is followed by experiment/validation/analysis rather than treated as final truth."
+          },
+          "kind": "literature-triangulation",
+          "strong": false
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 8,
+      "event": {
+        "id": "conclusion:after-validation",
+        "type": "CONCLUSION_REQUESTED",
+        "payload": {
+          "claimId": "claim:lifecycle-separation"
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 9,
+      "event": {
+        "id": "evidence:correlated-duplicate",
+        "type": "EVIDENCE_RECORDED",
+        "payload": {
+          "evidenceId": "evidence:truthhypo-repository",
+          "claimId": "claim:lifecycle-separation",
+          "stance": "support",
+          "summary": "Official TruthHypo repository repeats the same benchmark finding; it is correlated with the TruthHypo paper and must not count as independent confirmation.",
+          "source": {
+            "id": "TruthHypoRepo",
+            "title": "TruthHypo official repository",
+            "locator": "github:gzxiong/TruthHypo",
+            "publisher": "TruthHypo authors",
+            "independenceGroup": "truthhypo"
+          },
+          "quality": {
+            "relevance": 0.9,
+            "reliability": 0.9,
+            "independence": 0.7
+          },
+          "independenceGroup": "truthhypo"
+        }
+      },
+      "endReason": "aborted"
+    }
+  ]
+}

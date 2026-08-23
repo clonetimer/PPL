@@ -1,0 +1,237 @@
+{
+  "id": "research-ego-depletion-evidence-flip",
+  "steps": [
+    {
+      "turn": 1,
+      "event": {
+        "id": "q-ego",
+        "type": "QUESTION_DEFINED",
+        "payload": {
+          "question": "Does prior exertion of self-control reliably impair performance on a subsequent self-control task (ego depletion)?"
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 2,
+      "event": {
+        "id": "claim-ego",
+        "type": "CLAIM_PROPOSED",
+        "payload": {
+          "claimId": "claim_ego_depletion",
+          "text": "Prior exertion of self-control produces a reliable, practically meaningful impairment on a subsequent self-control task.",
+          "kind": "empirical-claim"
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 3,
+      "event": {
+        "id": "baumeister1998",
+        "type": "EVIDENCE_RECORDED",
+        "payload": {
+          "evidenceId": "doi:10.1037/0022-3514.74.5.1252",
+          "claimId": "claim_ego_depletion",
+          "stance": "support",
+          "summary": "Early experiments reported impaired persistence/performance after prior self-control exertion.",
+          "source": {
+            "title": "Ego depletion: Is the active self a limited resource?",
+            "publisher": "Journal of Personality and Social Psychology",
+            "doi": "10.1037/0022-3514.74.5.1252",
+            "locator": "doi:10.1037/0022-3514.74.5.1252"
+          },
+          "independenceGroup": "Baumeister1998",
+          "quality": {
+            "relevance": 0.95,
+            "reliability": 0.82,
+            "independence": 1
+          }
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 4,
+      "event": {
+        "id": "hagger2010",
+        "type": "EVIDENCE_RECORDED",
+        "payload": {
+          "evidenceId": "doi:10.1037/a0019486",
+          "claimId": "claim_ego_depletion",
+          "stance": "support",
+          "summary": "A 2010 meta-analysis reported a medium-sized ego-depletion effect across the then-available literature.",
+          "source": {
+            "title": "Ego depletion and the strength model of self-control: a meta-analysis",
+            "publisher": "Psychological Bulletin",
+            "doi": "10.1037/a0019486",
+            "locator": "doi:10.1037/a0019486"
+          },
+          "independenceGroup": "Hagger2010-meta",
+          "quality": {
+            "relevance": 1,
+            "reliability": 0.88,
+            "independence": 1
+          }
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 5,
+      "event": {
+        "id": "lit-triangulation-early",
+        "type": "VALIDATION_RESULT",
+        "payload": {
+          "validationId": "lit-triangulation-early",
+          "claimId": "claim_ego_depletion",
+          "kind": "literature-triangulation",
+          "method": "historical-literature-synthesis",
+          "outcome": "support",
+          "confidence": 0.8,
+          "reproducible": false,
+          "independenceGroup": "early-literature-synthesis",
+          "provenance": {
+            "doi": "10.1037/a0019486",
+            "locator": "doi:10.1037/a0019486"
+          }
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 6,
+      "event": {
+        "id": "conclusion-early",
+        "type": "CONCLUSION_REQUESTED",
+        "payload": {
+          "claimId": "claim_ego_depletion"
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 7,
+      "event": {
+        "id": "carter2015",
+        "type": "EVIDENCE_RECORDED",
+        "payload": {
+          "evidenceId": "doi:10.1037/xge0000083",
+          "claimId": "claim_ego_depletion",
+          "stance": "oppose",
+          "summary": "Bias-adjusted meta-analytic tests questioned the existence/size of the depletion effect.",
+          "source": {
+            "title": "A series of meta-analytic tests of the depletion effect: Self-control does not seem to rely on a limited resource",
+            "publisher": "Journal of Experimental Psychology: General",
+            "doi": "10.1037/xge0000083",
+            "locator": "doi:10.1037/xge0000083"
+          },
+          "independenceGroup": "Carter2015-meta",
+          "quality": {
+            "relevance": 1,
+            "reliability": 0.92,
+            "independence": 1
+          }
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 8,
+      "event": {
+        "id": "hagger2016-rrr",
+        "type": "VALIDATION_RESULT",
+        "payload": {
+          "validationId": "doi:10.1177/1745691616652873",
+          "claimId": "claim_ego_depletion",
+          "kind": "replication",
+          "method": "23-lab-preregistered-replication",
+          "outcome": "oppose",
+          "confidence": 0.96,
+          "reproducible": true,
+          "independenceGroup": "Hagger2016-RRR",
+          "provenance": {
+            "doi": "10.1177/1745691616652873",
+            "locator": "doi:10.1177/1745691616652873"
+          },
+          "artifact": {
+            "locator": "RRR-23-labs-N2141"
+          }
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 9,
+      "event": {
+        "id": "conclusion-after-null-rrr",
+        "type": "CONCLUSION_REQUESTED",
+        "payload": {
+          "claimId": "claim_ego_depletion"
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 10,
+      "event": {
+        "id": "dang2021",
+        "type": "VALIDATION_RESULT",
+        "payload": {
+          "validationId": "doi:10.1177/1948550619887702",
+          "claimId": "claim_ego_depletion",
+          "kind": "replication",
+          "method": "12-lab-preregistered-replication",
+          "outcome": "support",
+          "confidence": 0.82,
+          "reproducible": true,
+          "independenceGroup": "Dang2021-multilab",
+          "provenance": {
+            "doi": "10.1177/1948550619887702",
+            "locator": "doi:10.1177/1948550619887702"
+          },
+          "artifact": {
+            "locator": "12-labs-N1775"
+          }
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 11,
+      "event": {
+        "id": "vohs2021",
+        "type": "VALIDATION_RESULT",
+        "payload": {
+          "validationId": "doi:10.1177/0956797621989733",
+          "claimId": "claim_ego_depletion",
+          "kind": "replication",
+          "method": "36-site-preregistered-paradigmatic-test",
+          "outcome": "oppose",
+          "confidence": 0.96,
+          "reproducible": true,
+          "independenceGroup": "Vohs2021-multisite",
+          "provenance": {
+            "doi": "10.1177/0956797621989733",
+            "locator": "doi:10.1177/0956797621989733"
+          },
+          "artifact": {
+            "locator": "36-sites-N3531"
+          }
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 12,
+      "event": {
+        "id": "conclusion-late",
+        "type": "CONCLUSION_REQUESTED",
+        "payload": {
+          "claimId": "claim_ego_depletion"
+        }
+      },
+      "endReason": "completed"
+    }
+  ]
+}

@@ -1,0 +1,241 @@
+{
+  "id": "assistments-import",
+  "source": {
+    "kind": "dataset-adapter",
+    "dataset": "ASSISTments 2009-2010 Skill Builder",
+    "variant": "corrected-collapsed-compatible",
+    "note": "Adapter consumes documented ASSISTments columns. Input rows remain Host-owned evidence; Profile does not infer hidden action sequences that are absent from the dataset.",
+    "selection": {
+      "userId": "student_demo",
+      "skillId": null,
+      "originalOnly": false,
+      "maxRows": null,
+      "selectedRows": 6,
+      "sourceRows": 6
+    }
+  },
+  "steps": [
+    {
+      "turn": 1,
+      "event": {
+        "id": "assistments:1001",
+        "type": "LEARNER_OBSERVATION",
+        "category": "knowledge-tracing",
+        "payload": {
+          "evidenceId": "assistments:1001",
+          "learnerId": "student_demo",
+          "skillId": "fractions.addition",
+          "skillKey": "fractions_addition",
+          "problemId": "501",
+          "correct": false,
+          "sourceReliability": 0.9,
+          "assessment": {
+            "source": "ASSISTments-2009-2010-skill-builder",
+            "original": true,
+            "firstAttempt": true,
+            "attemptCount": 1,
+            "hintCount": 0,
+            "hintTotal": 0,
+            "firstAction": null,
+            "bottomHint": null,
+            "answerRevealed": false
+          },
+          "provenance": {
+            "dataset": "ASSISTments 2009-2010 Skill Builder",
+            "datasetVariant": "corrected-collapsed-compatible",
+            "rowId": "1001",
+            "userId": "student_demo",
+            "problemId": "501",
+            "documentedColumns": true
+          }
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 2,
+      "event": {
+        "id": "assistments:1002",
+        "type": "LEARNER_OBSERVATION",
+        "category": "knowledge-tracing",
+        "payload": {
+          "evidenceId": "assistments:1002",
+          "learnerId": "student_demo",
+          "skillId": "fractions.addition",
+          "skillKey": "fractions_addition",
+          "problemId": "502",
+          "correct": true,
+          "sourceReliability": 0.9,
+          "assessment": {
+            "source": "ASSISTments-2009-2010-skill-builder",
+            "original": true,
+            "firstAttempt": false,
+            "attemptCount": 2,
+            "hintCount": 2,
+            "hintTotal": 0,
+            "firstAction": null,
+            "bottomHint": null,
+            "answerRevealed": false
+          },
+          "provenance": {
+            "dataset": "ASSISTments 2009-2010 Skill Builder",
+            "datasetVariant": "corrected-collapsed-compatible",
+            "rowId": "1002",
+            "userId": "student_demo",
+            "problemId": "502",
+            "documentedColumns": true
+          }
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 3,
+      "event": {
+        "id": "assistments:1003",
+        "type": "LEARNER_OBSERVATION",
+        "category": "knowledge-tracing",
+        "payload": {
+          "evidenceId": "assistments:1003",
+          "learnerId": "student_demo",
+          "skillId": "fractions.addition",
+          "skillKey": "fractions_addition",
+          "problemId": "503",
+          "correct": false,
+          "sourceReliability": 0.9,
+          "assessment": {
+            "source": "ASSISTments-2009-2010-skill-builder",
+            "original": true,
+            "firstAttempt": true,
+            "attemptCount": 1,
+            "hintCount": 0,
+            "hintTotal": 0,
+            "firstAction": null,
+            "bottomHint": null,
+            "answerRevealed": false
+          },
+          "provenance": {
+            "dataset": "ASSISTments 2009-2010 Skill Builder",
+            "datasetVariant": "corrected-collapsed-compatible",
+            "rowId": "1003",
+            "userId": "student_demo",
+            "problemId": "503",
+            "documentedColumns": true
+          }
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 4,
+      "event": {
+        "id": "assistments:1004",
+        "type": "LEARNER_OBSERVATION",
+        "category": "knowledge-tracing",
+        "payload": {
+          "evidenceId": "assistments:1004",
+          "learnerId": "student_demo",
+          "skillId": "fractions.addition",
+          "skillKey": "fractions_addition",
+          "problemId": "504",
+          "correct": true,
+          "sourceReliability": 0.9,
+          "assessment": {
+            "source": "ASSISTments-2009-2010-skill-builder",
+            "original": true,
+            "firstAttempt": true,
+            "attemptCount": 1,
+            "hintCount": 0,
+            "hintTotal": 0,
+            "firstAction": null,
+            "bottomHint": null,
+            "answerRevealed": false
+          },
+          "provenance": {
+            "dataset": "ASSISTments 2009-2010 Skill Builder",
+            "datasetVariant": "corrected-collapsed-compatible",
+            "rowId": "1004",
+            "userId": "student_demo",
+            "problemId": "504",
+            "documentedColumns": true
+          }
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 5,
+      "event": {
+        "id": "assistments:1005",
+        "type": "LEARNER_OBSERVATION",
+        "category": "knowledge-tracing",
+        "payload": {
+          "evidenceId": "assistments:1005",
+          "learnerId": "student_demo",
+          "skillId": "fractions.addition",
+          "skillKey": "fractions_addition",
+          "problemId": "505",
+          "correct": true,
+          "sourceReliability": 0.9,
+          "assessment": {
+            "source": "ASSISTments-2009-2010-skill-builder",
+            "original": true,
+            "firstAttempt": true,
+            "attemptCount": 1,
+            "hintCount": 0,
+            "hintTotal": 0,
+            "firstAction": null,
+            "bottomHint": null,
+            "answerRevealed": false
+          },
+          "provenance": {
+            "dataset": "ASSISTments 2009-2010 Skill Builder",
+            "datasetVariant": "corrected-collapsed-compatible",
+            "rowId": "1005",
+            "userId": "student_demo",
+            "problemId": "505",
+            "documentedColumns": true
+          }
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 6,
+      "event": {
+        "id": "assistments:1006",
+        "type": "LEARNER_OBSERVATION",
+        "category": "knowledge-tracing",
+        "payload": {
+          "evidenceId": "assistments:1006",
+          "learnerId": "student_demo",
+          "skillId": "fractions.addition",
+          "skillKey": "fractions_addition",
+          "problemId": "506",
+          "correct": true,
+          "sourceReliability": 0.9,
+          "assessment": {
+            "source": "ASSISTments-2009-2010-skill-builder",
+            "original": true,
+            "firstAttempt": true,
+            "attemptCount": 1,
+            "hintCount": 0,
+            "hintTotal": 0,
+            "firstAction": null,
+            "bottomHint": null,
+            "answerRevealed": false
+          },
+          "provenance": {
+            "dataset": "ASSISTments 2009-2010 Skill Builder",
+            "datasetVariant": "corrected-collapsed-compatible",
+            "rowId": "1006",
+            "userId": "student_demo",
+            "problemId": "506",
+            "documentedColumns": true
+          }
+        }
+      },
+      "endReason": "completed"
+    }
+  ]
+}

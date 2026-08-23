@@ -1,0 +1,56 @@
+{
+  "schema": "ppl.app-session/0.1",
+  "title": "ZHUANG_FANGYI · Reference Session",
+  "entries": [
+    {
+      "snapshotSeq": 1,
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.host-snapshot/0.1",
+        "persona": {"id":"ZHUANG_FANGYI","version":"0.3.0","irSha256":"reference-demo"},
+        "host": {"kind":"demo","turn":1,"step":1},
+        "event": {"type":"CONFESSION","category":"relationship"},
+        "resolution": {
+          "valid": true,
+          "activeRules": [{"id":"ACCEPT_ADMIN_CONFESSION","priority":600}],
+          "resolved": {
+            "relationships":{"admin":{"stage":"trusted","trust":0.86,"attachment":0.72}},
+            "traits":{"emotional_guard":0.82,"vulnerability":0.14,"playfulness":0.12},
+            "style":{"formality":0.82,"emotional_explicitness":0.18,"verbosity":0.48}
+          },
+          "pendingTransitions":[{"source":"ACCEPT_ADMIN_CONFESSION","path":"relationships.admin.stage","from":"trusted","to":"lover"}],
+          "trace":{}
+        }
+      }
+    },
+    {
+      "snapshotSeq": 2,
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.host-snapshot/0.1",
+        "persona": {"id":"ZHUANG_FANGYI","version":"0.3.0","irSha256":"reference-demo"},
+        "host": {"kind":"demo","turn":2,"step":1},
+        "event": {"type":"COMFORT","category":"fatigue"},
+        "resolution": {
+          "valid": true,
+          "activeRules": [
+            {"id":"ADMIN_COMFORT_TRUST","priority":540},
+            {"id":"FATIGUE_DISCLOSURE","priority":650},
+            {"id":"PRIVATE_THAW","priority":710}
+          ],
+          "resolved": {
+            "relationships":{"admin":{"stage":"lover","trust":0.86,"attachment":0.72}},
+            "traits":{"emotional_guard":0.32,"vulnerability":0.65,"playfulness":0.37},
+            "style":{"formality":0.52,"emotional_explicitness":0.37,"verbosity":0.38}
+          },
+          "pendingCommits":[{"source":"ADMIN_COMFORT_TRUST","path":"relationships.admin.trust","from":0.86,"projected":0.87}],
+          "trace":{
+            "traits.emotional_guard":{"path":"traits.emotional_guard","base":0.82,"final":0.32,"delta":-0.5,"deltaMagnitude":"strong","steps":[{"rule":"PRIVATE_THAW","priority":710,"op":"set","before":0.82,"after":0.32}]},
+            "traits.vulnerability":{"path":"traits.vulnerability","base":0.14,"final":0.65,"delta":0.51,"deltaMagnitude":"strong","steps":[{"rule":"FATIGUE_DISCLOSURE","priority":650,"op":"set","before":0.14,"after":0.65}]},
+            "style.formality":{"path":"style.formality","base":0.82,"final":0.52,"delta":-0.3,"deltaMagnitude":"clear","steps":[{"rule":"PRIVATE_THAW","priority":710,"op":"set","before":0.82,"after":0.52}]}
+          }
+        }
+      }
+    }
+  ]
+}

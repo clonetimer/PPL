@@ -1,0 +1,16 @@
+{
+  "name": "ppl-profiles",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "PPL Profiles 0.2.0 Stable — application behavior profiles with uncertainty-aware tutoring and evidence-ledger research.",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "validate": "node bin/ppl-profiles.mjs validate-all",
+    "examples": "node bin/generate-examples.mjs",
+    "application-gate": "node bin/application-gate-stable.mjs"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}

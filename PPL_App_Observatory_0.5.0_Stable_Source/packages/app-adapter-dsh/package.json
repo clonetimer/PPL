@@ -1,0 +1,16 @@
+{
+  "name": "@ppl/app-adapter-dsh",
+  "version": "0.5.0",
+  "type": "module",
+  "description": "Optional projection utility from DeepSeek Harness session exports to ppl.app-session. No DSH runtime dependency.",
+  "exports": "./src/index.mjs",
+  "bin": {
+    "ppl-app-dsh-project": "./src/cli.mjs"
+  },
+  "dependencies": {
+    "@ppl/app-core": "0.5.0"
+  },
+  "files": [
+    "src"
+  ]
+}

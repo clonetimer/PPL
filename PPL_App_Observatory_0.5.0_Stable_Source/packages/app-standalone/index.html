@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PPL Observatory 0.4.0</title>
+<link rel="stylesheet" href="/modules/app-ui/styles.css" />
+<style>
+html,body{margin:0;min-height:100%;background:#09111f}.standalone-bar{position:fixed;right:18px;bottom:18px;z-index:50;display:flex;gap:8px;align-items:center;background:rgba(17,28,46,.94);border:1px solid #263953;border-radius:14px;padding:9px;box-shadow:0 16px 50px rgba(0,0,0,.32);backdrop-filter:blur(14px)}.standalone-bar button,.standalone-bar label,.standalone-bar select{border:1px solid #36506e;background:#17243a;color:#edf5ff;border-radius:9px;padding:7px 9px;font:12px system-ui;cursor:pointer}.standalone-bar label input{display:none}.standalone-url{display:flex;gap:6px}.standalone-url input{width:260px;border:1px solid #36506e;background:#09111f;color:#edf5ff;border-radius:9px;padding:7px 9px}.standalone-status{position:fixed;right:18px;bottom:76px;z-index:49;background:#111c2e;color:#edf5ff;border:1px solid #263953;border-radius:10px;padding:8px 11px;font:12px system-ui;max-width:min(520px,calc(100vw - 36px));display:none}.standalone-status.show{display:block}@media(max-width:760px){.standalone-bar{left:10px;right:10px;bottom:10px;flex-wrap:wrap}.standalone-url{width:100%}.standalone-url input{flex:1;min-width:0}.standalone-status{left:10px;right:10px;bottom:120px}}
+</style>
+<script type="importmap">
+{
+  "imports": {
+    "@ppl/app-core": "/modules/app-core/index.mjs",
+    "@ppl/app-ui": "/modules/app-ui/index.mjs"
+  }
+}
+</script>
+</head>
+<body>
+<div id="observatory"></div>
+<div id="status" class="standalone-status"></div>
+<div class="standalone-bar">
+  <select id="sample"><option value="persona">Persona 示例</option><optgroup label="Tutor"><option value="tutor">Tutor 应用周期</option><option value="tutorNumberLine">真实 · Number Line</option><option value="tutorCircle">真实 · Circle Graph</option></optgroup><optgroup label="Research"><option value="research">Research 应用周期</option><option value="researchLigo">强验证 · GW</option><option value="researchEgoFlip">证据翻转 · Ego Depletion</option><option value="researchEgoRefute">强反证 · Ego Depletion</option></optgroup><option value="life">生活 Life</option></select>
+  <button id="loadSample">载入示例</button>
+  <label>导入 JSON<input id="file" type="file" accept="application/json,.json" /></label>
+  <div class="standalone-url"><input id="url" placeholder="https://.../ppl-session.json" /><button id="loadUrl">打开 URL</button></div>
+</div>
+<script type="module" src="./src/app.mjs"></script>
+</body>
+</html>

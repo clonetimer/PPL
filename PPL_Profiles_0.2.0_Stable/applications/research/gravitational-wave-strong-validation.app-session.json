@@ -1,0 +1,3912 @@
+{
+  "schema": "ppl.app-session/0.3",
+  "title": "证据账本科研助手 · research-gravitational-wave-strong-validation",
+  "profile": {
+    "id": "research.evidence-ledger.default",
+    "title": "证据账本科研助手",
+    "kind": "research",
+    "version": "0.2.0",
+    "engine": {
+      "id": "research/evidence-ledger",
+      "version": "0.2"
+    }
+  },
+  "domain": {
+    "profileKind": "research",
+    "engine": {
+      "id": "research/evidence-ledger",
+      "version": "0.2"
+    },
+    "application": {
+      "domain": "research",
+      "maturity": "application-evolution",
+      "hostOwnsRetrieval": true
+    }
+  },
+  "observability": {
+    "metrics": [],
+    "groups": [
+      {
+        "id": "claims",
+        "label": "Claim Graph",
+        "prefix": "research.claims."
+      },
+      {
+        "id": "workflow",
+        "label": "研究流程",
+        "prefix": "workflow."
+      }
+    ]
+  },
+  "literature": [
+    {
+      "id": "arxiv:2504.11524",
+      "title": "HypoBench",
+      "mechanismBorrowed": "hypothesis generation 的发现率有限，不能把一次生成直接当作完整科学发现。"
+    },
+    {
+      "id": "arxiv:2505.14599",
+      "title": "TruthHypo / Toward Reliable Biomedical Hypothesis Generation",
+      "mechanismBorrowed": "groundedness/truthfulness 需要独立验证；生成的 plausibility 不能替代 evidence。"
+    },
+    {
+      "id": "arxiv:2505.04651",
+      "title": "Scientific Hypothesis Generation and Validation: Methods, Datasets, and Future Directions",
+      "mechanismBorrowed": "generation 与 validation 是独立阶段，需 uncertainty quantification 和 human/tool validation。"
+    },
+    {
+      "id": "arxiv:2504.08066",
+      "title": "The AI Scientist-v2",
+      "mechanismBorrowed": "research workflow 应显式覆盖 hypothesis → experiment → analysis → iterative validation。"
+    }
+  ],
+  "entries": [
+    {
+      "snapshotSeq": 1,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "research.evidence-ledger.default",
+          "title": "证据账本科研助手",
+          "kind": "research",
+          "version": "0.2.0",
+          "fingerprint": "8bdf887d7637f89e3395ec7d95fdc6ecbe568e17b1709289a49a381449745c16",
+          "engine": {
+            "id": "research/evidence-ledger",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 1,
+          "step": 1
+        },
+        "event": {
+          "id": "q-gw",
+          "type": "QUESTION_DEFINED",
+          "payload": {
+            "question": "Are binary-black-hole merger gravitational-wave signals directly detectable by ground-based interferometers?"
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "research": {
+              "question": "",
+              "activeClaimId": "",
+              "claimOrder": [],
+              "claims": {},
+              "evidenceLedger": [],
+              "evidenceIds": [],
+              "validationLedger": [],
+              "conclusionStatus": "blocked",
+              "conclusionDirection": "undetermined"
+            },
+            "workflow": {
+              "nextAction": "define-question"
+            }
+          },
+          "resolvedState": {
+            "research": {
+              "question": "Are binary-black-hole merger gravitational-wave signals directly detectable by ground-based interferometers?",
+              "activeClaimId": "",
+              "claimOrder": [],
+              "claims": {},
+              "evidenceLedger": [],
+              "evidenceIds": [],
+              "validationLedger": [],
+              "conclusionStatus": "blocked",
+              "conclusionDirection": "undetermined"
+            },
+            "workflow": {
+              "nextAction": "propose-or-collect-claims"
+            }
+          },
+          "activeRules": [
+            {
+              "id": "RESEARCH_QUESTION_LEDGER",
+              "priority": 1100,
+              "rationale": "研究问题必须成为后续 claim/evidence 的显式锚点。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "RESEARCH_QUESTION_LEDGER",
+              "path": "research.question",
+              "op": "set",
+              "before": "",
+              "after": "Are binary-black-hole merger gravitational-wave signals directly detectable by ground-based interferometers?"
+            },
+            {
+              "source": "RESEARCH_QUESTION_LEDGER",
+              "path": "workflow.nextAction",
+              "op": "set",
+              "before": "define-question",
+              "after": "propose-or-collect-claims"
+            }
+          ],
+          "trace": {
+            "research.question": {
+              "path": "research.question",
+              "base": "",
+              "final": "Are binary-black-hole merger gravitational-wave signals directly detectable by ground-based interferometers?",
+              "steps": [
+                {
+                  "rule": "RESEARCH_QUESTION_LEDGER",
+                  "priority": 1100,
+                  "op": "set",
+                  "before": "",
+                  "after": "Are binary-black-hole merger gravitational-wave signals directly detectable by ground-based interferometers?"
+                }
+              ]
+            },
+            "workflow.nextAction": {
+              "path": "workflow.nextAction",
+              "base": "define-question",
+              "final": "propose-or-collect-claims",
+              "steps": [
+                {
+                  "rule": "RESEARCH_QUESTION_LEDGER",
+                  "priority": 1100,
+                  "op": "set",
+                  "before": "define-question",
+                  "after": "propose-or-collect-claims"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "conclusion_status",
+                "label": "结论状态",
+                "type": "path",
+                "path": "research.conclusionStatus",
+                "value": "blocked"
+              },
+              {
+                "id": "evidence_count",
+                "label": "证据账本条目",
+                "type": "path",
+                "path": "research.evidenceLedger.length",
+                "value": 0
+              },
+              {
+                "id": "validation_count",
+                "label": "验证条目",
+                "type": "path",
+                "path": "research.validationLedger.length",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 2,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "research.evidence-ledger.default",
+          "title": "证据账本科研助手",
+          "kind": "research",
+          "version": "0.2.0",
+          "fingerprint": "8bdf887d7637f89e3395ec7d95fdc6ecbe568e17b1709289a49a381449745c16",
+          "engine": {
+            "id": "research/evidence-ledger",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 2,
+          "step": 1
+        },
+        "event": {
+          "id": "claim-gw",
+          "type": "CLAIM_PROPOSED",
+          "payload": {
+            "claimId": "claim_gw_detection",
+            "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+            "kind": "empirical-claim"
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "research": {
+              "question": "Are binary-black-hole merger gravitational-wave signals directly detectable by ground-based interferometers?",
+              "activeClaimId": "",
+              "claimOrder": [],
+              "claims": {},
+              "evidenceLedger": [],
+              "evidenceIds": [],
+              "validationLedger": [],
+              "conclusionStatus": "blocked",
+              "conclusionDirection": "undetermined"
+            },
+            "workflow": {
+              "nextAction": "propose-or-collect-claims"
+            }
+          },
+          "resolvedState": {
+            "research": {
+              "question": "Are binary-black-hole merger gravitational-wave signals directly detectable by ground-based interferometers?",
+              "activeClaimId": "claim_gw_detection",
+              "claimOrder": [
+                "claim_gw_detection"
+              ],
+              "claims": {
+                "claim_gw_detection": {
+                  "id": "claim_gw_detection",
+                  "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                  "kind": "empirical-claim",
+                  "status": "proposed",
+                  "supportMass": 0,
+                  "opposeMass": 0,
+                  "neutralMass": 0,
+                  "uncertainty": 1,
+                  "evidenceCount": 0,
+                  "independentSourceCount": 0,
+                  "sourceGroups": [],
+                  "supportGroups": [],
+                  "opposeGroups": [],
+                  "provenanceComplete": true,
+                  "validation": {
+                    "attempts": 0,
+                    "supportive": 0,
+                    "opposing": 0,
+                    "inconclusive": 0,
+                    "reproducibleSupport": 0,
+                    "reproducibleOppose": 0,
+                    "strongSupport": 0,
+                    "strongOppose": 0,
+                    "last": null
+                  },
+                  "decision": {
+                    "status": "blocked",
+                    "reasons": [
+                      "no-evidence"
+                    ]
+                  }
+                }
+              },
+              "evidenceLedger": [],
+              "evidenceIds": [],
+              "validationLedger": [],
+              "conclusionStatus": "blocked",
+              "conclusionDirection": "undetermined"
+            },
+            "workflow": {
+              "nextAction": "collect-independent-evidence"
+            }
+          },
+          "activeRules": [
+            {
+              "id": "RESEARCH_CLAIM_LIFECYCLE",
+              "priority": 1080,
+              "rationale": "生成 hypothesis/claim 不等于建立结论；新 claim 默认 proposed。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "RESEARCH_CLAIM_LIFECYCLE",
+              "path": "research.claims.claim_gw_detection",
+              "op": "set",
+              "after": {
+                "id": "claim_gw_detection",
+                "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                "kind": "empirical-claim",
+                "status": "proposed",
+                "supportMass": 0,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 1,
+                "evidenceCount": 0,
+                "independentSourceCount": 0,
+                "sourceGroups": [],
+                "supportGroups": [],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "reasons": [
+                    "no-evidence"
+                  ]
+                }
+              }
+            },
+            {
+              "source": "RESEARCH_CLAIM_LIFECYCLE",
+              "path": "research.claimOrder",
+              "op": "append",
+              "before": [],
+              "after": [
+                "claim_gw_detection"
+              ]
+            },
+            {
+              "source": "RESEARCH_CLAIM_LIFECYCLE",
+              "path": "research.activeClaimId",
+              "op": "set",
+              "before": "",
+              "after": "claim_gw_detection"
+            },
+            {
+              "source": "RESEARCH_CLAIM_LIFECYCLE",
+              "path": "workflow.nextAction",
+              "op": "set",
+              "before": "propose-or-collect-claims",
+              "after": "collect-independent-evidence"
+            }
+          ],
+          "trace": {
+            "research.claims.claim_gw_detection": {
+              "path": "research.claims.claim_gw_detection",
+              "final": {
+                "id": "claim_gw_detection",
+                "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                "kind": "empirical-claim",
+                "status": "proposed",
+                "supportMass": 0,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 1,
+                "evidenceCount": 0,
+                "independentSourceCount": 0,
+                "sourceGroups": [],
+                "supportGroups": [],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "reasons": [
+                    "no-evidence"
+                  ]
+                }
+              },
+              "steps": [
+                {
+                  "rule": "RESEARCH_CLAIM_LIFECYCLE",
+                  "priority": 1080,
+                  "op": "set",
+                  "after": {
+                    "id": "claim_gw_detection",
+                    "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                    "kind": "empirical-claim",
+                    "status": "proposed",
+                    "supportMass": 0,
+                    "opposeMass": 0,
+                    "neutralMass": 0,
+                    "uncertainty": 1,
+                    "evidenceCount": 0,
+                    "independentSourceCount": 0,
+                    "sourceGroups": [],
+                    "supportGroups": [],
+                    "opposeGroups": [],
+                    "provenanceComplete": true,
+                    "validation": {
+                      "attempts": 0,
+                      "supportive": 0,
+                      "opposing": 0,
+                      "inconclusive": 0,
+                      "reproducibleSupport": 0,
+                      "reproducibleOppose": 0,
+                      "strongSupport": 0,
+                      "strongOppose": 0,
+                      "last": null
+                    },
+                    "decision": {
+                      "status": "blocked",
+                      "reasons": [
+                        "no-evidence"
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            "research.claimOrder": {
+              "path": "research.claimOrder",
+              "base": [],
+              "final": [
+                "claim_gw_detection"
+              ],
+              "steps": [
+                {
+                  "rule": "RESEARCH_CLAIM_LIFECYCLE",
+                  "priority": 1080,
+                  "op": "append",
+                  "before": [],
+                  "after": [
+                    "claim_gw_detection"
+                  ]
+                }
+              ]
+            },
+            "research.activeClaimId": {
+              "path": "research.activeClaimId",
+              "base": "",
+              "final": "claim_gw_detection",
+              "steps": [
+                {
+                  "rule": "RESEARCH_CLAIM_LIFECYCLE",
+                  "priority": 1080,
+                  "op": "set",
+                  "before": "",
+                  "after": "claim_gw_detection"
+                }
+              ]
+            },
+            "workflow.nextAction": {
+              "path": "workflow.nextAction",
+              "base": "propose-or-collect-claims",
+              "final": "collect-independent-evidence",
+              "steps": [
+                {
+                  "rule": "RESEARCH_CLAIM_LIFECYCLE",
+                  "priority": 1080,
+                  "op": "set",
+                  "before": "propose-or-collect-claims",
+                  "after": "collect-independent-evidence"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "research-claim",
+              "claim": {
+                "id": "claim_gw_detection",
+                "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                "kind": "empirical-claim",
+                "status": "proposed",
+                "supportMass": 0,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 1,
+                "evidenceCount": 0,
+                "independentSourceCount": 0,
+                "sourceGroups": [],
+                "supportGroups": [],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "reasons": [
+                    "no-evidence"
+                  ]
+                }
+              }
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "conclusion_status",
+                "label": "结论状态",
+                "type": "path",
+                "path": "research.conclusionStatus",
+                "value": "blocked"
+              },
+              {
+                "id": "evidence_count",
+                "label": "证据账本条目",
+                "type": "path",
+                "path": "research.evidenceLedger.length",
+                "value": 0
+              },
+              {
+                "id": "validation_count",
+                "label": "验证条目",
+                "type": "path",
+                "path": "research.validationLedger.length",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 3,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "research.evidence-ledger.default",
+          "title": "证据账本科研助手",
+          "kind": "research",
+          "version": "0.2.0",
+          "fingerprint": "8bdf887d7637f89e3395ec7d95fdc6ecbe568e17b1709289a49a381449745c16",
+          "engine": {
+            "id": "research/evidence-ledger",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 3,
+          "step": 1
+        },
+        "event": {
+          "id": "gw150914",
+          "type": "EVIDENCE_RECORDED",
+          "payload": {
+            "evidenceId": "doi:10.1103/PhysRevLett.116.061102",
+            "claimId": "claim_gw_detection",
+            "stance": "support",
+            "summary": "GW150914 was reported as the first direct detection of gravitational waves and first observation of a binary black-hole merger.",
+            "source": {
+              "title": "Observation of Gravitational Waves from a Binary Black Hole Merger",
+              "publisher": "Physical Review Letters",
+              "doi": "10.1103/PhysRevLett.116.061102",
+              "locator": "doi:10.1103/PhysRevLett.116.061102"
+            },
+            "independenceGroup": "GW150914",
+            "quality": {
+              "relevance": 1,
+              "reliability": 0.98,
+              "independence": 1
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "research": {
+              "question": "Are binary-black-hole merger gravitational-wave signals directly detectable by ground-based interferometers?",
+              "activeClaimId": "claim_gw_detection",
+              "claimOrder": [
+                "claim_gw_detection"
+              ],
+              "claims": {
+                "claim_gw_detection": {
+                  "id": "claim_gw_detection",
+                  "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                  "kind": "empirical-claim",
+                  "status": "proposed",
+                  "supportMass": 0,
+                  "opposeMass": 0,
+                  "neutralMass": 0,
+                  "uncertainty": 1,
+                  "evidenceCount": 0,
+                  "independentSourceCount": 0,
+                  "sourceGroups": [],
+                  "supportGroups": [],
+                  "opposeGroups": [],
+                  "provenanceComplete": true,
+                  "validation": {
+                    "attempts": 0,
+                    "supportive": 0,
+                    "opposing": 0,
+                    "inconclusive": 0,
+                    "reproducibleSupport": 0,
+                    "reproducibleOppose": 0,
+                    "strongSupport": 0,
+                    "strongOppose": 0,
+                    "last": null
+                  },
+                  "decision": {
+                    "status": "blocked",
+                    "reasons": [
+                      "no-evidence"
+                    ]
+                  }
+                }
+              },
+              "evidenceLedger": [],
+              "evidenceIds": [],
+              "validationLedger": [],
+              "conclusionStatus": "blocked",
+              "conclusionDirection": "undetermined"
+            },
+            "workflow": {
+              "nextAction": "collect-independent-evidence"
+            }
+          },
+          "resolvedState": {
+            "research": {
+              "question": "Are binary-black-hole merger gravitational-wave signals directly detectable by ground-based interferometers?",
+              "activeClaimId": "claim_gw_detection",
+              "claimOrder": [
+                "claim_gw_detection"
+              ],
+              "claims": {
+                "claim_gw_detection": {
+                  "id": "claim_gw_detection",
+                  "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                  "kind": "empirical-claim",
+                  "status": "testing",
+                  "supportMass": 0.98,
+                  "opposeMass": 0,
+                  "neutralMass": 0,
+                  "uncertainty": 0.5051,
+                  "evidenceCount": 1,
+                  "independentSourceCount": 1,
+                  "sourceGroups": [
+                    "GW150914"
+                  ],
+                  "supportGroups": [
+                    "GW150914"
+                  ],
+                  "opposeGroups": [],
+                  "provenanceComplete": true,
+                  "validation": {
+                    "attempts": 0,
+                    "supportive": 0,
+                    "opposing": 0,
+                    "inconclusive": 0,
+                    "reproducibleSupport": 0,
+                    "reproducibleOppose": 0,
+                    "strongSupport": 0,
+                    "strongOppose": 0,
+                    "last": null
+                  },
+                  "decision": {
+                    "status": "blocked",
+                    "direction": "support",
+                    "reasons": [
+                      "no-validation-attempt"
+                    ],
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 0.98,
+                      "opposeMass": 0,
+                      "balanceRatio": 0,
+                      "dominantStance": "support"
+                    }
+                  },
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0.98,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                }
+              },
+              "evidenceLedger": [
+                {
+                  "evidenceId": "doi:10.1103/PhysRevLett.116.061102",
+                  "claimId": "claim_gw_detection",
+                  "stance": "support",
+                  "summary": "GW150914 was reported as the first direct detection of gravitational waves and first observation of a binary black-hole merger.",
+                  "source": {
+                    "title": "Observation of Gravitational Waves from a Binary Black Hole Merger",
+                    "publisher": "Physical Review Letters",
+                    "doi": "10.1103/PhysRevLett.116.061102",
+                    "locator": "doi:10.1103/PhysRevLett.116.061102"
+                  },
+                  "quality": {
+                    "relevance": 1,
+                    "reliability": 0.98,
+                    "independence": 1,
+                    "group": "GW150914",
+                    "correlated": false,
+                    "correlationFactor": 1,
+                    "weight": 0.98
+                  },
+                  "provenanceComplete": true
+                }
+              ],
+              "evidenceIds": [
+                "doi:10.1103/PhysRevLett.116.061102"
+              ],
+              "validationLedger": [],
+              "conclusionStatus": "blocked",
+              "conclusionDirection": "undetermined"
+            },
+            "workflow": {
+              "nextAction": "seek-independent-evidence"
+            }
+          },
+          "activeRules": [
+            {
+              "id": "RESEARCH_EVIDENCE_LEDGER",
+              "priority": 1120,
+              "rationale": "Evidence 以可去重 ledger 保存，support/oppose 分离，不通过平均冲突来制造确定性。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "RESEARCH_EVIDENCE_LEDGER",
+              "path": "research.evidenceLedger",
+              "op": "append",
+              "before": [],
+              "after": [
+                {
+                  "evidenceId": "doi:10.1103/PhysRevLett.116.061102",
+                  "claimId": "claim_gw_detection",
+                  "stance": "support",
+                  "summary": "GW150914 was reported as the first direct detection of gravitational waves and first observation of a binary black-hole merger.",
+                  "source": {
+                    "title": "Observation of Gravitational Waves from a Binary Black Hole Merger",
+                    "publisher": "Physical Review Letters",
+                    "doi": "10.1103/PhysRevLett.116.061102",
+                    "locator": "doi:10.1103/PhysRevLett.116.061102"
+                  },
+                  "quality": {
+                    "relevance": 1,
+                    "reliability": 0.98,
+                    "independence": 1,
+                    "group": "GW150914",
+                    "correlated": false,
+                    "correlationFactor": 1,
+                    "weight": 0.98
+                  },
+                  "provenanceComplete": true
+                }
+              ]
+            },
+            {
+              "source": "RESEARCH_EVIDENCE_LEDGER",
+              "path": "research.evidenceIds",
+              "op": "appendUnique",
+              "before": [],
+              "after": [
+                "doi:10.1103/PhysRevLett.116.061102"
+              ]
+            },
+            {
+              "source": "RESEARCH_EVIDENCE_LEDGER",
+              "path": "research.claims.claim_gw_detection",
+              "op": "evidence-update",
+              "before": {
+                "id": "claim_gw_detection",
+                "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                "kind": "empirical-claim",
+                "status": "proposed",
+                "supportMass": 0,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 1,
+                "evidenceCount": 0,
+                "independentSourceCount": 0,
+                "sourceGroups": [],
+                "supportGroups": [],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "reasons": [
+                    "no-evidence"
+                  ]
+                }
+              },
+              "after": {
+                "id": "claim_gw_detection",
+                "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 0.98,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 0.5051,
+                "evidenceCount": 1,
+                "independentSourceCount": 1,
+                "sourceGroups": [
+                  "GW150914"
+                ],
+                "supportGroups": [
+                  "GW150914"
+                ],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "direction": "support",
+                  "reasons": [
+                    "no-validation-attempt"
+                  ],
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0.98,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0.98,
+                  "opposeMass": 0,
+                  "balanceRatio": 0,
+                  "dominantStance": "support"
+                }
+              }
+            },
+            {
+              "source": "RESEARCH_EVIDENCE_LEDGER",
+              "path": "workflow.nextAction",
+              "op": "set",
+              "before": "collect-independent-evidence",
+              "after": "seek-independent-evidence"
+            }
+          ],
+          "trace": {
+            "research.evidenceLedger": {
+              "path": "research.evidenceLedger",
+              "base": [],
+              "final": [
+                {
+                  "evidenceId": "doi:10.1103/PhysRevLett.116.061102",
+                  "claimId": "claim_gw_detection",
+                  "stance": "support",
+                  "summary": "GW150914 was reported as the first direct detection of gravitational waves and first observation of a binary black-hole merger.",
+                  "source": {
+                    "title": "Observation of Gravitational Waves from a Binary Black Hole Merger",
+                    "publisher": "Physical Review Letters",
+                    "doi": "10.1103/PhysRevLett.116.061102",
+                    "locator": "doi:10.1103/PhysRevLett.116.061102"
+                  },
+                  "quality": {
+                    "relevance": 1,
+                    "reliability": 0.98,
+                    "independence": 1,
+                    "group": "GW150914",
+                    "correlated": false,
+                    "correlationFactor": 1,
+                    "weight": 0.98
+                  },
+                  "provenanceComplete": true
+                }
+              ],
+              "steps": [
+                {
+                  "rule": "RESEARCH_EVIDENCE_LEDGER",
+                  "priority": 1120,
+                  "op": "append",
+                  "before": [],
+                  "after": [
+                    {
+                      "evidenceId": "doi:10.1103/PhysRevLett.116.061102",
+                      "claimId": "claim_gw_detection",
+                      "stance": "support",
+                      "summary": "GW150914 was reported as the first direct detection of gravitational waves and first observation of a binary black-hole merger.",
+                      "source": {
+                        "title": "Observation of Gravitational Waves from a Binary Black Hole Merger",
+                        "publisher": "Physical Review Letters",
+                        "doi": "10.1103/PhysRevLett.116.061102",
+                        "locator": "doi:10.1103/PhysRevLett.116.061102"
+                      },
+                      "quality": {
+                        "relevance": 1,
+                        "reliability": 0.98,
+                        "independence": 1,
+                        "group": "GW150914",
+                        "correlated": false,
+                        "correlationFactor": 1,
+                        "weight": 0.98
+                      },
+                      "provenanceComplete": true
+                    }
+                  ]
+                }
+              ]
+            },
+            "research.evidenceIds": {
+              "path": "research.evidenceIds",
+              "base": [],
+              "final": [
+                "doi:10.1103/PhysRevLett.116.061102"
+              ],
+              "steps": [
+                {
+                  "rule": "RESEARCH_EVIDENCE_LEDGER",
+                  "priority": 1120,
+                  "op": "appendUnique",
+                  "before": [],
+                  "after": [
+                    "doi:10.1103/PhysRevLett.116.061102"
+                  ]
+                }
+              ]
+            },
+            "research.claims.claim_gw_detection": {
+              "path": "research.claims.claim_gw_detection",
+              "base": {
+                "id": "claim_gw_detection",
+                "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                "kind": "empirical-claim",
+                "status": "proposed",
+                "supportMass": 0,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 1,
+                "evidenceCount": 0,
+                "independentSourceCount": 0,
+                "sourceGroups": [],
+                "supportGroups": [],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "reasons": [
+                    "no-evidence"
+                  ]
+                }
+              },
+              "final": {
+                "id": "claim_gw_detection",
+                "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 0.98,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 0.5051,
+                "evidenceCount": 1,
+                "independentSourceCount": 1,
+                "sourceGroups": [
+                  "GW150914"
+                ],
+                "supportGroups": [
+                  "GW150914"
+                ],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "direction": "support",
+                  "reasons": [
+                    "no-validation-attempt"
+                  ],
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0.98,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0.98,
+                  "opposeMass": 0,
+                  "balanceRatio": 0,
+                  "dominantStance": "support"
+                }
+              },
+              "steps": [
+                {
+                  "rule": "RESEARCH_EVIDENCE_LEDGER",
+                  "priority": 1120,
+                  "op": "evidence-update",
+                  "before": {
+                    "id": "claim_gw_detection",
+                    "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                    "kind": "empirical-claim",
+                    "status": "proposed",
+                    "supportMass": 0,
+                    "opposeMass": 0,
+                    "neutralMass": 0,
+                    "uncertainty": 1,
+                    "evidenceCount": 0,
+                    "independentSourceCount": 0,
+                    "sourceGroups": [],
+                    "supportGroups": [],
+                    "opposeGroups": [],
+                    "provenanceComplete": true,
+                    "validation": {
+                      "attempts": 0,
+                      "supportive": 0,
+                      "opposing": 0,
+                      "inconclusive": 0,
+                      "reproducibleSupport": 0,
+                      "reproducibleOppose": 0,
+                      "strongSupport": 0,
+                      "strongOppose": 0,
+                      "last": null
+                    },
+                    "decision": {
+                      "status": "blocked",
+                      "reasons": [
+                        "no-evidence"
+                      ]
+                    }
+                  },
+                  "after": {
+                    "id": "claim_gw_detection",
+                    "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                    "kind": "empirical-claim",
+                    "status": "testing",
+                    "supportMass": 0.98,
+                    "opposeMass": 0,
+                    "neutralMass": 0,
+                    "uncertainty": 0.5051,
+                    "evidenceCount": 1,
+                    "independentSourceCount": 1,
+                    "sourceGroups": [
+                      "GW150914"
+                    ],
+                    "supportGroups": [
+                      "GW150914"
+                    ],
+                    "opposeGroups": [],
+                    "provenanceComplete": true,
+                    "validation": {
+                      "attempts": 0,
+                      "supportive": 0,
+                      "opposing": 0,
+                      "inconclusive": 0,
+                      "reproducibleSupport": 0,
+                      "reproducibleOppose": 0,
+                      "strongSupport": 0,
+                      "strongOppose": 0,
+                      "last": null
+                    },
+                    "decision": {
+                      "status": "blocked",
+                      "direction": "support",
+                      "reasons": [
+                        "no-validation-attempt"
+                      ],
+                      "conflict": {
+                        "present": false,
+                        "supportMass": 0.98,
+                        "opposeMass": 0,
+                        "balanceRatio": 0,
+                        "dominantStance": "support"
+                      }
+                    },
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 0.98,
+                      "opposeMass": 0,
+                      "balanceRatio": 0,
+                      "dominantStance": "support"
+                    }
+                  }
+                }
+              ]
+            },
+            "workflow.nextAction": {
+              "path": "workflow.nextAction",
+              "base": "collect-independent-evidence",
+              "final": "seek-independent-evidence",
+              "steps": [
+                {
+                  "rule": "RESEARCH_EVIDENCE_LEDGER",
+                  "priority": 1120,
+                  "op": "set",
+                  "before": "collect-independent-evidence",
+                  "after": "seek-independent-evidence"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "research-evidence",
+              "evidenceId": "doi:10.1103/PhysRevLett.116.061102",
+              "claimId": "claim_gw_detection",
+              "stance": "support",
+              "summary": "GW150914 was reported as the first direct detection of gravitational waves and first observation of a binary black-hole merger.",
+              "source": {
+                "title": "Observation of Gravitational Waves from a Binary Black Hole Merger",
+                "publisher": "Physical Review Letters",
+                "doi": "10.1103/PhysRevLett.116.061102",
+                "locator": "doi:10.1103/PhysRevLett.116.061102"
+              },
+              "quality": {
+                "relevance": 1,
+                "reliability": 0.98,
+                "independence": 1,
+                "group": "GW150914",
+                "correlated": false,
+                "correlationFactor": 1,
+                "weight": 0.98
+              },
+              "provenanceComplete": true,
+              "claimAfter": {
+                "id": "claim_gw_detection",
+                "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 0.98,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 0.5051,
+                "evidenceCount": 1,
+                "independentSourceCount": 1,
+                "sourceGroups": [
+                  "GW150914"
+                ],
+                "supportGroups": [
+                  "GW150914"
+                ],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "direction": "support",
+                  "reasons": [
+                    "no-validation-attempt"
+                  ],
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0.98,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0.98,
+                  "opposeMass": 0,
+                  "balanceRatio": 0,
+                  "dominantStance": "support"
+                }
+              }
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "conclusion_status",
+                "label": "结论状态",
+                "type": "path",
+                "path": "research.conclusionStatus",
+                "value": "blocked"
+              },
+              {
+                "id": "evidence_count",
+                "label": "证据账本条目",
+                "type": "path",
+                "path": "research.evidenceLedger.length",
+                "value": 1
+              },
+              {
+                "id": "validation_count",
+                "label": "验证条目",
+                "type": "path",
+                "path": "research.validationLedger.length",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 4,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "research.evidence-ledger.default",
+          "title": "证据账本科研助手",
+          "kind": "research",
+          "version": "0.2.0",
+          "fingerprint": "8bdf887d7637f89e3395ec7d95fdc6ecbe568e17b1709289a49a381449745c16",
+          "engine": {
+            "id": "research/evidence-ledger",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 4,
+          "step": 1
+        },
+        "event": {
+          "id": "conclusion-before-validation",
+          "type": "CONCLUSION_REQUESTED",
+          "payload": {
+            "claimId": "claim_gw_detection"
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "research": {
+              "question": "Are binary-black-hole merger gravitational-wave signals directly detectable by ground-based interferometers?",
+              "activeClaimId": "claim_gw_detection",
+              "claimOrder": [
+                "claim_gw_detection"
+              ],
+              "claims": {
+                "claim_gw_detection": {
+                  "id": "claim_gw_detection",
+                  "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                  "kind": "empirical-claim",
+                  "status": "testing",
+                  "supportMass": 0.98,
+                  "opposeMass": 0,
+                  "neutralMass": 0,
+                  "uncertainty": 0.5051,
+                  "evidenceCount": 1,
+                  "independentSourceCount": 1,
+                  "sourceGroups": [
+                    "GW150914"
+                  ],
+                  "supportGroups": [
+                    "GW150914"
+                  ],
+                  "opposeGroups": [],
+                  "provenanceComplete": true,
+                  "validation": {
+                    "attempts": 0,
+                    "supportive": 0,
+                    "opposing": 0,
+                    "inconclusive": 0,
+                    "reproducibleSupport": 0,
+                    "reproducibleOppose": 0,
+                    "strongSupport": 0,
+                    "strongOppose": 0,
+                    "last": null
+                  },
+                  "decision": {
+                    "status": "blocked",
+                    "direction": "support",
+                    "reasons": [
+                      "no-validation-attempt"
+                    ],
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 0.98,
+                      "opposeMass": 0,
+                      "balanceRatio": 0,
+                      "dominantStance": "support"
+                    }
+                  },
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0.98,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                }
+              },
+              "evidenceLedger": [
+                {
+                  "evidenceId": "doi:10.1103/PhysRevLett.116.061102",
+                  "claimId": "claim_gw_detection",
+                  "stance": "support",
+                  "summary": "GW150914 was reported as the first direct detection of gravitational waves and first observation of a binary black-hole merger.",
+                  "source": {
+                    "title": "Observation of Gravitational Waves from a Binary Black Hole Merger",
+                    "publisher": "Physical Review Letters",
+                    "doi": "10.1103/PhysRevLett.116.061102",
+                    "locator": "doi:10.1103/PhysRevLett.116.061102"
+                  },
+                  "quality": {
+                    "relevance": 1,
+                    "reliability": 0.98,
+                    "independence": 1,
+                    "group": "GW150914",
+                    "correlated": false,
+                    "correlationFactor": 1,
+                    "weight": 0.98
+                  },
+                  "provenanceComplete": true
+                }
+              ],
+              "evidenceIds": [
+                "doi:10.1103/PhysRevLett.116.061102"
+              ],
+              "validationLedger": [],
+              "conclusionStatus": "blocked",
+              "conclusionDirection": "undetermined"
+            },
+            "workflow": {
+              "nextAction": "seek-independent-evidence"
+            }
+          },
+          "resolvedState": {
+            "research": {
+              "question": "Are binary-black-hole merger gravitational-wave signals directly detectable by ground-based interferometers?",
+              "activeClaimId": "claim_gw_detection",
+              "claimOrder": [
+                "claim_gw_detection"
+              ],
+              "claims": {
+                "claim_gw_detection": {
+                  "id": "claim_gw_detection",
+                  "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                  "kind": "empirical-claim",
+                  "status": "blocked",
+                  "supportMass": 0.98,
+                  "opposeMass": 0,
+                  "neutralMass": 0,
+                  "uncertainty": 0.5051,
+                  "evidenceCount": 1,
+                  "independentSourceCount": 1,
+                  "sourceGroups": [
+                    "GW150914"
+                  ],
+                  "supportGroups": [
+                    "GW150914"
+                  ],
+                  "opposeGroups": [],
+                  "provenanceComplete": true,
+                  "validation": {
+                    "attempts": 0,
+                    "supportive": 0,
+                    "opposing": 0,
+                    "inconclusive": 0,
+                    "reproducibleSupport": 0,
+                    "reproducibleOppose": 0,
+                    "strongSupport": 0,
+                    "strongOppose": 0,
+                    "last": null
+                  },
+                  "decision": {
+                    "status": "blocked",
+                    "direction": "support",
+                    "reasons": [
+                      "no-validation-attempt"
+                    ],
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 0.98,
+                      "opposeMass": 0,
+                      "balanceRatio": 0,
+                      "dominantStance": "support"
+                    }
+                  },
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0.98,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                }
+              },
+              "evidenceLedger": [
+                {
+                  "evidenceId": "doi:10.1103/PhysRevLett.116.061102",
+                  "claimId": "claim_gw_detection",
+                  "stance": "support",
+                  "summary": "GW150914 was reported as the first direct detection of gravitational waves and first observation of a binary black-hole merger.",
+                  "source": {
+                    "title": "Observation of Gravitational Waves from a Binary Black Hole Merger",
+                    "publisher": "Physical Review Letters",
+                    "doi": "10.1103/PhysRevLett.116.061102",
+                    "locator": "doi:10.1103/PhysRevLett.116.061102"
+                  },
+                  "quality": {
+                    "relevance": 1,
+                    "reliability": 0.98,
+                    "independence": 1,
+                    "group": "GW150914",
+                    "correlated": false,
+                    "correlationFactor": 1,
+                    "weight": 0.98
+                  },
+                  "provenanceComplete": true
+                }
+              ],
+              "evidenceIds": [
+                "doi:10.1103/PhysRevLett.116.061102"
+              ],
+              "validationLedger": [],
+              "conclusionStatus": "blocked",
+              "conclusionDirection": "support"
+            },
+            "workflow": {
+              "nextAction": "collect-or-validate-more"
+            }
+          },
+          "activeRules": [
+            {
+              "id": "RESEARCH_CONCLUSION_GATE",
+              "priority": 1200,
+              "rationale": "结论必须经过 evidence independence、provenance、validation 和 uncertainty gate。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "RESEARCH_CONCLUSION_GATE",
+              "path": "research.claims.claim_gw_detection",
+              "op": "decision-gate",
+              "before": {
+                "id": "claim_gw_detection",
+                "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 0.98,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 0.5051,
+                "evidenceCount": 1,
+                "independentSourceCount": 1,
+                "sourceGroups": [
+                  "GW150914"
+                ],
+                "supportGroups": [
+                  "GW150914"
+                ],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "direction": "support",
+                  "reasons": [
+                    "no-validation-attempt"
+                  ],
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0.98,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0.98,
+                  "opposeMass": 0,
+                  "balanceRatio": 0,
+                  "dominantStance": "support"
+                }
+              },
+              "after": {
+                "id": "claim_gw_detection",
+                "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                "kind": "empirical-claim",
+                "status": "blocked",
+                "supportMass": 0.98,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 0.5051,
+                "evidenceCount": 1,
+                "independentSourceCount": 1,
+                "sourceGroups": [
+                  "GW150914"
+                ],
+                "supportGroups": [
+                  "GW150914"
+                ],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "direction": "support",
+                  "reasons": [
+                    "no-validation-attempt"
+                  ],
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0.98,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0.98,
+                  "opposeMass": 0,
+                  "balanceRatio": 0,
+                  "dominantStance": "support"
+                }
+              }
+            },
+            {
+              "source": "RESEARCH_CONCLUSION_GATE",
+              "path": "research.conclusionDirection",
+              "op": "set",
+              "before": "undetermined",
+              "after": "support"
+            },
+            {
+              "source": "RESEARCH_CONCLUSION_GATE",
+              "path": "workflow.nextAction",
+              "op": "set",
+              "before": "seek-independent-evidence",
+              "after": "collect-or-validate-more"
+            }
+          ],
+          "trace": {
+            "research.claims.claim_gw_detection": {
+              "path": "research.claims.claim_gw_detection",
+              "base": {
+                "id": "claim_gw_detection",
+                "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 0.98,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 0.5051,
+                "evidenceCount": 1,
+                "independentSourceCount": 1,
+                "sourceGroups": [
+                  "GW150914"
+                ],
+                "supportGroups": [
+                  "GW150914"
+                ],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "direction": "support",
+                  "reasons": [
+                    "no-validation-attempt"
+                  ],
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0.98,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0.98,
+                  "opposeMass": 0,
+                  "balanceRatio": 0,
+                  "dominantStance": "support"
+                }
+              },
+              "final": {
+                "id": "claim_gw_detection",
+                "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                "kind": "empirical-claim",
+                "status": "blocked",
+                "supportMass": 0.98,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 0.5051,
+                "evidenceCount": 1,
+                "independentSourceCount": 1,
+                "sourceGroups": [
+                  "GW150914"
+                ],
+                "supportGroups": [
+                  "GW150914"
+                ],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "direction": "support",
+                  "reasons": [
+                    "no-validation-attempt"
+                  ],
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0.98,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0.98,
+                  "opposeMass": 0,
+                  "balanceRatio": 0,
+                  "dominantStance": "support"
+                }
+              },
+              "steps": [
+                {
+                  "rule": "RESEARCH_CONCLUSION_GATE",
+                  "priority": 1200,
+                  "op": "decision-gate",
+                  "before": {
+                    "id": "claim_gw_detection",
+                    "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                    "kind": "empirical-claim",
+                    "status": "testing",
+                    "supportMass": 0.98,
+                    "opposeMass": 0,
+                    "neutralMass": 0,
+                    "uncertainty": 0.5051,
+                    "evidenceCount": 1,
+                    "independentSourceCount": 1,
+                    "sourceGroups": [
+                      "GW150914"
+                    ],
+                    "supportGroups": [
+                      "GW150914"
+                    ],
+                    "opposeGroups": [],
+                    "provenanceComplete": true,
+                    "validation": {
+                      "attempts": 0,
+                      "supportive": 0,
+                      "opposing": 0,
+                      "inconclusive": 0,
+                      "reproducibleSupport": 0,
+                      "reproducibleOppose": 0,
+                      "strongSupport": 0,
+                      "strongOppose": 0,
+                      "last": null
+                    },
+                    "decision": {
+                      "status": "blocked",
+                      "direction": "support",
+                      "reasons": [
+                        "no-validation-attempt"
+                      ],
+                      "conflict": {
+                        "present": false,
+                        "supportMass": 0.98,
+                        "opposeMass": 0,
+                        "balanceRatio": 0,
+                        "dominantStance": "support"
+                      }
+                    },
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 0.98,
+                      "opposeMass": 0,
+                      "balanceRatio": 0,
+                      "dominantStance": "support"
+                    }
+                  },
+                  "after": {
+                    "id": "claim_gw_detection",
+                    "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                    "kind": "empirical-claim",
+                    "status": "blocked",
+                    "supportMass": 0.98,
+                    "opposeMass": 0,
+                    "neutralMass": 0,
+                    "uncertainty": 0.5051,
+                    "evidenceCount": 1,
+                    "independentSourceCount": 1,
+                    "sourceGroups": [
+                      "GW150914"
+                    ],
+                    "supportGroups": [
+                      "GW150914"
+                    ],
+                    "opposeGroups": [],
+                    "provenanceComplete": true,
+                    "validation": {
+                      "attempts": 0,
+                      "supportive": 0,
+                      "opposing": 0,
+                      "inconclusive": 0,
+                      "reproducibleSupport": 0,
+                      "reproducibleOppose": 0,
+                      "strongSupport": 0,
+                      "strongOppose": 0,
+                      "last": null
+                    },
+                    "decision": {
+                      "status": "blocked",
+                      "direction": "support",
+                      "reasons": [
+                        "no-validation-attempt"
+                      ],
+                      "conflict": {
+                        "present": false,
+                        "supportMass": 0.98,
+                        "opposeMass": 0,
+                        "balanceRatio": 0,
+                        "dominantStance": "support"
+                      }
+                    },
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 0.98,
+                      "opposeMass": 0,
+                      "balanceRatio": 0,
+                      "dominantStance": "support"
+                    }
+                  }
+                }
+              ]
+            },
+            "research.conclusionDirection": {
+              "path": "research.conclusionDirection",
+              "base": "undetermined",
+              "final": "support",
+              "steps": [
+                {
+                  "rule": "RESEARCH_CONCLUSION_GATE",
+                  "priority": 1200,
+                  "op": "set",
+                  "before": "undetermined",
+                  "after": "support"
+                }
+              ]
+            },
+            "workflow.nextAction": {
+              "path": "workflow.nextAction",
+              "base": "seek-independent-evidence",
+              "final": "collect-or-validate-more",
+              "steps": [
+                {
+                  "rule": "RESEARCH_CONCLUSION_GATE",
+                  "priority": 1200,
+                  "op": "set",
+                  "before": "seek-independent-evidence",
+                  "after": "collect-or-validate-more"
+                }
+              ]
+            }
+          },
+          "diagnostics": [
+            {
+              "severity": "warning",
+              "code": "RESEARCH_PREMATURE_CONCLUSION_BLOCKED",
+              "message": "结论门禁未通过：no-validation-attempt"
+            }
+          ],
+          "artifacts": [
+            {
+              "type": "research-decision",
+              "claimId": "claim_gw_detection",
+              "decision": {
+                "status": "blocked",
+                "direction": "support",
+                "reasons": [
+                  "no-validation-attempt"
+                ],
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0.98,
+                  "opposeMass": 0,
+                  "balanceRatio": 0,
+                  "dominantStance": "support"
+                }
+              },
+              "claim": {
+                "id": "claim_gw_detection",
+                "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                "kind": "empirical-claim",
+                "status": "blocked",
+                "supportMass": 0.98,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 0.5051,
+                "evidenceCount": 1,
+                "independentSourceCount": 1,
+                "sourceGroups": [
+                  "GW150914"
+                ],
+                "supportGroups": [
+                  "GW150914"
+                ],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "direction": "support",
+                  "reasons": [
+                    "no-validation-attempt"
+                  ],
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0.98,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0.98,
+                  "opposeMass": 0,
+                  "balanceRatio": 0,
+                  "dominantStance": "support"
+                }
+              }
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "conclusion_status",
+                "label": "结论状态",
+                "type": "path",
+                "path": "research.conclusionStatus",
+                "value": "blocked"
+              },
+              {
+                "id": "evidence_count",
+                "label": "证据账本条目",
+                "type": "path",
+                "path": "research.evidenceLedger.length",
+                "value": 1
+              },
+              {
+                "id": "validation_count",
+                "label": "验证条目",
+                "type": "path",
+                "path": "research.validationLedger.length",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 5,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "research.evidence-ledger.default",
+          "title": "证据账本科研助手",
+          "kind": "research",
+          "version": "0.2.0",
+          "fingerprint": "8bdf887d7637f89e3395ec7d95fdc6ecbe568e17b1709289a49a381449745c16",
+          "engine": {
+            "id": "research/evidence-ledger",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 5,
+          "step": 1
+        },
+        "event": {
+          "id": "gw151226-validation",
+          "type": "VALIDATION_RESULT",
+          "payload": {
+            "validationId": "doi:10.1103/PhysRevLett.116.241103",
+            "claimId": "claim_gw_detection",
+            "kind": "experiment",
+            "method": "independent-second-direct-observation",
+            "outcome": "support",
+            "confidence": 0.99,
+            "reproducible": true,
+            "independenceGroup": "GW151226",
+            "provenance": {
+              "title": "GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence",
+              "publisher": "Physical Review Letters",
+              "doi": "10.1103/PhysRevLett.116.241103",
+              "locator": "doi:10.1103/PhysRevLett.116.241103"
+            },
+            "artifact": {
+              "locator": "LIGO-GW151226"
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "research": {
+              "question": "Are binary-black-hole merger gravitational-wave signals directly detectable by ground-based interferometers?",
+              "activeClaimId": "claim_gw_detection",
+              "claimOrder": [
+                "claim_gw_detection"
+              ],
+              "claims": {
+                "claim_gw_detection": {
+                  "id": "claim_gw_detection",
+                  "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                  "kind": "empirical-claim",
+                  "status": "blocked",
+                  "supportMass": 0.98,
+                  "opposeMass": 0,
+                  "neutralMass": 0,
+                  "uncertainty": 0.5051,
+                  "evidenceCount": 1,
+                  "independentSourceCount": 1,
+                  "sourceGroups": [
+                    "GW150914"
+                  ],
+                  "supportGroups": [
+                    "GW150914"
+                  ],
+                  "opposeGroups": [],
+                  "provenanceComplete": true,
+                  "validation": {
+                    "attempts": 0,
+                    "supportive": 0,
+                    "opposing": 0,
+                    "inconclusive": 0,
+                    "reproducibleSupport": 0,
+                    "reproducibleOppose": 0,
+                    "strongSupport": 0,
+                    "strongOppose": 0,
+                    "last": null
+                  },
+                  "decision": {
+                    "status": "blocked",
+                    "direction": "support",
+                    "reasons": [
+                      "no-validation-attempt"
+                    ],
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 0.98,
+                      "opposeMass": 0,
+                      "balanceRatio": 0,
+                      "dominantStance": "support"
+                    }
+                  },
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0.98,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                }
+              },
+              "evidenceLedger": [
+                {
+                  "evidenceId": "doi:10.1103/PhysRevLett.116.061102",
+                  "claimId": "claim_gw_detection",
+                  "stance": "support",
+                  "summary": "GW150914 was reported as the first direct detection of gravitational waves and first observation of a binary black-hole merger.",
+                  "source": {
+                    "title": "Observation of Gravitational Waves from a Binary Black Hole Merger",
+                    "publisher": "Physical Review Letters",
+                    "doi": "10.1103/PhysRevLett.116.061102",
+                    "locator": "doi:10.1103/PhysRevLett.116.061102"
+                  },
+                  "quality": {
+                    "relevance": 1,
+                    "reliability": 0.98,
+                    "independence": 1,
+                    "group": "GW150914",
+                    "correlated": false,
+                    "correlationFactor": 1,
+                    "weight": 0.98
+                  },
+                  "provenanceComplete": true
+                }
+              ],
+              "evidenceIds": [
+                "doi:10.1103/PhysRevLett.116.061102"
+              ],
+              "validationLedger": [],
+              "conclusionStatus": "blocked",
+              "conclusionDirection": "support"
+            },
+            "workflow": {
+              "nextAction": "collect-or-validate-more"
+            }
+          },
+          "resolvedState": {
+            "research": {
+              "question": "Are binary-black-hole merger gravitational-wave signals directly detectable by ground-based interferometers?",
+              "activeClaimId": "claim_gw_detection",
+              "claimOrder": [
+                "claim_gw_detection"
+              ],
+              "claims": {
+                "claim_gw_detection": {
+                  "id": "claim_gw_detection",
+                  "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                  "kind": "empirical-claim",
+                  "status": "testing",
+                  "supportMass": 1.97,
+                  "opposeMass": 0,
+                  "neutralMass": 0,
+                  "uncertainty": 0.3367,
+                  "evidenceCount": 1,
+                  "independentSourceCount": 2,
+                  "sourceGroups": [
+                    "GW150914",
+                    "GW151226"
+                  ],
+                  "supportGroups": [
+                    "GW150914",
+                    "GW151226"
+                  ],
+                  "opposeGroups": [],
+                  "provenanceComplete": true,
+                  "validation": {
+                    "attempts": 1,
+                    "supportive": 1,
+                    "opposing": 0,
+                    "inconclusive": 0,
+                    "reproducibleSupport": 1,
+                    "reproducibleOppose": 0,
+                    "strongSupport": 1,
+                    "strongOppose": 0,
+                    "last": {
+                      "validationId": "doi:10.1103/PhysRevLett.116.241103",
+                      "claimId": "claim_gw_detection",
+                      "kind": "experiment",
+                      "method": "independent-second-direct-observation",
+                      "outcome": "support",
+                      "confidence": 0.99,
+                      "reproducible": true,
+                      "strong": true,
+                      "strongMethod": true,
+                      "independenceGroup": "GW151226",
+                      "provenanceComplete": true,
+                      "provenance": {
+                        "title": "GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence",
+                        "publisher": "Physical Review Letters",
+                        "doi": "10.1103/PhysRevLett.116.241103",
+                        "locator": "doi:10.1103/PhysRevLett.116.241103"
+                      },
+                      "artifact": {
+                        "locator": "LIGO-GW151226"
+                      }
+                    }
+                  },
+                  "decision": {
+                    "status": "ready",
+                    "direction": "support",
+                    "reasons": [],
+                    "counterRatio": 0,
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 1.97,
+                      "opposeMass": 0,
+                      "balanceRatio": 0,
+                      "dominantStance": "support"
+                    }
+                  },
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 1.97,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                }
+              },
+              "evidenceLedger": [
+                {
+                  "evidenceId": "doi:10.1103/PhysRevLett.116.061102",
+                  "claimId": "claim_gw_detection",
+                  "stance": "support",
+                  "summary": "GW150914 was reported as the first direct detection of gravitational waves and first observation of a binary black-hole merger.",
+                  "source": {
+                    "title": "Observation of Gravitational Waves from a Binary Black Hole Merger",
+                    "publisher": "Physical Review Letters",
+                    "doi": "10.1103/PhysRevLett.116.061102",
+                    "locator": "doi:10.1103/PhysRevLett.116.061102"
+                  },
+                  "quality": {
+                    "relevance": 1,
+                    "reliability": 0.98,
+                    "independence": 1,
+                    "group": "GW150914",
+                    "correlated": false,
+                    "correlationFactor": 1,
+                    "weight": 0.98
+                  },
+                  "provenanceComplete": true
+                }
+              ],
+              "evidenceIds": [
+                "doi:10.1103/PhysRevLett.116.061102"
+              ],
+              "validationLedger": [
+                {
+                  "validationId": "doi:10.1103/PhysRevLett.116.241103",
+                  "claimId": "claim_gw_detection",
+                  "kind": "experiment",
+                  "method": "independent-second-direct-observation",
+                  "outcome": "support",
+                  "confidence": 0.99,
+                  "reproducible": true,
+                  "strong": true,
+                  "strongMethod": true,
+                  "independenceGroup": "GW151226",
+                  "provenanceComplete": true,
+                  "provenance": {
+                    "title": "GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence",
+                    "publisher": "Physical Review Letters",
+                    "doi": "10.1103/PhysRevLett.116.241103",
+                    "locator": "doi:10.1103/PhysRevLett.116.241103"
+                  },
+                  "artifact": {
+                    "locator": "LIGO-GW151226"
+                  }
+                }
+              ],
+              "conclusionStatus": "blocked",
+              "conclusionDirection": "support"
+            },
+            "workflow": {
+              "nextAction": "evaluate-conclusion-gates"
+            }
+          },
+          "activeRules": [
+            {
+              "id": "RESEARCH_VALIDATION_LIFECYCLE",
+              "priority": 1140,
+              "rationale": "Validation 是独立生命周期阶段；验证结果不能被 hypothesis generation 本身替代。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "RESEARCH_VALIDATION_LIFECYCLE",
+              "path": "research.validationLedger",
+              "op": "append",
+              "before": [],
+              "after": [
+                {
+                  "validationId": "doi:10.1103/PhysRevLett.116.241103",
+                  "claimId": "claim_gw_detection",
+                  "kind": "experiment",
+                  "method": "independent-second-direct-observation",
+                  "outcome": "support",
+                  "confidence": 0.99,
+                  "reproducible": true,
+                  "strong": true,
+                  "strongMethod": true,
+                  "independenceGroup": "GW151226",
+                  "provenanceComplete": true,
+                  "provenance": {
+                    "title": "GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence",
+                    "publisher": "Physical Review Letters",
+                    "doi": "10.1103/PhysRevLett.116.241103",
+                    "locator": "doi:10.1103/PhysRevLett.116.241103"
+                  },
+                  "artifact": {
+                    "locator": "LIGO-GW151226"
+                  }
+                }
+              ]
+            },
+            {
+              "source": "RESEARCH_VALIDATION_LIFECYCLE",
+              "path": "research.claims.claim_gw_detection",
+              "op": "validation-update",
+              "before": {
+                "id": "claim_gw_detection",
+                "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                "kind": "empirical-claim",
+                "status": "blocked",
+                "supportMass": 0.98,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 0.5051,
+                "evidenceCount": 1,
+                "independentSourceCount": 1,
+                "sourceGroups": [
+                  "GW150914"
+                ],
+                "supportGroups": [
+                  "GW150914"
+                ],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "direction": "support",
+                  "reasons": [
+                    "no-validation-attempt"
+                  ],
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0.98,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0.98,
+                  "opposeMass": 0,
+                  "balanceRatio": 0,
+                  "dominantStance": "support"
+                }
+              },
+              "after": {
+                "id": "claim_gw_detection",
+                "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 1.97,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 0.3367,
+                "evidenceCount": 1,
+                "independentSourceCount": 2,
+                "sourceGroups": [
+                  "GW150914",
+                  "GW151226"
+                ],
+                "supportGroups": [
+                  "GW150914",
+                  "GW151226"
+                ],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 1,
+                  "supportive": 1,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 1,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 1,
+                  "strongOppose": 0,
+                  "last": {
+                    "validationId": "doi:10.1103/PhysRevLett.116.241103",
+                    "claimId": "claim_gw_detection",
+                    "kind": "experiment",
+                    "method": "independent-second-direct-observation",
+                    "outcome": "support",
+                    "confidence": 0.99,
+                    "reproducible": true,
+                    "strong": true,
+                    "strongMethod": true,
+                    "independenceGroup": "GW151226",
+                    "provenanceComplete": true,
+                    "provenance": {
+                      "title": "GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence",
+                      "publisher": "Physical Review Letters",
+                      "doi": "10.1103/PhysRevLett.116.241103",
+                      "locator": "doi:10.1103/PhysRevLett.116.241103"
+                    },
+                    "artifact": {
+                      "locator": "LIGO-GW151226"
+                    }
+                  }
+                },
+                "decision": {
+                  "status": "ready",
+                  "direction": "support",
+                  "reasons": [],
+                  "counterRatio": 0,
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 1.97,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 1.97,
+                  "opposeMass": 0,
+                  "balanceRatio": 0,
+                  "dominantStance": "support"
+                }
+              }
+            },
+            {
+              "source": "RESEARCH_VALIDATION_LIFECYCLE",
+              "path": "workflow.nextAction",
+              "op": "set",
+              "before": "collect-or-validate-more",
+              "after": "evaluate-conclusion-gates"
+            }
+          ],
+          "trace": {
+            "research.validationLedger": {
+              "path": "research.validationLedger",
+              "base": [],
+              "final": [
+                {
+                  "validationId": "doi:10.1103/PhysRevLett.116.241103",
+                  "claimId": "claim_gw_detection",
+                  "kind": "experiment",
+                  "method": "independent-second-direct-observation",
+                  "outcome": "support",
+                  "confidence": 0.99,
+                  "reproducible": true,
+                  "strong": true,
+                  "strongMethod": true,
+                  "independenceGroup": "GW151226",
+                  "provenanceComplete": true,
+                  "provenance": {
+                    "title": "GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence",
+                    "publisher": "Physical Review Letters",
+                    "doi": "10.1103/PhysRevLett.116.241103",
+                    "locator": "doi:10.1103/PhysRevLett.116.241103"
+                  },
+                  "artifact": {
+                    "locator": "LIGO-GW151226"
+                  }
+                }
+              ],
+              "steps": [
+                {
+                  "rule": "RESEARCH_VALIDATION_LIFECYCLE",
+                  "priority": 1140,
+                  "op": "append",
+                  "before": [],
+                  "after": [
+                    {
+                      "validationId": "doi:10.1103/PhysRevLett.116.241103",
+                      "claimId": "claim_gw_detection",
+                      "kind": "experiment",
+                      "method": "independent-second-direct-observation",
+                      "outcome": "support",
+                      "confidence": 0.99,
+                      "reproducible": true,
+                      "strong": true,
+                      "strongMethod": true,
+                      "independenceGroup": "GW151226",
+                      "provenanceComplete": true,
+                      "provenance": {
+                        "title": "GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence",
+                        "publisher": "Physical Review Letters",
+                        "doi": "10.1103/PhysRevLett.116.241103",
+                        "locator": "doi:10.1103/PhysRevLett.116.241103"
+                      },
+                      "artifact": {
+                        "locator": "LIGO-GW151226"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "research.claims.claim_gw_detection": {
+              "path": "research.claims.claim_gw_detection",
+              "base": {
+                "id": "claim_gw_detection",
+                "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                "kind": "empirical-claim",
+                "status": "blocked",
+                "supportMass": 0.98,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 0.5051,
+                "evidenceCount": 1,
+                "independentSourceCount": 1,
+                "sourceGroups": [
+                  "GW150914"
+                ],
+                "supportGroups": [
+                  "GW150914"
+                ],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "direction": "support",
+                  "reasons": [
+                    "no-validation-attempt"
+                  ],
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0.98,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0.98,
+                  "opposeMass": 0,
+                  "balanceRatio": 0,
+                  "dominantStance": "support"
+                }
+              },
+              "final": {
+                "id": "claim_gw_detection",
+                "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 1.97,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 0.3367,
+                "evidenceCount": 1,
+                "independentSourceCount": 2,
+                "sourceGroups": [
+                  "GW150914",
+                  "GW151226"
+                ],
+                "supportGroups": [
+                  "GW150914",
+                  "GW151226"
+                ],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 1,
+                  "supportive": 1,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 1,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 1,
+                  "strongOppose": 0,
+                  "last": {
+                    "validationId": "doi:10.1103/PhysRevLett.116.241103",
+                    "claimId": "claim_gw_detection",
+                    "kind": "experiment",
+                    "method": "independent-second-direct-observation",
+                    "outcome": "support",
+                    "confidence": 0.99,
+                    "reproducible": true,
+                    "strong": true,
+                    "strongMethod": true,
+                    "independenceGroup": "GW151226",
+                    "provenanceComplete": true,
+                    "provenance": {
+                      "title": "GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence",
+                      "publisher": "Physical Review Letters",
+                      "doi": "10.1103/PhysRevLett.116.241103",
+                      "locator": "doi:10.1103/PhysRevLett.116.241103"
+                    },
+                    "artifact": {
+                      "locator": "LIGO-GW151226"
+                    }
+                  }
+                },
+                "decision": {
+                  "status": "ready",
+                  "direction": "support",
+                  "reasons": [],
+                  "counterRatio": 0,
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 1.97,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 1.97,
+                  "opposeMass": 0,
+                  "balanceRatio": 0,
+                  "dominantStance": "support"
+                }
+              },
+              "steps": [
+                {
+                  "rule": "RESEARCH_VALIDATION_LIFECYCLE",
+                  "priority": 1140,
+                  "op": "validation-update",
+                  "before": {
+                    "id": "claim_gw_detection",
+                    "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                    "kind": "empirical-claim",
+                    "status": "blocked",
+                    "supportMass": 0.98,
+                    "opposeMass": 0,
+                    "neutralMass": 0,
+                    "uncertainty": 0.5051,
+                    "evidenceCount": 1,
+                    "independentSourceCount": 1,
+                    "sourceGroups": [
+                      "GW150914"
+                    ],
+                    "supportGroups": [
+                      "GW150914"
+                    ],
+                    "opposeGroups": [],
+                    "provenanceComplete": true,
+                    "validation": {
+                      "attempts": 0,
+                      "supportive": 0,
+                      "opposing": 0,
+                      "inconclusive": 0,
+                      "reproducibleSupport": 0,
+                      "reproducibleOppose": 0,
+                      "strongSupport": 0,
+                      "strongOppose": 0,
+                      "last": null
+                    },
+                    "decision": {
+                      "status": "blocked",
+                      "direction": "support",
+                      "reasons": [
+                        "no-validation-attempt"
+                      ],
+                      "conflict": {
+                        "present": false,
+                        "supportMass": 0.98,
+                        "opposeMass": 0,
+                        "balanceRatio": 0,
+                        "dominantStance": "support"
+                      }
+                    },
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 0.98,
+                      "opposeMass": 0,
+                      "balanceRatio": 0,
+                      "dominantStance": "support"
+                    }
+                  },
+                  "after": {
+                    "id": "claim_gw_detection",
+                    "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                    "kind": "empirical-claim",
+                    "status": "testing",
+                    "supportMass": 1.97,
+                    "opposeMass": 0,
+                    "neutralMass": 0,
+                    "uncertainty": 0.3367,
+                    "evidenceCount": 1,
+                    "independentSourceCount": 2,
+                    "sourceGroups": [
+                      "GW150914",
+                      "GW151226"
+                    ],
+                    "supportGroups": [
+                      "GW150914",
+                      "GW151226"
+                    ],
+                    "opposeGroups": [],
+                    "provenanceComplete": true,
+                    "validation": {
+                      "attempts": 1,
+                      "supportive": 1,
+                      "opposing": 0,
+                      "inconclusive": 0,
+                      "reproducibleSupport": 1,
+                      "reproducibleOppose": 0,
+                      "strongSupport": 1,
+                      "strongOppose": 0,
+                      "last": {
+                        "validationId": "doi:10.1103/PhysRevLett.116.241103",
+                        "claimId": "claim_gw_detection",
+                        "kind": "experiment",
+                        "method": "independent-second-direct-observation",
+                        "outcome": "support",
+                        "confidence": 0.99,
+                        "reproducible": true,
+                        "strong": true,
+                        "strongMethod": true,
+                        "independenceGroup": "GW151226",
+                        "provenanceComplete": true,
+                        "provenance": {
+                          "title": "GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence",
+                          "publisher": "Physical Review Letters",
+                          "doi": "10.1103/PhysRevLett.116.241103",
+                          "locator": "doi:10.1103/PhysRevLett.116.241103"
+                        },
+                        "artifact": {
+                          "locator": "LIGO-GW151226"
+                        }
+                      }
+                    },
+                    "decision": {
+                      "status": "ready",
+                      "direction": "support",
+                      "reasons": [],
+                      "counterRatio": 0,
+                      "conflict": {
+                        "present": false,
+                        "supportMass": 1.97,
+                        "opposeMass": 0,
+                        "balanceRatio": 0,
+                        "dominantStance": "support"
+                      }
+                    },
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 1.97,
+                      "opposeMass": 0,
+                      "balanceRatio": 0,
+                      "dominantStance": "support"
+                    }
+                  }
+                }
+              ]
+            },
+            "workflow.nextAction": {
+              "path": "workflow.nextAction",
+              "base": "collect-or-validate-more",
+              "final": "evaluate-conclusion-gates",
+              "steps": [
+                {
+                  "rule": "RESEARCH_VALIDATION_LIFECYCLE",
+                  "priority": 1140,
+                  "op": "set",
+                  "before": "collect-or-validate-more",
+                  "after": "evaluate-conclusion-gates"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "research-validation",
+              "validationId": "doi:10.1103/PhysRevLett.116.241103",
+              "claimId": "claim_gw_detection",
+              "kind": "experiment",
+              "method": "independent-second-direct-observation",
+              "outcome": "support",
+              "confidence": 0.99,
+              "reproducible": true,
+              "strong": true,
+              "strongMethod": true,
+              "independenceGroup": "GW151226",
+              "provenanceComplete": true,
+              "provenance": {
+                "title": "GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence",
+                "publisher": "Physical Review Letters",
+                "doi": "10.1103/PhysRevLett.116.241103",
+                "locator": "doi:10.1103/PhysRevLett.116.241103"
+              },
+              "artifact": {
+                "locator": "LIGO-GW151226"
+              },
+              "claimAfter": {
+                "id": "claim_gw_detection",
+                "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 1.97,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 0.3367,
+                "evidenceCount": 1,
+                "independentSourceCount": 2,
+                "sourceGroups": [
+                  "GW150914",
+                  "GW151226"
+                ],
+                "supportGroups": [
+                  "GW150914",
+                  "GW151226"
+                ],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 1,
+                  "supportive": 1,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 1,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 1,
+                  "strongOppose": 0,
+                  "last": {
+                    "validationId": "doi:10.1103/PhysRevLett.116.241103",
+                    "claimId": "claim_gw_detection",
+                    "kind": "experiment",
+                    "method": "independent-second-direct-observation",
+                    "outcome": "support",
+                    "confidence": 0.99,
+                    "reproducible": true,
+                    "strong": true,
+                    "strongMethod": true,
+                    "independenceGroup": "GW151226",
+                    "provenanceComplete": true,
+                    "provenance": {
+                      "title": "GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence",
+                      "publisher": "Physical Review Letters",
+                      "doi": "10.1103/PhysRevLett.116.241103",
+                      "locator": "doi:10.1103/PhysRevLett.116.241103"
+                    },
+                    "artifact": {
+                      "locator": "LIGO-GW151226"
+                    }
+                  }
+                },
+                "decision": {
+                  "status": "ready",
+                  "direction": "support",
+                  "reasons": [],
+                  "counterRatio": 0,
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 1.97,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 1.97,
+                  "opposeMass": 0,
+                  "balanceRatio": 0,
+                  "dominantStance": "support"
+                }
+              }
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "conclusion_status",
+                "label": "结论状态",
+                "type": "path",
+                "path": "research.conclusionStatus",
+                "value": "blocked"
+              },
+              {
+                "id": "evidence_count",
+                "label": "证据账本条目",
+                "type": "path",
+                "path": "research.evidenceLedger.length",
+                "value": 1
+              },
+              {
+                "id": "validation_count",
+                "label": "验证条目",
+                "type": "path",
+                "path": "research.validationLedger.length",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 6,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "research.evidence-ledger.default",
+          "title": "证据账本科研助手",
+          "kind": "research",
+          "version": "0.2.0",
+          "fingerprint": "8bdf887d7637f89e3395ec7d95fdc6ecbe568e17b1709289a49a381449745c16",
+          "engine": {
+            "id": "research/evidence-ledger",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 6,
+          "step": 1
+        },
+        "event": {
+          "id": "conclusion-after-validation",
+          "type": "CONCLUSION_REQUESTED",
+          "payload": {
+            "claimId": "claim_gw_detection"
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "research": {
+              "question": "Are binary-black-hole merger gravitational-wave signals directly detectable by ground-based interferometers?",
+              "activeClaimId": "claim_gw_detection",
+              "claimOrder": [
+                "claim_gw_detection"
+              ],
+              "claims": {
+                "claim_gw_detection": {
+                  "id": "claim_gw_detection",
+                  "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                  "kind": "empirical-claim",
+                  "status": "testing",
+                  "supportMass": 1.97,
+                  "opposeMass": 0,
+                  "neutralMass": 0,
+                  "uncertainty": 0.3367,
+                  "evidenceCount": 1,
+                  "independentSourceCount": 2,
+                  "sourceGroups": [
+                    "GW150914",
+                    "GW151226"
+                  ],
+                  "supportGroups": [
+                    "GW150914",
+                    "GW151226"
+                  ],
+                  "opposeGroups": [],
+                  "provenanceComplete": true,
+                  "validation": {
+                    "attempts": 1,
+                    "supportive": 1,
+                    "opposing": 0,
+                    "inconclusive": 0,
+                    "reproducibleSupport": 1,
+                    "reproducibleOppose": 0,
+                    "strongSupport": 1,
+                    "strongOppose": 0,
+                    "last": {
+                      "validationId": "doi:10.1103/PhysRevLett.116.241103",
+                      "claimId": "claim_gw_detection",
+                      "kind": "experiment",
+                      "method": "independent-second-direct-observation",
+                      "outcome": "support",
+                      "confidence": 0.99,
+                      "reproducible": true,
+                      "strong": true,
+                      "strongMethod": true,
+                      "independenceGroup": "GW151226",
+                      "provenanceComplete": true,
+                      "provenance": {
+                        "title": "GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence",
+                        "publisher": "Physical Review Letters",
+                        "doi": "10.1103/PhysRevLett.116.241103",
+                        "locator": "doi:10.1103/PhysRevLett.116.241103"
+                      },
+                      "artifact": {
+                        "locator": "LIGO-GW151226"
+                      }
+                    }
+                  },
+                  "decision": {
+                    "status": "ready",
+                    "direction": "support",
+                    "reasons": [],
+                    "counterRatio": 0,
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 1.97,
+                      "opposeMass": 0,
+                      "balanceRatio": 0,
+                      "dominantStance": "support"
+                    }
+                  },
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 1.97,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                }
+              },
+              "evidenceLedger": [
+                {
+                  "evidenceId": "doi:10.1103/PhysRevLett.116.061102",
+                  "claimId": "claim_gw_detection",
+                  "stance": "support",
+                  "summary": "GW150914 was reported as the first direct detection of gravitational waves and first observation of a binary black-hole merger.",
+                  "source": {
+                    "title": "Observation of Gravitational Waves from a Binary Black Hole Merger",
+                    "publisher": "Physical Review Letters",
+                    "doi": "10.1103/PhysRevLett.116.061102",
+                    "locator": "doi:10.1103/PhysRevLett.116.061102"
+                  },
+                  "quality": {
+                    "relevance": 1,
+                    "reliability": 0.98,
+                    "independence": 1,
+                    "group": "GW150914",
+                    "correlated": false,
+                    "correlationFactor": 1,
+                    "weight": 0.98
+                  },
+                  "provenanceComplete": true
+                }
+              ],
+              "evidenceIds": [
+                "doi:10.1103/PhysRevLett.116.061102"
+              ],
+              "validationLedger": [
+                {
+                  "validationId": "doi:10.1103/PhysRevLett.116.241103",
+                  "claimId": "claim_gw_detection",
+                  "kind": "experiment",
+                  "method": "independent-second-direct-observation",
+                  "outcome": "support",
+                  "confidence": 0.99,
+                  "reproducible": true,
+                  "strong": true,
+                  "strongMethod": true,
+                  "independenceGroup": "GW151226",
+                  "provenanceComplete": true,
+                  "provenance": {
+                    "title": "GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence",
+                    "publisher": "Physical Review Letters",
+                    "doi": "10.1103/PhysRevLett.116.241103",
+                    "locator": "doi:10.1103/PhysRevLett.116.241103"
+                  },
+                  "artifact": {
+                    "locator": "LIGO-GW151226"
+                  }
+                }
+              ],
+              "conclusionStatus": "blocked",
+              "conclusionDirection": "support"
+            },
+            "workflow": {
+              "nextAction": "evaluate-conclusion-gates"
+            }
+          },
+          "resolvedState": {
+            "research": {
+              "question": "Are binary-black-hole merger gravitational-wave signals directly detectable by ground-based interferometers?",
+              "activeClaimId": "claim_gw_detection",
+              "claimOrder": [
+                "claim_gw_detection"
+              ],
+              "claims": {
+                "claim_gw_detection": {
+                  "id": "claim_gw_detection",
+                  "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                  "kind": "empirical-claim",
+                  "status": "ready",
+                  "supportMass": 1.97,
+                  "opposeMass": 0,
+                  "neutralMass": 0,
+                  "uncertainty": 0.3367,
+                  "evidenceCount": 1,
+                  "independentSourceCount": 2,
+                  "sourceGroups": [
+                    "GW150914",
+                    "GW151226"
+                  ],
+                  "supportGroups": [
+                    "GW150914",
+                    "GW151226"
+                  ],
+                  "opposeGroups": [],
+                  "provenanceComplete": true,
+                  "validation": {
+                    "attempts": 1,
+                    "supportive": 1,
+                    "opposing": 0,
+                    "inconclusive": 0,
+                    "reproducibleSupport": 1,
+                    "reproducibleOppose": 0,
+                    "strongSupport": 1,
+                    "strongOppose": 0,
+                    "last": {
+                      "validationId": "doi:10.1103/PhysRevLett.116.241103",
+                      "claimId": "claim_gw_detection",
+                      "kind": "experiment",
+                      "method": "independent-second-direct-observation",
+                      "outcome": "support",
+                      "confidence": 0.99,
+                      "reproducible": true,
+                      "strong": true,
+                      "strongMethod": true,
+                      "independenceGroup": "GW151226",
+                      "provenanceComplete": true,
+                      "provenance": {
+                        "title": "GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence",
+                        "publisher": "Physical Review Letters",
+                        "doi": "10.1103/PhysRevLett.116.241103",
+                        "locator": "doi:10.1103/PhysRevLett.116.241103"
+                      },
+                      "artifact": {
+                        "locator": "LIGO-GW151226"
+                      }
+                    }
+                  },
+                  "decision": {
+                    "status": "ready",
+                    "direction": "support",
+                    "reasons": [],
+                    "counterRatio": 0,
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 1.97,
+                      "opposeMass": 0,
+                      "balanceRatio": 0,
+                      "dominantStance": "support"
+                    }
+                  },
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 1.97,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                }
+              },
+              "evidenceLedger": [
+                {
+                  "evidenceId": "doi:10.1103/PhysRevLett.116.061102",
+                  "claimId": "claim_gw_detection",
+                  "stance": "support",
+                  "summary": "GW150914 was reported as the first direct detection of gravitational waves and first observation of a binary black-hole merger.",
+                  "source": {
+                    "title": "Observation of Gravitational Waves from a Binary Black Hole Merger",
+                    "publisher": "Physical Review Letters",
+                    "doi": "10.1103/PhysRevLett.116.061102",
+                    "locator": "doi:10.1103/PhysRevLett.116.061102"
+                  },
+                  "quality": {
+                    "relevance": 1,
+                    "reliability": 0.98,
+                    "independence": 1,
+                    "group": "GW150914",
+                    "correlated": false,
+                    "correlationFactor": 1,
+                    "weight": 0.98
+                  },
+                  "provenanceComplete": true
+                }
+              ],
+              "evidenceIds": [
+                "doi:10.1103/PhysRevLett.116.061102"
+              ],
+              "validationLedger": [
+                {
+                  "validationId": "doi:10.1103/PhysRevLett.116.241103",
+                  "claimId": "claim_gw_detection",
+                  "kind": "experiment",
+                  "method": "independent-second-direct-observation",
+                  "outcome": "support",
+                  "confidence": 0.99,
+                  "reproducible": true,
+                  "strong": true,
+                  "strongMethod": true,
+                  "independenceGroup": "GW151226",
+                  "provenanceComplete": true,
+                  "provenance": {
+                    "title": "GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence",
+                    "publisher": "Physical Review Letters",
+                    "doi": "10.1103/PhysRevLett.116.241103",
+                    "locator": "doi:10.1103/PhysRevLett.116.241103"
+                  },
+                  "artifact": {
+                    "locator": "LIGO-GW151226"
+                  }
+                }
+              ],
+              "conclusionStatus": "ready",
+              "conclusionDirection": "support"
+            },
+            "workflow": {
+              "nextAction": "report"
+            }
+          },
+          "activeRules": [
+            {
+              "id": "RESEARCH_CONCLUSION_GATE",
+              "priority": 1200,
+              "rationale": "结论必须经过 evidence independence、provenance、validation 和 uncertainty gate。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "RESEARCH_CONCLUSION_GATE",
+              "path": "research.claims.claim_gw_detection",
+              "op": "decision-gate",
+              "before": {
+                "id": "claim_gw_detection",
+                "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 1.97,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 0.3367,
+                "evidenceCount": 1,
+                "independentSourceCount": 2,
+                "sourceGroups": [
+                  "GW150914",
+                  "GW151226"
+                ],
+                "supportGroups": [
+                  "GW150914",
+                  "GW151226"
+                ],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 1,
+                  "supportive": 1,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 1,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 1,
+                  "strongOppose": 0,
+                  "last": {
+                    "validationId": "doi:10.1103/PhysRevLett.116.241103",
+                    "claimId": "claim_gw_detection",
+                    "kind": "experiment",
+                    "method": "independent-second-direct-observation",
+                    "outcome": "support",
+                    "confidence": 0.99,
+                    "reproducible": true,
+                    "strong": true,
+                    "strongMethod": true,
+                    "independenceGroup": "GW151226",
+                    "provenanceComplete": true,
+                    "provenance": {
+                      "title": "GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence",
+                      "publisher": "Physical Review Letters",
+                      "doi": "10.1103/PhysRevLett.116.241103",
+                      "locator": "doi:10.1103/PhysRevLett.116.241103"
+                    },
+                    "artifact": {
+                      "locator": "LIGO-GW151226"
+                    }
+                  }
+                },
+                "decision": {
+                  "status": "ready",
+                  "direction": "support",
+                  "reasons": [],
+                  "counterRatio": 0,
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 1.97,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 1.97,
+                  "opposeMass": 0,
+                  "balanceRatio": 0,
+                  "dominantStance": "support"
+                }
+              },
+              "after": {
+                "id": "claim_gw_detection",
+                "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                "kind": "empirical-claim",
+                "status": "ready",
+                "supportMass": 1.97,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 0.3367,
+                "evidenceCount": 1,
+                "independentSourceCount": 2,
+                "sourceGroups": [
+                  "GW150914",
+                  "GW151226"
+                ],
+                "supportGroups": [
+                  "GW150914",
+                  "GW151226"
+                ],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 1,
+                  "supportive": 1,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 1,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 1,
+                  "strongOppose": 0,
+                  "last": {
+                    "validationId": "doi:10.1103/PhysRevLett.116.241103",
+                    "claimId": "claim_gw_detection",
+                    "kind": "experiment",
+                    "method": "independent-second-direct-observation",
+                    "outcome": "support",
+                    "confidence": 0.99,
+                    "reproducible": true,
+                    "strong": true,
+                    "strongMethod": true,
+                    "independenceGroup": "GW151226",
+                    "provenanceComplete": true,
+                    "provenance": {
+                      "title": "GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence",
+                      "publisher": "Physical Review Letters",
+                      "doi": "10.1103/PhysRevLett.116.241103",
+                      "locator": "doi:10.1103/PhysRevLett.116.241103"
+                    },
+                    "artifact": {
+                      "locator": "LIGO-GW151226"
+                    }
+                  }
+                },
+                "decision": {
+                  "status": "ready",
+                  "direction": "support",
+                  "reasons": [],
+                  "counterRatio": 0,
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 1.97,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 1.97,
+                  "opposeMass": 0,
+                  "balanceRatio": 0,
+                  "dominantStance": "support"
+                }
+              }
+            },
+            {
+              "source": "RESEARCH_CONCLUSION_GATE",
+              "path": "research.conclusionStatus",
+              "op": "set",
+              "before": "blocked",
+              "after": "ready"
+            },
+            {
+              "source": "RESEARCH_CONCLUSION_GATE",
+              "path": "workflow.nextAction",
+              "op": "set",
+              "before": "evaluate-conclusion-gates",
+              "after": "report"
+            }
+          ],
+          "trace": {
+            "research.claims.claim_gw_detection": {
+              "path": "research.claims.claim_gw_detection",
+              "base": {
+                "id": "claim_gw_detection",
+                "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 1.97,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 0.3367,
+                "evidenceCount": 1,
+                "independentSourceCount": 2,
+                "sourceGroups": [
+                  "GW150914",
+                  "GW151226"
+                ],
+                "supportGroups": [
+                  "GW150914",
+                  "GW151226"
+                ],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 1,
+                  "supportive": 1,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 1,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 1,
+                  "strongOppose": 0,
+                  "last": {
+                    "validationId": "doi:10.1103/PhysRevLett.116.241103",
+                    "claimId": "claim_gw_detection",
+                    "kind": "experiment",
+                    "method": "independent-second-direct-observation",
+                    "outcome": "support",
+                    "confidence": 0.99,
+                    "reproducible": true,
+                    "strong": true,
+                    "strongMethod": true,
+                    "independenceGroup": "GW151226",
+                    "provenanceComplete": true,
+                    "provenance": {
+                      "title": "GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence",
+                      "publisher": "Physical Review Letters",
+                      "doi": "10.1103/PhysRevLett.116.241103",
+                      "locator": "doi:10.1103/PhysRevLett.116.241103"
+                    },
+                    "artifact": {
+                      "locator": "LIGO-GW151226"
+                    }
+                  }
+                },
+                "decision": {
+                  "status": "ready",
+                  "direction": "support",
+                  "reasons": [],
+                  "counterRatio": 0,
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 1.97,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 1.97,
+                  "opposeMass": 0,
+                  "balanceRatio": 0,
+                  "dominantStance": "support"
+                }
+              },
+              "final": {
+                "id": "claim_gw_detection",
+                "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                "kind": "empirical-claim",
+                "status": "ready",
+                "supportMass": 1.97,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 0.3367,
+                "evidenceCount": 1,
+                "independentSourceCount": 2,
+                "sourceGroups": [
+                  "GW150914",
+                  "GW151226"
+                ],
+                "supportGroups": [
+                  "GW150914",
+                  "GW151226"
+                ],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 1,
+                  "supportive": 1,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 1,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 1,
+                  "strongOppose": 0,
+                  "last": {
+                    "validationId": "doi:10.1103/PhysRevLett.116.241103",
+                    "claimId": "claim_gw_detection",
+                    "kind": "experiment",
+                    "method": "independent-second-direct-observation",
+                    "outcome": "support",
+                    "confidence": 0.99,
+                    "reproducible": true,
+                    "strong": true,
+                    "strongMethod": true,
+                    "independenceGroup": "GW151226",
+                    "provenanceComplete": true,
+                    "provenance": {
+                      "title": "GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence",
+                      "publisher": "Physical Review Letters",
+                      "doi": "10.1103/PhysRevLett.116.241103",
+                      "locator": "doi:10.1103/PhysRevLett.116.241103"
+                    },
+                    "artifact": {
+                      "locator": "LIGO-GW151226"
+                    }
+                  }
+                },
+                "decision": {
+                  "status": "ready",
+                  "direction": "support",
+                  "reasons": [],
+                  "counterRatio": 0,
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 1.97,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 1.97,
+                  "opposeMass": 0,
+                  "balanceRatio": 0,
+                  "dominantStance": "support"
+                }
+              },
+              "steps": [
+                {
+                  "rule": "RESEARCH_CONCLUSION_GATE",
+                  "priority": 1200,
+                  "op": "decision-gate",
+                  "before": {
+                    "id": "claim_gw_detection",
+                    "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                    "kind": "empirical-claim",
+                    "status": "testing",
+                    "supportMass": 1.97,
+                    "opposeMass": 0,
+                    "neutralMass": 0,
+                    "uncertainty": 0.3367,
+                    "evidenceCount": 1,
+                    "independentSourceCount": 2,
+                    "sourceGroups": [
+                      "GW150914",
+                      "GW151226"
+                    ],
+                    "supportGroups": [
+                      "GW150914",
+                      "GW151226"
+                    ],
+                    "opposeGroups": [],
+                    "provenanceComplete": true,
+                    "validation": {
+                      "attempts": 1,
+                      "supportive": 1,
+                      "opposing": 0,
+                      "inconclusive": 0,
+                      "reproducibleSupport": 1,
+                      "reproducibleOppose": 0,
+                      "strongSupport": 1,
+                      "strongOppose": 0,
+                      "last": {
+                        "validationId": "doi:10.1103/PhysRevLett.116.241103",
+                        "claimId": "claim_gw_detection",
+                        "kind": "experiment",
+                        "method": "independent-second-direct-observation",
+                        "outcome": "support",
+                        "confidence": 0.99,
+                        "reproducible": true,
+                        "strong": true,
+                        "strongMethod": true,
+                        "independenceGroup": "GW151226",
+                        "provenanceComplete": true,
+                        "provenance": {
+                          "title": "GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence",
+                          "publisher": "Physical Review Letters",
+                          "doi": "10.1103/PhysRevLett.116.241103",
+                          "locator": "doi:10.1103/PhysRevLett.116.241103"
+                        },
+                        "artifact": {
+                          "locator": "LIGO-GW151226"
+                        }
+                      }
+                    },
+                    "decision": {
+                      "status": "ready",
+                      "direction": "support",
+                      "reasons": [],
+                      "counterRatio": 0,
+                      "conflict": {
+                        "present": false,
+                        "supportMass": 1.97,
+                        "opposeMass": 0,
+                        "balanceRatio": 0,
+                        "dominantStance": "support"
+                      }
+                    },
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 1.97,
+                      "opposeMass": 0,
+                      "balanceRatio": 0,
+                      "dominantStance": "support"
+                    }
+                  },
+                  "after": {
+                    "id": "claim_gw_detection",
+                    "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                    "kind": "empirical-claim",
+                    "status": "ready",
+                    "supportMass": 1.97,
+                    "opposeMass": 0,
+                    "neutralMass": 0,
+                    "uncertainty": 0.3367,
+                    "evidenceCount": 1,
+                    "independentSourceCount": 2,
+                    "sourceGroups": [
+                      "GW150914",
+                      "GW151226"
+                    ],
+                    "supportGroups": [
+                      "GW150914",
+                      "GW151226"
+                    ],
+                    "opposeGroups": [],
+                    "provenanceComplete": true,
+                    "validation": {
+                      "attempts": 1,
+                      "supportive": 1,
+                      "opposing": 0,
+                      "inconclusive": 0,
+                      "reproducibleSupport": 1,
+                      "reproducibleOppose": 0,
+                      "strongSupport": 1,
+                      "strongOppose": 0,
+                      "last": {
+                        "validationId": "doi:10.1103/PhysRevLett.116.241103",
+                        "claimId": "claim_gw_detection",
+                        "kind": "experiment",
+                        "method": "independent-second-direct-observation",
+                        "outcome": "support",
+                        "confidence": 0.99,
+                        "reproducible": true,
+                        "strong": true,
+                        "strongMethod": true,
+                        "independenceGroup": "GW151226",
+                        "provenanceComplete": true,
+                        "provenance": {
+                          "title": "GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence",
+                          "publisher": "Physical Review Letters",
+                          "doi": "10.1103/PhysRevLett.116.241103",
+                          "locator": "doi:10.1103/PhysRevLett.116.241103"
+                        },
+                        "artifact": {
+                          "locator": "LIGO-GW151226"
+                        }
+                      }
+                    },
+                    "decision": {
+                      "status": "ready",
+                      "direction": "support",
+                      "reasons": [],
+                      "counterRatio": 0,
+                      "conflict": {
+                        "present": false,
+                        "supportMass": 1.97,
+                        "opposeMass": 0,
+                        "balanceRatio": 0,
+                        "dominantStance": "support"
+                      }
+                    },
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 1.97,
+                      "opposeMass": 0,
+                      "balanceRatio": 0,
+                      "dominantStance": "support"
+                    }
+                  }
+                }
+              ]
+            },
+            "research.conclusionStatus": {
+              "path": "research.conclusionStatus",
+              "base": "blocked",
+              "final": "ready",
+              "steps": [
+                {
+                  "rule": "RESEARCH_CONCLUSION_GATE",
+                  "priority": 1200,
+                  "op": "set",
+                  "before": "blocked",
+                  "after": "ready"
+                }
+              ]
+            },
+            "workflow.nextAction": {
+              "path": "workflow.nextAction",
+              "base": "evaluate-conclusion-gates",
+              "final": "report",
+              "steps": [
+                {
+                  "rule": "RESEARCH_CONCLUSION_GATE",
+                  "priority": 1200,
+                  "op": "set",
+                  "before": "evaluate-conclusion-gates",
+                  "after": "report"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "research-decision",
+              "claimId": "claim_gw_detection",
+              "decision": {
+                "status": "ready",
+                "direction": "support",
+                "reasons": [],
+                "counterRatio": 0,
+                "conflict": {
+                  "present": false,
+                  "supportMass": 1.97,
+                  "opposeMass": 0,
+                  "balanceRatio": 0,
+                  "dominantStance": "support"
+                }
+              },
+              "claim": {
+                "id": "claim_gw_detection",
+                "text": "Binary-black-hole mergers produce gravitational-wave signals that are directly detectable by Advanced LIGO-class interferometers.",
+                "kind": "empirical-claim",
+                "status": "ready",
+                "supportMass": 1.97,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 0.3367,
+                "evidenceCount": 1,
+                "independentSourceCount": 2,
+                "sourceGroups": [
+                  "GW150914",
+                  "GW151226"
+                ],
+                "supportGroups": [
+                  "GW150914",
+                  "GW151226"
+                ],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 1,
+                  "supportive": 1,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 1,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 1,
+                  "strongOppose": 0,
+                  "last": {
+                    "validationId": "doi:10.1103/PhysRevLett.116.241103",
+                    "claimId": "claim_gw_detection",
+                    "kind": "experiment",
+                    "method": "independent-second-direct-observation",
+                    "outcome": "support",
+                    "confidence": 0.99,
+                    "reproducible": true,
+                    "strong": true,
+                    "strongMethod": true,
+                    "independenceGroup": "GW151226",
+                    "provenanceComplete": true,
+                    "provenance": {
+                      "title": "GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence",
+                      "publisher": "Physical Review Letters",
+                      "doi": "10.1103/PhysRevLett.116.241103",
+                      "locator": "doi:10.1103/PhysRevLett.116.241103"
+                    },
+                    "artifact": {
+                      "locator": "LIGO-GW151226"
+                    }
+                  }
+                },
+                "decision": {
+                  "status": "ready",
+                  "direction": "support",
+                  "reasons": [],
+                  "counterRatio": 0,
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 1.97,
+                    "opposeMass": 0,
+                    "balanceRatio": 0,
+                    "dominantStance": "support"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 1.97,
+                  "opposeMass": 0,
+                  "balanceRatio": 0,
+                  "dominantStance": "support"
+                }
+              }
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "conclusion_status",
+                "label": "结论状态",
+                "type": "path",
+                "path": "research.conclusionStatus",
+                "value": "ready"
+              },
+              {
+                "id": "evidence_count",
+                "label": "证据账本条目",
+                "type": "path",
+                "path": "research.evidenceLedger.length",
+                "value": 1
+              },
+              {
+                "id": "validation_count",
+                "label": "验证条目",
+                "type": "path",
+                "path": "research.validationLedger.length",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    }
+  ]
+}

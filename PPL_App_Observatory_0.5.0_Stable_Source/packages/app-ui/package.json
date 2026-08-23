@@ -1,0 +1,16 @@
+{
+  "name": "@ppl/app-ui",
+  "version": "0.5.0",
+  "type": "module",
+  "description": "Reusable dependency-free UI renderer for PPL Observatory.",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./styles.css": "./src/styles.css"
+  },
+  "dependencies": {
+    "@ppl/app-core": "0.5.0"
+  },
+  "files": [
+    "src"
+  ]
+}

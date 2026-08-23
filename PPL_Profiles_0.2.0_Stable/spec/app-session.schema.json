@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ppl.app-session/0.3",
+  "title": "PPL Observatory Session 0.3",
+  "type": "object",
+  "required": ["schema", "entries"],
+  "properties": {
+    "schema": { "const": "ppl.app-session/0.3" },
+    "title": { "type": "string" },
+    "profile": { "type": "object" },
+    "domain": { "type": "object" },
+    "observability": { "type": "object" },
+    "literature": { "type": "array" },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["snapshotSeq", "kind", "endReason", "snapshot"],
+        "properties": {
+          "snapshotSeq": { "type": "number" },
+          "kind": { "enum": ["persona", "profile"] },
+          "endReason": { "type": "string" },
+          "snapshot": { "type": "object" }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,2379 @@
+{
+  "schema": "ppl.app-session/0.3",
+  "title": "不确定性感知学习导师 · assistments-replay-70729",
+  "profile": {
+    "id": "tutor.uncertainty-verifier.default",
+    "title": "不确定性感知学习导师",
+    "kind": "tutor",
+    "version": "0.2.0",
+    "engine": {
+      "id": "tutor/uncertainty-verifier",
+      "version": "0.2"
+    }
+  },
+  "domain": {
+    "profileKind": "tutor",
+    "engine": {
+      "id": "tutor/uncertainty-verifier",
+      "version": "0.2"
+    },
+    "application": {
+      "domain": "learning",
+      "maturity": "application-evolution",
+      "hostOwnsContentGeneration": true
+    }
+  },
+  "observability": {
+    "metrics": [
+      {
+        "path": "learner.skills.fractions_addition.mean",
+        "label": "掌握度均值",
+        "hint": "Beta posterior mean",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "path": "learner.skills.fractions_addition.uncertainty",
+        "label": "知识不确定性",
+        "hint": "posterior spread，越高越需诊断",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "path": "learner.skills.fractions_addition.evidenceWeight",
+        "label": "有效证据量",
+        "hint": "按 assessment validity 加权"
+      },
+      {
+        "path": "pedagogy.verifier.effectiveness",
+        "label": "干预有效性",
+        "hint": "turn-by-turn verifier EMA",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "path": "learner.affect.frustration",
+        "label": "挫败度",
+        "hint": "仅来自显式 affect observation",
+        "min": 0,
+        "max": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "skills",
+        "label": "知识状态",
+        "prefix": "learner.skills."
+      },
+      {
+        "id": "misconceptions",
+        "label": "错误概念证据",
+        "prefix": "learner.misconceptions."
+      },
+      {
+        "id": "pedagogy",
+        "label": "教学策略与验证",
+        "prefix": "pedagogy."
+      },
+      {
+        "id": "task",
+        "label": "任务建议",
+        "prefix": "task."
+      }
+    ]
+  },
+  "literature": [
+    {
+      "id": "arxiv:2501.05415",
+      "title": "Uncertainty-aware Knowledge Tracing",
+      "mechanismBorrowed": "知识状态应显式表达不确定性；本实现采用透明 Beta posterior 工程近似而非复制论文模型。"
+    },
+    {
+      "id": "arxiv:2502.13311",
+      "title": "Training Turn-by-Turn Verifiers for Dialogue Tutoring Agents",
+      "mechanismBorrowed": "知识状态追踪与逐轮教学效果 verifier 分离。"
+    },
+    {
+      "id": "ASSISTments-2009-2010",
+      "title": "ASSISTments Skill-builder data 2009-2010",
+      "mechanismBorrowed": "提示/分步帮助会影响 assessment 解释，数据适配器保留 hints/attempts/original provenance。"
+    }
+  ],
+  "entries": [
+    {
+      "snapshotSeq": 1,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 1,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:33392795",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:33392795",
+            "learnerId": "70729",
+            "skillId": "Box and Whisker",
+            "skillKey": "box_and_whisker",
+            "problemId": "51454",
+            "correct": false,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": false,
+              "attemptCount": 2,
+              "hintCount": 0,
+              "hintTotal": 4,
+              "firstAction": "attempt",
+              "firstActionRaw": "0",
+              "bottomHint": null,
+              "answerRevealed": false
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "33392795",
+              "userId": "70729",
+              "problemId": "51454",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "fractions.addition",
+              "currentSkillKey": "fractions_addition",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Box and Whisker",
+              "currentSkillKey": "box_and_whisker",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "box_and_whisker": {
+                  "skillId": "Box and Whisker",
+                  "alpha": 2,
+                  "beta": 4.81,
+                  "mean": 0.2937,
+                  "variance": 0.02656,
+                  "posteriorStd": 0.162973,
+                  "uncertainty": 0.6519,
+                  "evidenceWeight": 0.81,
+                  "observations": 1,
+                  "directAssessments": 0,
+                  "assistedAssessments": 1,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 1,
+                  "assistanceEpisodes": 1,
+                  "lastEvidenceId": "assistments:33392795",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:33392795"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.box_and_whisker",
+              "op": "bayes-beta-update",
+              "after": {
+                "skillId": "Box and Whisker",
+                "alpha": 2,
+                "beta": 4.81,
+                "mean": 0.2937,
+                "variance": 0.02656,
+                "posteriorStd": 0.162973,
+                "uncertainty": 0.6519,
+                "evidenceWeight": 0.81,
+                "observations": 1,
+                "directAssessments": 0,
+                "assistedAssessments": 1,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 1,
+                "assistanceEpisodes": 1,
+                "lastEvidenceId": "assistments:33392795",
+                "lastScore": 0
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.currentSkillId",
+              "op": "set",
+              "before": "fractions.addition",
+              "after": "Box and Whisker"
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.currentSkillKey",
+              "op": "set",
+              "before": "fractions_addition",
+              "after": "box_and_whisker"
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [],
+              "after": [
+                "assistments:33392795"
+              ]
+            }
+          ],
+          "trace": {
+            "learner.skills.box_and_whisker": {
+              "path": "learner.skills.box_and_whisker",
+              "final": {
+                "skillId": "Box and Whisker",
+                "alpha": 2,
+                "beta": 4.81,
+                "mean": 0.2937,
+                "variance": 0.02656,
+                "posteriorStd": 0.162973,
+                "uncertainty": 0.6519,
+                "evidenceWeight": 0.81,
+                "observations": 1,
+                "directAssessments": 0,
+                "assistedAssessments": 1,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 1,
+                "assistanceEpisodes": 1,
+                "lastEvidenceId": "assistments:33392795",
+                "lastScore": 0
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "after": {
+                    "skillId": "Box and Whisker",
+                    "alpha": 2,
+                    "beta": 4.81,
+                    "mean": 0.2937,
+                    "variance": 0.02656,
+                    "posteriorStd": 0.162973,
+                    "uncertainty": 0.6519,
+                    "evidenceWeight": 0.81,
+                    "observations": 1,
+                    "directAssessments": 0,
+                    "assistedAssessments": 1,
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 1,
+                    "assistanceEpisodes": 1,
+                    "lastEvidenceId": "assistments:33392795",
+                    "lastScore": 0
+                  }
+                }
+              ]
+            },
+            "learner.currentSkillId": {
+              "path": "learner.currentSkillId",
+              "base": "fractions.addition",
+              "final": "Box and Whisker",
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "set",
+                  "before": "fractions.addition",
+                  "after": "Box and Whisker"
+                }
+              ]
+            },
+            "learner.currentSkillKey": {
+              "path": "learner.currentSkillKey",
+              "base": "fractions_addition",
+              "final": "box_and_whisker",
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "set",
+                  "before": "fractions_addition",
+                  "after": "box_and_whisker"
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [],
+              "final": [
+                "assistments:33392795"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [],
+                  "after": [
+                    "assistments:33392795"
+                  ]
+                }
+              ]
+            }
+          },
+          "diagnostics": [
+            {
+              "severity": "info",
+              "code": "TUTOR_ASSISTED_FAILURE_PRESERVED",
+              "message": "首答错误/需要帮助被保留为尚未独立掌握的负证据；assistance 不会像成功证据那样对称削弱。"
+            }
+          ],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:33392795",
+              "accepted": true,
+              "skillId": "Box and Whisker",
+              "score": 0,
+              "reliability": 0.9,
+              "validity": 0.9,
+              "weight": 0.81,
+              "assisted": true,
+              "assistanceUsed": true,
+              "helpRequested": false,
+              "hints": 0,
+              "attempts": 2,
+              "answerRevealed": false,
+              "direction": "nonmastery-support",
+              "reason": "first-attempt-failure-or-assistance-needed",
+              "posterior": {
+                "alpha": 2,
+                "beta": 4.81,
+                "mean": 0.2937,
+                "variance": 0.02656,
+                "posteriorStd": 0.162973,
+                "uncertainty": 0.6519
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Box and Whisker"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "diagnose"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 2,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 2,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:33392817",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:33392817",
+            "learnerId": "70729",
+            "skillId": "Box and Whisker",
+            "skillKey": "box_and_whisker",
+            "problemId": "51460",
+            "correct": true,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": true,
+              "attemptCount": 1,
+              "hintCount": 0,
+              "hintTotal": 4,
+              "firstAction": "attempt",
+              "firstActionRaw": "0",
+              "bottomHint": null,
+              "answerRevealed": false
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "33392817",
+              "userId": "70729",
+              "problemId": "51460",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "Box and Whisker",
+              "currentSkillKey": "box_and_whisker",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "box_and_whisker": {
+                  "skillId": "Box and Whisker",
+                  "alpha": 2,
+                  "beta": 4.81,
+                  "mean": 0.2937,
+                  "variance": 0.02656,
+                  "posteriorStd": 0.162973,
+                  "uncertainty": 0.6519,
+                  "evidenceWeight": 0.81,
+                  "observations": 1,
+                  "directAssessments": 0,
+                  "assistedAssessments": 1,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 1,
+                  "assistanceEpisodes": 1,
+                  "lastEvidenceId": "assistments:33392795",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:33392795"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Box and Whisker",
+              "currentSkillKey": "box_and_whisker",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "box_and_whisker": {
+                  "skillId": "Box and Whisker",
+                  "alpha": 2.9,
+                  "beta": 4.81,
+                  "mean": 0.3761,
+                  "variance": 0.026941,
+                  "posteriorStd": 0.164138,
+                  "uncertainty": 0.6566,
+                  "evidenceWeight": 1.71,
+                  "observations": 2,
+                  "directAssessments": 1,
+                  "assistedAssessments": 1,
+                  "unaidedSuccesses": 1,
+                  "firstAttemptFailures": 1,
+                  "assistanceEpisodes": 1,
+                  "lastEvidenceId": "assistments:33392817",
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:33392795",
+                "assistments:33392817"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.box_and_whisker",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "Box and Whisker",
+                "alpha": 2,
+                "beta": 4.81,
+                "mean": 0.2937,
+                "variance": 0.02656,
+                "posteriorStd": 0.162973,
+                "uncertainty": 0.6519,
+                "evidenceWeight": 0.81,
+                "observations": 1,
+                "directAssessments": 0,
+                "assistedAssessments": 1,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 1,
+                "assistanceEpisodes": 1,
+                "lastEvidenceId": "assistments:33392795",
+                "lastScore": 0
+              },
+              "after": {
+                "skillId": "Box and Whisker",
+                "alpha": 2.9,
+                "beta": 4.81,
+                "mean": 0.3761,
+                "variance": 0.026941,
+                "posteriorStd": 0.164138,
+                "uncertainty": 0.6566,
+                "evidenceWeight": 1.71,
+                "observations": 2,
+                "directAssessments": 1,
+                "assistedAssessments": 1,
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 1,
+                "assistanceEpisodes": 1,
+                "lastEvidenceId": "assistments:33392817",
+                "lastScore": 1
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:33392795"
+              ],
+              "after": [
+                "assistments:33392795",
+                "assistments:33392817"
+              ]
+            }
+          ],
+          "trace": {
+            "learner.skills.box_and_whisker": {
+              "path": "learner.skills.box_and_whisker",
+              "base": {
+                "skillId": "Box and Whisker",
+                "alpha": 2,
+                "beta": 4.81,
+                "mean": 0.2937,
+                "variance": 0.02656,
+                "posteriorStd": 0.162973,
+                "uncertainty": 0.6519,
+                "evidenceWeight": 0.81,
+                "observations": 1,
+                "directAssessments": 0,
+                "assistedAssessments": 1,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 1,
+                "assistanceEpisodes": 1,
+                "lastEvidenceId": "assistments:33392795",
+                "lastScore": 0
+              },
+              "final": {
+                "skillId": "Box and Whisker",
+                "alpha": 2.9,
+                "beta": 4.81,
+                "mean": 0.3761,
+                "variance": 0.026941,
+                "posteriorStd": 0.164138,
+                "uncertainty": 0.6566,
+                "evidenceWeight": 1.71,
+                "observations": 2,
+                "directAssessments": 1,
+                "assistedAssessments": 1,
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 1,
+                "assistanceEpisodes": 1,
+                "lastEvidenceId": "assistments:33392817",
+                "lastScore": 1
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "Box and Whisker",
+                    "alpha": 2,
+                    "beta": 4.81,
+                    "mean": 0.2937,
+                    "variance": 0.02656,
+                    "posteriorStd": 0.162973,
+                    "uncertainty": 0.6519,
+                    "evidenceWeight": 0.81,
+                    "observations": 1,
+                    "directAssessments": 0,
+                    "assistedAssessments": 1,
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 1,
+                    "assistanceEpisodes": 1,
+                    "lastEvidenceId": "assistments:33392795",
+                    "lastScore": 0
+                  },
+                  "after": {
+                    "skillId": "Box and Whisker",
+                    "alpha": 2.9,
+                    "beta": 4.81,
+                    "mean": 0.3761,
+                    "variance": 0.026941,
+                    "posteriorStd": 0.164138,
+                    "uncertainty": 0.6566,
+                    "evidenceWeight": 1.71,
+                    "observations": 2,
+                    "directAssessments": 1,
+                    "assistedAssessments": 1,
+                    "unaidedSuccesses": 1,
+                    "firstAttemptFailures": 1,
+                    "assistanceEpisodes": 1,
+                    "lastEvidenceId": "assistments:33392817",
+                    "lastScore": 1
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:33392795"
+              ],
+              "final": [
+                "assistments:33392795",
+                "assistments:33392817"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:33392795"
+                  ],
+                  "after": [
+                    "assistments:33392795",
+                    "assistments:33392817"
+                  ]
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:33392817",
+              "accepted": true,
+              "skillId": "Box and Whisker",
+              "score": 1,
+              "reliability": 0.9,
+              "validity": 1,
+              "weight": 0.9,
+              "assisted": false,
+              "assistanceUsed": false,
+              "helpRequested": false,
+              "hints": 0,
+              "attempts": 1,
+              "answerRevealed": false,
+              "direction": "mastery-support",
+              "reason": "unaided-first-attempt-success",
+              "posterior": {
+                "alpha": 2.9,
+                "beta": 4.81,
+                "mean": 0.3761,
+                "variance": 0.026941,
+                "posteriorStd": 0.164138,
+                "uncertainty": 0.6566
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Box and Whisker"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "diagnose"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 3,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 3,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:33392838",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:33392838",
+            "learnerId": "70729",
+            "skillId": "Box and Whisker",
+            "skillKey": "box_and_whisker",
+            "problemId": "51425",
+            "correct": false,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": false,
+              "attemptCount": 2,
+              "hintCount": 3,
+              "hintTotal": 3,
+              "firstAction": "attempt",
+              "firstActionRaw": "0",
+              "bottomHint": true,
+              "answerRevealed": true
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "33392838",
+              "userId": "70729",
+              "problemId": "51425",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "Box and Whisker",
+              "currentSkillKey": "box_and_whisker",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "box_and_whisker": {
+                  "skillId": "Box and Whisker",
+                  "alpha": 2.9,
+                  "beta": 4.81,
+                  "mean": 0.3761,
+                  "variance": 0.026941,
+                  "posteriorStd": 0.164138,
+                  "uncertainty": 0.6566,
+                  "evidenceWeight": 1.71,
+                  "observations": 2,
+                  "directAssessments": 1,
+                  "assistedAssessments": 1,
+                  "unaidedSuccesses": 1,
+                  "firstAttemptFailures": 1,
+                  "assistanceEpisodes": 1,
+                  "lastEvidenceId": "assistments:33392817",
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:33392795",
+                "assistments:33392817"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Box and Whisker",
+              "currentSkillKey": "box_and_whisker",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "box_and_whisker": {
+                  "skillId": "Box and Whisker",
+                  "alpha": 2.9,
+                  "beta": 5.665,
+                  "mean": 0.3386,
+                  "variance": 0.023413,
+                  "posteriorStd": 0.153013,
+                  "uncertainty": 0.6121,
+                  "evidenceWeight": 2.565,
+                  "observations": 3,
+                  "directAssessments": 1,
+                  "assistedAssessments": 2,
+                  "unaidedSuccesses": 1,
+                  "firstAttemptFailures": 2,
+                  "assistanceEpisodes": 2,
+                  "lastEvidenceId": "assistments:33392838",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:33392795",
+                "assistments:33392817",
+                "assistments:33392838"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.box_and_whisker",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "Box and Whisker",
+                "alpha": 2.9,
+                "beta": 4.81,
+                "mean": 0.3761,
+                "variance": 0.026941,
+                "posteriorStd": 0.164138,
+                "uncertainty": 0.6566,
+                "evidenceWeight": 1.71,
+                "observations": 2,
+                "directAssessments": 1,
+                "assistedAssessments": 1,
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 1,
+                "assistanceEpisodes": 1,
+                "lastEvidenceId": "assistments:33392817",
+                "lastScore": 1
+              },
+              "after": {
+                "skillId": "Box and Whisker",
+                "alpha": 2.9,
+                "beta": 5.665,
+                "mean": 0.3386,
+                "variance": 0.023413,
+                "posteriorStd": 0.153013,
+                "uncertainty": 0.6121,
+                "evidenceWeight": 2.565,
+                "observations": 3,
+                "directAssessments": 1,
+                "assistedAssessments": 2,
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 2,
+                "lastEvidenceId": "assistments:33392838",
+                "lastScore": 0
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:33392795",
+                "assistments:33392817"
+              ],
+              "after": [
+                "assistments:33392795",
+                "assistments:33392817",
+                "assistments:33392838"
+              ]
+            }
+          ],
+          "trace": {
+            "learner.skills.box_and_whisker": {
+              "path": "learner.skills.box_and_whisker",
+              "base": {
+                "skillId": "Box and Whisker",
+                "alpha": 2.9,
+                "beta": 4.81,
+                "mean": 0.3761,
+                "variance": 0.026941,
+                "posteriorStd": 0.164138,
+                "uncertainty": 0.6566,
+                "evidenceWeight": 1.71,
+                "observations": 2,
+                "directAssessments": 1,
+                "assistedAssessments": 1,
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 1,
+                "assistanceEpisodes": 1,
+                "lastEvidenceId": "assistments:33392817",
+                "lastScore": 1
+              },
+              "final": {
+                "skillId": "Box and Whisker",
+                "alpha": 2.9,
+                "beta": 5.665,
+                "mean": 0.3386,
+                "variance": 0.023413,
+                "posteriorStd": 0.153013,
+                "uncertainty": 0.6121,
+                "evidenceWeight": 2.565,
+                "observations": 3,
+                "directAssessments": 1,
+                "assistedAssessments": 2,
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 2,
+                "lastEvidenceId": "assistments:33392838",
+                "lastScore": 0
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "Box and Whisker",
+                    "alpha": 2.9,
+                    "beta": 4.81,
+                    "mean": 0.3761,
+                    "variance": 0.026941,
+                    "posteriorStd": 0.164138,
+                    "uncertainty": 0.6566,
+                    "evidenceWeight": 1.71,
+                    "observations": 2,
+                    "directAssessments": 1,
+                    "assistedAssessments": 1,
+                    "unaidedSuccesses": 1,
+                    "firstAttemptFailures": 1,
+                    "assistanceEpisodes": 1,
+                    "lastEvidenceId": "assistments:33392817",
+                    "lastScore": 1
+                  },
+                  "after": {
+                    "skillId": "Box and Whisker",
+                    "alpha": 2.9,
+                    "beta": 5.665,
+                    "mean": 0.3386,
+                    "variance": 0.023413,
+                    "posteriorStd": 0.153013,
+                    "uncertainty": 0.6121,
+                    "evidenceWeight": 2.565,
+                    "observations": 3,
+                    "directAssessments": 1,
+                    "assistedAssessments": 2,
+                    "unaidedSuccesses": 1,
+                    "firstAttemptFailures": 2,
+                    "assistanceEpisodes": 2,
+                    "lastEvidenceId": "assistments:33392838",
+                    "lastScore": 0
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:33392795",
+                "assistments:33392817"
+              ],
+              "final": [
+                "assistments:33392795",
+                "assistments:33392817",
+                "assistments:33392838"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:33392795",
+                    "assistments:33392817"
+                  ],
+                  "after": [
+                    "assistments:33392795",
+                    "assistments:33392817",
+                    "assistments:33392838"
+                  ]
+                }
+              ]
+            }
+          },
+          "diagnostics": [
+            {
+              "severity": "info",
+              "code": "TUTOR_ASSISTED_FAILURE_PRESERVED",
+              "message": "首答错误/需要帮助被保留为尚未独立掌握的负证据；assistance 不会像成功证据那样对称削弱。"
+            }
+          ],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:33392838",
+              "accepted": true,
+              "skillId": "Box and Whisker",
+              "score": 0,
+              "reliability": 0.9,
+              "validity": 0.95,
+              "weight": 0.855,
+              "assisted": true,
+              "assistanceUsed": true,
+              "helpRequested": true,
+              "hints": 3,
+              "attempts": 2,
+              "answerRevealed": true,
+              "direction": "nonmastery-support",
+              "reason": "bottom-hint-or-answer-reveal-needed",
+              "posterior": {
+                "alpha": 2.9,
+                "beta": 5.665,
+                "mean": 0.3386,
+                "variance": 0.023413,
+                "posteriorStd": 0.153013,
+                "uncertainty": 0.6121
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Box and Whisker"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "diagnose"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 4,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 4,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:33392907",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:33392907",
+            "learnerId": "70729",
+            "skillId": "Box and Whisker",
+            "skillKey": "box_and_whisker",
+            "problemId": "51468",
+            "correct": true,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": true,
+              "attemptCount": 1,
+              "hintCount": 0,
+              "hintTotal": 4,
+              "firstAction": "attempt",
+              "firstActionRaw": "0",
+              "bottomHint": null,
+              "answerRevealed": false
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "33392907",
+              "userId": "70729",
+              "problemId": "51468",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "Box and Whisker",
+              "currentSkillKey": "box_and_whisker",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "box_and_whisker": {
+                  "skillId": "Box and Whisker",
+                  "alpha": 2.9,
+                  "beta": 5.665,
+                  "mean": 0.3386,
+                  "variance": 0.023413,
+                  "posteriorStd": 0.153013,
+                  "uncertainty": 0.6121,
+                  "evidenceWeight": 2.565,
+                  "observations": 3,
+                  "directAssessments": 1,
+                  "assistedAssessments": 2,
+                  "unaidedSuccesses": 1,
+                  "firstAttemptFailures": 2,
+                  "assistanceEpisodes": 2,
+                  "lastEvidenceId": "assistments:33392838",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:33392795",
+                "assistments:33392817",
+                "assistments:33392838"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Box and Whisker",
+              "currentSkillKey": "box_and_whisker",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "box_and_whisker": {
+                  "skillId": "Box and Whisker",
+                  "alpha": 3.8,
+                  "beta": 5.665,
+                  "mean": 0.4015,
+                  "variance": 0.022962,
+                  "posteriorStd": 0.151531,
+                  "uncertainty": 0.6061,
+                  "evidenceWeight": 3.465,
+                  "observations": 4,
+                  "directAssessments": 2,
+                  "assistedAssessments": 2,
+                  "unaidedSuccesses": 2,
+                  "firstAttemptFailures": 2,
+                  "assistanceEpisodes": 2,
+                  "lastEvidenceId": "assistments:33392907",
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:33392795",
+                "assistments:33392817",
+                "assistments:33392838",
+                "assistments:33392907"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.box_and_whisker",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "Box and Whisker",
+                "alpha": 2.9,
+                "beta": 5.665,
+                "mean": 0.3386,
+                "variance": 0.023413,
+                "posteriorStd": 0.153013,
+                "uncertainty": 0.6121,
+                "evidenceWeight": 2.565,
+                "observations": 3,
+                "directAssessments": 1,
+                "assistedAssessments": 2,
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 2,
+                "lastEvidenceId": "assistments:33392838",
+                "lastScore": 0
+              },
+              "after": {
+                "skillId": "Box and Whisker",
+                "alpha": 3.8,
+                "beta": 5.665,
+                "mean": 0.4015,
+                "variance": 0.022962,
+                "posteriorStd": 0.151531,
+                "uncertainty": 0.6061,
+                "evidenceWeight": 3.465,
+                "observations": 4,
+                "directAssessments": 2,
+                "assistedAssessments": 2,
+                "unaidedSuccesses": 2,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 2,
+                "lastEvidenceId": "assistments:33392907",
+                "lastScore": 1
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:33392795",
+                "assistments:33392817",
+                "assistments:33392838"
+              ],
+              "after": [
+                "assistments:33392795",
+                "assistments:33392817",
+                "assistments:33392838",
+                "assistments:33392907"
+              ]
+            }
+          ],
+          "trace": {
+            "learner.skills.box_and_whisker": {
+              "path": "learner.skills.box_and_whisker",
+              "base": {
+                "skillId": "Box and Whisker",
+                "alpha": 2.9,
+                "beta": 5.665,
+                "mean": 0.3386,
+                "variance": 0.023413,
+                "posteriorStd": 0.153013,
+                "uncertainty": 0.6121,
+                "evidenceWeight": 2.565,
+                "observations": 3,
+                "directAssessments": 1,
+                "assistedAssessments": 2,
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 2,
+                "lastEvidenceId": "assistments:33392838",
+                "lastScore": 0
+              },
+              "final": {
+                "skillId": "Box and Whisker",
+                "alpha": 3.8,
+                "beta": 5.665,
+                "mean": 0.4015,
+                "variance": 0.022962,
+                "posteriorStd": 0.151531,
+                "uncertainty": 0.6061,
+                "evidenceWeight": 3.465,
+                "observations": 4,
+                "directAssessments": 2,
+                "assistedAssessments": 2,
+                "unaidedSuccesses": 2,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 2,
+                "lastEvidenceId": "assistments:33392907",
+                "lastScore": 1
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "Box and Whisker",
+                    "alpha": 2.9,
+                    "beta": 5.665,
+                    "mean": 0.3386,
+                    "variance": 0.023413,
+                    "posteriorStd": 0.153013,
+                    "uncertainty": 0.6121,
+                    "evidenceWeight": 2.565,
+                    "observations": 3,
+                    "directAssessments": 1,
+                    "assistedAssessments": 2,
+                    "unaidedSuccesses": 1,
+                    "firstAttemptFailures": 2,
+                    "assistanceEpisodes": 2,
+                    "lastEvidenceId": "assistments:33392838",
+                    "lastScore": 0
+                  },
+                  "after": {
+                    "skillId": "Box and Whisker",
+                    "alpha": 3.8,
+                    "beta": 5.665,
+                    "mean": 0.4015,
+                    "variance": 0.022962,
+                    "posteriorStd": 0.151531,
+                    "uncertainty": 0.6061,
+                    "evidenceWeight": 3.465,
+                    "observations": 4,
+                    "directAssessments": 2,
+                    "assistedAssessments": 2,
+                    "unaidedSuccesses": 2,
+                    "firstAttemptFailures": 2,
+                    "assistanceEpisodes": 2,
+                    "lastEvidenceId": "assistments:33392907",
+                    "lastScore": 1
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:33392795",
+                "assistments:33392817",
+                "assistments:33392838"
+              ],
+              "final": [
+                "assistments:33392795",
+                "assistments:33392817",
+                "assistments:33392838",
+                "assistments:33392907"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:33392795",
+                    "assistments:33392817",
+                    "assistments:33392838"
+                  ],
+                  "after": [
+                    "assistments:33392795",
+                    "assistments:33392817",
+                    "assistments:33392838",
+                    "assistments:33392907"
+                  ]
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:33392907",
+              "accepted": true,
+              "skillId": "Box and Whisker",
+              "score": 1,
+              "reliability": 0.9,
+              "validity": 1,
+              "weight": 0.9,
+              "assisted": false,
+              "assistanceUsed": false,
+              "helpRequested": false,
+              "hints": 0,
+              "attempts": 1,
+              "answerRevealed": false,
+              "direction": "mastery-support",
+              "reason": "unaided-first-attempt-success",
+              "posterior": {
+                "alpha": 3.8,
+                "beta": 5.665,
+                "mean": 0.4015,
+                "variance": 0.022962,
+                "posteriorStd": 0.151531,
+                "uncertainty": 0.6061
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Box and Whisker"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "diagnose"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 5,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 5,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:33392928",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:33392928",
+            "learnerId": "70729",
+            "skillId": "Box and Whisker",
+            "skillKey": "box_and_whisker",
+            "problemId": "51400",
+            "correct": true,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": true,
+              "attemptCount": 1,
+              "hintCount": 0,
+              "hintTotal": 3,
+              "firstAction": "attempt",
+              "firstActionRaw": "0",
+              "bottomHint": null,
+              "answerRevealed": false
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "33392928",
+              "userId": "70729",
+              "problemId": "51400",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "Box and Whisker",
+              "currentSkillKey": "box_and_whisker",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "box_and_whisker": {
+                  "skillId": "Box and Whisker",
+                  "alpha": 3.8,
+                  "beta": 5.665,
+                  "mean": 0.4015,
+                  "variance": 0.022962,
+                  "posteriorStd": 0.151531,
+                  "uncertainty": 0.6061,
+                  "evidenceWeight": 3.465,
+                  "observations": 4,
+                  "directAssessments": 2,
+                  "assistedAssessments": 2,
+                  "unaidedSuccesses": 2,
+                  "firstAttemptFailures": 2,
+                  "assistanceEpisodes": 2,
+                  "lastEvidenceId": "assistments:33392907",
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:33392795",
+                "assistments:33392817",
+                "assistments:33392838",
+                "assistments:33392907"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Box and Whisker",
+              "currentSkillKey": "box_and_whisker",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "box_and_whisker": {
+                  "skillId": "Box and Whisker",
+                  "alpha": 4.7,
+                  "beta": 5.665,
+                  "mean": 0.4534,
+                  "variance": 0.021807,
+                  "posteriorStd": 0.147671,
+                  "uncertainty": 0.5907,
+                  "evidenceWeight": 4.365,
+                  "observations": 5,
+                  "directAssessments": 3,
+                  "assistedAssessments": 2,
+                  "unaidedSuccesses": 3,
+                  "firstAttemptFailures": 2,
+                  "assistanceEpisodes": 2,
+                  "lastEvidenceId": "assistments:33392928",
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:33392795",
+                "assistments:33392817",
+                "assistments:33392838",
+                "assistments:33392907",
+                "assistments:33392928"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "socratic",
+              "hintLevel": 1,
+              "policyReason": "developing-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.box_and_whisker",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "Box and Whisker",
+                "alpha": 3.8,
+                "beta": 5.665,
+                "mean": 0.4015,
+                "variance": 0.022962,
+                "posteriorStd": 0.151531,
+                "uncertainty": 0.6061,
+                "evidenceWeight": 3.465,
+                "observations": 4,
+                "directAssessments": 2,
+                "assistedAssessments": 2,
+                "unaidedSuccesses": 2,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 2,
+                "lastEvidenceId": "assistments:33392907",
+                "lastScore": 1
+              },
+              "after": {
+                "skillId": "Box and Whisker",
+                "alpha": 4.7,
+                "beta": 5.665,
+                "mean": 0.4534,
+                "variance": 0.021807,
+                "posteriorStd": 0.147671,
+                "uncertainty": 0.5907,
+                "evidenceWeight": 4.365,
+                "observations": 5,
+                "directAssessments": 3,
+                "assistedAssessments": 2,
+                "unaidedSuccesses": 3,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 2,
+                "lastEvidenceId": "assistments:33392928",
+                "lastScore": 1
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:33392795",
+                "assistments:33392817",
+                "assistments:33392838",
+                "assistments:33392907"
+              ],
+              "after": [
+                "assistments:33392795",
+                "assistments:33392817",
+                "assistments:33392838",
+                "assistments:33392907",
+                "assistments:33392928"
+              ]
+            },
+            {
+              "source": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "path": "pedagogy.recommendedMode",
+              "op": "set",
+              "before": "diagnose",
+              "after": "socratic"
+            },
+            {
+              "source": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "path": "pedagogy.policyReason",
+              "op": "set",
+              "before": "high-knowledge-uncertainty",
+              "after": "developing-mastery"
+            }
+          ],
+          "trace": {
+            "learner.skills.box_and_whisker": {
+              "path": "learner.skills.box_and_whisker",
+              "base": {
+                "skillId": "Box and Whisker",
+                "alpha": 3.8,
+                "beta": 5.665,
+                "mean": 0.4015,
+                "variance": 0.022962,
+                "posteriorStd": 0.151531,
+                "uncertainty": 0.6061,
+                "evidenceWeight": 3.465,
+                "observations": 4,
+                "directAssessments": 2,
+                "assistedAssessments": 2,
+                "unaidedSuccesses": 2,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 2,
+                "lastEvidenceId": "assistments:33392907",
+                "lastScore": 1
+              },
+              "final": {
+                "skillId": "Box and Whisker",
+                "alpha": 4.7,
+                "beta": 5.665,
+                "mean": 0.4534,
+                "variance": 0.021807,
+                "posteriorStd": 0.147671,
+                "uncertainty": 0.5907,
+                "evidenceWeight": 4.365,
+                "observations": 5,
+                "directAssessments": 3,
+                "assistedAssessments": 2,
+                "unaidedSuccesses": 3,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 2,
+                "lastEvidenceId": "assistments:33392928",
+                "lastScore": 1
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "Box and Whisker",
+                    "alpha": 3.8,
+                    "beta": 5.665,
+                    "mean": 0.4015,
+                    "variance": 0.022962,
+                    "posteriorStd": 0.151531,
+                    "uncertainty": 0.6061,
+                    "evidenceWeight": 3.465,
+                    "observations": 4,
+                    "directAssessments": 2,
+                    "assistedAssessments": 2,
+                    "unaidedSuccesses": 2,
+                    "firstAttemptFailures": 2,
+                    "assistanceEpisodes": 2,
+                    "lastEvidenceId": "assistments:33392907",
+                    "lastScore": 1
+                  },
+                  "after": {
+                    "skillId": "Box and Whisker",
+                    "alpha": 4.7,
+                    "beta": 5.665,
+                    "mean": 0.4534,
+                    "variance": 0.021807,
+                    "posteriorStd": 0.147671,
+                    "uncertainty": 0.5907,
+                    "evidenceWeight": 4.365,
+                    "observations": 5,
+                    "directAssessments": 3,
+                    "assistedAssessments": 2,
+                    "unaidedSuccesses": 3,
+                    "firstAttemptFailures": 2,
+                    "assistanceEpisodes": 2,
+                    "lastEvidenceId": "assistments:33392928",
+                    "lastScore": 1
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:33392795",
+                "assistments:33392817",
+                "assistments:33392838",
+                "assistments:33392907"
+              ],
+              "final": [
+                "assistments:33392795",
+                "assistments:33392817",
+                "assistments:33392838",
+                "assistments:33392907",
+                "assistments:33392928"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:33392795",
+                    "assistments:33392817",
+                    "assistments:33392838",
+                    "assistments:33392907"
+                  ],
+                  "after": [
+                    "assistments:33392795",
+                    "assistments:33392817",
+                    "assistments:33392838",
+                    "assistments:33392907",
+                    "assistments:33392928"
+                  ]
+                }
+              ]
+            },
+            "pedagogy.recommendedMode": {
+              "path": "pedagogy.recommendedMode",
+              "base": "diagnose",
+              "final": "socratic",
+              "steps": [
+                {
+                  "rule": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+                  "priority": 900,
+                  "op": "set",
+                  "before": "diagnose",
+                  "after": "socratic"
+                }
+              ]
+            },
+            "pedagogy.policyReason": {
+              "path": "pedagogy.policyReason",
+              "base": "high-knowledge-uncertainty",
+              "final": "developing-mastery",
+              "steps": [
+                {
+                  "rule": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+                  "priority": 900,
+                  "op": "set",
+                  "before": "high-knowledge-uncertainty",
+                  "after": "developing-mastery"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:33392928",
+              "accepted": true,
+              "skillId": "Box and Whisker",
+              "score": 1,
+              "reliability": 0.9,
+              "validity": 1,
+              "weight": 0.9,
+              "assisted": false,
+              "assistanceUsed": false,
+              "helpRequested": false,
+              "hints": 0,
+              "attempts": 1,
+              "answerRevealed": false,
+              "direction": "mastery-support",
+              "reason": "unaided-first-attempt-success",
+              "posterior": {
+                "alpha": 4.7,
+                "beta": 5.665,
+                "mean": 0.4534,
+                "variance": 0.021807,
+                "posteriorStd": 0.147671,
+                "uncertainty": 0.5907
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Box and Whisker"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "socratic"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    }
+  ]
+}

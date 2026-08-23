@@ -1,0 +1,10 @@
+{
+  "name": "@ppl/profile-research",
+  "version": "0.2.0",
+  "type": "module",
+  "exports": "./src/index.mjs",
+  "dependencies": {
+    "@ppl/profile-core": "0.2.0"
+  },
+  "description": "Evidence ledger, claim lifecycle, conflict retention and conclusion gating for PPL Research Profiles."
+}

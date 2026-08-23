@@ -1,0 +1,12 @@
+order_id,assignment_id,user_id,assistment_id,problem_id,original,correct,attempt_count,ms_first_response,tutor_mode,answer_type,sequence_id,student_class_id,position,type,base_sequence_id,skill_id,skill_name,teacher_id,school_id,hint_count,hint_total,overlap_time,template_id,answer_id,answer_text,first_action,bottom_hint,opportunity,opportunity_original
+35450204,220674,70363,33159,51444,1,0,2,25390,tutor,algebra,5948,11816,22,MasterySection,5948,1,Box and Whisker,22763,73,0,3,42000,30799,,88,0,,1,1
+35450295,220674,70363,33110,51395,1,1,1,4859,tutor,algebra,5948,11816,22,MasterySection,5948,1,Box and Whisker,22763,73,0,3,4859,30059,,41,0,,2,2
+35450311,220674,70363,33196,51481,1,0,14,19813,tutor,algebra,5948,11816,22,MasterySection,5948,1,Box and Whisker,22763,73,3,4,124564,30060,,65,0,0,3,3
+35450555,220674,70363,33172,51457,1,1,1,16031,tutor,algebra,5948,11816,22,MasterySection,5948,1,Box and Whisker,22763,73,0,4,16031,30060,,12,0,,4,4
+35450573,220674,70363,33174,51459,1,1,1,15047,tutor,algebra,5948,11816,22,MasterySection,5948,1,Box and Whisker,22763,73,0,4,15047,30060,,6,0,,5,5
+35480603,220674,70363,33123,51408,1,1,1,10732,tutor,algebra,5948,11816,22,MasterySection,5948,1,Box and Whisker,22763,73,0,3,10732,30059,,55,0,,6,6
+33392795,277618,70729,33169,51454,1,0,2,12898,tutor,algebra,5948,13241,126,MasterySection,5948,1,Box and Whisker,22763,73,0,4,27650,30060,,14,0,,1,1
+33392817,277618,70729,33175,51460,1,1,1,10955,tutor,algebra,5948,13241,126,MasterySection,5948,1,Box and Whisker,22763,73,0,4,10955,30060,,6,0,,2,2
+33392838,277618,70729,33140,51425,1,0,2,27857,tutor,algebra,5948,13241,126,MasterySection,5948,1,Box and Whisker,22763,73,3,3,39933,30799,,16,0,1,3,3
+33392907,277618,70729,33183,51468,1,1,1,13479,tutor,algebra,5948,13241,126,MasterySection,5948,1,Box and Whisker,22763,73,0,4,13479,30060,,16,0,,4,4
+33392928,277618,70729,33115,51400,1,1,1,5385,tutor,algebra,5948,13241,126,MasterySection,5948,1,Box and Whisker,22763,73,0,3,5385,30059,,77,0,,5,5

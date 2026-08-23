@@ -1,0 +1,122 @@
+{
+  "schema": "ppl.app/stable-validation/0.1",
+  "release": "0.4.0",
+  "passed": true,
+  "versionMatrix": {
+    "root": "0.4.0",
+    "appCore": "0.4.0",
+    "appUi": "0.4.0",
+    "appStandalone": "0.4.0",
+    "appAdapterDsh": "0.4.0"
+  },
+  "tests": {
+    "passed": true,
+    "total": 18,
+    "failed": 0
+  },
+  "standaloneSmoke": {
+    "passed": true,
+    "pathTraversalRejected": true
+  },
+  "applicationGate": {
+    "passed": true,
+    "inputContract": "ppl.app-session/0.3",
+    "hostNeutral": true,
+    "resolverRerun": false,
+    "sessions": 7,
+    "results": {
+      "tutorNumberLine": true,
+      "tutorCircle": true,
+      "tutorMixedCircle": true,
+      "tutorAllIncorrect": true,
+      "researchLigo": true,
+      "researchEgoFlip": true,
+      "researchEgoRefute": true
+    }
+  },
+  "hostNeutralSourceCheck": {
+    "passed": true,
+    "scope": [
+      "packages/app-core",
+      "packages/app-ui",
+      "packages/app-standalone"
+    ],
+    "forbiddenImport": "@deepseek-ai/*"
+  },
+  "isolatedNpmArtifacts": {
+    "passed": true,
+    "packages": [
+      "@ppl/app-core",
+      "@ppl/app-ui",
+      "@ppl/app-adapter-dsh"
+    ],
+    "sha256": {
+      "ppl-app-adapter-dsh-0.4.0.tgz": "b264b5bcaa367ca4fba9271b0316cb4732e869e5ed83453b2c43a6bfe14d09ae",
+      "ppl-app-core-0.4.0.tgz": "890e457bb61672ad4875477ba0a7ea008b0c5db17865bf4aa77af0d59e90421f",
+      "ppl-app-standalone-0.4.0.tgz": "d0e3fdeea9a272e5024328289e2d2c01d453daa8940f44a62b392712d17126eb",
+      "ppl-app-ui-0.4.0.tgz": "ef54395b7e1928471d9b2ccf562e399bb8aefce13075ae02e365fc03aad4c720"
+    }
+  },
+  "packedStandaloneSmoke": {
+    "schema": "ppl.app/packed-standalone-smoke/0.1",
+    "release": "0.4.0",
+    "passed": true,
+    "checks": [
+      {
+        "path": "/",
+        "status": 200,
+        "bytes": 2690
+      },
+      {
+        "path": "/modules/app-core/index.mjs",
+        "status": 200,
+        "bytes": 25318
+      },
+      {
+        "path": "/modules/app-ui/index.mjs",
+        "status": 200,
+        "bytes": 29402
+      },
+      {
+        "path": "/sample/persona-reference.app-session.json",
+        "status": 200,
+        "bytes": 2755
+      },
+      {
+        "path": "/sample/tutor-assistments-70363-number-line.app-session.json",
+        "status": 200,
+        "bytes": 188227
+      },
+      {
+        "path": "/sample/research-ligo-strong-validation.app-session.json",
+        "status": 200,
+        "bytes": 149659
+      },
+      {
+        "path": "/sample/research-ego-evidence-flip.app-session.json",
+        "status": 200,
+        "bytes": 495776
+      },
+      {
+        "path": "/sample/research-ego-strong-refutation.app-session.json",
+        "status": 200,
+        "bytes": 167765
+      },
+      {
+        "path": "/../package.json",
+        "status": 404,
+        "bytes": 39
+      }
+    ]
+  },
+  "releaseHygiene": {
+    "sampleSessions": 17,
+    "noRcProfileVersionInSamples": true
+  },
+  "semanticBoundary": {
+    "readOnlyProjection": true,
+    "doesNotRerunPersonaResolver": true,
+    "doesNotRerunProfileResolver": true,
+    "doesNotWriteDurableProfileState": true
+  }
+}

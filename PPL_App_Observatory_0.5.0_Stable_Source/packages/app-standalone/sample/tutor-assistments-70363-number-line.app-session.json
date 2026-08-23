@@ -1,0 +1,5406 @@
+{
+  "schema": "ppl.app-session/0.3",
+  "title": "不确定性感知学习导师 · assistments-70363-number_line",
+  "profile": {
+    "id": "tutor.uncertainty-verifier.default",
+    "title": "不确定性感知学习导师",
+    "kind": "tutor",
+    "version": "0.2.0",
+    "engine": {
+      "id": "tutor/uncertainty-verifier",
+      "version": "0.2"
+    }
+  },
+  "domain": {
+    "profileKind": "tutor",
+    "engine": {
+      "id": "tutor/uncertainty-verifier",
+      "version": "0.2"
+    },
+    "application": {
+      "domain": "learning",
+      "maturity": "application-evolution",
+      "hostOwnsContentGeneration": true
+    }
+  },
+  "observability": {
+    "metrics": [
+      {
+        "path": "learner.skills.fractions_addition.mean",
+        "label": "掌握度均值",
+        "hint": "Beta posterior mean",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "path": "learner.skills.fractions_addition.uncertainty",
+        "label": "知识不确定性",
+        "hint": "posterior spread，越高越需诊断",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "path": "learner.skills.fractions_addition.evidenceWeight",
+        "label": "有效证据量",
+        "hint": "按 assessment validity 加权"
+      },
+      {
+        "path": "pedagogy.verifier.effectiveness",
+        "label": "干预有效性",
+        "hint": "turn-by-turn verifier EMA",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "path": "learner.affect.frustration",
+        "label": "挫败度",
+        "hint": "仅来自显式 affect observation",
+        "min": 0,
+        "max": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "skills",
+        "label": "知识状态",
+        "prefix": "learner.skills."
+      },
+      {
+        "id": "misconceptions",
+        "label": "错误概念证据",
+        "prefix": "learner.misconceptions."
+      },
+      {
+        "id": "pedagogy",
+        "label": "教学策略与验证",
+        "prefix": "pedagogy."
+      },
+      {
+        "id": "task",
+        "label": "任务建议",
+        "prefix": "task."
+      }
+    ]
+  },
+  "literature": [
+    {
+      "id": "arxiv:2501.05415",
+      "title": "Uncertainty-aware Knowledge Tracing",
+      "mechanismBorrowed": "知识状态应显式表达不确定性；本实现采用透明 Beta posterior 工程近似而非复制论文模型。"
+    },
+    {
+      "id": "arxiv:2502.13311",
+      "title": "Training Turn-by-Turn Verifiers for Dialogue Tutoring Agents",
+      "mechanismBorrowed": "知识状态追踪与逐轮教学效果 verifier 分离。"
+    },
+    {
+      "id": "ASSISTments-2009-2010",
+      "title": "ASSISTments Skill-builder data 2009-2010",
+      "mechanismBorrowed": "提示/分步帮助会影响 assessment 解释，数据适配器保留 hints/attempts/original provenance。"
+    }
+  ],
+  "entries": [
+    {
+      "snapshotSeq": 1,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 1,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:35526865",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:35526865",
+            "learnerId": "70363",
+            "skillId": "Number Line",
+            "skillKey": "number_line",
+            "problemId": "56108",
+            "correct": false,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": false,
+              "attemptCount": 2,
+              "hintCount": 4,
+              "hintTotal": 4,
+              "firstAction": "hint",
+              "firstActionRaw": "1",
+              "bottomHint": true,
+              "answerRevealed": true
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "35526865",
+              "userId": "70363",
+              "problemId": "56108",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "fractions.addition",
+              "currentSkillKey": "fractions_addition",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Number Line",
+              "currentSkillKey": "number_line",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "number_line": {
+                  "skillId": "Number Line",
+                  "alpha": 2,
+                  "beta": 4.855,
+                  "mean": 0.2918,
+                  "variance": 0.026306,
+                  "posteriorStd": 0.162192,
+                  "uncertainty": 0.6488,
+                  "evidenceWeight": 0.855,
+                  "observations": 1,
+                  "directAssessments": 0,
+                  "assistedAssessments": 1,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 1,
+                  "assistanceEpisodes": 1,
+                  "lastEvidenceId": "assistments:35526865",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35526865"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.number_line",
+              "op": "bayes-beta-update",
+              "after": {
+                "skillId": "Number Line",
+                "alpha": 2,
+                "beta": 4.855,
+                "mean": 0.2918,
+                "variance": 0.026306,
+                "posteriorStd": 0.162192,
+                "uncertainty": 0.6488,
+                "evidenceWeight": 0.855,
+                "observations": 1,
+                "directAssessments": 0,
+                "assistedAssessments": 1,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 1,
+                "assistanceEpisodes": 1,
+                "lastEvidenceId": "assistments:35526865",
+                "lastScore": 0
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.currentSkillId",
+              "op": "set",
+              "before": "fractions.addition",
+              "after": "Number Line"
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.currentSkillKey",
+              "op": "set",
+              "before": "fractions_addition",
+              "after": "number_line"
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [],
+              "after": [
+                "assistments:35526865"
+              ]
+            }
+          ],
+          "trace": {
+            "learner.skills.number_line": {
+              "path": "learner.skills.number_line",
+              "final": {
+                "skillId": "Number Line",
+                "alpha": 2,
+                "beta": 4.855,
+                "mean": 0.2918,
+                "variance": 0.026306,
+                "posteriorStd": 0.162192,
+                "uncertainty": 0.6488,
+                "evidenceWeight": 0.855,
+                "observations": 1,
+                "directAssessments": 0,
+                "assistedAssessments": 1,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 1,
+                "assistanceEpisodes": 1,
+                "lastEvidenceId": "assistments:35526865",
+                "lastScore": 0
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "after": {
+                    "skillId": "Number Line",
+                    "alpha": 2,
+                    "beta": 4.855,
+                    "mean": 0.2918,
+                    "variance": 0.026306,
+                    "posteriorStd": 0.162192,
+                    "uncertainty": 0.6488,
+                    "evidenceWeight": 0.855,
+                    "observations": 1,
+                    "directAssessments": 0,
+                    "assistedAssessments": 1,
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 1,
+                    "assistanceEpisodes": 1,
+                    "lastEvidenceId": "assistments:35526865",
+                    "lastScore": 0
+                  }
+                }
+              ]
+            },
+            "learner.currentSkillId": {
+              "path": "learner.currentSkillId",
+              "base": "fractions.addition",
+              "final": "Number Line",
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "set",
+                  "before": "fractions.addition",
+                  "after": "Number Line"
+                }
+              ]
+            },
+            "learner.currentSkillKey": {
+              "path": "learner.currentSkillKey",
+              "base": "fractions_addition",
+              "final": "number_line",
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "set",
+                  "before": "fractions_addition",
+                  "after": "number_line"
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [],
+              "final": [
+                "assistments:35526865"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [],
+                  "after": [
+                    "assistments:35526865"
+                  ]
+                }
+              ]
+            }
+          },
+          "diagnostics": [
+            {
+              "severity": "info",
+              "code": "TUTOR_ASSISTED_FAILURE_PRESERVED",
+              "message": "首答错误/需要帮助被保留为尚未独立掌握的负证据；assistance 不会像成功证据那样对称削弱。"
+            }
+          ],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:35526865",
+              "accepted": true,
+              "skillId": "Number Line",
+              "score": 0,
+              "reliability": 0.9,
+              "validity": 0.95,
+              "weight": 0.855,
+              "assisted": true,
+              "assistanceUsed": true,
+              "helpRequested": true,
+              "hints": 4,
+              "attempts": 2,
+              "answerRevealed": true,
+              "direction": "nonmastery-support",
+              "reason": "bottom-hint-or-answer-reveal-needed",
+              "posterior": {
+                "alpha": 2,
+                "beta": 4.855,
+                "mean": 0.2918,
+                "variance": 0.026306,
+                "posteriorStd": 0.162192,
+                "uncertainty": 0.6488
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Number Line"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "diagnose"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 2,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 2,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:35527277",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:35527277",
+            "learnerId": "70363",
+            "skillId": "Number Line",
+            "skillKey": "number_line",
+            "problemId": "56052",
+            "correct": false,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": false,
+              "attemptCount": 3,
+              "hintCount": 0,
+              "hintTotal": 4,
+              "firstAction": "attempt",
+              "firstActionRaw": "0",
+              "bottomHint": null,
+              "answerRevealed": false
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "35527277",
+              "userId": "70363",
+              "problemId": "56052",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "Number Line",
+              "currentSkillKey": "number_line",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "number_line": {
+                  "skillId": "Number Line",
+                  "alpha": 2,
+                  "beta": 4.855,
+                  "mean": 0.2918,
+                  "variance": 0.026306,
+                  "posteriorStd": 0.162192,
+                  "uncertainty": 0.6488,
+                  "evidenceWeight": 0.855,
+                  "observations": 1,
+                  "directAssessments": 0,
+                  "assistedAssessments": 1,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 1,
+                  "assistanceEpisodes": 1,
+                  "lastEvidenceId": "assistments:35526865",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35526865"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Number Line",
+              "currentSkillKey": "number_line",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "number_line": {
+                  "skillId": "Number Line",
+                  "alpha": 2,
+                  "beta": 5.665,
+                  "mean": 0.2609,
+                  "variance": 0.022255,
+                  "posteriorStd": 0.149183,
+                  "uncertainty": 0.5967,
+                  "evidenceWeight": 1.665,
+                  "observations": 2,
+                  "directAssessments": 0,
+                  "assistedAssessments": 2,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 2,
+                  "assistanceEpisodes": 2,
+                  "lastEvidenceId": "assistments:35527277",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35526865",
+                "assistments:35527277"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.number_line",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "Number Line",
+                "alpha": 2,
+                "beta": 4.855,
+                "mean": 0.2918,
+                "variance": 0.026306,
+                "posteriorStd": 0.162192,
+                "uncertainty": 0.6488,
+                "evidenceWeight": 0.855,
+                "observations": 1,
+                "directAssessments": 0,
+                "assistedAssessments": 1,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 1,
+                "assistanceEpisodes": 1,
+                "lastEvidenceId": "assistments:35526865",
+                "lastScore": 0
+              },
+              "after": {
+                "skillId": "Number Line",
+                "alpha": 2,
+                "beta": 5.665,
+                "mean": 0.2609,
+                "variance": 0.022255,
+                "posteriorStd": 0.149183,
+                "uncertainty": 0.5967,
+                "evidenceWeight": 1.665,
+                "observations": 2,
+                "directAssessments": 0,
+                "assistedAssessments": 2,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 2,
+                "lastEvidenceId": "assistments:35527277",
+                "lastScore": 0
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:35526865"
+              ],
+              "after": [
+                "assistments:35526865",
+                "assistments:35527277"
+              ]
+            },
+            {
+              "source": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "path": "pedagogy.recommendedMode",
+              "op": "set",
+              "before": "diagnose",
+              "after": "worked-example"
+            },
+            {
+              "source": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "path": "pedagogy.hintLevel",
+              "op": "set",
+              "before": 1,
+              "after": 2
+            },
+            {
+              "source": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "path": "pedagogy.policyReason",
+              "op": "set",
+              "before": "high-knowledge-uncertainty",
+              "after": "low-mastery"
+            }
+          ],
+          "trace": {
+            "learner.skills.number_line": {
+              "path": "learner.skills.number_line",
+              "base": {
+                "skillId": "Number Line",
+                "alpha": 2,
+                "beta": 4.855,
+                "mean": 0.2918,
+                "variance": 0.026306,
+                "posteriorStd": 0.162192,
+                "uncertainty": 0.6488,
+                "evidenceWeight": 0.855,
+                "observations": 1,
+                "directAssessments": 0,
+                "assistedAssessments": 1,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 1,
+                "assistanceEpisodes": 1,
+                "lastEvidenceId": "assistments:35526865",
+                "lastScore": 0
+              },
+              "final": {
+                "skillId": "Number Line",
+                "alpha": 2,
+                "beta": 5.665,
+                "mean": 0.2609,
+                "variance": 0.022255,
+                "posteriorStd": 0.149183,
+                "uncertainty": 0.5967,
+                "evidenceWeight": 1.665,
+                "observations": 2,
+                "directAssessments": 0,
+                "assistedAssessments": 2,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 2,
+                "lastEvidenceId": "assistments:35527277",
+                "lastScore": 0
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "Number Line",
+                    "alpha": 2,
+                    "beta": 4.855,
+                    "mean": 0.2918,
+                    "variance": 0.026306,
+                    "posteriorStd": 0.162192,
+                    "uncertainty": 0.6488,
+                    "evidenceWeight": 0.855,
+                    "observations": 1,
+                    "directAssessments": 0,
+                    "assistedAssessments": 1,
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 1,
+                    "assistanceEpisodes": 1,
+                    "lastEvidenceId": "assistments:35526865",
+                    "lastScore": 0
+                  },
+                  "after": {
+                    "skillId": "Number Line",
+                    "alpha": 2,
+                    "beta": 5.665,
+                    "mean": 0.2609,
+                    "variance": 0.022255,
+                    "posteriorStd": 0.149183,
+                    "uncertainty": 0.5967,
+                    "evidenceWeight": 1.665,
+                    "observations": 2,
+                    "directAssessments": 0,
+                    "assistedAssessments": 2,
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 2,
+                    "assistanceEpisodes": 2,
+                    "lastEvidenceId": "assistments:35527277",
+                    "lastScore": 0
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:35526865"
+              ],
+              "final": [
+                "assistments:35526865",
+                "assistments:35527277"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:35526865"
+                  ],
+                  "after": [
+                    "assistments:35526865",
+                    "assistments:35527277"
+                  ]
+                }
+              ]
+            },
+            "pedagogy.recommendedMode": {
+              "path": "pedagogy.recommendedMode",
+              "base": "diagnose",
+              "final": "worked-example",
+              "steps": [
+                {
+                  "rule": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+                  "priority": 900,
+                  "op": "set",
+                  "before": "diagnose",
+                  "after": "worked-example"
+                }
+              ]
+            },
+            "pedagogy.hintLevel": {
+              "path": "pedagogy.hintLevel",
+              "base": 1,
+              "final": 2,
+              "steps": [
+                {
+                  "rule": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+                  "priority": 900,
+                  "op": "set",
+                  "before": 1,
+                  "after": 2
+                }
+              ]
+            },
+            "pedagogy.policyReason": {
+              "path": "pedagogy.policyReason",
+              "base": "high-knowledge-uncertainty",
+              "final": "low-mastery",
+              "steps": [
+                {
+                  "rule": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+                  "priority": 900,
+                  "op": "set",
+                  "before": "high-knowledge-uncertainty",
+                  "after": "low-mastery"
+                }
+              ]
+            }
+          },
+          "diagnostics": [
+            {
+              "severity": "info",
+              "code": "TUTOR_ASSISTED_FAILURE_PRESERVED",
+              "message": "首答错误/需要帮助被保留为尚未独立掌握的负证据；assistance 不会像成功证据那样对称削弱。"
+            }
+          ],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:35527277",
+              "accepted": true,
+              "skillId": "Number Line",
+              "score": 0,
+              "reliability": 0.9,
+              "validity": 0.9,
+              "weight": 0.81,
+              "assisted": true,
+              "assistanceUsed": true,
+              "helpRequested": false,
+              "hints": 0,
+              "attempts": 3,
+              "answerRevealed": false,
+              "direction": "nonmastery-support",
+              "reason": "first-attempt-failure-or-assistance-needed",
+              "posterior": {
+                "alpha": 2,
+                "beta": 5.665,
+                "mean": 0.2609,
+                "variance": 0.022255,
+                "posteriorStd": 0.149183,
+                "uncertainty": 0.5967
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Number Line"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "worked-example"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 3,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 3,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:35527546",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:35527546",
+            "learnerId": "70363",
+            "skillId": "Number Line",
+            "skillKey": "number_line",
+            "problemId": "56105",
+            "correct": false,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": false,
+              "attemptCount": 2,
+              "hintCount": 0,
+              "hintTotal": 4,
+              "firstAction": "attempt",
+              "firstActionRaw": "0",
+              "bottomHint": null,
+              "answerRevealed": false
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "35527546",
+              "userId": "70363",
+              "problemId": "56105",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "Number Line",
+              "currentSkillKey": "number_line",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "number_line": {
+                  "skillId": "Number Line",
+                  "alpha": 2,
+                  "beta": 5.665,
+                  "mean": 0.2609,
+                  "variance": 0.022255,
+                  "posteriorStd": 0.149183,
+                  "uncertainty": 0.5967,
+                  "evidenceWeight": 1.665,
+                  "observations": 2,
+                  "directAssessments": 0,
+                  "assistedAssessments": 2,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 2,
+                  "assistanceEpisodes": 2,
+                  "lastEvidenceId": "assistments:35527277",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35526865",
+                "assistments:35527277"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Number Line",
+              "currentSkillKey": "number_line",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "number_line": {
+                  "skillId": "Number Line",
+                  "alpha": 2,
+                  "beta": 6.475,
+                  "mean": 0.236,
+                  "variance": 0.019029,
+                  "posteriorStd": 0.137945,
+                  "uncertainty": 0.5518,
+                  "evidenceWeight": 2.475,
+                  "observations": 3,
+                  "directAssessments": 0,
+                  "assistedAssessments": 3,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 3,
+                  "assistanceEpisodes": 3,
+                  "lastEvidenceId": "assistments:35527546",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.number_line",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "Number Line",
+                "alpha": 2,
+                "beta": 5.665,
+                "mean": 0.2609,
+                "variance": 0.022255,
+                "posteriorStd": 0.149183,
+                "uncertainty": 0.5967,
+                "evidenceWeight": 1.665,
+                "observations": 2,
+                "directAssessments": 0,
+                "assistedAssessments": 2,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 2,
+                "lastEvidenceId": "assistments:35527277",
+                "lastScore": 0
+              },
+              "after": {
+                "skillId": "Number Line",
+                "alpha": 2,
+                "beta": 6.475,
+                "mean": 0.236,
+                "variance": 0.019029,
+                "posteriorStd": 0.137945,
+                "uncertainty": 0.5518,
+                "evidenceWeight": 2.475,
+                "observations": 3,
+                "directAssessments": 0,
+                "assistedAssessments": 3,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 3,
+                "assistanceEpisodes": 3,
+                "lastEvidenceId": "assistments:35527546",
+                "lastScore": 0
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:35526865",
+                "assistments:35527277"
+              ],
+              "after": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546"
+              ]
+            }
+          ],
+          "trace": {
+            "learner.skills.number_line": {
+              "path": "learner.skills.number_line",
+              "base": {
+                "skillId": "Number Line",
+                "alpha": 2,
+                "beta": 5.665,
+                "mean": 0.2609,
+                "variance": 0.022255,
+                "posteriorStd": 0.149183,
+                "uncertainty": 0.5967,
+                "evidenceWeight": 1.665,
+                "observations": 2,
+                "directAssessments": 0,
+                "assistedAssessments": 2,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 2,
+                "lastEvidenceId": "assistments:35527277",
+                "lastScore": 0
+              },
+              "final": {
+                "skillId": "Number Line",
+                "alpha": 2,
+                "beta": 6.475,
+                "mean": 0.236,
+                "variance": 0.019029,
+                "posteriorStd": 0.137945,
+                "uncertainty": 0.5518,
+                "evidenceWeight": 2.475,
+                "observations": 3,
+                "directAssessments": 0,
+                "assistedAssessments": 3,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 3,
+                "assistanceEpisodes": 3,
+                "lastEvidenceId": "assistments:35527546",
+                "lastScore": 0
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "Number Line",
+                    "alpha": 2,
+                    "beta": 5.665,
+                    "mean": 0.2609,
+                    "variance": 0.022255,
+                    "posteriorStd": 0.149183,
+                    "uncertainty": 0.5967,
+                    "evidenceWeight": 1.665,
+                    "observations": 2,
+                    "directAssessments": 0,
+                    "assistedAssessments": 2,
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 2,
+                    "assistanceEpisodes": 2,
+                    "lastEvidenceId": "assistments:35527277",
+                    "lastScore": 0
+                  },
+                  "after": {
+                    "skillId": "Number Line",
+                    "alpha": 2,
+                    "beta": 6.475,
+                    "mean": 0.236,
+                    "variance": 0.019029,
+                    "posteriorStd": 0.137945,
+                    "uncertainty": 0.5518,
+                    "evidenceWeight": 2.475,
+                    "observations": 3,
+                    "directAssessments": 0,
+                    "assistedAssessments": 3,
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 3,
+                    "assistanceEpisodes": 3,
+                    "lastEvidenceId": "assistments:35527546",
+                    "lastScore": 0
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:35526865",
+                "assistments:35527277"
+              ],
+              "final": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:35526865",
+                    "assistments:35527277"
+                  ],
+                  "after": [
+                    "assistments:35526865",
+                    "assistments:35527277",
+                    "assistments:35527546"
+                  ]
+                }
+              ]
+            }
+          },
+          "diagnostics": [
+            {
+              "severity": "info",
+              "code": "TUTOR_ASSISTED_FAILURE_PRESERVED",
+              "message": "首答错误/需要帮助被保留为尚未独立掌握的负证据；assistance 不会像成功证据那样对称削弱。"
+            }
+          ],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:35527546",
+              "accepted": true,
+              "skillId": "Number Line",
+              "score": 0,
+              "reliability": 0.9,
+              "validity": 0.9,
+              "weight": 0.81,
+              "assisted": true,
+              "assistanceUsed": true,
+              "helpRequested": false,
+              "hints": 0,
+              "attempts": 2,
+              "answerRevealed": false,
+              "direction": "nonmastery-support",
+              "reason": "first-attempt-failure-or-assistance-needed",
+              "posterior": {
+                "alpha": 2,
+                "beta": 6.475,
+                "mean": 0.236,
+                "variance": 0.019029,
+                "posteriorStd": 0.137945,
+                "uncertainty": 0.5518
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Number Line"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "worked-example"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 4,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 4,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:35527698",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:35527698",
+            "learnerId": "70363",
+            "skillId": "Number Line",
+            "skillKey": "number_line",
+            "problemId": "56054",
+            "correct": false,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": false,
+              "attemptCount": 2,
+              "hintCount": 0,
+              "hintTotal": 4,
+              "firstAction": "attempt",
+              "firstActionRaw": "0",
+              "bottomHint": null,
+              "answerRevealed": false
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "35527698",
+              "userId": "70363",
+              "problemId": "56054",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "Number Line",
+              "currentSkillKey": "number_line",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "number_line": {
+                  "skillId": "Number Line",
+                  "alpha": 2,
+                  "beta": 6.475,
+                  "mean": 0.236,
+                  "variance": 0.019029,
+                  "posteriorStd": 0.137945,
+                  "uncertainty": 0.5518,
+                  "evidenceWeight": 2.475,
+                  "observations": 3,
+                  "directAssessments": 0,
+                  "assistedAssessments": 3,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 3,
+                  "assistanceEpisodes": 3,
+                  "lastEvidenceId": "assistments:35527546",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Number Line",
+              "currentSkillKey": "number_line",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "number_line": {
+                  "skillId": "Number Line",
+                  "alpha": 2,
+                  "beta": 7.285,
+                  "mean": 0.2154,
+                  "variance": 0.016432,
+                  "posteriorStd": 0.128188,
+                  "uncertainty": 0.5128,
+                  "evidenceWeight": 3.285,
+                  "observations": 4,
+                  "directAssessments": 0,
+                  "assistedAssessments": 4,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 4,
+                  "assistanceEpisodes": 4,
+                  "lastEvidenceId": "assistments:35527698",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.number_line",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "Number Line",
+                "alpha": 2,
+                "beta": 6.475,
+                "mean": 0.236,
+                "variance": 0.019029,
+                "posteriorStd": 0.137945,
+                "uncertainty": 0.5518,
+                "evidenceWeight": 2.475,
+                "observations": 3,
+                "directAssessments": 0,
+                "assistedAssessments": 3,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 3,
+                "assistanceEpisodes": 3,
+                "lastEvidenceId": "assistments:35527546",
+                "lastScore": 0
+              },
+              "after": {
+                "skillId": "Number Line",
+                "alpha": 2,
+                "beta": 7.285,
+                "mean": 0.2154,
+                "variance": 0.016432,
+                "posteriorStd": 0.128188,
+                "uncertainty": 0.5128,
+                "evidenceWeight": 3.285,
+                "observations": 4,
+                "directAssessments": 0,
+                "assistedAssessments": 4,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 4,
+                "assistanceEpisodes": 4,
+                "lastEvidenceId": "assistments:35527698",
+                "lastScore": 0
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546"
+              ],
+              "after": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698"
+              ]
+            }
+          ],
+          "trace": {
+            "learner.skills.number_line": {
+              "path": "learner.skills.number_line",
+              "base": {
+                "skillId": "Number Line",
+                "alpha": 2,
+                "beta": 6.475,
+                "mean": 0.236,
+                "variance": 0.019029,
+                "posteriorStd": 0.137945,
+                "uncertainty": 0.5518,
+                "evidenceWeight": 2.475,
+                "observations": 3,
+                "directAssessments": 0,
+                "assistedAssessments": 3,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 3,
+                "assistanceEpisodes": 3,
+                "lastEvidenceId": "assistments:35527546",
+                "lastScore": 0
+              },
+              "final": {
+                "skillId": "Number Line",
+                "alpha": 2,
+                "beta": 7.285,
+                "mean": 0.2154,
+                "variance": 0.016432,
+                "posteriorStd": 0.128188,
+                "uncertainty": 0.5128,
+                "evidenceWeight": 3.285,
+                "observations": 4,
+                "directAssessments": 0,
+                "assistedAssessments": 4,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 4,
+                "assistanceEpisodes": 4,
+                "lastEvidenceId": "assistments:35527698",
+                "lastScore": 0
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "Number Line",
+                    "alpha": 2,
+                    "beta": 6.475,
+                    "mean": 0.236,
+                    "variance": 0.019029,
+                    "posteriorStd": 0.137945,
+                    "uncertainty": 0.5518,
+                    "evidenceWeight": 2.475,
+                    "observations": 3,
+                    "directAssessments": 0,
+                    "assistedAssessments": 3,
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 3,
+                    "assistanceEpisodes": 3,
+                    "lastEvidenceId": "assistments:35527546",
+                    "lastScore": 0
+                  },
+                  "after": {
+                    "skillId": "Number Line",
+                    "alpha": 2,
+                    "beta": 7.285,
+                    "mean": 0.2154,
+                    "variance": 0.016432,
+                    "posteriorStd": 0.128188,
+                    "uncertainty": 0.5128,
+                    "evidenceWeight": 3.285,
+                    "observations": 4,
+                    "directAssessments": 0,
+                    "assistedAssessments": 4,
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 4,
+                    "assistanceEpisodes": 4,
+                    "lastEvidenceId": "assistments:35527698",
+                    "lastScore": 0
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546"
+              ],
+              "final": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:35526865",
+                    "assistments:35527277",
+                    "assistments:35527546"
+                  ],
+                  "after": [
+                    "assistments:35526865",
+                    "assistments:35527277",
+                    "assistments:35527546",
+                    "assistments:35527698"
+                  ]
+                }
+              ]
+            }
+          },
+          "diagnostics": [
+            {
+              "severity": "info",
+              "code": "TUTOR_ASSISTED_FAILURE_PRESERVED",
+              "message": "首答错误/需要帮助被保留为尚未独立掌握的负证据；assistance 不会像成功证据那样对称削弱。"
+            }
+          ],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:35527698",
+              "accepted": true,
+              "skillId": "Number Line",
+              "score": 0,
+              "reliability": 0.9,
+              "validity": 0.9,
+              "weight": 0.81,
+              "assisted": true,
+              "assistanceUsed": true,
+              "helpRequested": false,
+              "hints": 0,
+              "attempts": 2,
+              "answerRevealed": false,
+              "direction": "nonmastery-support",
+              "reason": "first-attempt-failure-or-assistance-needed",
+              "posterior": {
+                "alpha": 2,
+                "beta": 7.285,
+                "mean": 0.2154,
+                "variance": 0.016432,
+                "posteriorStd": 0.128188,
+                "uncertainty": 0.5128
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Number Line"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "worked-example"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 5,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 5,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:35527814",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:35527814",
+            "learnerId": "70363",
+            "skillId": "Number Line",
+            "skillKey": "number_line",
+            "problemId": "56076",
+            "correct": false,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": false,
+              "attemptCount": 2,
+              "hintCount": 0,
+              "hintTotal": 4,
+              "firstAction": "attempt",
+              "firstActionRaw": "0",
+              "bottomHint": null,
+              "answerRevealed": false
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "35527814",
+              "userId": "70363",
+              "problemId": "56076",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "Number Line",
+              "currentSkillKey": "number_line",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "number_line": {
+                  "skillId": "Number Line",
+                  "alpha": 2,
+                  "beta": 7.285,
+                  "mean": 0.2154,
+                  "variance": 0.016432,
+                  "posteriorStd": 0.128188,
+                  "uncertainty": 0.5128,
+                  "evidenceWeight": 3.285,
+                  "observations": 4,
+                  "directAssessments": 0,
+                  "assistedAssessments": 4,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 4,
+                  "assistanceEpisodes": 4,
+                  "lastEvidenceId": "assistments:35527698",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Number Line",
+              "currentSkillKey": "number_line",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "number_line": {
+                  "skillId": "Number Line",
+                  "alpha": 2,
+                  "beta": 8.095,
+                  "mean": 0.1981,
+                  "variance": 0.014319,
+                  "posteriorStd": 0.119661,
+                  "uncertainty": 0.4786,
+                  "evidenceWeight": 4.095,
+                  "observations": 5,
+                  "directAssessments": 0,
+                  "assistedAssessments": 5,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 5,
+                  "assistanceEpisodes": 5,
+                  "lastEvidenceId": "assistments:35527814",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.number_line",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "Number Line",
+                "alpha": 2,
+                "beta": 7.285,
+                "mean": 0.2154,
+                "variance": 0.016432,
+                "posteriorStd": 0.128188,
+                "uncertainty": 0.5128,
+                "evidenceWeight": 3.285,
+                "observations": 4,
+                "directAssessments": 0,
+                "assistedAssessments": 4,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 4,
+                "assistanceEpisodes": 4,
+                "lastEvidenceId": "assistments:35527698",
+                "lastScore": 0
+              },
+              "after": {
+                "skillId": "Number Line",
+                "alpha": 2,
+                "beta": 8.095,
+                "mean": 0.1981,
+                "variance": 0.014319,
+                "posteriorStd": 0.119661,
+                "uncertainty": 0.4786,
+                "evidenceWeight": 4.095,
+                "observations": 5,
+                "directAssessments": 0,
+                "assistedAssessments": 5,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 5,
+                "assistanceEpisodes": 5,
+                "lastEvidenceId": "assistments:35527814",
+                "lastScore": 0
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698"
+              ],
+              "after": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814"
+              ]
+            }
+          ],
+          "trace": {
+            "learner.skills.number_line": {
+              "path": "learner.skills.number_line",
+              "base": {
+                "skillId": "Number Line",
+                "alpha": 2,
+                "beta": 7.285,
+                "mean": 0.2154,
+                "variance": 0.016432,
+                "posteriorStd": 0.128188,
+                "uncertainty": 0.5128,
+                "evidenceWeight": 3.285,
+                "observations": 4,
+                "directAssessments": 0,
+                "assistedAssessments": 4,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 4,
+                "assistanceEpisodes": 4,
+                "lastEvidenceId": "assistments:35527698",
+                "lastScore": 0
+              },
+              "final": {
+                "skillId": "Number Line",
+                "alpha": 2,
+                "beta": 8.095,
+                "mean": 0.1981,
+                "variance": 0.014319,
+                "posteriorStd": 0.119661,
+                "uncertainty": 0.4786,
+                "evidenceWeight": 4.095,
+                "observations": 5,
+                "directAssessments": 0,
+                "assistedAssessments": 5,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 5,
+                "assistanceEpisodes": 5,
+                "lastEvidenceId": "assistments:35527814",
+                "lastScore": 0
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "Number Line",
+                    "alpha": 2,
+                    "beta": 7.285,
+                    "mean": 0.2154,
+                    "variance": 0.016432,
+                    "posteriorStd": 0.128188,
+                    "uncertainty": 0.5128,
+                    "evidenceWeight": 3.285,
+                    "observations": 4,
+                    "directAssessments": 0,
+                    "assistedAssessments": 4,
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 4,
+                    "assistanceEpisodes": 4,
+                    "lastEvidenceId": "assistments:35527698",
+                    "lastScore": 0
+                  },
+                  "after": {
+                    "skillId": "Number Line",
+                    "alpha": 2,
+                    "beta": 8.095,
+                    "mean": 0.1981,
+                    "variance": 0.014319,
+                    "posteriorStd": 0.119661,
+                    "uncertainty": 0.4786,
+                    "evidenceWeight": 4.095,
+                    "observations": 5,
+                    "directAssessments": 0,
+                    "assistedAssessments": 5,
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 5,
+                    "assistanceEpisodes": 5,
+                    "lastEvidenceId": "assistments:35527814",
+                    "lastScore": 0
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698"
+              ],
+              "final": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:35526865",
+                    "assistments:35527277",
+                    "assistments:35527546",
+                    "assistments:35527698"
+                  ],
+                  "after": [
+                    "assistments:35526865",
+                    "assistments:35527277",
+                    "assistments:35527546",
+                    "assistments:35527698",
+                    "assistments:35527814"
+                  ]
+                }
+              ]
+            }
+          },
+          "diagnostics": [
+            {
+              "severity": "info",
+              "code": "TUTOR_ASSISTED_FAILURE_PRESERVED",
+              "message": "首答错误/需要帮助被保留为尚未独立掌握的负证据；assistance 不会像成功证据那样对称削弱。"
+            }
+          ],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:35527814",
+              "accepted": true,
+              "skillId": "Number Line",
+              "score": 0,
+              "reliability": 0.9,
+              "validity": 0.9,
+              "weight": 0.81,
+              "assisted": true,
+              "assistanceUsed": true,
+              "helpRequested": false,
+              "hints": 0,
+              "attempts": 2,
+              "answerRevealed": false,
+              "direction": "nonmastery-support",
+              "reason": "first-attempt-failure-or-assistance-needed",
+              "posterior": {
+                "alpha": 2,
+                "beta": 8.095,
+                "mean": 0.1981,
+                "variance": 0.014319,
+                "posteriorStd": 0.119661,
+                "uncertainty": 0.4786
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Number Line"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "worked-example"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 6,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 6,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:35528578",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:35528578",
+            "learnerId": "70363",
+            "skillId": "Number Line",
+            "skillKey": "number_line",
+            "problemId": "56198",
+            "correct": false,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": true,
+              "attemptCount": 1,
+              "hintCount": 3,
+              "hintTotal": 5,
+              "firstAction": "hint",
+              "firstActionRaw": "1",
+              "bottomHint": false,
+              "answerRevealed": false
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "35528578",
+              "userId": "70363",
+              "problemId": "56198",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "Number Line",
+              "currentSkillKey": "number_line",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "number_line": {
+                  "skillId": "Number Line",
+                  "alpha": 2,
+                  "beta": 8.095,
+                  "mean": 0.1981,
+                  "variance": 0.014319,
+                  "posteriorStd": 0.119661,
+                  "uncertainty": 0.4786,
+                  "evidenceWeight": 4.095,
+                  "observations": 5,
+                  "directAssessments": 0,
+                  "assistedAssessments": 5,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 5,
+                  "assistanceEpisodes": 5,
+                  "lastEvidenceId": "assistments:35527814",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Number Line",
+              "currentSkillKey": "number_line",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "number_line": {
+                  "skillId": "Number Line",
+                  "alpha": 2,
+                  "beta": 8.905,
+                  "mean": 0.1834,
+                  "variance": 0.01258,
+                  "posteriorStd": 0.112161,
+                  "uncertainty": 0.4486,
+                  "evidenceWeight": 4.905,
+                  "observations": 6,
+                  "directAssessments": 0,
+                  "assistedAssessments": 6,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 6,
+                  "assistanceEpisodes": 6,
+                  "lastEvidenceId": "assistments:35528578",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.number_line",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "Number Line",
+                "alpha": 2,
+                "beta": 8.095,
+                "mean": 0.1981,
+                "variance": 0.014319,
+                "posteriorStd": 0.119661,
+                "uncertainty": 0.4786,
+                "evidenceWeight": 4.095,
+                "observations": 5,
+                "directAssessments": 0,
+                "assistedAssessments": 5,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 5,
+                "assistanceEpisodes": 5,
+                "lastEvidenceId": "assistments:35527814",
+                "lastScore": 0
+              },
+              "after": {
+                "skillId": "Number Line",
+                "alpha": 2,
+                "beta": 8.905,
+                "mean": 0.1834,
+                "variance": 0.01258,
+                "posteriorStd": 0.112161,
+                "uncertainty": 0.4486,
+                "evidenceWeight": 4.905,
+                "observations": 6,
+                "directAssessments": 0,
+                "assistedAssessments": 6,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 6,
+                "assistanceEpisodes": 6,
+                "lastEvidenceId": "assistments:35528578",
+                "lastScore": 0
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814"
+              ],
+              "after": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578"
+              ]
+            }
+          ],
+          "trace": {
+            "learner.skills.number_line": {
+              "path": "learner.skills.number_line",
+              "base": {
+                "skillId": "Number Line",
+                "alpha": 2,
+                "beta": 8.095,
+                "mean": 0.1981,
+                "variance": 0.014319,
+                "posteriorStd": 0.119661,
+                "uncertainty": 0.4786,
+                "evidenceWeight": 4.095,
+                "observations": 5,
+                "directAssessments": 0,
+                "assistedAssessments": 5,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 5,
+                "assistanceEpisodes": 5,
+                "lastEvidenceId": "assistments:35527814",
+                "lastScore": 0
+              },
+              "final": {
+                "skillId": "Number Line",
+                "alpha": 2,
+                "beta": 8.905,
+                "mean": 0.1834,
+                "variance": 0.01258,
+                "posteriorStd": 0.112161,
+                "uncertainty": 0.4486,
+                "evidenceWeight": 4.905,
+                "observations": 6,
+                "directAssessments": 0,
+                "assistedAssessments": 6,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 6,
+                "assistanceEpisodes": 6,
+                "lastEvidenceId": "assistments:35528578",
+                "lastScore": 0
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "Number Line",
+                    "alpha": 2,
+                    "beta": 8.095,
+                    "mean": 0.1981,
+                    "variance": 0.014319,
+                    "posteriorStd": 0.119661,
+                    "uncertainty": 0.4786,
+                    "evidenceWeight": 4.095,
+                    "observations": 5,
+                    "directAssessments": 0,
+                    "assistedAssessments": 5,
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 5,
+                    "assistanceEpisodes": 5,
+                    "lastEvidenceId": "assistments:35527814",
+                    "lastScore": 0
+                  },
+                  "after": {
+                    "skillId": "Number Line",
+                    "alpha": 2,
+                    "beta": 8.905,
+                    "mean": 0.1834,
+                    "variance": 0.01258,
+                    "posteriorStd": 0.112161,
+                    "uncertainty": 0.4486,
+                    "evidenceWeight": 4.905,
+                    "observations": 6,
+                    "directAssessments": 0,
+                    "assistedAssessments": 6,
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 6,
+                    "assistanceEpisodes": 6,
+                    "lastEvidenceId": "assistments:35528578",
+                    "lastScore": 0
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814"
+              ],
+              "final": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:35526865",
+                    "assistments:35527277",
+                    "assistments:35527546",
+                    "assistments:35527698",
+                    "assistments:35527814"
+                  ],
+                  "after": [
+                    "assistments:35526865",
+                    "assistments:35527277",
+                    "assistments:35527546",
+                    "assistments:35527698",
+                    "assistments:35527814",
+                    "assistments:35528578"
+                  ]
+                }
+              ]
+            }
+          },
+          "diagnostics": [
+            {
+              "severity": "info",
+              "code": "TUTOR_ASSISTED_FAILURE_PRESERVED",
+              "message": "首答错误/需要帮助被保留为尚未独立掌握的负证据；assistance 不会像成功证据那样对称削弱。"
+            }
+          ],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:35528578",
+              "accepted": true,
+              "skillId": "Number Line",
+              "score": 0,
+              "reliability": 0.9,
+              "validity": 0.9,
+              "weight": 0.81,
+              "assisted": true,
+              "assistanceUsed": true,
+              "helpRequested": true,
+              "hints": 3,
+              "attempts": 1,
+              "answerRevealed": false,
+              "direction": "nonmastery-support",
+              "reason": "first-attempt-failure-or-assistance-needed",
+              "posterior": {
+                "alpha": 2,
+                "beta": 8.905,
+                "mean": 0.1834,
+                "variance": 0.01258,
+                "posteriorStd": 0.112161,
+                "uncertainty": 0.4486
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Number Line"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "worked-example"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 7,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 7,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:35687767",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:35687767",
+            "learnerId": "70363",
+            "skillId": "Number Line",
+            "skillKey": "number_line",
+            "problemId": "55989",
+            "correct": true,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": true,
+              "attemptCount": 1,
+              "hintCount": 0,
+              "hintTotal": 4,
+              "firstAction": "attempt",
+              "firstActionRaw": "0",
+              "bottomHint": null,
+              "answerRevealed": false
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "35687767",
+              "userId": "70363",
+              "problemId": "55989",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "Number Line",
+              "currentSkillKey": "number_line",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "number_line": {
+                  "skillId": "Number Line",
+                  "alpha": 2,
+                  "beta": 8.905,
+                  "mean": 0.1834,
+                  "variance": 0.01258,
+                  "posteriorStd": 0.112161,
+                  "uncertainty": 0.4486,
+                  "evidenceWeight": 4.905,
+                  "observations": 6,
+                  "directAssessments": 0,
+                  "assistedAssessments": 6,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 6,
+                  "assistanceEpisodes": 6,
+                  "lastEvidenceId": "assistments:35528578",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Number Line",
+              "currentSkillKey": "number_line",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "number_line": {
+                  "skillId": "Number Line",
+                  "alpha": 2.9,
+                  "beta": 8.905,
+                  "mean": 0.2457,
+                  "variance": 0.014472,
+                  "posteriorStd": 0.120298,
+                  "uncertainty": 0.4812,
+                  "evidenceWeight": 5.805,
+                  "observations": 7,
+                  "directAssessments": 1,
+                  "assistedAssessments": 6,
+                  "unaidedSuccesses": 1,
+                  "firstAttemptFailures": 6,
+                  "assistanceEpisodes": 6,
+                  "lastEvidenceId": "assistments:35687767",
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.number_line",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "Number Line",
+                "alpha": 2,
+                "beta": 8.905,
+                "mean": 0.1834,
+                "variance": 0.01258,
+                "posteriorStd": 0.112161,
+                "uncertainty": 0.4486,
+                "evidenceWeight": 4.905,
+                "observations": 6,
+                "directAssessments": 0,
+                "assistedAssessments": 6,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 6,
+                "assistanceEpisodes": 6,
+                "lastEvidenceId": "assistments:35528578",
+                "lastScore": 0
+              },
+              "after": {
+                "skillId": "Number Line",
+                "alpha": 2.9,
+                "beta": 8.905,
+                "mean": 0.2457,
+                "variance": 0.014472,
+                "posteriorStd": 0.120298,
+                "uncertainty": 0.4812,
+                "evidenceWeight": 5.805,
+                "observations": 7,
+                "directAssessments": 1,
+                "assistedAssessments": 6,
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 6,
+                "assistanceEpisodes": 6,
+                "lastEvidenceId": "assistments:35687767",
+                "lastScore": 1
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578"
+              ],
+              "after": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767"
+              ]
+            }
+          ],
+          "trace": {
+            "learner.skills.number_line": {
+              "path": "learner.skills.number_line",
+              "base": {
+                "skillId": "Number Line",
+                "alpha": 2,
+                "beta": 8.905,
+                "mean": 0.1834,
+                "variance": 0.01258,
+                "posteriorStd": 0.112161,
+                "uncertainty": 0.4486,
+                "evidenceWeight": 4.905,
+                "observations": 6,
+                "directAssessments": 0,
+                "assistedAssessments": 6,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 6,
+                "assistanceEpisodes": 6,
+                "lastEvidenceId": "assistments:35528578",
+                "lastScore": 0
+              },
+              "final": {
+                "skillId": "Number Line",
+                "alpha": 2.9,
+                "beta": 8.905,
+                "mean": 0.2457,
+                "variance": 0.014472,
+                "posteriorStd": 0.120298,
+                "uncertainty": 0.4812,
+                "evidenceWeight": 5.805,
+                "observations": 7,
+                "directAssessments": 1,
+                "assistedAssessments": 6,
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 6,
+                "assistanceEpisodes": 6,
+                "lastEvidenceId": "assistments:35687767",
+                "lastScore": 1
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "Number Line",
+                    "alpha": 2,
+                    "beta": 8.905,
+                    "mean": 0.1834,
+                    "variance": 0.01258,
+                    "posteriorStd": 0.112161,
+                    "uncertainty": 0.4486,
+                    "evidenceWeight": 4.905,
+                    "observations": 6,
+                    "directAssessments": 0,
+                    "assistedAssessments": 6,
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 6,
+                    "assistanceEpisodes": 6,
+                    "lastEvidenceId": "assistments:35528578",
+                    "lastScore": 0
+                  },
+                  "after": {
+                    "skillId": "Number Line",
+                    "alpha": 2.9,
+                    "beta": 8.905,
+                    "mean": 0.2457,
+                    "variance": 0.014472,
+                    "posteriorStd": 0.120298,
+                    "uncertainty": 0.4812,
+                    "evidenceWeight": 5.805,
+                    "observations": 7,
+                    "directAssessments": 1,
+                    "assistedAssessments": 6,
+                    "unaidedSuccesses": 1,
+                    "firstAttemptFailures": 6,
+                    "assistanceEpisodes": 6,
+                    "lastEvidenceId": "assistments:35687767",
+                    "lastScore": 1
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578"
+              ],
+              "final": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:35526865",
+                    "assistments:35527277",
+                    "assistments:35527546",
+                    "assistments:35527698",
+                    "assistments:35527814",
+                    "assistments:35528578"
+                  ],
+                  "after": [
+                    "assistments:35526865",
+                    "assistments:35527277",
+                    "assistments:35527546",
+                    "assistments:35527698",
+                    "assistments:35527814",
+                    "assistments:35528578",
+                    "assistments:35687767"
+                  ]
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:35687767",
+              "accepted": true,
+              "skillId": "Number Line",
+              "score": 1,
+              "reliability": 0.9,
+              "validity": 1,
+              "weight": 0.9,
+              "assisted": false,
+              "assistanceUsed": false,
+              "helpRequested": false,
+              "hints": 0,
+              "attempts": 1,
+              "answerRevealed": false,
+              "direction": "mastery-support",
+              "reason": "unaided-first-attempt-success",
+              "posterior": {
+                "alpha": 2.9,
+                "beta": 8.905,
+                "mean": 0.2457,
+                "variance": 0.014472,
+                "posteriorStd": 0.120298,
+                "uncertainty": 0.4812
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Number Line"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "worked-example"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 8,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 8,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:35688138",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:35688138",
+            "learnerId": "70363",
+            "skillId": "Number Line",
+            "skillKey": "number_line",
+            "problemId": "56193",
+            "correct": false,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": false,
+              "attemptCount": 2,
+              "hintCount": 3,
+              "hintTotal": 5,
+              "firstAction": "attempt",
+              "firstActionRaw": "0",
+              "bottomHint": false,
+              "answerRevealed": false
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "35688138",
+              "userId": "70363",
+              "problemId": "56193",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "Number Line",
+              "currentSkillKey": "number_line",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "number_line": {
+                  "skillId": "Number Line",
+                  "alpha": 2.9,
+                  "beta": 8.905,
+                  "mean": 0.2457,
+                  "variance": 0.014472,
+                  "posteriorStd": 0.120298,
+                  "uncertainty": 0.4812,
+                  "evidenceWeight": 5.805,
+                  "observations": 7,
+                  "directAssessments": 1,
+                  "assistedAssessments": 6,
+                  "unaidedSuccesses": 1,
+                  "firstAttemptFailures": 6,
+                  "assistanceEpisodes": 6,
+                  "lastEvidenceId": "assistments:35687767",
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Number Line",
+              "currentSkillKey": "number_line",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "number_line": {
+                  "skillId": "Number Line",
+                  "alpha": 2.9,
+                  "beta": 9.715,
+                  "mean": 0.2299,
+                  "variance": 0.013003,
+                  "posteriorStd": 0.114031,
+                  "uncertainty": 0.4561,
+                  "evidenceWeight": 6.615,
+                  "observations": 8,
+                  "directAssessments": 1,
+                  "assistedAssessments": 7,
+                  "unaidedSuccesses": 1,
+                  "firstAttemptFailures": 7,
+                  "assistanceEpisodes": 7,
+                  "lastEvidenceId": "assistments:35688138",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767",
+                "assistments:35688138"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.number_line",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "Number Line",
+                "alpha": 2.9,
+                "beta": 8.905,
+                "mean": 0.2457,
+                "variance": 0.014472,
+                "posteriorStd": 0.120298,
+                "uncertainty": 0.4812,
+                "evidenceWeight": 5.805,
+                "observations": 7,
+                "directAssessments": 1,
+                "assistedAssessments": 6,
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 6,
+                "assistanceEpisodes": 6,
+                "lastEvidenceId": "assistments:35687767",
+                "lastScore": 1
+              },
+              "after": {
+                "skillId": "Number Line",
+                "alpha": 2.9,
+                "beta": 9.715,
+                "mean": 0.2299,
+                "variance": 0.013003,
+                "posteriorStd": 0.114031,
+                "uncertainty": 0.4561,
+                "evidenceWeight": 6.615,
+                "observations": 8,
+                "directAssessments": 1,
+                "assistedAssessments": 7,
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 7,
+                "assistanceEpisodes": 7,
+                "lastEvidenceId": "assistments:35688138",
+                "lastScore": 0
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767"
+              ],
+              "after": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767",
+                "assistments:35688138"
+              ]
+            }
+          ],
+          "trace": {
+            "learner.skills.number_line": {
+              "path": "learner.skills.number_line",
+              "base": {
+                "skillId": "Number Line",
+                "alpha": 2.9,
+                "beta": 8.905,
+                "mean": 0.2457,
+                "variance": 0.014472,
+                "posteriorStd": 0.120298,
+                "uncertainty": 0.4812,
+                "evidenceWeight": 5.805,
+                "observations": 7,
+                "directAssessments": 1,
+                "assistedAssessments": 6,
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 6,
+                "assistanceEpisodes": 6,
+                "lastEvidenceId": "assistments:35687767",
+                "lastScore": 1
+              },
+              "final": {
+                "skillId": "Number Line",
+                "alpha": 2.9,
+                "beta": 9.715,
+                "mean": 0.2299,
+                "variance": 0.013003,
+                "posteriorStd": 0.114031,
+                "uncertainty": 0.4561,
+                "evidenceWeight": 6.615,
+                "observations": 8,
+                "directAssessments": 1,
+                "assistedAssessments": 7,
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 7,
+                "assistanceEpisodes": 7,
+                "lastEvidenceId": "assistments:35688138",
+                "lastScore": 0
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "Number Line",
+                    "alpha": 2.9,
+                    "beta": 8.905,
+                    "mean": 0.2457,
+                    "variance": 0.014472,
+                    "posteriorStd": 0.120298,
+                    "uncertainty": 0.4812,
+                    "evidenceWeight": 5.805,
+                    "observations": 7,
+                    "directAssessments": 1,
+                    "assistedAssessments": 6,
+                    "unaidedSuccesses": 1,
+                    "firstAttemptFailures": 6,
+                    "assistanceEpisodes": 6,
+                    "lastEvidenceId": "assistments:35687767",
+                    "lastScore": 1
+                  },
+                  "after": {
+                    "skillId": "Number Line",
+                    "alpha": 2.9,
+                    "beta": 9.715,
+                    "mean": 0.2299,
+                    "variance": 0.013003,
+                    "posteriorStd": 0.114031,
+                    "uncertainty": 0.4561,
+                    "evidenceWeight": 6.615,
+                    "observations": 8,
+                    "directAssessments": 1,
+                    "assistedAssessments": 7,
+                    "unaidedSuccesses": 1,
+                    "firstAttemptFailures": 7,
+                    "assistanceEpisodes": 7,
+                    "lastEvidenceId": "assistments:35688138",
+                    "lastScore": 0
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767"
+              ],
+              "final": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767",
+                "assistments:35688138"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:35526865",
+                    "assistments:35527277",
+                    "assistments:35527546",
+                    "assistments:35527698",
+                    "assistments:35527814",
+                    "assistments:35528578",
+                    "assistments:35687767"
+                  ],
+                  "after": [
+                    "assistments:35526865",
+                    "assistments:35527277",
+                    "assistments:35527546",
+                    "assistments:35527698",
+                    "assistments:35527814",
+                    "assistments:35528578",
+                    "assistments:35687767",
+                    "assistments:35688138"
+                  ]
+                }
+              ]
+            }
+          },
+          "diagnostics": [
+            {
+              "severity": "info",
+              "code": "TUTOR_ASSISTED_FAILURE_PRESERVED",
+              "message": "首答错误/需要帮助被保留为尚未独立掌握的负证据；assistance 不会像成功证据那样对称削弱。"
+            }
+          ],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:35688138",
+              "accepted": true,
+              "skillId": "Number Line",
+              "score": 0,
+              "reliability": 0.9,
+              "validity": 0.9,
+              "weight": 0.81,
+              "assisted": true,
+              "assistanceUsed": true,
+              "helpRequested": true,
+              "hints": 3,
+              "attempts": 2,
+              "answerRevealed": false,
+              "direction": "nonmastery-support",
+              "reason": "first-attempt-failure-or-assistance-needed",
+              "posterior": {
+                "alpha": 2.9,
+                "beta": 9.715,
+                "mean": 0.2299,
+                "variance": 0.013003,
+                "posteriorStd": 0.114031,
+                "uncertainty": 0.4561
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Number Line"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "worked-example"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 9,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 9,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:35688348",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:35688348",
+            "learnerId": "70363",
+            "skillId": "Number Line",
+            "skillKey": "number_line",
+            "problemId": "56191",
+            "correct": true,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": true,
+              "attemptCount": 1,
+              "hintCount": 0,
+              "hintTotal": 5,
+              "firstAction": "attempt",
+              "firstActionRaw": "0",
+              "bottomHint": null,
+              "answerRevealed": false
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "35688348",
+              "userId": "70363",
+              "problemId": "56191",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "Number Line",
+              "currentSkillKey": "number_line",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "number_line": {
+                  "skillId": "Number Line",
+                  "alpha": 2.9,
+                  "beta": 9.715,
+                  "mean": 0.2299,
+                  "variance": 0.013003,
+                  "posteriorStd": 0.114031,
+                  "uncertainty": 0.4561,
+                  "evidenceWeight": 6.615,
+                  "observations": 8,
+                  "directAssessments": 1,
+                  "assistedAssessments": 7,
+                  "unaidedSuccesses": 1,
+                  "firstAttemptFailures": 7,
+                  "assistanceEpisodes": 7,
+                  "lastEvidenceId": "assistments:35688138",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767",
+                "assistments:35688138"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Number Line",
+              "currentSkillKey": "number_line",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "number_line": {
+                  "skillId": "Number Line",
+                  "alpha": 3.8,
+                  "beta": 9.715,
+                  "mean": 0.2812,
+                  "variance": 0.013924,
+                  "posteriorStd": 0.118002,
+                  "uncertainty": 0.472,
+                  "evidenceWeight": 7.515,
+                  "observations": 9,
+                  "directAssessments": 2,
+                  "assistedAssessments": 7,
+                  "unaidedSuccesses": 2,
+                  "firstAttemptFailures": 7,
+                  "assistanceEpisodes": 7,
+                  "lastEvidenceId": "assistments:35688348",
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767",
+                "assistments:35688138",
+                "assistments:35688348"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.number_line",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "Number Line",
+                "alpha": 2.9,
+                "beta": 9.715,
+                "mean": 0.2299,
+                "variance": 0.013003,
+                "posteriorStd": 0.114031,
+                "uncertainty": 0.4561,
+                "evidenceWeight": 6.615,
+                "observations": 8,
+                "directAssessments": 1,
+                "assistedAssessments": 7,
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 7,
+                "assistanceEpisodes": 7,
+                "lastEvidenceId": "assistments:35688138",
+                "lastScore": 0
+              },
+              "after": {
+                "skillId": "Number Line",
+                "alpha": 3.8,
+                "beta": 9.715,
+                "mean": 0.2812,
+                "variance": 0.013924,
+                "posteriorStd": 0.118002,
+                "uncertainty": 0.472,
+                "evidenceWeight": 7.515,
+                "observations": 9,
+                "directAssessments": 2,
+                "assistedAssessments": 7,
+                "unaidedSuccesses": 2,
+                "firstAttemptFailures": 7,
+                "assistanceEpisodes": 7,
+                "lastEvidenceId": "assistments:35688348",
+                "lastScore": 1
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767",
+                "assistments:35688138"
+              ],
+              "after": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767",
+                "assistments:35688138",
+                "assistments:35688348"
+              ]
+            }
+          ],
+          "trace": {
+            "learner.skills.number_line": {
+              "path": "learner.skills.number_line",
+              "base": {
+                "skillId": "Number Line",
+                "alpha": 2.9,
+                "beta": 9.715,
+                "mean": 0.2299,
+                "variance": 0.013003,
+                "posteriorStd": 0.114031,
+                "uncertainty": 0.4561,
+                "evidenceWeight": 6.615,
+                "observations": 8,
+                "directAssessments": 1,
+                "assistedAssessments": 7,
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 7,
+                "assistanceEpisodes": 7,
+                "lastEvidenceId": "assistments:35688138",
+                "lastScore": 0
+              },
+              "final": {
+                "skillId": "Number Line",
+                "alpha": 3.8,
+                "beta": 9.715,
+                "mean": 0.2812,
+                "variance": 0.013924,
+                "posteriorStd": 0.118002,
+                "uncertainty": 0.472,
+                "evidenceWeight": 7.515,
+                "observations": 9,
+                "directAssessments": 2,
+                "assistedAssessments": 7,
+                "unaidedSuccesses": 2,
+                "firstAttemptFailures": 7,
+                "assistanceEpisodes": 7,
+                "lastEvidenceId": "assistments:35688348",
+                "lastScore": 1
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "Number Line",
+                    "alpha": 2.9,
+                    "beta": 9.715,
+                    "mean": 0.2299,
+                    "variance": 0.013003,
+                    "posteriorStd": 0.114031,
+                    "uncertainty": 0.4561,
+                    "evidenceWeight": 6.615,
+                    "observations": 8,
+                    "directAssessments": 1,
+                    "assistedAssessments": 7,
+                    "unaidedSuccesses": 1,
+                    "firstAttemptFailures": 7,
+                    "assistanceEpisodes": 7,
+                    "lastEvidenceId": "assistments:35688138",
+                    "lastScore": 0
+                  },
+                  "after": {
+                    "skillId": "Number Line",
+                    "alpha": 3.8,
+                    "beta": 9.715,
+                    "mean": 0.2812,
+                    "variance": 0.013924,
+                    "posteriorStd": 0.118002,
+                    "uncertainty": 0.472,
+                    "evidenceWeight": 7.515,
+                    "observations": 9,
+                    "directAssessments": 2,
+                    "assistedAssessments": 7,
+                    "unaidedSuccesses": 2,
+                    "firstAttemptFailures": 7,
+                    "assistanceEpisodes": 7,
+                    "lastEvidenceId": "assistments:35688348",
+                    "lastScore": 1
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767",
+                "assistments:35688138"
+              ],
+              "final": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767",
+                "assistments:35688138",
+                "assistments:35688348"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:35526865",
+                    "assistments:35527277",
+                    "assistments:35527546",
+                    "assistments:35527698",
+                    "assistments:35527814",
+                    "assistments:35528578",
+                    "assistments:35687767",
+                    "assistments:35688138"
+                  ],
+                  "after": [
+                    "assistments:35526865",
+                    "assistments:35527277",
+                    "assistments:35527546",
+                    "assistments:35527698",
+                    "assistments:35527814",
+                    "assistments:35528578",
+                    "assistments:35687767",
+                    "assistments:35688138",
+                    "assistments:35688348"
+                  ]
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:35688348",
+              "accepted": true,
+              "skillId": "Number Line",
+              "score": 1,
+              "reliability": 0.9,
+              "validity": 1,
+              "weight": 0.9,
+              "assisted": false,
+              "assistanceUsed": false,
+              "helpRequested": false,
+              "hints": 0,
+              "attempts": 1,
+              "answerRevealed": false,
+              "direction": "mastery-support",
+              "reason": "unaided-first-attempt-success",
+              "posterior": {
+                "alpha": 3.8,
+                "beta": 9.715,
+                "mean": 0.2812,
+                "variance": 0.013924,
+                "posteriorStd": 0.118002,
+                "uncertainty": 0.472
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Number Line"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "worked-example"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 10,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 10,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:35688490",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:35688490",
+            "learnerId": "70363",
+            "skillId": "Number Line",
+            "skillKey": "number_line",
+            "problemId": "56185",
+            "correct": true,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": true,
+              "attemptCount": 1,
+              "hintCount": 0,
+              "hintTotal": 5,
+              "firstAction": "attempt",
+              "firstActionRaw": "0",
+              "bottomHint": null,
+              "answerRevealed": false
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "35688490",
+              "userId": "70363",
+              "problemId": "56185",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "Number Line",
+              "currentSkillKey": "number_line",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "number_line": {
+                  "skillId": "Number Line",
+                  "alpha": 3.8,
+                  "beta": 9.715,
+                  "mean": 0.2812,
+                  "variance": 0.013924,
+                  "posteriorStd": 0.118002,
+                  "uncertainty": 0.472,
+                  "evidenceWeight": 7.515,
+                  "observations": 9,
+                  "directAssessments": 2,
+                  "assistedAssessments": 7,
+                  "unaidedSuccesses": 2,
+                  "firstAttemptFailures": 7,
+                  "assistanceEpisodes": 7,
+                  "lastEvidenceId": "assistments:35688348",
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767",
+                "assistments:35688138",
+                "assistments:35688348"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Number Line",
+              "currentSkillKey": "number_line",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "number_line": {
+                  "skillId": "Number Line",
+                  "alpha": 4.7,
+                  "beta": 9.715,
+                  "mean": 0.326,
+                  "variance": 0.014255,
+                  "posteriorStd": 0.119394,
+                  "uncertainty": 0.4776,
+                  "evidenceWeight": 8.415,
+                  "observations": 10,
+                  "directAssessments": 3,
+                  "assistedAssessments": 7,
+                  "unaidedSuccesses": 3,
+                  "firstAttemptFailures": 7,
+                  "assistanceEpisodes": 7,
+                  "lastEvidenceId": "assistments:35688490",
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767",
+                "assistments:35688138",
+                "assistments:35688348",
+                "assistments:35688490"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.number_line",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "Number Line",
+                "alpha": 3.8,
+                "beta": 9.715,
+                "mean": 0.2812,
+                "variance": 0.013924,
+                "posteriorStd": 0.118002,
+                "uncertainty": 0.472,
+                "evidenceWeight": 7.515,
+                "observations": 9,
+                "directAssessments": 2,
+                "assistedAssessments": 7,
+                "unaidedSuccesses": 2,
+                "firstAttemptFailures": 7,
+                "assistanceEpisodes": 7,
+                "lastEvidenceId": "assistments:35688348",
+                "lastScore": 1
+              },
+              "after": {
+                "skillId": "Number Line",
+                "alpha": 4.7,
+                "beta": 9.715,
+                "mean": 0.326,
+                "variance": 0.014255,
+                "posteriorStd": 0.119394,
+                "uncertainty": 0.4776,
+                "evidenceWeight": 8.415,
+                "observations": 10,
+                "directAssessments": 3,
+                "assistedAssessments": 7,
+                "unaidedSuccesses": 3,
+                "firstAttemptFailures": 7,
+                "assistanceEpisodes": 7,
+                "lastEvidenceId": "assistments:35688490",
+                "lastScore": 1
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767",
+                "assistments:35688138",
+                "assistments:35688348"
+              ],
+              "after": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767",
+                "assistments:35688138",
+                "assistments:35688348",
+                "assistments:35688490"
+              ]
+            }
+          ],
+          "trace": {
+            "learner.skills.number_line": {
+              "path": "learner.skills.number_line",
+              "base": {
+                "skillId": "Number Line",
+                "alpha": 3.8,
+                "beta": 9.715,
+                "mean": 0.2812,
+                "variance": 0.013924,
+                "posteriorStd": 0.118002,
+                "uncertainty": 0.472,
+                "evidenceWeight": 7.515,
+                "observations": 9,
+                "directAssessments": 2,
+                "assistedAssessments": 7,
+                "unaidedSuccesses": 2,
+                "firstAttemptFailures": 7,
+                "assistanceEpisodes": 7,
+                "lastEvidenceId": "assistments:35688348",
+                "lastScore": 1
+              },
+              "final": {
+                "skillId": "Number Line",
+                "alpha": 4.7,
+                "beta": 9.715,
+                "mean": 0.326,
+                "variance": 0.014255,
+                "posteriorStd": 0.119394,
+                "uncertainty": 0.4776,
+                "evidenceWeight": 8.415,
+                "observations": 10,
+                "directAssessments": 3,
+                "assistedAssessments": 7,
+                "unaidedSuccesses": 3,
+                "firstAttemptFailures": 7,
+                "assistanceEpisodes": 7,
+                "lastEvidenceId": "assistments:35688490",
+                "lastScore": 1
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "Number Line",
+                    "alpha": 3.8,
+                    "beta": 9.715,
+                    "mean": 0.2812,
+                    "variance": 0.013924,
+                    "posteriorStd": 0.118002,
+                    "uncertainty": 0.472,
+                    "evidenceWeight": 7.515,
+                    "observations": 9,
+                    "directAssessments": 2,
+                    "assistedAssessments": 7,
+                    "unaidedSuccesses": 2,
+                    "firstAttemptFailures": 7,
+                    "assistanceEpisodes": 7,
+                    "lastEvidenceId": "assistments:35688348",
+                    "lastScore": 1
+                  },
+                  "after": {
+                    "skillId": "Number Line",
+                    "alpha": 4.7,
+                    "beta": 9.715,
+                    "mean": 0.326,
+                    "variance": 0.014255,
+                    "posteriorStd": 0.119394,
+                    "uncertainty": 0.4776,
+                    "evidenceWeight": 8.415,
+                    "observations": 10,
+                    "directAssessments": 3,
+                    "assistedAssessments": 7,
+                    "unaidedSuccesses": 3,
+                    "firstAttemptFailures": 7,
+                    "assistanceEpisodes": 7,
+                    "lastEvidenceId": "assistments:35688490",
+                    "lastScore": 1
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767",
+                "assistments:35688138",
+                "assistments:35688348"
+              ],
+              "final": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767",
+                "assistments:35688138",
+                "assistments:35688348",
+                "assistments:35688490"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:35526865",
+                    "assistments:35527277",
+                    "assistments:35527546",
+                    "assistments:35527698",
+                    "assistments:35527814",
+                    "assistments:35528578",
+                    "assistments:35687767",
+                    "assistments:35688138",
+                    "assistments:35688348"
+                  ],
+                  "after": [
+                    "assistments:35526865",
+                    "assistments:35527277",
+                    "assistments:35527546",
+                    "assistments:35527698",
+                    "assistments:35527814",
+                    "assistments:35528578",
+                    "assistments:35687767",
+                    "assistments:35688138",
+                    "assistments:35688348",
+                    "assistments:35688490"
+                  ]
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:35688490",
+              "accepted": true,
+              "skillId": "Number Line",
+              "score": 1,
+              "reliability": 0.9,
+              "validity": 1,
+              "weight": 0.9,
+              "assisted": false,
+              "assistanceUsed": false,
+              "helpRequested": false,
+              "hints": 0,
+              "attempts": 1,
+              "answerRevealed": false,
+              "direction": "mastery-support",
+              "reason": "unaided-first-attempt-success",
+              "posterior": {
+                "alpha": 4.7,
+                "beta": 9.715,
+                "mean": 0.326,
+                "variance": 0.014255,
+                "posteriorStd": 0.119394,
+                "uncertainty": 0.4776
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Number Line"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "worked-example"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 11,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 11,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:35688520",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:35688520",
+            "learnerId": "70363",
+            "skillId": "Number Line",
+            "skillKey": "number_line",
+            "problemId": "56171",
+            "correct": false,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": false,
+              "attemptCount": 8,
+              "hintCount": 0,
+              "hintTotal": 5,
+              "firstAction": "attempt",
+              "firstActionRaw": "0",
+              "bottomHint": null,
+              "answerRevealed": false
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "35688520",
+              "userId": "70363",
+              "problemId": "56171",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "Number Line",
+              "currentSkillKey": "number_line",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "number_line": {
+                  "skillId": "Number Line",
+                  "alpha": 4.7,
+                  "beta": 9.715,
+                  "mean": 0.326,
+                  "variance": 0.014255,
+                  "posteriorStd": 0.119394,
+                  "uncertainty": 0.4776,
+                  "evidenceWeight": 8.415,
+                  "observations": 10,
+                  "directAssessments": 3,
+                  "assistedAssessments": 7,
+                  "unaidedSuccesses": 3,
+                  "firstAttemptFailures": 7,
+                  "assistanceEpisodes": 7,
+                  "lastEvidenceId": "assistments:35688490",
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767",
+                "assistments:35688138",
+                "assistments:35688348",
+                "assistments:35688490"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Number Line",
+              "currentSkillKey": "number_line",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "number_line": {
+                  "skillId": "Number Line",
+                  "alpha": 4.7,
+                  "beta": 10.525,
+                  "mean": 0.3087,
+                  "variance": 0.013153,
+                  "posteriorStd": 0.114686,
+                  "uncertainty": 0.4587,
+                  "evidenceWeight": 9.225,
+                  "observations": 11,
+                  "directAssessments": 3,
+                  "assistedAssessments": 8,
+                  "unaidedSuccesses": 3,
+                  "firstAttemptFailures": 8,
+                  "assistanceEpisodes": 8,
+                  "lastEvidenceId": "assistments:35688520",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767",
+                "assistments:35688138",
+                "assistments:35688348",
+                "assistments:35688490",
+                "assistments:35688520"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.number_line",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "Number Line",
+                "alpha": 4.7,
+                "beta": 9.715,
+                "mean": 0.326,
+                "variance": 0.014255,
+                "posteriorStd": 0.119394,
+                "uncertainty": 0.4776,
+                "evidenceWeight": 8.415,
+                "observations": 10,
+                "directAssessments": 3,
+                "assistedAssessments": 7,
+                "unaidedSuccesses": 3,
+                "firstAttemptFailures": 7,
+                "assistanceEpisodes": 7,
+                "lastEvidenceId": "assistments:35688490",
+                "lastScore": 1
+              },
+              "after": {
+                "skillId": "Number Line",
+                "alpha": 4.7,
+                "beta": 10.525,
+                "mean": 0.3087,
+                "variance": 0.013153,
+                "posteriorStd": 0.114686,
+                "uncertainty": 0.4587,
+                "evidenceWeight": 9.225,
+                "observations": 11,
+                "directAssessments": 3,
+                "assistedAssessments": 8,
+                "unaidedSuccesses": 3,
+                "firstAttemptFailures": 8,
+                "assistanceEpisodes": 8,
+                "lastEvidenceId": "assistments:35688520",
+                "lastScore": 0
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767",
+                "assistments:35688138",
+                "assistments:35688348",
+                "assistments:35688490"
+              ],
+              "after": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767",
+                "assistments:35688138",
+                "assistments:35688348",
+                "assistments:35688490",
+                "assistments:35688520"
+              ]
+            }
+          ],
+          "trace": {
+            "learner.skills.number_line": {
+              "path": "learner.skills.number_line",
+              "base": {
+                "skillId": "Number Line",
+                "alpha": 4.7,
+                "beta": 9.715,
+                "mean": 0.326,
+                "variance": 0.014255,
+                "posteriorStd": 0.119394,
+                "uncertainty": 0.4776,
+                "evidenceWeight": 8.415,
+                "observations": 10,
+                "directAssessments": 3,
+                "assistedAssessments": 7,
+                "unaidedSuccesses": 3,
+                "firstAttemptFailures": 7,
+                "assistanceEpisodes": 7,
+                "lastEvidenceId": "assistments:35688490",
+                "lastScore": 1
+              },
+              "final": {
+                "skillId": "Number Line",
+                "alpha": 4.7,
+                "beta": 10.525,
+                "mean": 0.3087,
+                "variance": 0.013153,
+                "posteriorStd": 0.114686,
+                "uncertainty": 0.4587,
+                "evidenceWeight": 9.225,
+                "observations": 11,
+                "directAssessments": 3,
+                "assistedAssessments": 8,
+                "unaidedSuccesses": 3,
+                "firstAttemptFailures": 8,
+                "assistanceEpisodes": 8,
+                "lastEvidenceId": "assistments:35688520",
+                "lastScore": 0
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "Number Line",
+                    "alpha": 4.7,
+                    "beta": 9.715,
+                    "mean": 0.326,
+                    "variance": 0.014255,
+                    "posteriorStd": 0.119394,
+                    "uncertainty": 0.4776,
+                    "evidenceWeight": 8.415,
+                    "observations": 10,
+                    "directAssessments": 3,
+                    "assistedAssessments": 7,
+                    "unaidedSuccesses": 3,
+                    "firstAttemptFailures": 7,
+                    "assistanceEpisodes": 7,
+                    "lastEvidenceId": "assistments:35688490",
+                    "lastScore": 1
+                  },
+                  "after": {
+                    "skillId": "Number Line",
+                    "alpha": 4.7,
+                    "beta": 10.525,
+                    "mean": 0.3087,
+                    "variance": 0.013153,
+                    "posteriorStd": 0.114686,
+                    "uncertainty": 0.4587,
+                    "evidenceWeight": 9.225,
+                    "observations": 11,
+                    "directAssessments": 3,
+                    "assistedAssessments": 8,
+                    "unaidedSuccesses": 3,
+                    "firstAttemptFailures": 8,
+                    "assistanceEpisodes": 8,
+                    "lastEvidenceId": "assistments:35688520",
+                    "lastScore": 0
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767",
+                "assistments:35688138",
+                "assistments:35688348",
+                "assistments:35688490"
+              ],
+              "final": [
+                "assistments:35526865",
+                "assistments:35527277",
+                "assistments:35527546",
+                "assistments:35527698",
+                "assistments:35527814",
+                "assistments:35528578",
+                "assistments:35687767",
+                "assistments:35688138",
+                "assistments:35688348",
+                "assistments:35688490",
+                "assistments:35688520"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:35526865",
+                    "assistments:35527277",
+                    "assistments:35527546",
+                    "assistments:35527698",
+                    "assistments:35527814",
+                    "assistments:35528578",
+                    "assistments:35687767",
+                    "assistments:35688138",
+                    "assistments:35688348",
+                    "assistments:35688490"
+                  ],
+                  "after": [
+                    "assistments:35526865",
+                    "assistments:35527277",
+                    "assistments:35527546",
+                    "assistments:35527698",
+                    "assistments:35527814",
+                    "assistments:35528578",
+                    "assistments:35687767",
+                    "assistments:35688138",
+                    "assistments:35688348",
+                    "assistments:35688490",
+                    "assistments:35688520"
+                  ]
+                }
+              ]
+            }
+          },
+          "diagnostics": [
+            {
+              "severity": "info",
+              "code": "TUTOR_ASSISTED_FAILURE_PRESERVED",
+              "message": "首答错误/需要帮助被保留为尚未独立掌握的负证据；assistance 不会像成功证据那样对称削弱。"
+            }
+          ],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:35688520",
+              "accepted": true,
+              "skillId": "Number Line",
+              "score": 0,
+              "reliability": 0.9,
+              "validity": 0.9,
+              "weight": 0.81,
+              "assisted": true,
+              "assistanceUsed": true,
+              "helpRequested": false,
+              "hints": 0,
+              "attempts": 8,
+              "answerRevealed": false,
+              "direction": "nonmastery-support",
+              "reason": "first-attempt-failure-or-assistance-needed",
+              "posterior": {
+                "alpha": 4.7,
+                "beta": 10.525,
+                "mean": 0.3087,
+                "variance": 0.013153,
+                "posteriorStd": 0.114686,
+                "uncertainty": 0.4587
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Number Line"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "worked-example"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "schema": "ppl.profiles/stable-validation/0.1",
+  "release": "0.2.0",
+  "passed": true,
+  "versionMatrix": {
+    "root": "0.2.0",
+    "profileCore": "0.2.0",
+    "profileRuntime": "0.2.0",
+    "profileTutor": "0.2.0",
+    "profileResearch": "0.2.0",
+    "characterProfile": "0.1.0",
+    "lifeProfile": "0.1.0"
+  },
+  "tests": {
+    "passed": true,
+    "total": 28,
+    "failed": 0
+  },
+  "profileValidation": {
+    "passed": true,
+    "profiles": 4
+  },
+  "examples": {
+    "passed": true,
+    "generatedFiles": 8
+  },
+  "applicationGate": {
+    "passed": true,
+    "tutor": {
+      "datasetRows": 56,
+      "users": 7,
+      "skills": 4,
+      "hintedRows": 10,
+      "multipleAttemptRows": 17,
+      "bottomHintRows": 7,
+      "trajectories": 11,
+      "bktSanitySpearman": 0.7981,
+      "bktSevereAnomalies": [],
+      "bktRole": "advisory sanity baseline only; PPL Tutor does not claim to reproduce or outperform BKT."
+    },
+    "research": {
+      "checks": {
+        "ligoBlockedBeforeStrongValidation": true,
+        "ligoReadySupportAfterStrongValidation": true,
+        "egoStartsQualifiedSupport": true,
+        "egoBecomesInconclusiveMixed": true,
+        "egoRemainsInconclusiveUnderConflictingStrongReplication": true,
+        "realStrongNegativeCanBeReadyOppose": true
+      },
+      "passed": true
+    },
+    "coreChanged": false,
+    "runtimeChanged": false,
+    "sharedCoreRuntimeDefectObserved": false
+  },
+  "isolatedNpmArtifacts": {
+    "passed": true,
+    "packages": [
+      "@ppl/profile-core",
+      "@ppl/profile-tutor",
+      "@ppl/profile-tutor/assistments",
+      "@ppl/profile-tutor/bkt",
+      "@ppl/profile-research",
+      "@ppl/profile-runtime"
+    ],
+    "sha256": {
+      "ppl-profile-core-0.2.0.tgz": "e7e6209073ed315e4c529ddeb20ddc6a6213563f1bc4dc2ba5032b78d043703c",
+      "ppl-profile-research-0.2.0.tgz": "204c0a6c80c0eba78ca157f4deb91f3164a52e81af08a68976c783211b7e3522",
+      "ppl-profile-runtime-0.2.0.tgz": "3b82e5598dfa3c53aef47f9ac792920a947b69cf7e4d4f95b80b21d4b8caccdc",
+      "ppl-profile-tutor-0.2.0.tgz": "ae6dedee5c131f78fe1da826817a15699372127d13df92c1c9587f102cde7799"
+    }
+  },
+  "releaseHygiene": {
+    "exportedAppSessions": 11,
+    "noRcProfileVersionInExportedSessions": true
+  },
+  "semanticBoundary": {
+    "stableMeans": "Profile 0.2 contract and reference-engine transaction/evidence behavior are frozen.",
+    "doesNotMean": [
+      "Tutor mastery is fully statistically calibrated",
+      "BKT sanity is a performance benchmark",
+      "Research ready is objective scientific truth",
+      "Profiles replace Host retrieval/experiments/tools/fact verification"
+    ]
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "research-bilingual-executive-function-conflict",
+  "notes": "Public primary literature is deliberately selected to contain materially conflicting evidence. The scenario tests whether PPL Research preserves scientific disagreement as inconclusive instead of averaging it into a qualified/ready result. Literature triangulation is not treated as strong validation.",
+  "steps": [
+    {
+      "turn": 1,
+      "event": {"type": "QUESTION_DEFINED", "payload": {"question": "Does bilingual experience produce a replicable executive-function advantage over monolingualism?"}},
+      "endReason": "completed"
+    },
+    {
+      "turn": 2,
+      "event": {"id": "claim:bilingual-ef-advantage", "type": "CLAIM_PROPOSED", "payload": {"claimId": "claim:bilingual-ef-advantage", "kind": "claim", "text": "Bilingual experience produces a replicable executive-function advantage over monolingualism in at least some non-language tasks or populations."}},
+      "endReason": "completed"
+    },
+    {
+      "turn": 3,
+      "event": {"id": "evidence:bialystok-2004", "type": "EVIDENCE_RECORDED", "payload": {
+        "evidenceId": "evidence:bialystok-2004", "claimId": "claim:bilingual-ef-advantage", "stance": "support",
+        "summary": "Three Simon-task studies reported smaller Simon costs for bilingual middle-aged/older adults, with a larger advantage in older participants.",
+        "source": {"title": "Bilingualism, aging, and cognitive control: evidence from the Simon task", "doi": "10.1037/0882-7974.19.2.290", "publisher": "Psychology and Aging", "independenceGroup": "bialystok-2004"},
+        "independenceGroup": "bialystok-2004", "quality": {"relevance": 0.90, "reliability": 0.75, "independence": 1.0}
+      }},
+      "endReason": "completed"
+    },
+    {
+      "turn": 4,
+      "event": {"id": "evidence:ware-2020", "type": "EVIDENCE_RECORDED", "payload": {
+        "evidenceId": "evidence:ware-2020", "claimId": "claim:bilingual-ef-advantage", "stance": "support",
+        "summary": "A meta-analysis of 170 studies reported task- and age-dependent bilingual advantages, with larger effects in samples aged 50+.",
+        "source": {"title": "Meta-Analysis Reveals a Bilingual Advantage That Is Dependent on Task and Age", "doi": "10.3389/fpsyg.2020.01458", "publisher": "Frontiers in Psychology", "independenceGroup": "ware-2020"},
+        "independenceGroup": "ware-2020", "quality": {"relevance": 0.95, "reliability": 0.90, "independence": 1.0}
+      }},
+      "endReason": "completed"
+    },
+    {
+      "turn": 5,
+      "event": {"id": "evidence:paap-2013", "type": "EVIDENCE_RECORDED", "payload": {
+        "evidenceId": "evidence:paap-2013", "claimId": "claim:bilingual-ef-advantage", "stance": "oppose",
+        "summary": "Across three studies and 15 executive-processing indicators, the critical bilingual Group×Condition interaction was significant for only one indicator and in the disadvantage direction.",
+        "source": {"title": "There is no coherent evidence for a bilingual advantage in executive processing", "locator": "PMID:23370226", "publisher": "Cognitive Psychology", "independenceGroup": "paap-2013"},
+        "independenceGroup": "paap-2013", "quality": {"relevance": 0.90, "reliability": 0.80, "independence": 1.0}
+      }},
+      "endReason": "completed"
+    },
+    {
+      "turn": 6,
+      "event": {"id": "evidence:lehtonen-2018", "type": "EVIDENCE_RECORDED", "payload": {
+        "evidenceId": "evidence:lehtonen-2018", "claimId": "claim:bilingual-ef-advantage", "stance": "oppose",
+        "summary": "A meta-analysis of 152 adult studies found that small pre-correction advantages disappeared after publication-bias correction and concluded there was no systematic support for a general adult executive-function advantage.",
+        "source": {"title": "Is bilingualism associated with enhanced executive functioning in adults? A meta-analytic review", "doi": "10.1037/bul0000142", "publisher": "Psychological Bulletin", "independenceGroup": "lehtonen-2018"},
+        "independenceGroup": "lehtonen-2018", "quality": {"relevance": 0.98, "reliability": 0.95, "independence": 1.0}
+      }},
+      "endReason": "completed"
+    },
+    {
+      "turn": 7,
+      "event": {"id": "evidence:dick-2019", "type": "EVIDENCE_RECORDED", "payload": {
+        "evidenceId": "evidence:dick-2019", "claimId": "claim:bilingual-ef-advantage", "stance": "oppose",
+        "summary": "In a demographically representative sample of 4,524 US children aged 9–10, the ABCD study found little evidence of bilingual advantages in inhibitory control, attention, task switching, or cognitive flexibility.",
+        "source": {"title": "No evidence for a bilingual executive function advantage in the nationally representative ABCD study", "doi": "10.1038/s41562-019-0609-3", "publisher": "Nature Human Behaviour", "independenceGroup": "dick-2019"},
+        "independenceGroup": "dick-2019", "quality": {"relevance": 0.88, "reliability": 0.90, "independence": 1.0}
+      }},
+      "endReason": "completed"
+    },
+    {
+      "turn": 8,
+      "event": {"id": "validation:literature-conflict", "type": "VALIDATION_RESULT", "payload": {
+        "validationId": "validation:literature-conflict", "claimId": "claim:bilingual-ef-advantage", "kind": "literature-triangulation", "method": "cross-source-literature-triangulation",
+        "outcome": "inconclusive", "confidence": 0.95, "reproducible": true,
+        "provenance": {"sources": ["10.1037/0882-7974.19.2.290", "10.3389/fpsyg.2020.01458", "PMID:23370226", "10.1037/bul0000142", "10.1038/s41562-019-0609-3"]}
+      }},
+      "endReason": "completed"
+    },
+    {
+      "turn": 9,
+      "event": {"id": "conclusion:conflict", "type": "CONCLUSION_REQUESTED", "payload": {"claimId": "claim:bilingual-ef-advantage"}},
+      "endReason": "completed"
+    }
+  ]
+}

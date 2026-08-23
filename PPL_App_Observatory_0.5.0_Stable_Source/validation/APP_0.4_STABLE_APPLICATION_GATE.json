@@ -1,0 +1,142 @@
+{
+  "schema": "ppl.app/application-gate/0.5",
+  "release": "0.4.0",
+  "passed": true,
+  "inputContract": "ppl.app-session/0.3",
+  "results": {
+    "tutorNumberLine": {
+      "passed": true,
+      "schema": "ppl.app-session/0.3",
+      "snapshots": 11,
+      "errors": [],
+      "bundleVerification": {
+        "passed": true,
+        "expected": "fnv1a32:c81d92f8",
+        "actual": "fnv1a32:c81d92f8"
+      },
+      "analyticsKind": "tutor",
+      "domainChecks": {
+        "trajectoryPointsMatchSnapshots": true,
+        "hasSkillSummary": true,
+        "hasEvidenceDirection": true,
+        "uncertaintyVisible": true,
+        "longTrace": true
+      }
+    },
+    "tutorCircle": {
+      "passed": true,
+      "schema": "ppl.app-session/0.3",
+      "snapshots": 9,
+      "errors": [],
+      "bundleVerification": {
+        "passed": true,
+        "expected": "fnv1a32:0c32fa2c",
+        "actual": "fnv1a32:0c32fa2c"
+      },
+      "analyticsKind": "tutor",
+      "domainChecks": {
+        "trajectoryPointsMatchSnapshots": true,
+        "hasSkillSummary": true,
+        "hasEvidenceDirection": true,
+        "uncertaintyVisible": true
+      }
+    },
+    "tutorMixedCircle": {
+      "passed": true,
+      "schema": "ppl.app-session/0.3",
+      "snapshots": 8,
+      "errors": [],
+      "bundleVerification": {
+        "passed": true,
+        "expected": "fnv1a32:8d9b24ac",
+        "actual": "fnv1a32:8d9b24ac"
+      },
+      "analyticsKind": "tutor",
+      "domainChecks": {
+        "trajectoryPointsMatchSnapshots": true,
+        "hasSkillSummary": true,
+        "hasEvidenceDirection": true,
+        "uncertaintyVisible": true
+      }
+    },
+    "tutorAllIncorrect": {
+      "passed": true,
+      "schema": "ppl.app-session/0.3",
+      "snapshots": 3,
+      "errors": [],
+      "bundleVerification": {
+        "passed": true,
+        "expected": "fnv1a32:73d661c1",
+        "actual": "fnv1a32:73d661c1"
+      },
+      "analyticsKind": "tutor",
+      "domainChecks": {
+        "trajectoryPointsMatchSnapshots": true,
+        "hasSkillSummary": true,
+        "hasEvidenceDirection": true,
+        "uncertaintyVisible": true,
+        "nonmasteryDirectionVisible": true
+      }
+    },
+    "researchLigo": {
+      "passed": true,
+      "schema": "ppl.app-session/0.3",
+      "snapshots": 6,
+      "errors": [],
+      "bundleVerification": {
+        "passed": true,
+        "expected": "fnv1a32:b2ec6b39",
+        "actual": "fnv1a32:b2ec6b39"
+      },
+      "analyticsKind": "research",
+      "domainChecks": {
+        "trajectoryAvailable": true,
+        "directionVisible": true,
+        "statusVisible": true,
+        "readySupport": true
+      }
+    },
+    "researchEgoFlip": {
+      "passed": true,
+      "schema": "ppl.app-session/0.3",
+      "snapshots": 12,
+      "errors": [],
+      "bundleVerification": {
+        "passed": true,
+        "expected": "fnv1a32:b37240e9",
+        "actual": "fnv1a32:b37240e9"
+      },
+      "analyticsKind": "research",
+      "domainChecks": {
+        "trajectoryAvailable": true,
+        "directionVisible": true,
+        "statusVisible": true,
+        "evidenceFlipVisible": true
+      }
+    },
+    "researchEgoRefute": {
+      "passed": true,
+      "schema": "ppl.app-session/0.3",
+      "snapshots": 6,
+      "errors": [],
+      "bundleVerification": {
+        "passed": true,
+        "expected": "fnv1a32:1f053884",
+        "actual": "fnv1a32:1f053884"
+      },
+      "analyticsKind": "research",
+      "domainChecks": {
+        "trajectoryAvailable": true,
+        "directionVisible": true,
+        "statusVisible": true,
+        "readyOppose": true
+      }
+    }
+  },
+  "hostNeutral": true,
+  "resolverRerun": false,
+  "findings": {
+    "tutor": "Long learner trajectories expose mastery, uncertainty, evidence direction and assistance history without rerunning Tutor resolution.",
+    "research": "Claim trajectories render conclusion maturity and direction independently, including qualified/support → inconclusive/mixed and ready/oppose refutation."
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ppl.profile/0.2",
+  "title": "PPL Profile 0.2",
+  "type": "object",
+  "required": ["schema", "id", "version", "kind", "mission", "initialState", "stateSchema", "rules", "transactionPolicy", "evaluation", "observability"],
+  "properties": {
+    "schema": { "enum": ["ppl.profile/0.1", "ppl.profile/0.2"] },
+    "id": { "type": "string", "minLength": 1 },
+    "title": { "type": "string" },
+    "version": { "type": "string", "minLength": 1 },
+    "kind": { "enum": ["character", "tutor", "research", "life"] },
+    "engine": {
+      "type": "object",
+      "properties": { "id": { "type": "string" }, "version": { "type": "string" } },
+      "additionalProperties": true
+    },
+    "application": { "type": "object" },
+    "personaBinding": { "type": ["object", "null"] },
+    "mission": { "type": "object" },
+    "interaction": { "type": "object" },
+    "userModel": { "type": "object" },
+    "domainPolicy": { "type": "object" },
+    "capabilities": { "type": "object" },
+    "initialState": { "type": "object" },
+    "stateSchema": { "type": "object" },
+    "rules": { "type": "array" },
+    "transactionPolicy": {
+      "type": "object",
+      "required": ["commitEndReasons"],
+      "properties": { "commitEndReasons": { "type": "array", "minItems": 1, "items": { "type": "string" } } },
+      "additionalProperties": true
+    },
+    "evaluation": { "type": "object" },
+    "observability": { "type": "object" },
+    "literature": { "type": "array", "items": { "type": "object" } },
+    "tutorModel": { "type": "object" },
+    "researchModel": { "type": "object" }
+  },
+  "additionalProperties": true
+}

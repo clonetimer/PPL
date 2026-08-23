@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ppl.profile-snapshot/0.2",
+  "title": "PPL Profile Snapshot 0.2",
+  "type": "object",
+  "required": ["schema", "profile", "host", "event", "resolution", "transaction"],
+  "properties": {
+    "schema": { "enum": ["ppl.profile-snapshot/0.1", "ppl.profile-snapshot/0.2"] },
+    "profile": {
+      "type": "object",
+      "required": ["id", "kind", "version", "fingerprint"],
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "kind": { "enum": ["character", "tutor", "research", "life"] },
+        "version": { "type": "string" },
+        "fingerprint": { "type": "string" },
+        "engine": { "type": ["object", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "host": {
+      "type": "object",
+      "required": ["turn", "step"],
+      "properties": { "turn": { "type": "number" }, "step": { "type": "number" } },
+      "additionalProperties": true
+    },
+    "event": { "type": "object" },
+    "resolution": { "$ref": "profile-resolution.schema.json" },
+    "transaction": {
+      "type": "object",
+      "required": ["endReason", "status", "committed"],
+      "properties": {
+        "endReason": { "type": "string" },
+        "status": { "enum": ["applied", "discarded"] },
+        "committed": { "type": "boolean" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

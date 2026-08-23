@@ -1,0 +1,7 @@
+{
+  "name": "@ppl/profile-core",
+  "version": "0.2.0",
+  "type": "module",
+  "exports": "./src/index.mjs",
+  "description": "Host-neutral transaction and rule core for PPL Profiles."
+}

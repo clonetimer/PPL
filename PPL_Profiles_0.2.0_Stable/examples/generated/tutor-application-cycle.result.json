@@ -1,0 +1,5244 @@
+{
+  "schema": "ppl.profile-scenario-result/0.2",
+  "profile": {
+    "id": "tutor.uncertainty-verifier.default",
+    "kind": "tutor",
+    "version": "0.2.0",
+    "engine": {
+      "id": "tutor/uncertainty-verifier",
+      "version": "0.2"
+    }
+  },
+  "scenario": "tutor-uncertainty-verifier-application-cycle",
+  "initialState": {
+    "learner": {
+      "currentSkillId": "fractions.addition",
+      "currentSkillKey": "fractions_addition",
+      "skills": {
+        "fractions_addition": {
+          "skillId": "fractions.addition",
+          "alpha": 2,
+          "beta": 4,
+          "mean": 0.3333,
+          "variance": 0.031746,
+          "posteriorStd": 0.178174,
+          "uncertainty": 0.7127,
+          "evidenceWeight": 0,
+          "observations": 0,
+          "directAssessments": 0,
+          "assistedAssessments": 0,
+          "lastEvidenceId": null,
+          "unaidedSuccesses": 0,
+          "firstAttemptFailures": 0,
+          "assistanceEpisodes": 0
+        }
+      },
+      "misconceptions": {},
+      "evidenceIds": [],
+      "affect": {
+        "confidence": 0.5,
+        "frustration": 0.3,
+        "observerConfidence": 0,
+        "source": "unknown"
+      }
+    },
+    "pedagogy": {
+      "recommendedMode": "diagnose",
+      "hintLevel": 1,
+      "policyReason": "high-knowledge-uncertainty",
+      "interventions": [],
+      "lastIntervention": null,
+      "verifier": {
+        "verified": 0,
+        "progress": 0,
+        "neutral": 0,
+        "regress": 0,
+        "effectiveness": 0.5,
+        "last": null
+      }
+    },
+    "task": {
+      "objective": "fractions.addition",
+      "recommendedDifficulty": 1
+    }
+  },
+  "finalState": {
+    "learner": {
+      "currentSkillId": "fractions.addition",
+      "currentSkillKey": "fractions_addition",
+      "skills": {
+        "fractions_addition": {
+          "skillId": "fractions.addition",
+          "alpha": 4.07,
+          "beta": 5.8,
+          "mean": 0.4124,
+          "variance": 0.022292,
+          "posteriorStd": 0.149307,
+          "uncertainty": 0.5972,
+          "evidenceWeight": 3.87,
+          "observations": 5,
+          "directAssessments": 4,
+          "assistedAssessments": 1,
+          "lastEvidenceId": "assistments:1005",
+          "unaidedSuccesses": 2,
+          "firstAttemptFailures": 2,
+          "assistanceEpisodes": 1,
+          "lastScore": 1
+        }
+      },
+      "misconceptions": {
+        "add_denominators_directly": {
+          "id": "add-denominators-directly",
+          "support": 1.575,
+          "contradiction": 1.3455,
+          "confidence": 0.4291,
+          "status": "candidate",
+          "evidenceIds": [
+            "assistments:1001",
+            "assistments:1002",
+            "assistments:1003",
+            "assistments:1004",
+            "assistments:1005"
+          ]
+        }
+      },
+      "evidenceIds": [
+        "assistments:1001",
+        "assistments:1002",
+        "assistments:1003",
+        "assistments:1004",
+        "assistments:1005"
+      ],
+      "affect": {
+        "confidence": 0.5,
+        "frustration": 0.3,
+        "observerConfidence": 0,
+        "source": "unknown"
+      }
+    },
+    "pedagogy": {
+      "recommendedMode": "worked-example",
+      "hintLevel": 2,
+      "policyReason": "low-mastery",
+      "interventions": [
+        {
+          "id": "intervention:1",
+          "strategy": "worked-example",
+          "skillId": "fractions.addition",
+          "hintLevel": 2,
+          "rationale": "low mastery + high uncertainty"
+        },
+        {
+          "id": "intervention:2",
+          "strategy": "misconception-repair",
+          "skillId": "fractions.addition",
+          "hintLevel": 2,
+          "rationale": "repeated misconception evidence"
+        }
+      ],
+      "lastIntervention": {
+        "id": "intervention:2",
+        "strategy": "misconception-repair",
+        "skillId": "fractions.addition",
+        "hintLevel": 2,
+        "rationale": "repeated misconception evidence"
+      },
+      "verifier": {
+        "verified": 2,
+        "progress": 2,
+        "neutral": 0,
+        "regress": 0,
+        "effectiveness": 0.6875,
+        "last": {
+          "interventionId": "intervention:2",
+          "outcome": "progress",
+          "confidence": 0.9
+        }
+      }
+    },
+    "task": {
+      "objective": "fractions.addition",
+      "recommendedDifficulty": 1
+    }
+  },
+  "evaluation": {
+    "schema": "ppl.profile-evaluation/0.2",
+    "metrics": [
+      {
+        "id": "current_skill",
+        "label": "当前技能",
+        "type": "path",
+        "path": "learner.currentSkillId",
+        "value": "fractions.addition"
+      },
+      {
+        "id": "policy",
+        "label": "教学策略",
+        "type": "path",
+        "path": "pedagogy.recommendedMode",
+        "value": "worked-example"
+      },
+      {
+        "id": "verifier_effectiveness",
+        "label": "干预有效性",
+        "type": "path",
+        "path": "pedagogy.verifier.effectiveness",
+        "value": 0.6875,
+        "target": 0.7
+      }
+    ]
+  },
+  "entries": [
+    {
+      "snapshotSeq": 1,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 1,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:1001",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:1001",
+            "skillId": "fractions.addition",
+            "correct": false,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder-compatible",
+              "original": true,
+              "attemptCount": 1,
+              "hintCount": 0
+            },
+            "misconception": {
+              "id": "add-denominators-directly",
+              "confidence": 0.85
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "fractions.addition",
+              "currentSkillKey": "fractions_addition",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "fractions.addition",
+              "currentSkillKey": "fractions_addition",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4.9,
+                  "mean": 0.2899,
+                  "variance": 0.026056,
+                  "posteriorStd": 0.161417,
+                  "uncertainty": 0.6457,
+                  "evidenceWeight": 0.9,
+                  "observations": 1,
+                  "directAssessments": 1,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": "assistments:1001",
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 1,
+                  "assistanceEpisodes": 0,
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {
+                "add_denominators_directly": {
+                  "id": "add-denominators-directly",
+                  "support": 0.765,
+                  "contradiction": 0,
+                  "confidence": 0.505,
+                  "status": "candidate",
+                  "evidenceIds": [
+                    "assistments:1001"
+                  ]
+                }
+              },
+              "evidenceIds": [
+                "assistments:1001"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_MISCONCEPTION_EVIDENCE",
+              "priority": 1040,
+              "rationale": "错误概念需要累积证据，不因单次正确/错误直接定论。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.fractions_addition",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "fractions.addition",
+                "alpha": 2,
+                "beta": 4,
+                "mean": 0.3333,
+                "variance": 0.031746,
+                "posteriorStd": 0.178174,
+                "uncertainty": 0.7127,
+                "evidenceWeight": 0,
+                "observations": 0,
+                "directAssessments": 0,
+                "assistedAssessments": 0,
+                "lastEvidenceId": null,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 0,
+                "assistanceEpisodes": 0
+              },
+              "after": {
+                "skillId": "fractions.addition",
+                "alpha": 2,
+                "beta": 4.9,
+                "mean": 0.2899,
+                "variance": 0.026056,
+                "posteriorStd": 0.161417,
+                "uncertainty": 0.6457,
+                "evidenceWeight": 0.9,
+                "observations": 1,
+                "directAssessments": 1,
+                "assistedAssessments": 0,
+                "lastEvidenceId": "assistments:1001",
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 1,
+                "assistanceEpisodes": 0,
+                "lastScore": 0
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [],
+              "after": [
+                "assistments:1001"
+              ]
+            },
+            {
+              "source": "TUTOR_MISCONCEPTION_EVIDENCE",
+              "path": "learner.misconceptions.add_denominators_directly",
+              "op": "set",
+              "after": {
+                "id": "add-denominators-directly",
+                "support": 0.765,
+                "contradiction": 0,
+                "confidence": 0.505,
+                "status": "candidate",
+                "evidenceIds": [
+                  "assistments:1001"
+                ]
+              }
+            }
+          ],
+          "trace": {
+            "learner.skills.fractions_addition": {
+              "path": "learner.skills.fractions_addition",
+              "base": {
+                "skillId": "fractions.addition",
+                "alpha": 2,
+                "beta": 4,
+                "mean": 0.3333,
+                "variance": 0.031746,
+                "posteriorStd": 0.178174,
+                "uncertainty": 0.7127,
+                "evidenceWeight": 0,
+                "observations": 0,
+                "directAssessments": 0,
+                "assistedAssessments": 0,
+                "lastEvidenceId": null,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 0,
+                "assistanceEpisodes": 0
+              },
+              "final": {
+                "skillId": "fractions.addition",
+                "alpha": 2,
+                "beta": 4.9,
+                "mean": 0.2899,
+                "variance": 0.026056,
+                "posteriorStd": 0.161417,
+                "uncertainty": 0.6457,
+                "evidenceWeight": 0.9,
+                "observations": 1,
+                "directAssessments": 1,
+                "assistedAssessments": 0,
+                "lastEvidenceId": "assistments:1001",
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 1,
+                "assistanceEpisodes": 0,
+                "lastScore": 0
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "fractions.addition",
+                    "alpha": 2,
+                    "beta": 4,
+                    "mean": 0.3333,
+                    "variance": 0.031746,
+                    "posteriorStd": 0.178174,
+                    "uncertainty": 0.7127,
+                    "evidenceWeight": 0,
+                    "observations": 0,
+                    "directAssessments": 0,
+                    "assistedAssessments": 0,
+                    "lastEvidenceId": null,
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 0,
+                    "assistanceEpisodes": 0
+                  },
+                  "after": {
+                    "skillId": "fractions.addition",
+                    "alpha": 2,
+                    "beta": 4.9,
+                    "mean": 0.2899,
+                    "variance": 0.026056,
+                    "posteriorStd": 0.161417,
+                    "uncertainty": 0.6457,
+                    "evidenceWeight": 0.9,
+                    "observations": 1,
+                    "directAssessments": 1,
+                    "assistedAssessments": 0,
+                    "lastEvidenceId": "assistments:1001",
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 1,
+                    "assistanceEpisodes": 0,
+                    "lastScore": 0
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [],
+              "final": [
+                "assistments:1001"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [],
+                  "after": [
+                    "assistments:1001"
+                  ]
+                }
+              ]
+            },
+            "learner.misconceptions.add_denominators_directly": {
+              "path": "learner.misconceptions.add_denominators_directly",
+              "final": {
+                "id": "add-denominators-directly",
+                "support": 0.765,
+                "contradiction": 0,
+                "confidence": 0.505,
+                "status": "candidate",
+                "evidenceIds": [
+                  "assistments:1001"
+                ]
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_MISCONCEPTION_EVIDENCE",
+                  "priority": 1040,
+                  "op": "set",
+                  "after": {
+                    "id": "add-denominators-directly",
+                    "support": 0.765,
+                    "contradiction": 0,
+                    "confidence": 0.505,
+                    "status": "candidate",
+                    "evidenceIds": [
+                      "assistments:1001"
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:1001",
+              "accepted": true,
+              "skillId": "fractions.addition",
+              "score": 0,
+              "reliability": 0.9,
+              "validity": 1,
+              "weight": 0.9,
+              "assisted": false,
+              "assistanceUsed": false,
+              "helpRequested": false,
+              "hints": 0,
+              "attempts": 1,
+              "answerRevealed": false,
+              "direction": "nonmastery-support",
+              "reason": "direct-first-attempt-failure",
+              "posterior": {
+                "alpha": 2,
+                "beta": 4.9,
+                "mean": 0.2899,
+                "variance": 0.026056,
+                "posteriorStd": 0.161417,
+                "uncertainty": 0.6457
+              },
+              "source": "ASSISTments-2009-2010-skill-builder-compatible"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "fractions.addition"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "diagnose"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 2,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 2,
+          "step": 1
+        },
+        "event": {
+          "id": "intervention:1",
+          "type": "INTERVENTION_APPLIED",
+          "category": "pedagogy",
+          "payload": {
+            "interventionId": "intervention:1",
+            "skillId": "fractions.addition",
+            "strategy": "worked-example",
+            "hintLevel": 2,
+            "rationale": "low mastery + high uncertainty"
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "fractions.addition",
+              "currentSkillKey": "fractions_addition",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4.9,
+                  "mean": 0.2899,
+                  "variance": 0.026056,
+                  "posteriorStd": 0.161417,
+                  "uncertainty": 0.6457,
+                  "evidenceWeight": 0.9,
+                  "observations": 1,
+                  "directAssessments": 1,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": "assistments:1001",
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 1,
+                  "assistanceEpisodes": 0,
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {
+                "add_denominators_directly": {
+                  "id": "add-denominators-directly",
+                  "support": 0.765,
+                  "contradiction": 0,
+                  "confidence": 0.505,
+                  "status": "candidate",
+                  "evidenceIds": [
+                    "assistments:1001"
+                  ]
+                }
+              },
+              "evidenceIds": [
+                "assistments:1001"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "fractions.addition",
+              "currentSkillKey": "fractions_addition",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4.9,
+                  "mean": 0.2899,
+                  "variance": 0.026056,
+                  "posteriorStd": 0.161417,
+                  "uncertainty": 0.6457,
+                  "evidenceWeight": 0.9,
+                  "observations": 1,
+                  "directAssessments": 1,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": "assistments:1001",
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 1,
+                  "assistanceEpisodes": 0,
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {
+                "add_denominators_directly": {
+                  "id": "add-denominators-directly",
+                  "support": 0.765,
+                  "contradiction": 0,
+                  "confidence": 0.505,
+                  "status": "candidate",
+                  "evidenceIds": [
+                    "assistments:1001"
+                  ]
+                }
+              },
+              "evidenceIds": [
+                "assistments:1001"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [
+                {
+                  "id": "intervention:1",
+                  "strategy": "worked-example",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "low mastery + high uncertainty"
+                }
+              ],
+              "lastIntervention": {
+                "id": "intervention:1",
+                "strategy": "worked-example",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "low mastery + high uncertainty"
+              },
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_INTERVENTION_LEDGER",
+              "priority": 1000,
+              "rationale": "教学干预必须可追踪，后续 verifier 才能判断是否有效。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_INTERVENTION_LEDGER",
+              "path": "pedagogy.interventions",
+              "op": "append",
+              "before": [],
+              "after": [
+                {
+                  "id": "intervention:1",
+                  "strategy": "worked-example",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "low mastery + high uncertainty"
+                }
+              ]
+            },
+            {
+              "source": "TUTOR_INTERVENTION_LEDGER",
+              "path": "pedagogy.lastIntervention",
+              "op": "set",
+              "before": null,
+              "after": {
+                "id": "intervention:1",
+                "strategy": "worked-example",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "low mastery + high uncertainty"
+              }
+            }
+          ],
+          "trace": {
+            "pedagogy.interventions": {
+              "path": "pedagogy.interventions",
+              "base": [],
+              "final": [
+                {
+                  "id": "intervention:1",
+                  "strategy": "worked-example",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "low mastery + high uncertainty"
+                }
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_INTERVENTION_LEDGER",
+                  "priority": 1000,
+                  "op": "append",
+                  "before": [],
+                  "after": [
+                    {
+                      "id": "intervention:1",
+                      "strategy": "worked-example",
+                      "skillId": "fractions.addition",
+                      "hintLevel": 2,
+                      "rationale": "low mastery + high uncertainty"
+                    }
+                  ]
+                }
+              ]
+            },
+            "pedagogy.lastIntervention": {
+              "path": "pedagogy.lastIntervention",
+              "base": null,
+              "final": {
+                "id": "intervention:1",
+                "strategy": "worked-example",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "low mastery + high uncertainty"
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_INTERVENTION_LEDGER",
+                  "priority": 1000,
+                  "op": "set",
+                  "before": null,
+                  "after": {
+                    "id": "intervention:1",
+                    "strategy": "worked-example",
+                    "skillId": "fractions.addition",
+                    "hintLevel": 2,
+                    "rationale": "low mastery + high uncertainty"
+                  }
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "tutor-intervention",
+              "id": "intervention:1",
+              "strategy": "worked-example",
+              "skillId": "fractions.addition",
+              "hintLevel": 2,
+              "rationale": "low mastery + high uncertainty"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "fractions.addition"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "diagnose"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 3,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 3,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:1002",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:1002",
+            "skillId": "fractions.addition",
+            "correct": true,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder-compatible",
+              "original": true,
+              "attemptCount": 2,
+              "hintCount": 2
+            },
+            "misconception": {
+              "id": "add-denominators-directly",
+              "confidence": 0.7
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "fractions.addition",
+              "currentSkillKey": "fractions_addition",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4.9,
+                  "mean": 0.2899,
+                  "variance": 0.026056,
+                  "posteriorStd": 0.161417,
+                  "uncertainty": 0.6457,
+                  "evidenceWeight": 0.9,
+                  "observations": 1,
+                  "directAssessments": 1,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": "assistments:1001",
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 1,
+                  "assistanceEpisodes": 0,
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {
+                "add_denominators_directly": {
+                  "id": "add-denominators-directly",
+                  "support": 0.765,
+                  "contradiction": 0,
+                  "confidence": 0.505,
+                  "status": "candidate",
+                  "evidenceIds": [
+                    "assistments:1001"
+                  ]
+                }
+              },
+              "evidenceIds": [
+                "assistments:1001"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [
+                {
+                  "id": "intervention:1",
+                  "strategy": "worked-example",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "low mastery + high uncertainty"
+                }
+              ],
+              "lastIntervention": {
+                "id": "intervention:1",
+                "strategy": "worked-example",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "low mastery + high uncertainty"
+              },
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "fractions.addition",
+              "currentSkillKey": "fractions_addition",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2.27,
+                  "beta": 4.9,
+                  "mean": 0.3166,
+                  "variance": 0.026483,
+                  "posteriorStd": 0.162735,
+                  "uncertainty": 0.6509,
+                  "evidenceWeight": 1.17,
+                  "observations": 2,
+                  "directAssessments": 1,
+                  "assistedAssessments": 1,
+                  "lastEvidenceId": "assistments:1002",
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 1,
+                  "assistanceEpisodes": 1,
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {
+                "add_denominators_directly": {
+                  "id": "add-denominators-directly",
+                  "support": 0.765,
+                  "contradiction": 0.1755,
+                  "confidence": 0.4525,
+                  "status": "candidate",
+                  "evidenceIds": [
+                    "assistments:1001",
+                    "assistments:1002"
+                  ]
+                }
+              },
+              "evidenceIds": [
+                "assistments:1001",
+                "assistments:1002"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [
+                {
+                  "id": "intervention:1",
+                  "strategy": "worked-example",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "low mastery + high uncertainty"
+                }
+              ],
+              "lastIntervention": {
+                "id": "intervention:1",
+                "strategy": "worked-example",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "low mastery + high uncertainty"
+              },
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_MISCONCEPTION_EVIDENCE",
+              "priority": 1040,
+              "rationale": "错误概念需要累积证据，不因单次正确/错误直接定论。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.fractions_addition",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "fractions.addition",
+                "alpha": 2,
+                "beta": 4.9,
+                "mean": 0.2899,
+                "variance": 0.026056,
+                "posteriorStd": 0.161417,
+                "uncertainty": 0.6457,
+                "evidenceWeight": 0.9,
+                "observations": 1,
+                "directAssessments": 1,
+                "assistedAssessments": 0,
+                "lastEvidenceId": "assistments:1001",
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 1,
+                "assistanceEpisodes": 0,
+                "lastScore": 0
+              },
+              "after": {
+                "skillId": "fractions.addition",
+                "alpha": 2.27,
+                "beta": 4.9,
+                "mean": 0.3166,
+                "variance": 0.026483,
+                "posteriorStd": 0.162735,
+                "uncertainty": 0.6509,
+                "evidenceWeight": 1.17,
+                "observations": 2,
+                "directAssessments": 1,
+                "assistedAssessments": 1,
+                "lastEvidenceId": "assistments:1002",
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 1,
+                "assistanceEpisodes": 1,
+                "lastScore": 1
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:1001"
+              ],
+              "after": [
+                "assistments:1001",
+                "assistments:1002"
+              ]
+            },
+            {
+              "source": "TUTOR_MISCONCEPTION_EVIDENCE",
+              "path": "learner.misconceptions.add_denominators_directly",
+              "op": "set",
+              "before": {
+                "id": "add-denominators-directly",
+                "support": 0.765,
+                "contradiction": 0,
+                "confidence": 0.505,
+                "status": "candidate",
+                "evidenceIds": [
+                  "assistments:1001"
+                ]
+              },
+              "after": {
+                "id": "add-denominators-directly",
+                "support": 0.765,
+                "contradiction": 0.1755,
+                "confidence": 0.4525,
+                "status": "candidate",
+                "evidenceIds": [
+                  "assistments:1001",
+                  "assistments:1002"
+                ]
+              }
+            }
+          ],
+          "trace": {
+            "learner.skills.fractions_addition": {
+              "path": "learner.skills.fractions_addition",
+              "base": {
+                "skillId": "fractions.addition",
+                "alpha": 2,
+                "beta": 4.9,
+                "mean": 0.2899,
+                "variance": 0.026056,
+                "posteriorStd": 0.161417,
+                "uncertainty": 0.6457,
+                "evidenceWeight": 0.9,
+                "observations": 1,
+                "directAssessments": 1,
+                "assistedAssessments": 0,
+                "lastEvidenceId": "assistments:1001",
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 1,
+                "assistanceEpisodes": 0,
+                "lastScore": 0
+              },
+              "final": {
+                "skillId": "fractions.addition",
+                "alpha": 2.27,
+                "beta": 4.9,
+                "mean": 0.3166,
+                "variance": 0.026483,
+                "posteriorStd": 0.162735,
+                "uncertainty": 0.6509,
+                "evidenceWeight": 1.17,
+                "observations": 2,
+                "directAssessments": 1,
+                "assistedAssessments": 1,
+                "lastEvidenceId": "assistments:1002",
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 1,
+                "assistanceEpisodes": 1,
+                "lastScore": 1
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "fractions.addition",
+                    "alpha": 2,
+                    "beta": 4.9,
+                    "mean": 0.2899,
+                    "variance": 0.026056,
+                    "posteriorStd": 0.161417,
+                    "uncertainty": 0.6457,
+                    "evidenceWeight": 0.9,
+                    "observations": 1,
+                    "directAssessments": 1,
+                    "assistedAssessments": 0,
+                    "lastEvidenceId": "assistments:1001",
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 1,
+                    "assistanceEpisodes": 0,
+                    "lastScore": 0
+                  },
+                  "after": {
+                    "skillId": "fractions.addition",
+                    "alpha": 2.27,
+                    "beta": 4.9,
+                    "mean": 0.3166,
+                    "variance": 0.026483,
+                    "posteriorStd": 0.162735,
+                    "uncertainty": 0.6509,
+                    "evidenceWeight": 1.17,
+                    "observations": 2,
+                    "directAssessments": 1,
+                    "assistedAssessments": 1,
+                    "lastEvidenceId": "assistments:1002",
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 1,
+                    "assistanceEpisodes": 1,
+                    "lastScore": 1
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:1001"
+              ],
+              "final": [
+                "assistments:1001",
+                "assistments:1002"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:1001"
+                  ],
+                  "after": [
+                    "assistments:1001",
+                    "assistments:1002"
+                  ]
+                }
+              ]
+            },
+            "learner.misconceptions.add_denominators_directly": {
+              "path": "learner.misconceptions.add_denominators_directly",
+              "base": {
+                "id": "add-denominators-directly",
+                "support": 0.765,
+                "contradiction": 0,
+                "confidence": 0.505,
+                "status": "candidate",
+                "evidenceIds": [
+                  "assistments:1001"
+                ]
+              },
+              "final": {
+                "id": "add-denominators-directly",
+                "support": 0.765,
+                "contradiction": 0.1755,
+                "confidence": 0.4525,
+                "status": "candidate",
+                "evidenceIds": [
+                  "assistments:1001",
+                  "assistments:1002"
+                ]
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_MISCONCEPTION_EVIDENCE",
+                  "priority": 1040,
+                  "op": "set",
+                  "before": {
+                    "id": "add-denominators-directly",
+                    "support": 0.765,
+                    "contradiction": 0,
+                    "confidence": 0.505,
+                    "status": "candidate",
+                    "evidenceIds": [
+                      "assistments:1001"
+                    ]
+                  },
+                  "after": {
+                    "id": "add-denominators-directly",
+                    "support": 0.765,
+                    "contradiction": 0.1755,
+                    "confidence": 0.4525,
+                    "status": "candidate",
+                    "evidenceIds": [
+                      "assistments:1001",
+                      "assistments:1002"
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          "diagnostics": [
+            {
+              "severity": "info",
+              "code": "TUTOR_ASSISTED_SUCCESS_DOWNWEIGHTED",
+              "message": "使用提示/揭示答案后的正确结果被保留，但不会按独立掌握证据同权计入。"
+            },
+            {
+              "severity": "warning",
+              "code": "TUTOR_LOW_EVIDENCE_WEIGHT",
+              "message": "本次 observation weight=0.27，不足以支撑强掌握结论。"
+            }
+          ],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:1002",
+              "accepted": true,
+              "skillId": "fractions.addition",
+              "score": 1,
+              "reliability": 0.9,
+              "validity": 0.3,
+              "weight": 0.27,
+              "assisted": true,
+              "assistanceUsed": true,
+              "helpRequested": true,
+              "hints": 2,
+              "attempts": 2,
+              "answerRevealed": false,
+              "direction": "mastery-support",
+              "reason": "success-with-help",
+              "posterior": {
+                "alpha": 2.27,
+                "beta": 4.9,
+                "mean": 0.3166,
+                "variance": 0.026483,
+                "posteriorStd": 0.162735,
+                "uncertainty": 0.6509
+              },
+              "source": "ASSISTments-2009-2010-skill-builder-compatible"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "fractions.addition"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "diagnose"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 4,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 4,
+          "step": 1
+        },
+        "event": {
+          "id": "verify:1",
+          "type": "TURN_VERIFIED",
+          "category": "pedagogy-verifier",
+          "payload": {
+            "interventionId": "intervention:1",
+            "outcome": "progress",
+            "confidence": 0.8
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "fractions.addition",
+              "currentSkillKey": "fractions_addition",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2.27,
+                  "beta": 4.9,
+                  "mean": 0.3166,
+                  "variance": 0.026483,
+                  "posteriorStd": 0.162735,
+                  "uncertainty": 0.6509,
+                  "evidenceWeight": 1.17,
+                  "observations": 2,
+                  "directAssessments": 1,
+                  "assistedAssessments": 1,
+                  "lastEvidenceId": "assistments:1002",
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 1,
+                  "assistanceEpisodes": 1,
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {
+                "add_denominators_directly": {
+                  "id": "add-denominators-directly",
+                  "support": 0.765,
+                  "contradiction": 0.1755,
+                  "confidence": 0.4525,
+                  "status": "candidate",
+                  "evidenceIds": [
+                    "assistments:1001",
+                    "assistments:1002"
+                  ]
+                }
+              },
+              "evidenceIds": [
+                "assistments:1001",
+                "assistments:1002"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [
+                {
+                  "id": "intervention:1",
+                  "strategy": "worked-example",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "low mastery + high uncertainty"
+                }
+              ],
+              "lastIntervention": {
+                "id": "intervention:1",
+                "strategy": "worked-example",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "low mastery + high uncertainty"
+              },
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "fractions.addition",
+              "currentSkillKey": "fractions_addition",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2.27,
+                  "beta": 4.9,
+                  "mean": 0.3166,
+                  "variance": 0.026483,
+                  "posteriorStd": 0.162735,
+                  "uncertainty": 0.6509,
+                  "evidenceWeight": 1.17,
+                  "observations": 2,
+                  "directAssessments": 1,
+                  "assistedAssessments": 1,
+                  "lastEvidenceId": "assistments:1002",
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 1,
+                  "assistanceEpisodes": 1,
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {
+                "add_denominators_directly": {
+                  "id": "add-denominators-directly",
+                  "support": 0.765,
+                  "contradiction": 0.1755,
+                  "confidence": 0.4525,
+                  "status": "candidate",
+                  "evidenceIds": [
+                    "assistments:1001",
+                    "assistments:1002"
+                  ]
+                }
+              },
+              "evidenceIds": [
+                "assistments:1001",
+                "assistments:1002"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [
+                {
+                  "id": "intervention:1",
+                  "strategy": "worked-example",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "low mastery + high uncertainty"
+                }
+              ],
+              "lastIntervention": {
+                "id": "intervention:1",
+                "strategy": "worked-example",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "low mastery + high uncertainty"
+              },
+              "verifier": {
+                "verified": 1,
+                "progress": 1,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.6,
+                "last": {
+                  "interventionId": "intervention:1",
+                  "outcome": "progress",
+                  "confidence": 0.8
+                }
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_TURN_VERIFIER",
+              "priority": 1060,
+              "rationale": "将“学生状态估计”和“本轮教学干预是否有效”分离记录。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_TURN_VERIFIER",
+              "path": "pedagogy.verifier",
+              "op": "verifier-update",
+              "before": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              },
+              "after": {
+                "verified": 1,
+                "progress": 1,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.6,
+                "last": {
+                  "interventionId": "intervention:1",
+                  "outcome": "progress",
+                  "confidence": 0.8
+                }
+              }
+            }
+          ],
+          "trace": {
+            "pedagogy.verifier": {
+              "path": "pedagogy.verifier",
+              "base": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              },
+              "final": {
+                "verified": 1,
+                "progress": 1,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.6,
+                "last": {
+                  "interventionId": "intervention:1",
+                  "outcome": "progress",
+                  "confidence": 0.8
+                }
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_TURN_VERIFIER",
+                  "priority": 1060,
+                  "op": "verifier-update",
+                  "before": {
+                    "verified": 0,
+                    "progress": 0,
+                    "neutral": 0,
+                    "regress": 0,
+                    "effectiveness": 0.5,
+                    "last": null
+                  },
+                  "after": {
+                    "verified": 1,
+                    "progress": 1,
+                    "neutral": 0,
+                    "regress": 0,
+                    "effectiveness": 0.6,
+                    "last": {
+                      "interventionId": "intervention:1",
+                      "outcome": "progress",
+                      "confidence": 0.8
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "tutor-verifier",
+              "interventionId": "intervention:1",
+              "outcome": "progress",
+              "confidence": 0.8,
+              "intervention": {
+                "id": "intervention:1",
+                "strategy": "worked-example",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "low mastery + high uncertainty"
+              }
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "fractions.addition"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "diagnose"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.6,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 5,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 5,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:1003",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:1003",
+            "skillId": "fractions.addition",
+            "correct": false,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder-compatible",
+              "original": true,
+              "attemptCount": 1,
+              "hintCount": 0
+            },
+            "misconception": {
+              "id": "add-denominators-directly",
+              "confidence": 0.9
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "fractions.addition",
+              "currentSkillKey": "fractions_addition",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2.27,
+                  "beta": 4.9,
+                  "mean": 0.3166,
+                  "variance": 0.026483,
+                  "posteriorStd": 0.162735,
+                  "uncertainty": 0.6509,
+                  "evidenceWeight": 1.17,
+                  "observations": 2,
+                  "directAssessments": 1,
+                  "assistedAssessments": 1,
+                  "lastEvidenceId": "assistments:1002",
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 1,
+                  "assistanceEpisodes": 1,
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {
+                "add_denominators_directly": {
+                  "id": "add-denominators-directly",
+                  "support": 0.765,
+                  "contradiction": 0.1755,
+                  "confidence": 0.4525,
+                  "status": "candidate",
+                  "evidenceIds": [
+                    "assistments:1001",
+                    "assistments:1002"
+                  ]
+                }
+              },
+              "evidenceIds": [
+                "assistments:1001",
+                "assistments:1002"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [
+                {
+                  "id": "intervention:1",
+                  "strategy": "worked-example",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "low mastery + high uncertainty"
+                }
+              ],
+              "lastIntervention": {
+                "id": "intervention:1",
+                "strategy": "worked-example",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "low mastery + high uncertainty"
+              },
+              "verifier": {
+                "verified": 1,
+                "progress": 1,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.6,
+                "last": {
+                  "interventionId": "intervention:1",
+                  "outcome": "progress",
+                  "confidence": 0.8
+                }
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "fractions.addition",
+              "currentSkillKey": "fractions_addition",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2.27,
+                  "beta": 5.8,
+                  "mean": 0.2813,
+                  "variance": 0.022289,
+                  "posteriorStd": 0.149297,
+                  "uncertainty": 0.5972,
+                  "evidenceWeight": 2.07,
+                  "observations": 3,
+                  "directAssessments": 2,
+                  "assistedAssessments": 1,
+                  "lastEvidenceId": "assistments:1003",
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 2,
+                  "assistanceEpisodes": 1,
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {
+                "add_denominators_directly": {
+                  "id": "add-denominators-directly",
+                  "support": 1.575,
+                  "contradiction": 0.1755,
+                  "confidence": 0.6299,
+                  "status": "active",
+                  "evidenceIds": [
+                    "assistments:1001",
+                    "assistments:1002",
+                    "assistments:1003"
+                  ]
+                }
+              },
+              "evidenceIds": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "misconception-repair",
+              "hintLevel": 2,
+              "policyReason": "active-misconception",
+              "interventions": [
+                {
+                  "id": "intervention:1",
+                  "strategy": "worked-example",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "low mastery + high uncertainty"
+                }
+              ],
+              "lastIntervention": {
+                "id": "intervention:1",
+                "strategy": "worked-example",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "low mastery + high uncertainty"
+              },
+              "verifier": {
+                "verified": 1,
+                "progress": 1,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.6,
+                "last": {
+                  "interventionId": "intervention:1",
+                  "outcome": "progress",
+                  "confidence": 0.8
+                }
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_MISCONCEPTION_EVIDENCE",
+              "priority": 1040,
+              "rationale": "错误概念需要累积证据，不因单次正确/错误直接定论。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.fractions_addition",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "fractions.addition",
+                "alpha": 2.27,
+                "beta": 4.9,
+                "mean": 0.3166,
+                "variance": 0.026483,
+                "posteriorStd": 0.162735,
+                "uncertainty": 0.6509,
+                "evidenceWeight": 1.17,
+                "observations": 2,
+                "directAssessments": 1,
+                "assistedAssessments": 1,
+                "lastEvidenceId": "assistments:1002",
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 1,
+                "assistanceEpisodes": 1,
+                "lastScore": 1
+              },
+              "after": {
+                "skillId": "fractions.addition",
+                "alpha": 2.27,
+                "beta": 5.8,
+                "mean": 0.2813,
+                "variance": 0.022289,
+                "posteriorStd": 0.149297,
+                "uncertainty": 0.5972,
+                "evidenceWeight": 2.07,
+                "observations": 3,
+                "directAssessments": 2,
+                "assistedAssessments": 1,
+                "lastEvidenceId": "assistments:1003",
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 1,
+                "lastScore": 0
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:1001",
+                "assistments:1002"
+              ],
+              "after": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003"
+              ]
+            },
+            {
+              "source": "TUTOR_MISCONCEPTION_EVIDENCE",
+              "path": "learner.misconceptions.add_denominators_directly",
+              "op": "set",
+              "before": {
+                "id": "add-denominators-directly",
+                "support": 0.765,
+                "contradiction": 0.1755,
+                "confidence": 0.4525,
+                "status": "candidate",
+                "evidenceIds": [
+                  "assistments:1001",
+                  "assistments:1002"
+                ]
+              },
+              "after": {
+                "id": "add-denominators-directly",
+                "support": 1.575,
+                "contradiction": 0.1755,
+                "confidence": 0.6299,
+                "status": "active",
+                "evidenceIds": [
+                  "assistments:1001",
+                  "assistments:1002",
+                  "assistments:1003"
+                ]
+              }
+            },
+            {
+              "source": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "path": "pedagogy.recommendedMode",
+              "op": "set",
+              "before": "diagnose",
+              "after": "misconception-repair"
+            },
+            {
+              "source": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "path": "pedagogy.hintLevel",
+              "op": "set",
+              "before": 1,
+              "after": 2
+            },
+            {
+              "source": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "path": "pedagogy.policyReason",
+              "op": "set",
+              "before": "high-knowledge-uncertainty",
+              "after": "active-misconception"
+            }
+          ],
+          "trace": {
+            "learner.skills.fractions_addition": {
+              "path": "learner.skills.fractions_addition",
+              "base": {
+                "skillId": "fractions.addition",
+                "alpha": 2.27,
+                "beta": 4.9,
+                "mean": 0.3166,
+                "variance": 0.026483,
+                "posteriorStd": 0.162735,
+                "uncertainty": 0.6509,
+                "evidenceWeight": 1.17,
+                "observations": 2,
+                "directAssessments": 1,
+                "assistedAssessments": 1,
+                "lastEvidenceId": "assistments:1002",
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 1,
+                "assistanceEpisodes": 1,
+                "lastScore": 1
+              },
+              "final": {
+                "skillId": "fractions.addition",
+                "alpha": 2.27,
+                "beta": 5.8,
+                "mean": 0.2813,
+                "variance": 0.022289,
+                "posteriorStd": 0.149297,
+                "uncertainty": 0.5972,
+                "evidenceWeight": 2.07,
+                "observations": 3,
+                "directAssessments": 2,
+                "assistedAssessments": 1,
+                "lastEvidenceId": "assistments:1003",
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 1,
+                "lastScore": 0
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "fractions.addition",
+                    "alpha": 2.27,
+                    "beta": 4.9,
+                    "mean": 0.3166,
+                    "variance": 0.026483,
+                    "posteriorStd": 0.162735,
+                    "uncertainty": 0.6509,
+                    "evidenceWeight": 1.17,
+                    "observations": 2,
+                    "directAssessments": 1,
+                    "assistedAssessments": 1,
+                    "lastEvidenceId": "assistments:1002",
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 1,
+                    "assistanceEpisodes": 1,
+                    "lastScore": 1
+                  },
+                  "after": {
+                    "skillId": "fractions.addition",
+                    "alpha": 2.27,
+                    "beta": 5.8,
+                    "mean": 0.2813,
+                    "variance": 0.022289,
+                    "posteriorStd": 0.149297,
+                    "uncertainty": 0.5972,
+                    "evidenceWeight": 2.07,
+                    "observations": 3,
+                    "directAssessments": 2,
+                    "assistedAssessments": 1,
+                    "lastEvidenceId": "assistments:1003",
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 2,
+                    "assistanceEpisodes": 1,
+                    "lastScore": 0
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:1001",
+                "assistments:1002"
+              ],
+              "final": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:1001",
+                    "assistments:1002"
+                  ],
+                  "after": [
+                    "assistments:1001",
+                    "assistments:1002",
+                    "assistments:1003"
+                  ]
+                }
+              ]
+            },
+            "learner.misconceptions.add_denominators_directly": {
+              "path": "learner.misconceptions.add_denominators_directly",
+              "base": {
+                "id": "add-denominators-directly",
+                "support": 0.765,
+                "contradiction": 0.1755,
+                "confidence": 0.4525,
+                "status": "candidate",
+                "evidenceIds": [
+                  "assistments:1001",
+                  "assistments:1002"
+                ]
+              },
+              "final": {
+                "id": "add-denominators-directly",
+                "support": 1.575,
+                "contradiction": 0.1755,
+                "confidence": 0.6299,
+                "status": "active",
+                "evidenceIds": [
+                  "assistments:1001",
+                  "assistments:1002",
+                  "assistments:1003"
+                ]
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_MISCONCEPTION_EVIDENCE",
+                  "priority": 1040,
+                  "op": "set",
+                  "before": {
+                    "id": "add-denominators-directly",
+                    "support": 0.765,
+                    "contradiction": 0.1755,
+                    "confidence": 0.4525,
+                    "status": "candidate",
+                    "evidenceIds": [
+                      "assistments:1001",
+                      "assistments:1002"
+                    ]
+                  },
+                  "after": {
+                    "id": "add-denominators-directly",
+                    "support": 1.575,
+                    "contradiction": 0.1755,
+                    "confidence": 0.6299,
+                    "status": "active",
+                    "evidenceIds": [
+                      "assistments:1001",
+                      "assistments:1002",
+                      "assistments:1003"
+                    ]
+                  }
+                }
+              ]
+            },
+            "pedagogy.recommendedMode": {
+              "path": "pedagogy.recommendedMode",
+              "base": "diagnose",
+              "final": "misconception-repair",
+              "steps": [
+                {
+                  "rule": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+                  "priority": 900,
+                  "op": "set",
+                  "before": "diagnose",
+                  "after": "misconception-repair"
+                }
+              ]
+            },
+            "pedagogy.hintLevel": {
+              "path": "pedagogy.hintLevel",
+              "base": 1,
+              "final": 2,
+              "steps": [
+                {
+                  "rule": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+                  "priority": 900,
+                  "op": "set",
+                  "before": 1,
+                  "after": 2
+                }
+              ]
+            },
+            "pedagogy.policyReason": {
+              "path": "pedagogy.policyReason",
+              "base": "high-knowledge-uncertainty",
+              "final": "active-misconception",
+              "steps": [
+                {
+                  "rule": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+                  "priority": 900,
+                  "op": "set",
+                  "before": "high-knowledge-uncertainty",
+                  "after": "active-misconception"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:1003",
+              "accepted": true,
+              "skillId": "fractions.addition",
+              "score": 0,
+              "reliability": 0.9,
+              "validity": 1,
+              "weight": 0.9,
+              "assisted": false,
+              "assistanceUsed": false,
+              "helpRequested": false,
+              "hints": 0,
+              "attempts": 1,
+              "answerRevealed": false,
+              "direction": "nonmastery-support",
+              "reason": "direct-first-attempt-failure",
+              "posterior": {
+                "alpha": 2.27,
+                "beta": 5.8,
+                "mean": 0.2813,
+                "variance": 0.022289,
+                "posteriorStd": 0.149297,
+                "uncertainty": 0.5972
+              },
+              "source": "ASSISTments-2009-2010-skill-builder-compatible"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "fractions.addition"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "misconception-repair"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.6,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 6,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 6,
+          "step": 1
+        },
+        "event": {
+          "id": "intervention:2",
+          "type": "INTERVENTION_APPLIED",
+          "category": "pedagogy",
+          "payload": {
+            "interventionId": "intervention:2",
+            "skillId": "fractions.addition",
+            "strategy": "misconception-repair",
+            "hintLevel": 2,
+            "rationale": "repeated misconception evidence"
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "fractions.addition",
+              "currentSkillKey": "fractions_addition",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2.27,
+                  "beta": 5.8,
+                  "mean": 0.2813,
+                  "variance": 0.022289,
+                  "posteriorStd": 0.149297,
+                  "uncertainty": 0.5972,
+                  "evidenceWeight": 2.07,
+                  "observations": 3,
+                  "directAssessments": 2,
+                  "assistedAssessments": 1,
+                  "lastEvidenceId": "assistments:1003",
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 2,
+                  "assistanceEpisodes": 1,
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {
+                "add_denominators_directly": {
+                  "id": "add-denominators-directly",
+                  "support": 1.575,
+                  "contradiction": 0.1755,
+                  "confidence": 0.6299,
+                  "status": "active",
+                  "evidenceIds": [
+                    "assistments:1001",
+                    "assistments:1002",
+                    "assistments:1003"
+                  ]
+                }
+              },
+              "evidenceIds": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "misconception-repair",
+              "hintLevel": 2,
+              "policyReason": "active-misconception",
+              "interventions": [
+                {
+                  "id": "intervention:1",
+                  "strategy": "worked-example",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "low mastery + high uncertainty"
+                }
+              ],
+              "lastIntervention": {
+                "id": "intervention:1",
+                "strategy": "worked-example",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "low mastery + high uncertainty"
+              },
+              "verifier": {
+                "verified": 1,
+                "progress": 1,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.6,
+                "last": {
+                  "interventionId": "intervention:1",
+                  "outcome": "progress",
+                  "confidence": 0.8
+                }
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "fractions.addition",
+              "currentSkillKey": "fractions_addition",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2.27,
+                  "beta": 5.8,
+                  "mean": 0.2813,
+                  "variance": 0.022289,
+                  "posteriorStd": 0.149297,
+                  "uncertainty": 0.5972,
+                  "evidenceWeight": 2.07,
+                  "observations": 3,
+                  "directAssessments": 2,
+                  "assistedAssessments": 1,
+                  "lastEvidenceId": "assistments:1003",
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 2,
+                  "assistanceEpisodes": 1,
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {
+                "add_denominators_directly": {
+                  "id": "add-denominators-directly",
+                  "support": 1.575,
+                  "contradiction": 0.1755,
+                  "confidence": 0.6299,
+                  "status": "active",
+                  "evidenceIds": [
+                    "assistments:1001",
+                    "assistments:1002",
+                    "assistments:1003"
+                  ]
+                }
+              },
+              "evidenceIds": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "misconception-repair",
+              "hintLevel": 2,
+              "policyReason": "active-misconception",
+              "interventions": [
+                {
+                  "id": "intervention:1",
+                  "strategy": "worked-example",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "low mastery + high uncertainty"
+                },
+                {
+                  "id": "intervention:2",
+                  "strategy": "misconception-repair",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "repeated misconception evidence"
+                }
+              ],
+              "lastIntervention": {
+                "id": "intervention:2",
+                "strategy": "misconception-repair",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "repeated misconception evidence"
+              },
+              "verifier": {
+                "verified": 1,
+                "progress": 1,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.6,
+                "last": {
+                  "interventionId": "intervention:1",
+                  "outcome": "progress",
+                  "confidence": 0.8
+                }
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_INTERVENTION_LEDGER",
+              "priority": 1000,
+              "rationale": "教学干预必须可追踪，后续 verifier 才能判断是否有效。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_INTERVENTION_LEDGER",
+              "path": "pedagogy.interventions",
+              "op": "append",
+              "before": [
+                {
+                  "id": "intervention:1",
+                  "strategy": "worked-example",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "low mastery + high uncertainty"
+                }
+              ],
+              "after": [
+                {
+                  "id": "intervention:1",
+                  "strategy": "worked-example",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "low mastery + high uncertainty"
+                },
+                {
+                  "id": "intervention:2",
+                  "strategy": "misconception-repair",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "repeated misconception evidence"
+                }
+              ]
+            },
+            {
+              "source": "TUTOR_INTERVENTION_LEDGER",
+              "path": "pedagogy.lastIntervention",
+              "op": "set",
+              "before": {
+                "id": "intervention:1",
+                "strategy": "worked-example",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "low mastery + high uncertainty"
+              },
+              "after": {
+                "id": "intervention:2",
+                "strategy": "misconception-repair",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "repeated misconception evidence"
+              }
+            }
+          ],
+          "trace": {
+            "pedagogy.interventions": {
+              "path": "pedagogy.interventions",
+              "base": [
+                {
+                  "id": "intervention:1",
+                  "strategy": "worked-example",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "low mastery + high uncertainty"
+                }
+              ],
+              "final": [
+                {
+                  "id": "intervention:1",
+                  "strategy": "worked-example",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "low mastery + high uncertainty"
+                },
+                {
+                  "id": "intervention:2",
+                  "strategy": "misconception-repair",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "repeated misconception evidence"
+                }
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_INTERVENTION_LEDGER",
+                  "priority": 1000,
+                  "op": "append",
+                  "before": [
+                    {
+                      "id": "intervention:1",
+                      "strategy": "worked-example",
+                      "skillId": "fractions.addition",
+                      "hintLevel": 2,
+                      "rationale": "low mastery + high uncertainty"
+                    }
+                  ],
+                  "after": [
+                    {
+                      "id": "intervention:1",
+                      "strategy": "worked-example",
+                      "skillId": "fractions.addition",
+                      "hintLevel": 2,
+                      "rationale": "low mastery + high uncertainty"
+                    },
+                    {
+                      "id": "intervention:2",
+                      "strategy": "misconception-repair",
+                      "skillId": "fractions.addition",
+                      "hintLevel": 2,
+                      "rationale": "repeated misconception evidence"
+                    }
+                  ]
+                }
+              ]
+            },
+            "pedagogy.lastIntervention": {
+              "path": "pedagogy.lastIntervention",
+              "base": {
+                "id": "intervention:1",
+                "strategy": "worked-example",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "low mastery + high uncertainty"
+              },
+              "final": {
+                "id": "intervention:2",
+                "strategy": "misconception-repair",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "repeated misconception evidence"
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_INTERVENTION_LEDGER",
+                  "priority": 1000,
+                  "op": "set",
+                  "before": {
+                    "id": "intervention:1",
+                    "strategy": "worked-example",
+                    "skillId": "fractions.addition",
+                    "hintLevel": 2,
+                    "rationale": "low mastery + high uncertainty"
+                  },
+                  "after": {
+                    "id": "intervention:2",
+                    "strategy": "misconception-repair",
+                    "skillId": "fractions.addition",
+                    "hintLevel": 2,
+                    "rationale": "repeated misconception evidence"
+                  }
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "tutor-intervention",
+              "id": "intervention:2",
+              "strategy": "misconception-repair",
+              "skillId": "fractions.addition",
+              "hintLevel": 2,
+              "rationale": "repeated misconception evidence"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "fractions.addition"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "misconception-repair"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.6,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 7,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 7,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:1004",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:1004",
+            "skillId": "fractions.addition",
+            "correct": true,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder-compatible",
+              "original": true,
+              "attemptCount": 1,
+              "hintCount": 0
+            },
+            "misconception": {
+              "id": "add-denominators-directly",
+              "confidence": 0.7
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "fractions.addition",
+              "currentSkillKey": "fractions_addition",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2.27,
+                  "beta": 5.8,
+                  "mean": 0.2813,
+                  "variance": 0.022289,
+                  "posteriorStd": 0.149297,
+                  "uncertainty": 0.5972,
+                  "evidenceWeight": 2.07,
+                  "observations": 3,
+                  "directAssessments": 2,
+                  "assistedAssessments": 1,
+                  "lastEvidenceId": "assistments:1003",
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 2,
+                  "assistanceEpisodes": 1,
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {
+                "add_denominators_directly": {
+                  "id": "add-denominators-directly",
+                  "support": 1.575,
+                  "contradiction": 0.1755,
+                  "confidence": 0.6299,
+                  "status": "active",
+                  "evidenceIds": [
+                    "assistments:1001",
+                    "assistments:1002",
+                    "assistments:1003"
+                  ]
+                }
+              },
+              "evidenceIds": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "misconception-repair",
+              "hintLevel": 2,
+              "policyReason": "active-misconception",
+              "interventions": [
+                {
+                  "id": "intervention:1",
+                  "strategy": "worked-example",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "low mastery + high uncertainty"
+                },
+                {
+                  "id": "intervention:2",
+                  "strategy": "misconception-repair",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "repeated misconception evidence"
+                }
+              ],
+              "lastIntervention": {
+                "id": "intervention:2",
+                "strategy": "misconception-repair",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "repeated misconception evidence"
+              },
+              "verifier": {
+                "verified": 1,
+                "progress": 1,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.6,
+                "last": {
+                  "interventionId": "intervention:1",
+                  "outcome": "progress",
+                  "confidence": 0.8
+                }
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "fractions.addition",
+              "currentSkillKey": "fractions_addition",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 3.17,
+                  "beta": 5.8,
+                  "mean": 0.3534,
+                  "variance": 0.02292,
+                  "posteriorStd": 0.151392,
+                  "uncertainty": 0.6056,
+                  "evidenceWeight": 2.97,
+                  "observations": 4,
+                  "directAssessments": 3,
+                  "assistedAssessments": 1,
+                  "lastEvidenceId": "assistments:1004",
+                  "unaidedSuccesses": 1,
+                  "firstAttemptFailures": 2,
+                  "assistanceEpisodes": 1,
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {
+                "add_denominators_directly": {
+                  "id": "add-denominators-directly",
+                  "support": 1.575,
+                  "contradiction": 0.7605,
+                  "confidence": 0.5105,
+                  "status": "candidate",
+                  "evidenceIds": [
+                    "assistments:1001",
+                    "assistments:1002",
+                    "assistments:1003",
+                    "assistments:1004"
+                  ]
+                }
+              },
+              "evidenceIds": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003",
+                "assistments:1004"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [
+                {
+                  "id": "intervention:1",
+                  "strategy": "worked-example",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "low mastery + high uncertainty"
+                },
+                {
+                  "id": "intervention:2",
+                  "strategy": "misconception-repair",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "repeated misconception evidence"
+                }
+              ],
+              "lastIntervention": {
+                "id": "intervention:2",
+                "strategy": "misconception-repair",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "repeated misconception evidence"
+              },
+              "verifier": {
+                "verified": 1,
+                "progress": 1,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.6,
+                "last": {
+                  "interventionId": "intervention:1",
+                  "outcome": "progress",
+                  "confidence": 0.8
+                }
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_MISCONCEPTION_EVIDENCE",
+              "priority": 1040,
+              "rationale": "错误概念需要累积证据，不因单次正确/错误直接定论。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.fractions_addition",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "fractions.addition",
+                "alpha": 2.27,
+                "beta": 5.8,
+                "mean": 0.2813,
+                "variance": 0.022289,
+                "posteriorStd": 0.149297,
+                "uncertainty": 0.5972,
+                "evidenceWeight": 2.07,
+                "observations": 3,
+                "directAssessments": 2,
+                "assistedAssessments": 1,
+                "lastEvidenceId": "assistments:1003",
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 1,
+                "lastScore": 0
+              },
+              "after": {
+                "skillId": "fractions.addition",
+                "alpha": 3.17,
+                "beta": 5.8,
+                "mean": 0.3534,
+                "variance": 0.02292,
+                "posteriorStd": 0.151392,
+                "uncertainty": 0.6056,
+                "evidenceWeight": 2.97,
+                "observations": 4,
+                "directAssessments": 3,
+                "assistedAssessments": 1,
+                "lastEvidenceId": "assistments:1004",
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 1,
+                "lastScore": 1
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003"
+              ],
+              "after": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003",
+                "assistments:1004"
+              ]
+            },
+            {
+              "source": "TUTOR_MISCONCEPTION_EVIDENCE",
+              "path": "learner.misconceptions.add_denominators_directly",
+              "op": "set",
+              "before": {
+                "id": "add-denominators-directly",
+                "support": 1.575,
+                "contradiction": 0.1755,
+                "confidence": 0.6299,
+                "status": "active",
+                "evidenceIds": [
+                  "assistments:1001",
+                  "assistments:1002",
+                  "assistments:1003"
+                ]
+              },
+              "after": {
+                "id": "add-denominators-directly",
+                "support": 1.575,
+                "contradiction": 0.7605,
+                "confidence": 0.5105,
+                "status": "candidate",
+                "evidenceIds": [
+                  "assistments:1001",
+                  "assistments:1002",
+                  "assistments:1003",
+                  "assistments:1004"
+                ]
+              }
+            },
+            {
+              "source": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "path": "pedagogy.recommendedMode",
+              "op": "set",
+              "before": "misconception-repair",
+              "after": "diagnose"
+            },
+            {
+              "source": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "path": "pedagogy.hintLevel",
+              "op": "set",
+              "before": 2,
+              "after": 1
+            },
+            {
+              "source": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "path": "pedagogy.policyReason",
+              "op": "set",
+              "before": "active-misconception",
+              "after": "high-knowledge-uncertainty"
+            }
+          ],
+          "trace": {
+            "learner.skills.fractions_addition": {
+              "path": "learner.skills.fractions_addition",
+              "base": {
+                "skillId": "fractions.addition",
+                "alpha": 2.27,
+                "beta": 5.8,
+                "mean": 0.2813,
+                "variance": 0.022289,
+                "posteriorStd": 0.149297,
+                "uncertainty": 0.5972,
+                "evidenceWeight": 2.07,
+                "observations": 3,
+                "directAssessments": 2,
+                "assistedAssessments": 1,
+                "lastEvidenceId": "assistments:1003",
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 1,
+                "lastScore": 0
+              },
+              "final": {
+                "skillId": "fractions.addition",
+                "alpha": 3.17,
+                "beta": 5.8,
+                "mean": 0.3534,
+                "variance": 0.02292,
+                "posteriorStd": 0.151392,
+                "uncertainty": 0.6056,
+                "evidenceWeight": 2.97,
+                "observations": 4,
+                "directAssessments": 3,
+                "assistedAssessments": 1,
+                "lastEvidenceId": "assistments:1004",
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 1,
+                "lastScore": 1
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "fractions.addition",
+                    "alpha": 2.27,
+                    "beta": 5.8,
+                    "mean": 0.2813,
+                    "variance": 0.022289,
+                    "posteriorStd": 0.149297,
+                    "uncertainty": 0.5972,
+                    "evidenceWeight": 2.07,
+                    "observations": 3,
+                    "directAssessments": 2,
+                    "assistedAssessments": 1,
+                    "lastEvidenceId": "assistments:1003",
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 2,
+                    "assistanceEpisodes": 1,
+                    "lastScore": 0
+                  },
+                  "after": {
+                    "skillId": "fractions.addition",
+                    "alpha": 3.17,
+                    "beta": 5.8,
+                    "mean": 0.3534,
+                    "variance": 0.02292,
+                    "posteriorStd": 0.151392,
+                    "uncertainty": 0.6056,
+                    "evidenceWeight": 2.97,
+                    "observations": 4,
+                    "directAssessments": 3,
+                    "assistedAssessments": 1,
+                    "lastEvidenceId": "assistments:1004",
+                    "unaidedSuccesses": 1,
+                    "firstAttemptFailures": 2,
+                    "assistanceEpisodes": 1,
+                    "lastScore": 1
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003"
+              ],
+              "final": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003",
+                "assistments:1004"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:1001",
+                    "assistments:1002",
+                    "assistments:1003"
+                  ],
+                  "after": [
+                    "assistments:1001",
+                    "assistments:1002",
+                    "assistments:1003",
+                    "assistments:1004"
+                  ]
+                }
+              ]
+            },
+            "learner.misconceptions.add_denominators_directly": {
+              "path": "learner.misconceptions.add_denominators_directly",
+              "base": {
+                "id": "add-denominators-directly",
+                "support": 1.575,
+                "contradiction": 0.1755,
+                "confidence": 0.6299,
+                "status": "active",
+                "evidenceIds": [
+                  "assistments:1001",
+                  "assistments:1002",
+                  "assistments:1003"
+                ]
+              },
+              "final": {
+                "id": "add-denominators-directly",
+                "support": 1.575,
+                "contradiction": 0.7605,
+                "confidence": 0.5105,
+                "status": "candidate",
+                "evidenceIds": [
+                  "assistments:1001",
+                  "assistments:1002",
+                  "assistments:1003",
+                  "assistments:1004"
+                ]
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_MISCONCEPTION_EVIDENCE",
+                  "priority": 1040,
+                  "op": "set",
+                  "before": {
+                    "id": "add-denominators-directly",
+                    "support": 1.575,
+                    "contradiction": 0.1755,
+                    "confidence": 0.6299,
+                    "status": "active",
+                    "evidenceIds": [
+                      "assistments:1001",
+                      "assistments:1002",
+                      "assistments:1003"
+                    ]
+                  },
+                  "after": {
+                    "id": "add-denominators-directly",
+                    "support": 1.575,
+                    "contradiction": 0.7605,
+                    "confidence": 0.5105,
+                    "status": "candidate",
+                    "evidenceIds": [
+                      "assistments:1001",
+                      "assistments:1002",
+                      "assistments:1003",
+                      "assistments:1004"
+                    ]
+                  }
+                }
+              ]
+            },
+            "pedagogy.recommendedMode": {
+              "path": "pedagogy.recommendedMode",
+              "base": "misconception-repair",
+              "final": "diagnose",
+              "steps": [
+                {
+                  "rule": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+                  "priority": 900,
+                  "op": "set",
+                  "before": "misconception-repair",
+                  "after": "diagnose"
+                }
+              ]
+            },
+            "pedagogy.hintLevel": {
+              "path": "pedagogy.hintLevel",
+              "base": 2,
+              "final": 1,
+              "steps": [
+                {
+                  "rule": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+                  "priority": 900,
+                  "op": "set",
+                  "before": 2,
+                  "after": 1
+                }
+              ]
+            },
+            "pedagogy.policyReason": {
+              "path": "pedagogy.policyReason",
+              "base": "active-misconception",
+              "final": "high-knowledge-uncertainty",
+              "steps": [
+                {
+                  "rule": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+                  "priority": 900,
+                  "op": "set",
+                  "before": "active-misconception",
+                  "after": "high-knowledge-uncertainty"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:1004",
+              "accepted": true,
+              "skillId": "fractions.addition",
+              "score": 1,
+              "reliability": 0.9,
+              "validity": 1,
+              "weight": 0.9,
+              "assisted": false,
+              "assistanceUsed": false,
+              "helpRequested": false,
+              "hints": 0,
+              "attempts": 1,
+              "answerRevealed": false,
+              "direction": "mastery-support",
+              "reason": "unaided-first-attempt-success",
+              "posterior": {
+                "alpha": 3.17,
+                "beta": 5.8,
+                "mean": 0.3534,
+                "variance": 0.02292,
+                "posteriorStd": 0.151392,
+                "uncertainty": 0.6056
+              },
+              "source": "ASSISTments-2009-2010-skill-builder-compatible"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "fractions.addition"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "diagnose"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.6,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 8,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 8,
+          "step": 1
+        },
+        "event": {
+          "id": "verify:2",
+          "type": "TURN_VERIFIED",
+          "category": "pedagogy-verifier",
+          "payload": {
+            "interventionId": "intervention:2",
+            "outcome": "progress",
+            "confidence": 0.9
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "fractions.addition",
+              "currentSkillKey": "fractions_addition",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 3.17,
+                  "beta": 5.8,
+                  "mean": 0.3534,
+                  "variance": 0.02292,
+                  "posteriorStd": 0.151392,
+                  "uncertainty": 0.6056,
+                  "evidenceWeight": 2.97,
+                  "observations": 4,
+                  "directAssessments": 3,
+                  "assistedAssessments": 1,
+                  "lastEvidenceId": "assistments:1004",
+                  "unaidedSuccesses": 1,
+                  "firstAttemptFailures": 2,
+                  "assistanceEpisodes": 1,
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {
+                "add_denominators_directly": {
+                  "id": "add-denominators-directly",
+                  "support": 1.575,
+                  "contradiction": 0.7605,
+                  "confidence": 0.5105,
+                  "status": "candidate",
+                  "evidenceIds": [
+                    "assistments:1001",
+                    "assistments:1002",
+                    "assistments:1003",
+                    "assistments:1004"
+                  ]
+                }
+              },
+              "evidenceIds": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003",
+                "assistments:1004"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [
+                {
+                  "id": "intervention:1",
+                  "strategy": "worked-example",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "low mastery + high uncertainty"
+                },
+                {
+                  "id": "intervention:2",
+                  "strategy": "misconception-repair",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "repeated misconception evidence"
+                }
+              ],
+              "lastIntervention": {
+                "id": "intervention:2",
+                "strategy": "misconception-repair",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "repeated misconception evidence"
+              },
+              "verifier": {
+                "verified": 1,
+                "progress": 1,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.6,
+                "last": {
+                  "interventionId": "intervention:1",
+                  "outcome": "progress",
+                  "confidence": 0.8
+                }
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "fractions.addition",
+              "currentSkillKey": "fractions_addition",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 3.17,
+                  "beta": 5.8,
+                  "mean": 0.3534,
+                  "variance": 0.02292,
+                  "posteriorStd": 0.151392,
+                  "uncertainty": 0.6056,
+                  "evidenceWeight": 2.97,
+                  "observations": 4,
+                  "directAssessments": 3,
+                  "assistedAssessments": 1,
+                  "lastEvidenceId": "assistments:1004",
+                  "unaidedSuccesses": 1,
+                  "firstAttemptFailures": 2,
+                  "assistanceEpisodes": 1,
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {
+                "add_denominators_directly": {
+                  "id": "add-denominators-directly",
+                  "support": 1.575,
+                  "contradiction": 0.7605,
+                  "confidence": 0.5105,
+                  "status": "candidate",
+                  "evidenceIds": [
+                    "assistments:1001",
+                    "assistments:1002",
+                    "assistments:1003",
+                    "assistments:1004"
+                  ]
+                }
+              },
+              "evidenceIds": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003",
+                "assistments:1004"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [
+                {
+                  "id": "intervention:1",
+                  "strategy": "worked-example",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "low mastery + high uncertainty"
+                },
+                {
+                  "id": "intervention:2",
+                  "strategy": "misconception-repair",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "repeated misconception evidence"
+                }
+              ],
+              "lastIntervention": {
+                "id": "intervention:2",
+                "strategy": "misconception-repair",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "repeated misconception evidence"
+              },
+              "verifier": {
+                "verified": 2,
+                "progress": 2,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.6875,
+                "last": {
+                  "interventionId": "intervention:2",
+                  "outcome": "progress",
+                  "confidence": 0.9
+                }
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_TURN_VERIFIER",
+              "priority": 1060,
+              "rationale": "将“学生状态估计”和“本轮教学干预是否有效”分离记录。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_TURN_VERIFIER",
+              "path": "pedagogy.verifier",
+              "op": "verifier-update",
+              "before": {
+                "verified": 1,
+                "progress": 1,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.6,
+                "last": {
+                  "interventionId": "intervention:1",
+                  "outcome": "progress",
+                  "confidence": 0.8
+                }
+              },
+              "after": {
+                "verified": 2,
+                "progress": 2,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.6875,
+                "last": {
+                  "interventionId": "intervention:2",
+                  "outcome": "progress",
+                  "confidence": 0.9
+                }
+              }
+            }
+          ],
+          "trace": {
+            "pedagogy.verifier": {
+              "path": "pedagogy.verifier",
+              "base": {
+                "verified": 1,
+                "progress": 1,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.6,
+                "last": {
+                  "interventionId": "intervention:1",
+                  "outcome": "progress",
+                  "confidence": 0.8
+                }
+              },
+              "final": {
+                "verified": 2,
+                "progress": 2,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.6875,
+                "last": {
+                  "interventionId": "intervention:2",
+                  "outcome": "progress",
+                  "confidence": 0.9
+                }
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_TURN_VERIFIER",
+                  "priority": 1060,
+                  "op": "verifier-update",
+                  "before": {
+                    "verified": 1,
+                    "progress": 1,
+                    "neutral": 0,
+                    "regress": 0,
+                    "effectiveness": 0.6,
+                    "last": {
+                      "interventionId": "intervention:1",
+                      "outcome": "progress",
+                      "confidence": 0.8
+                    }
+                  },
+                  "after": {
+                    "verified": 2,
+                    "progress": 2,
+                    "neutral": 0,
+                    "regress": 0,
+                    "effectiveness": 0.6875,
+                    "last": {
+                      "interventionId": "intervention:2",
+                      "outcome": "progress",
+                      "confidence": 0.9
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "tutor-verifier",
+              "interventionId": "intervention:2",
+              "outcome": "progress",
+              "confidence": 0.9,
+              "intervention": {
+                "id": "intervention:2",
+                "strategy": "misconception-repair",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "repeated misconception evidence"
+              }
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "fractions.addition"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "diagnose"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.6875,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 9,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 9,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:1005",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:1005",
+            "skillId": "fractions.addition",
+            "correct": true,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder-compatible",
+              "original": true,
+              "attemptCount": 1,
+              "hintCount": 0
+            },
+            "misconception": {
+              "id": "add-denominators-directly",
+              "confidence": 0.7
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "fractions.addition",
+              "currentSkillKey": "fractions_addition",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 3.17,
+                  "beta": 5.8,
+                  "mean": 0.3534,
+                  "variance": 0.02292,
+                  "posteriorStd": 0.151392,
+                  "uncertainty": 0.6056,
+                  "evidenceWeight": 2.97,
+                  "observations": 4,
+                  "directAssessments": 3,
+                  "assistedAssessments": 1,
+                  "lastEvidenceId": "assistments:1004",
+                  "unaidedSuccesses": 1,
+                  "firstAttemptFailures": 2,
+                  "assistanceEpisodes": 1,
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {
+                "add_denominators_directly": {
+                  "id": "add-denominators-directly",
+                  "support": 1.575,
+                  "contradiction": 0.7605,
+                  "confidence": 0.5105,
+                  "status": "candidate",
+                  "evidenceIds": [
+                    "assistments:1001",
+                    "assistments:1002",
+                    "assistments:1003",
+                    "assistments:1004"
+                  ]
+                }
+              },
+              "evidenceIds": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003",
+                "assistments:1004"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [
+                {
+                  "id": "intervention:1",
+                  "strategy": "worked-example",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "low mastery + high uncertainty"
+                },
+                {
+                  "id": "intervention:2",
+                  "strategy": "misconception-repair",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "repeated misconception evidence"
+                }
+              ],
+              "lastIntervention": {
+                "id": "intervention:2",
+                "strategy": "misconception-repair",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "repeated misconception evidence"
+              },
+              "verifier": {
+                "verified": 2,
+                "progress": 2,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.6875,
+                "last": {
+                  "interventionId": "intervention:2",
+                  "outcome": "progress",
+                  "confidence": 0.9
+                }
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "fractions.addition",
+              "currentSkillKey": "fractions_addition",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 4.07,
+                  "beta": 5.8,
+                  "mean": 0.4124,
+                  "variance": 0.022292,
+                  "posteriorStd": 0.149307,
+                  "uncertainty": 0.5972,
+                  "evidenceWeight": 3.87,
+                  "observations": 5,
+                  "directAssessments": 4,
+                  "assistedAssessments": 1,
+                  "lastEvidenceId": "assistments:1005",
+                  "unaidedSuccesses": 2,
+                  "firstAttemptFailures": 2,
+                  "assistanceEpisodes": 1,
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {
+                "add_denominators_directly": {
+                  "id": "add-denominators-directly",
+                  "support": 1.575,
+                  "contradiction": 1.3455,
+                  "confidence": 0.4291,
+                  "status": "candidate",
+                  "evidenceIds": [
+                    "assistments:1001",
+                    "assistments:1002",
+                    "assistments:1003",
+                    "assistments:1004",
+                    "assistments:1005"
+                  ]
+                }
+              },
+              "evidenceIds": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003",
+                "assistments:1004",
+                "assistments:1005"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [
+                {
+                  "id": "intervention:1",
+                  "strategy": "worked-example",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "low mastery + high uncertainty"
+                },
+                {
+                  "id": "intervention:2",
+                  "strategy": "misconception-repair",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "repeated misconception evidence"
+                }
+              ],
+              "lastIntervention": {
+                "id": "intervention:2",
+                "strategy": "misconception-repair",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "repeated misconception evidence"
+              },
+              "verifier": {
+                "verified": 2,
+                "progress": 2,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.6875,
+                "last": {
+                  "interventionId": "intervention:2",
+                  "outcome": "progress",
+                  "confidence": 0.9
+                }
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_MISCONCEPTION_EVIDENCE",
+              "priority": 1040,
+              "rationale": "错误概念需要累积证据，不因单次正确/错误直接定论。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.fractions_addition",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "fractions.addition",
+                "alpha": 3.17,
+                "beta": 5.8,
+                "mean": 0.3534,
+                "variance": 0.02292,
+                "posteriorStd": 0.151392,
+                "uncertainty": 0.6056,
+                "evidenceWeight": 2.97,
+                "observations": 4,
+                "directAssessments": 3,
+                "assistedAssessments": 1,
+                "lastEvidenceId": "assistments:1004",
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 1,
+                "lastScore": 1
+              },
+              "after": {
+                "skillId": "fractions.addition",
+                "alpha": 4.07,
+                "beta": 5.8,
+                "mean": 0.4124,
+                "variance": 0.022292,
+                "posteriorStd": 0.149307,
+                "uncertainty": 0.5972,
+                "evidenceWeight": 3.87,
+                "observations": 5,
+                "directAssessments": 4,
+                "assistedAssessments": 1,
+                "lastEvidenceId": "assistments:1005",
+                "unaidedSuccesses": 2,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 1,
+                "lastScore": 1
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003",
+                "assistments:1004"
+              ],
+              "after": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003",
+                "assistments:1004",
+                "assistments:1005"
+              ]
+            },
+            {
+              "source": "TUTOR_MISCONCEPTION_EVIDENCE",
+              "path": "learner.misconceptions.add_denominators_directly",
+              "op": "set",
+              "before": {
+                "id": "add-denominators-directly",
+                "support": 1.575,
+                "contradiction": 0.7605,
+                "confidence": 0.5105,
+                "status": "candidate",
+                "evidenceIds": [
+                  "assistments:1001",
+                  "assistments:1002",
+                  "assistments:1003",
+                  "assistments:1004"
+                ]
+              },
+              "after": {
+                "id": "add-denominators-directly",
+                "support": 1.575,
+                "contradiction": 1.3455,
+                "confidence": 0.4291,
+                "status": "candidate",
+                "evidenceIds": [
+                  "assistments:1001",
+                  "assistments:1002",
+                  "assistments:1003",
+                  "assistments:1004",
+                  "assistments:1005"
+                ]
+              }
+            },
+            {
+              "source": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "path": "pedagogy.recommendedMode",
+              "op": "set",
+              "before": "diagnose",
+              "after": "worked-example"
+            },
+            {
+              "source": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "path": "pedagogy.hintLevel",
+              "op": "set",
+              "before": 1,
+              "after": 2
+            },
+            {
+              "source": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "path": "pedagogy.policyReason",
+              "op": "set",
+              "before": "high-knowledge-uncertainty",
+              "after": "low-mastery"
+            }
+          ],
+          "trace": {
+            "learner.skills.fractions_addition": {
+              "path": "learner.skills.fractions_addition",
+              "base": {
+                "skillId": "fractions.addition",
+                "alpha": 3.17,
+                "beta": 5.8,
+                "mean": 0.3534,
+                "variance": 0.02292,
+                "posteriorStd": 0.151392,
+                "uncertainty": 0.6056,
+                "evidenceWeight": 2.97,
+                "observations": 4,
+                "directAssessments": 3,
+                "assistedAssessments": 1,
+                "lastEvidenceId": "assistments:1004",
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 1,
+                "lastScore": 1
+              },
+              "final": {
+                "skillId": "fractions.addition",
+                "alpha": 4.07,
+                "beta": 5.8,
+                "mean": 0.4124,
+                "variance": 0.022292,
+                "posteriorStd": 0.149307,
+                "uncertainty": 0.5972,
+                "evidenceWeight": 3.87,
+                "observations": 5,
+                "directAssessments": 4,
+                "assistedAssessments": 1,
+                "lastEvidenceId": "assistments:1005",
+                "unaidedSuccesses": 2,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 1,
+                "lastScore": 1
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "fractions.addition",
+                    "alpha": 3.17,
+                    "beta": 5.8,
+                    "mean": 0.3534,
+                    "variance": 0.02292,
+                    "posteriorStd": 0.151392,
+                    "uncertainty": 0.6056,
+                    "evidenceWeight": 2.97,
+                    "observations": 4,
+                    "directAssessments": 3,
+                    "assistedAssessments": 1,
+                    "lastEvidenceId": "assistments:1004",
+                    "unaidedSuccesses": 1,
+                    "firstAttemptFailures": 2,
+                    "assistanceEpisodes": 1,
+                    "lastScore": 1
+                  },
+                  "after": {
+                    "skillId": "fractions.addition",
+                    "alpha": 4.07,
+                    "beta": 5.8,
+                    "mean": 0.4124,
+                    "variance": 0.022292,
+                    "posteriorStd": 0.149307,
+                    "uncertainty": 0.5972,
+                    "evidenceWeight": 3.87,
+                    "observations": 5,
+                    "directAssessments": 4,
+                    "assistedAssessments": 1,
+                    "lastEvidenceId": "assistments:1005",
+                    "unaidedSuccesses": 2,
+                    "firstAttemptFailures": 2,
+                    "assistanceEpisodes": 1,
+                    "lastScore": 1
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003",
+                "assistments:1004"
+              ],
+              "final": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003",
+                "assistments:1004",
+                "assistments:1005"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:1001",
+                    "assistments:1002",
+                    "assistments:1003",
+                    "assistments:1004"
+                  ],
+                  "after": [
+                    "assistments:1001",
+                    "assistments:1002",
+                    "assistments:1003",
+                    "assistments:1004",
+                    "assistments:1005"
+                  ]
+                }
+              ]
+            },
+            "learner.misconceptions.add_denominators_directly": {
+              "path": "learner.misconceptions.add_denominators_directly",
+              "base": {
+                "id": "add-denominators-directly",
+                "support": 1.575,
+                "contradiction": 0.7605,
+                "confidence": 0.5105,
+                "status": "candidate",
+                "evidenceIds": [
+                  "assistments:1001",
+                  "assistments:1002",
+                  "assistments:1003",
+                  "assistments:1004"
+                ]
+              },
+              "final": {
+                "id": "add-denominators-directly",
+                "support": 1.575,
+                "contradiction": 1.3455,
+                "confidence": 0.4291,
+                "status": "candidate",
+                "evidenceIds": [
+                  "assistments:1001",
+                  "assistments:1002",
+                  "assistments:1003",
+                  "assistments:1004",
+                  "assistments:1005"
+                ]
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_MISCONCEPTION_EVIDENCE",
+                  "priority": 1040,
+                  "op": "set",
+                  "before": {
+                    "id": "add-denominators-directly",
+                    "support": 1.575,
+                    "contradiction": 0.7605,
+                    "confidence": 0.5105,
+                    "status": "candidate",
+                    "evidenceIds": [
+                      "assistments:1001",
+                      "assistments:1002",
+                      "assistments:1003",
+                      "assistments:1004"
+                    ]
+                  },
+                  "after": {
+                    "id": "add-denominators-directly",
+                    "support": 1.575,
+                    "contradiction": 1.3455,
+                    "confidence": 0.4291,
+                    "status": "candidate",
+                    "evidenceIds": [
+                      "assistments:1001",
+                      "assistments:1002",
+                      "assistments:1003",
+                      "assistments:1004",
+                      "assistments:1005"
+                    ]
+                  }
+                }
+              ]
+            },
+            "pedagogy.recommendedMode": {
+              "path": "pedagogy.recommendedMode",
+              "base": "diagnose",
+              "final": "worked-example",
+              "steps": [
+                {
+                  "rule": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+                  "priority": 900,
+                  "op": "set",
+                  "before": "diagnose",
+                  "after": "worked-example"
+                }
+              ]
+            },
+            "pedagogy.hintLevel": {
+              "path": "pedagogy.hintLevel",
+              "base": 1,
+              "final": 2,
+              "steps": [
+                {
+                  "rule": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+                  "priority": 900,
+                  "op": "set",
+                  "before": 1,
+                  "after": 2
+                }
+              ]
+            },
+            "pedagogy.policyReason": {
+              "path": "pedagogy.policyReason",
+              "base": "high-knowledge-uncertainty",
+              "final": "low-mastery",
+              "steps": [
+                {
+                  "rule": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+                  "priority": 900,
+                  "op": "set",
+                  "before": "high-knowledge-uncertainty",
+                  "after": "low-mastery"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:1005",
+              "accepted": true,
+              "skillId": "fractions.addition",
+              "score": 1,
+              "reliability": 0.9,
+              "validity": 1,
+              "weight": 0.9,
+              "assisted": false,
+              "assistanceUsed": false,
+              "helpRequested": false,
+              "hints": 0,
+              "attempts": 1,
+              "answerRevealed": false,
+              "direction": "mastery-support",
+              "reason": "unaided-first-attempt-success",
+              "posterior": {
+                "alpha": 4.07,
+                "beta": 5.8,
+                "mean": 0.4124,
+                "variance": 0.022292,
+                "posteriorStd": 0.149307,
+                "uncertainty": 0.5972
+              },
+              "source": "ASSISTments-2009-2010-skill-builder-compatible"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "fractions.addition"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "worked-example"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.6875,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 10,
+      "kind": "profile",
+      "endReason": "aborted",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 10,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:1006",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:1006",
+            "skillId": "fractions.addition",
+            "correct": true,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder-compatible",
+              "original": true,
+              "attemptCount": 1,
+              "hintCount": 0,
+              "answerRevealed": false
+            },
+            "misconception": {
+              "id": "add-denominators-directly",
+              "confidence": 0.7
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "fractions.addition",
+              "currentSkillKey": "fractions_addition",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 4.07,
+                  "beta": 5.8,
+                  "mean": 0.4124,
+                  "variance": 0.022292,
+                  "posteriorStd": 0.149307,
+                  "uncertainty": 0.5972,
+                  "evidenceWeight": 3.87,
+                  "observations": 5,
+                  "directAssessments": 4,
+                  "assistedAssessments": 1,
+                  "lastEvidenceId": "assistments:1005",
+                  "unaidedSuccesses": 2,
+                  "firstAttemptFailures": 2,
+                  "assistanceEpisodes": 1,
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {
+                "add_denominators_directly": {
+                  "id": "add-denominators-directly",
+                  "support": 1.575,
+                  "contradiction": 1.3455,
+                  "confidence": 0.4291,
+                  "status": "candidate",
+                  "evidenceIds": [
+                    "assistments:1001",
+                    "assistments:1002",
+                    "assistments:1003",
+                    "assistments:1004",
+                    "assistments:1005"
+                  ]
+                }
+              },
+              "evidenceIds": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003",
+                "assistments:1004",
+                "assistments:1005"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [
+                {
+                  "id": "intervention:1",
+                  "strategy": "worked-example",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "low mastery + high uncertainty"
+                },
+                {
+                  "id": "intervention:2",
+                  "strategy": "misconception-repair",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "repeated misconception evidence"
+                }
+              ],
+              "lastIntervention": {
+                "id": "intervention:2",
+                "strategy": "misconception-repair",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "repeated misconception evidence"
+              },
+              "verifier": {
+                "verified": 2,
+                "progress": 2,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.6875,
+                "last": {
+                  "interventionId": "intervention:2",
+                  "outcome": "progress",
+                  "confidence": 0.9
+                }
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "fractions.addition",
+              "currentSkillKey": "fractions_addition",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 4.97,
+                  "beta": 5.8,
+                  "mean": 0.4615,
+                  "variance": 0.021114,
+                  "posteriorStd": 0.145308,
+                  "uncertainty": 0.5812,
+                  "evidenceWeight": 4.77,
+                  "observations": 6,
+                  "directAssessments": 5,
+                  "assistedAssessments": 1,
+                  "lastEvidenceId": "assistments:1006",
+                  "unaidedSuccesses": 3,
+                  "firstAttemptFailures": 2,
+                  "assistanceEpisodes": 1,
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {
+                "add_denominators_directly": {
+                  "id": "add-denominators-directly",
+                  "support": 1.575,
+                  "contradiction": 1.9305,
+                  "confidence": 0.3701,
+                  "status": "resolved",
+                  "evidenceIds": [
+                    "assistments:1001",
+                    "assistments:1002",
+                    "assistments:1003",
+                    "assistments:1004",
+                    "assistments:1005",
+                    "assistments:1006"
+                  ]
+                }
+              },
+              "evidenceIds": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003",
+                "assistments:1004",
+                "assistments:1005",
+                "assistments:1006"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "socratic",
+              "hintLevel": 1,
+              "policyReason": "developing-mastery",
+              "interventions": [
+                {
+                  "id": "intervention:1",
+                  "strategy": "worked-example",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "low mastery + high uncertainty"
+                },
+                {
+                  "id": "intervention:2",
+                  "strategy": "misconception-repair",
+                  "skillId": "fractions.addition",
+                  "hintLevel": 2,
+                  "rationale": "repeated misconception evidence"
+                }
+              ],
+              "lastIntervention": {
+                "id": "intervention:2",
+                "strategy": "misconception-repair",
+                "skillId": "fractions.addition",
+                "hintLevel": 2,
+                "rationale": "repeated misconception evidence"
+              },
+              "verifier": {
+                "verified": 2,
+                "progress": 2,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.6875,
+                "last": {
+                  "interventionId": "intervention:2",
+                  "outcome": "progress",
+                  "confidence": 0.9
+                }
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_MISCONCEPTION_EVIDENCE",
+              "priority": 1040,
+              "rationale": "错误概念需要累积证据，不因单次正确/错误直接定论。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.fractions_addition",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "fractions.addition",
+                "alpha": 4.07,
+                "beta": 5.8,
+                "mean": 0.4124,
+                "variance": 0.022292,
+                "posteriorStd": 0.149307,
+                "uncertainty": 0.5972,
+                "evidenceWeight": 3.87,
+                "observations": 5,
+                "directAssessments": 4,
+                "assistedAssessments": 1,
+                "lastEvidenceId": "assistments:1005",
+                "unaidedSuccesses": 2,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 1,
+                "lastScore": 1
+              },
+              "after": {
+                "skillId": "fractions.addition",
+                "alpha": 4.97,
+                "beta": 5.8,
+                "mean": 0.4615,
+                "variance": 0.021114,
+                "posteriorStd": 0.145308,
+                "uncertainty": 0.5812,
+                "evidenceWeight": 4.77,
+                "observations": 6,
+                "directAssessments": 5,
+                "assistedAssessments": 1,
+                "lastEvidenceId": "assistments:1006",
+                "unaidedSuccesses": 3,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 1,
+                "lastScore": 1
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003",
+                "assistments:1004",
+                "assistments:1005"
+              ],
+              "after": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003",
+                "assistments:1004",
+                "assistments:1005",
+                "assistments:1006"
+              ]
+            },
+            {
+              "source": "TUTOR_MISCONCEPTION_EVIDENCE",
+              "path": "learner.misconceptions.add_denominators_directly",
+              "op": "set",
+              "before": {
+                "id": "add-denominators-directly",
+                "support": 1.575,
+                "contradiction": 1.3455,
+                "confidence": 0.4291,
+                "status": "candidate",
+                "evidenceIds": [
+                  "assistments:1001",
+                  "assistments:1002",
+                  "assistments:1003",
+                  "assistments:1004",
+                  "assistments:1005"
+                ]
+              },
+              "after": {
+                "id": "add-denominators-directly",
+                "support": 1.575,
+                "contradiction": 1.9305,
+                "confidence": 0.3701,
+                "status": "resolved",
+                "evidenceIds": [
+                  "assistments:1001",
+                  "assistments:1002",
+                  "assistments:1003",
+                  "assistments:1004",
+                  "assistments:1005",
+                  "assistments:1006"
+                ]
+              }
+            },
+            {
+              "source": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "path": "pedagogy.recommendedMode",
+              "op": "set",
+              "before": "worked-example",
+              "after": "socratic"
+            },
+            {
+              "source": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "path": "pedagogy.hintLevel",
+              "op": "set",
+              "before": 2,
+              "after": 1
+            },
+            {
+              "source": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "path": "pedagogy.policyReason",
+              "op": "set",
+              "before": "low-mastery",
+              "after": "developing-mastery"
+            }
+          ],
+          "trace": {
+            "learner.skills.fractions_addition": {
+              "path": "learner.skills.fractions_addition",
+              "base": {
+                "skillId": "fractions.addition",
+                "alpha": 4.07,
+                "beta": 5.8,
+                "mean": 0.4124,
+                "variance": 0.022292,
+                "posteriorStd": 0.149307,
+                "uncertainty": 0.5972,
+                "evidenceWeight": 3.87,
+                "observations": 5,
+                "directAssessments": 4,
+                "assistedAssessments": 1,
+                "lastEvidenceId": "assistments:1005",
+                "unaidedSuccesses": 2,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 1,
+                "lastScore": 1
+              },
+              "final": {
+                "skillId": "fractions.addition",
+                "alpha": 4.97,
+                "beta": 5.8,
+                "mean": 0.4615,
+                "variance": 0.021114,
+                "posteriorStd": 0.145308,
+                "uncertainty": 0.5812,
+                "evidenceWeight": 4.77,
+                "observations": 6,
+                "directAssessments": 5,
+                "assistedAssessments": 1,
+                "lastEvidenceId": "assistments:1006",
+                "unaidedSuccesses": 3,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 1,
+                "lastScore": 1
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "fractions.addition",
+                    "alpha": 4.07,
+                    "beta": 5.8,
+                    "mean": 0.4124,
+                    "variance": 0.022292,
+                    "posteriorStd": 0.149307,
+                    "uncertainty": 0.5972,
+                    "evidenceWeight": 3.87,
+                    "observations": 5,
+                    "directAssessments": 4,
+                    "assistedAssessments": 1,
+                    "lastEvidenceId": "assistments:1005",
+                    "unaidedSuccesses": 2,
+                    "firstAttemptFailures": 2,
+                    "assistanceEpisodes": 1,
+                    "lastScore": 1
+                  },
+                  "after": {
+                    "skillId": "fractions.addition",
+                    "alpha": 4.97,
+                    "beta": 5.8,
+                    "mean": 0.4615,
+                    "variance": 0.021114,
+                    "posteriorStd": 0.145308,
+                    "uncertainty": 0.5812,
+                    "evidenceWeight": 4.77,
+                    "observations": 6,
+                    "directAssessments": 5,
+                    "assistedAssessments": 1,
+                    "lastEvidenceId": "assistments:1006",
+                    "unaidedSuccesses": 3,
+                    "firstAttemptFailures": 2,
+                    "assistanceEpisodes": 1,
+                    "lastScore": 1
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003",
+                "assistments:1004",
+                "assistments:1005"
+              ],
+              "final": [
+                "assistments:1001",
+                "assistments:1002",
+                "assistments:1003",
+                "assistments:1004",
+                "assistments:1005",
+                "assistments:1006"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:1001",
+                    "assistments:1002",
+                    "assistments:1003",
+                    "assistments:1004",
+                    "assistments:1005"
+                  ],
+                  "after": [
+                    "assistments:1001",
+                    "assistments:1002",
+                    "assistments:1003",
+                    "assistments:1004",
+                    "assistments:1005",
+                    "assistments:1006"
+                  ]
+                }
+              ]
+            },
+            "learner.misconceptions.add_denominators_directly": {
+              "path": "learner.misconceptions.add_denominators_directly",
+              "base": {
+                "id": "add-denominators-directly",
+                "support": 1.575,
+                "contradiction": 1.3455,
+                "confidence": 0.4291,
+                "status": "candidate",
+                "evidenceIds": [
+                  "assistments:1001",
+                  "assistments:1002",
+                  "assistments:1003",
+                  "assistments:1004",
+                  "assistments:1005"
+                ]
+              },
+              "final": {
+                "id": "add-denominators-directly",
+                "support": 1.575,
+                "contradiction": 1.9305,
+                "confidence": 0.3701,
+                "status": "resolved",
+                "evidenceIds": [
+                  "assistments:1001",
+                  "assistments:1002",
+                  "assistments:1003",
+                  "assistments:1004",
+                  "assistments:1005",
+                  "assistments:1006"
+                ]
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_MISCONCEPTION_EVIDENCE",
+                  "priority": 1040,
+                  "op": "set",
+                  "before": {
+                    "id": "add-denominators-directly",
+                    "support": 1.575,
+                    "contradiction": 1.3455,
+                    "confidence": 0.4291,
+                    "status": "candidate",
+                    "evidenceIds": [
+                      "assistments:1001",
+                      "assistments:1002",
+                      "assistments:1003",
+                      "assistments:1004",
+                      "assistments:1005"
+                    ]
+                  },
+                  "after": {
+                    "id": "add-denominators-directly",
+                    "support": 1.575,
+                    "contradiction": 1.9305,
+                    "confidence": 0.3701,
+                    "status": "resolved",
+                    "evidenceIds": [
+                      "assistments:1001",
+                      "assistments:1002",
+                      "assistments:1003",
+                      "assistments:1004",
+                      "assistments:1005",
+                      "assistments:1006"
+                    ]
+                  }
+                }
+              ]
+            },
+            "pedagogy.recommendedMode": {
+              "path": "pedagogy.recommendedMode",
+              "base": "worked-example",
+              "final": "socratic",
+              "steps": [
+                {
+                  "rule": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+                  "priority": 900,
+                  "op": "set",
+                  "before": "worked-example",
+                  "after": "socratic"
+                }
+              ]
+            },
+            "pedagogy.hintLevel": {
+              "path": "pedagogy.hintLevel",
+              "base": 2,
+              "final": 1,
+              "steps": [
+                {
+                  "rule": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+                  "priority": 900,
+                  "op": "set",
+                  "before": 2,
+                  "after": 1
+                }
+              ]
+            },
+            "pedagogy.policyReason": {
+              "path": "pedagogy.policyReason",
+              "base": "low-mastery",
+              "final": "developing-mastery",
+              "steps": [
+                {
+                  "rule": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+                  "priority": 900,
+                  "op": "set",
+                  "before": "low-mastery",
+                  "after": "developing-mastery"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:1006",
+              "accepted": true,
+              "skillId": "fractions.addition",
+              "score": 1,
+              "reliability": 0.9,
+              "validity": 1,
+              "weight": 0.9,
+              "assisted": false,
+              "assistanceUsed": false,
+              "helpRequested": false,
+              "hints": 0,
+              "attempts": 1,
+              "answerRevealed": false,
+              "direction": "mastery-support",
+              "reason": "unaided-first-attempt-success",
+              "posterior": {
+                "alpha": 4.97,
+                "beta": 5.8,
+                "mean": 0.4615,
+                "variance": 0.021114,
+                "posteriorStd": 0.145308,
+                "uncertainty": 0.5812
+              },
+              "source": "ASSISTments-2009-2010-skill-builder-compatible"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "fractions.addition"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "socratic"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.6875,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "aborted",
+          "status": "discarded",
+          "committed": false
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "@ppl/app-standalone",
+  "version": "0.5.0",
+  "type": "module",
+  "description": "Standalone PPL Observatory web application. No host checkout required.",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "@ppl/app-core": "0.5.0",
+    "@ppl/app-ui": "0.5.0"
+  },
+  "files": [
+    "index.html",
+    "src",
+    "sample",
+    "server.mjs"
+  ],
+  "bin": {
+    "ppl-observatory": "./server.mjs"
+  }
+}

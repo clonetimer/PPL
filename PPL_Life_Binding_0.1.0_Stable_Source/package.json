@@ -1,0 +1,23 @@
+{
+  "name": "@ppl/host-binding-life",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "description": "PPL Life Host Binding 0.1.0 Stable: Host-risk- and mutation-authorization-scoped Life action contracts with exact realtime citation allowlists.",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs"
+  },
+  "main": "./src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs"
+  },
+  "files": [
+    "src/",
+    "profiles/",
+    "docs/",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "ppl-llm-host-adapter": "^0.1.6 || ^0.1.7-0"
+  }
+}

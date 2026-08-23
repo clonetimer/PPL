@@ -1,0 +1,116 @@
+{
+  "id": "research-ego-depletion-strong-refutation",
+  "steps": [
+    {
+      "turn": 1,
+      "event": {
+        "id": "q-ego-refutation",
+        "type": "QUESTION_DEFINED",
+        "payload": {
+          "question": "Does prior exertion of self-control reliably cause a practically meaningful impairment on a subsequent self-control task?"
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 2,
+      "event": {
+        "id": "claim-ego-refutation",
+        "type": "CLAIM_PROPOSED",
+        "payload": {
+          "claimId": "claim_ego_refutation",
+          "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+          "kind": "empirical-claim"
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 3,
+      "event": {
+        "id": "carter2015-refutation",
+        "type": "EVIDENCE_RECORDED",
+        "payload": {
+          "evidenceId": "doi:10.1037/xge0000083",
+          "claimId": "claim_ego_refutation",
+          "stance": "oppose",
+          "summary": "Bias-adjusted meta-analytic tests questioned the existence and practical size of the depletion effect.",
+          "source": {
+            "title": "A series of meta-analytic tests of the depletion effect: Self-control does not seem to rely on a limited resource",
+            "publisher": "Journal of Experimental Psychology: General",
+            "doi": "10.1037/xge0000083",
+            "locator": "doi:10.1037/xge0000083"
+          },
+          "independenceGroup": "Carter2015-meta",
+          "quality": {
+            "relevance": 1,
+            "reliability": 0.92,
+            "independence": 1
+          }
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 4,
+      "event": {
+        "id": "hagger2016-refutation",
+        "type": "VALIDATION_RESULT",
+        "payload": {
+          "validationId": "doi:10.1177/1745691616652873",
+          "claimId": "claim_ego_refutation",
+          "kind": "replication",
+          "method": "23-lab-preregistered-replication",
+          "outcome": "oppose",
+          "confidence": 0.96,
+          "reproducible": true,
+          "independenceGroup": "Hagger2016-RRR",
+          "provenance": {
+            "doi": "10.1177/1745691616652873",
+            "locator": "doi:10.1177/1745691616652873"
+          },
+          "artifact": {
+            "locator": "RRR-23-labs-N2141"
+          }
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 5,
+      "event": {
+        "id": "vohs2021-refutation",
+        "type": "VALIDATION_RESULT",
+        "payload": {
+          "validationId": "doi:10.1177/0956797621989733",
+          "claimId": "claim_ego_refutation",
+          "kind": "replication",
+          "method": "36-site-preregistered-paradigmatic-test",
+          "outcome": "oppose",
+          "confidence": 0.96,
+          "reproducible": true,
+          "independenceGroup": "Vohs2021-multisite",
+          "provenance": {
+            "doi": "10.1177/0956797621989733",
+            "locator": "doi:10.1177/0956797621989733"
+          },
+          "artifact": {
+            "locator": "36-sites-N3531"
+          }
+        }
+      },
+      "endReason": "completed"
+    },
+    {
+      "turn": 6,
+      "event": {
+        "id": "conclusion-ego-refutation",
+        "type": "CONCLUSION_REQUESTED",
+        "payload": {
+          "claimId": "claim_ego_refutation"
+        }
+      },
+      "endReason": "completed"
+    }
+  ]
+}

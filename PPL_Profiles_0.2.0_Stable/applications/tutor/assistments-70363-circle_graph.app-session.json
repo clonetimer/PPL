@@ -1,0 +1,4444 @@
+{
+  "schema": "ppl.app-session/0.3",
+  "title": "不确定性感知学习导师 · assistments-70363-circle_graph",
+  "profile": {
+    "id": "tutor.uncertainty-verifier.default",
+    "title": "不确定性感知学习导师",
+    "kind": "tutor",
+    "version": "0.2.0",
+    "engine": {
+      "id": "tutor/uncertainty-verifier",
+      "version": "0.2"
+    }
+  },
+  "domain": {
+    "profileKind": "tutor",
+    "engine": {
+      "id": "tutor/uncertainty-verifier",
+      "version": "0.2"
+    },
+    "application": {
+      "domain": "learning",
+      "maturity": "application-evolution",
+      "hostOwnsContentGeneration": true
+    }
+  },
+  "observability": {
+    "metrics": [
+      {
+        "path": "learner.skills.fractions_addition.mean",
+        "label": "掌握度均值",
+        "hint": "Beta posterior mean",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "path": "learner.skills.fractions_addition.uncertainty",
+        "label": "知识不确定性",
+        "hint": "posterior spread，越高越需诊断",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "path": "learner.skills.fractions_addition.evidenceWeight",
+        "label": "有效证据量",
+        "hint": "按 assessment validity 加权"
+      },
+      {
+        "path": "pedagogy.verifier.effectiveness",
+        "label": "干预有效性",
+        "hint": "turn-by-turn verifier EMA",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "path": "learner.affect.frustration",
+        "label": "挫败度",
+        "hint": "仅来自显式 affect observation",
+        "min": 0,
+        "max": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "skills",
+        "label": "知识状态",
+        "prefix": "learner.skills."
+      },
+      {
+        "id": "misconceptions",
+        "label": "错误概念证据",
+        "prefix": "learner.misconceptions."
+      },
+      {
+        "id": "pedagogy",
+        "label": "教学策略与验证",
+        "prefix": "pedagogy."
+      },
+      {
+        "id": "task",
+        "label": "任务建议",
+        "prefix": "task."
+      }
+    ]
+  },
+  "literature": [
+    {
+      "id": "arxiv:2501.05415",
+      "title": "Uncertainty-aware Knowledge Tracing",
+      "mechanismBorrowed": "知识状态应显式表达不确定性；本实现采用透明 Beta posterior 工程近似而非复制论文模型。"
+    },
+    {
+      "id": "arxiv:2502.13311",
+      "title": "Training Turn-by-Turn Verifiers for Dialogue Tutoring Agents",
+      "mechanismBorrowed": "知识状态追踪与逐轮教学效果 verifier 分离。"
+    },
+    {
+      "id": "ASSISTments-2009-2010",
+      "title": "ASSISTments Skill-builder data 2009-2010",
+      "mechanismBorrowed": "提示/分步帮助会影响 assessment 解释，数据适配器保留 hints/attempts/original provenance。"
+    }
+  ],
+  "entries": [
+    {
+      "snapshotSeq": 1,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 1,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:35305403",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:35305403",
+            "learnerId": "70363",
+            "skillId": "Circle Graph",
+            "skillKey": "circle_graph",
+            "problemId": "47068",
+            "correct": false,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": true,
+              "attemptCount": 1,
+              "hintCount": 4,
+              "hintTotal": 4,
+              "firstAction": "hint",
+              "firstActionRaw": "1",
+              "bottomHint": true,
+              "answerRevealed": true
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "35305403",
+              "userId": "70363",
+              "problemId": "47068",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "fractions.addition",
+              "currentSkillKey": "fractions_addition",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Circle Graph",
+              "currentSkillKey": "circle_graph",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "circle_graph": {
+                  "skillId": "Circle Graph",
+                  "alpha": 2,
+                  "beta": 4.855,
+                  "mean": 0.2918,
+                  "variance": 0.026306,
+                  "posteriorStd": 0.162192,
+                  "uncertainty": 0.6488,
+                  "evidenceWeight": 0.855,
+                  "observations": 1,
+                  "directAssessments": 0,
+                  "assistedAssessments": 1,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 1,
+                  "assistanceEpisodes": 1,
+                  "lastEvidenceId": "assistments:35305403",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35305403"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.circle_graph",
+              "op": "bayes-beta-update",
+              "after": {
+                "skillId": "Circle Graph",
+                "alpha": 2,
+                "beta": 4.855,
+                "mean": 0.2918,
+                "variance": 0.026306,
+                "posteriorStd": 0.162192,
+                "uncertainty": 0.6488,
+                "evidenceWeight": 0.855,
+                "observations": 1,
+                "directAssessments": 0,
+                "assistedAssessments": 1,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 1,
+                "assistanceEpisodes": 1,
+                "lastEvidenceId": "assistments:35305403",
+                "lastScore": 0
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.currentSkillId",
+              "op": "set",
+              "before": "fractions.addition",
+              "after": "Circle Graph"
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.currentSkillKey",
+              "op": "set",
+              "before": "fractions_addition",
+              "after": "circle_graph"
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [],
+              "after": [
+                "assistments:35305403"
+              ]
+            }
+          ],
+          "trace": {
+            "learner.skills.circle_graph": {
+              "path": "learner.skills.circle_graph",
+              "final": {
+                "skillId": "Circle Graph",
+                "alpha": 2,
+                "beta": 4.855,
+                "mean": 0.2918,
+                "variance": 0.026306,
+                "posteriorStd": 0.162192,
+                "uncertainty": 0.6488,
+                "evidenceWeight": 0.855,
+                "observations": 1,
+                "directAssessments": 0,
+                "assistedAssessments": 1,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 1,
+                "assistanceEpisodes": 1,
+                "lastEvidenceId": "assistments:35305403",
+                "lastScore": 0
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "after": {
+                    "skillId": "Circle Graph",
+                    "alpha": 2,
+                    "beta": 4.855,
+                    "mean": 0.2918,
+                    "variance": 0.026306,
+                    "posteriorStd": 0.162192,
+                    "uncertainty": 0.6488,
+                    "evidenceWeight": 0.855,
+                    "observations": 1,
+                    "directAssessments": 0,
+                    "assistedAssessments": 1,
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 1,
+                    "assistanceEpisodes": 1,
+                    "lastEvidenceId": "assistments:35305403",
+                    "lastScore": 0
+                  }
+                }
+              ]
+            },
+            "learner.currentSkillId": {
+              "path": "learner.currentSkillId",
+              "base": "fractions.addition",
+              "final": "Circle Graph",
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "set",
+                  "before": "fractions.addition",
+                  "after": "Circle Graph"
+                }
+              ]
+            },
+            "learner.currentSkillKey": {
+              "path": "learner.currentSkillKey",
+              "base": "fractions_addition",
+              "final": "circle_graph",
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "set",
+                  "before": "fractions_addition",
+                  "after": "circle_graph"
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [],
+              "final": [
+                "assistments:35305403"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [],
+                  "after": [
+                    "assistments:35305403"
+                  ]
+                }
+              ]
+            }
+          },
+          "diagnostics": [
+            {
+              "severity": "info",
+              "code": "TUTOR_ASSISTED_FAILURE_PRESERVED",
+              "message": "首答错误/需要帮助被保留为尚未独立掌握的负证据；assistance 不会像成功证据那样对称削弱。"
+            }
+          ],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:35305403",
+              "accepted": true,
+              "skillId": "Circle Graph",
+              "score": 0,
+              "reliability": 0.9,
+              "validity": 0.95,
+              "weight": 0.855,
+              "assisted": true,
+              "assistanceUsed": true,
+              "helpRequested": true,
+              "hints": 4,
+              "attempts": 1,
+              "answerRevealed": true,
+              "direction": "nonmastery-support",
+              "reason": "bottom-hint-or-answer-reveal-needed",
+              "posterior": {
+                "alpha": 2,
+                "beta": 4.855,
+                "mean": 0.2918,
+                "variance": 0.026306,
+                "posteriorStd": 0.162192,
+                "uncertainty": 0.6488
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Circle Graph"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "diagnose"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 2,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 2,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:35305686",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:35305686",
+            "learnerId": "70363",
+            "skillId": "Circle Graph",
+            "skillKey": "circle_graph",
+            "problemId": "47081",
+            "correct": false,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": true,
+              "attemptCount": 1,
+              "hintCount": 0,
+              "hintTotal": 0,
+              "firstAction": "scaffolding",
+              "firstActionRaw": "2",
+              "bottomHint": null,
+              "answerRevealed": false
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "35305686",
+              "userId": "70363",
+              "problemId": "47081",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "Circle Graph",
+              "currentSkillKey": "circle_graph",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "circle_graph": {
+                  "skillId": "Circle Graph",
+                  "alpha": 2,
+                  "beta": 4.855,
+                  "mean": 0.2918,
+                  "variance": 0.026306,
+                  "posteriorStd": 0.162192,
+                  "uncertainty": 0.6488,
+                  "evidenceWeight": 0.855,
+                  "observations": 1,
+                  "directAssessments": 0,
+                  "assistedAssessments": 1,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 1,
+                  "assistanceEpisodes": 1,
+                  "lastEvidenceId": "assistments:35305403",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35305403"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "diagnose",
+              "hintLevel": 1,
+              "policyReason": "high-knowledge-uncertainty",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Circle Graph",
+              "currentSkillKey": "circle_graph",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "circle_graph": {
+                  "skillId": "Circle Graph",
+                  "alpha": 2,
+                  "beta": 5.665,
+                  "mean": 0.2609,
+                  "variance": 0.022255,
+                  "posteriorStd": 0.149183,
+                  "uncertainty": 0.5967,
+                  "evidenceWeight": 1.665,
+                  "observations": 2,
+                  "directAssessments": 0,
+                  "assistedAssessments": 2,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 2,
+                  "assistanceEpisodes": 2,
+                  "lastEvidenceId": "assistments:35305686",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35305403",
+                "assistments:35305686"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.circle_graph",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "Circle Graph",
+                "alpha": 2,
+                "beta": 4.855,
+                "mean": 0.2918,
+                "variance": 0.026306,
+                "posteriorStd": 0.162192,
+                "uncertainty": 0.6488,
+                "evidenceWeight": 0.855,
+                "observations": 1,
+                "directAssessments": 0,
+                "assistedAssessments": 1,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 1,
+                "assistanceEpisodes": 1,
+                "lastEvidenceId": "assistments:35305403",
+                "lastScore": 0
+              },
+              "after": {
+                "skillId": "Circle Graph",
+                "alpha": 2,
+                "beta": 5.665,
+                "mean": 0.2609,
+                "variance": 0.022255,
+                "posteriorStd": 0.149183,
+                "uncertainty": 0.5967,
+                "evidenceWeight": 1.665,
+                "observations": 2,
+                "directAssessments": 0,
+                "assistedAssessments": 2,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 2,
+                "lastEvidenceId": "assistments:35305686",
+                "lastScore": 0
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:35305403"
+              ],
+              "after": [
+                "assistments:35305403",
+                "assistments:35305686"
+              ]
+            },
+            {
+              "source": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "path": "pedagogy.recommendedMode",
+              "op": "set",
+              "before": "diagnose",
+              "after": "worked-example"
+            },
+            {
+              "source": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "path": "pedagogy.hintLevel",
+              "op": "set",
+              "before": 1,
+              "after": 2
+            },
+            {
+              "source": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "path": "pedagogy.policyReason",
+              "op": "set",
+              "before": "high-knowledge-uncertainty",
+              "after": "low-mastery"
+            }
+          ],
+          "trace": {
+            "learner.skills.circle_graph": {
+              "path": "learner.skills.circle_graph",
+              "base": {
+                "skillId": "Circle Graph",
+                "alpha": 2,
+                "beta": 4.855,
+                "mean": 0.2918,
+                "variance": 0.026306,
+                "posteriorStd": 0.162192,
+                "uncertainty": 0.6488,
+                "evidenceWeight": 0.855,
+                "observations": 1,
+                "directAssessments": 0,
+                "assistedAssessments": 1,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 1,
+                "assistanceEpisodes": 1,
+                "lastEvidenceId": "assistments:35305403",
+                "lastScore": 0
+              },
+              "final": {
+                "skillId": "Circle Graph",
+                "alpha": 2,
+                "beta": 5.665,
+                "mean": 0.2609,
+                "variance": 0.022255,
+                "posteriorStd": 0.149183,
+                "uncertainty": 0.5967,
+                "evidenceWeight": 1.665,
+                "observations": 2,
+                "directAssessments": 0,
+                "assistedAssessments": 2,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 2,
+                "lastEvidenceId": "assistments:35305686",
+                "lastScore": 0
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "Circle Graph",
+                    "alpha": 2,
+                    "beta": 4.855,
+                    "mean": 0.2918,
+                    "variance": 0.026306,
+                    "posteriorStd": 0.162192,
+                    "uncertainty": 0.6488,
+                    "evidenceWeight": 0.855,
+                    "observations": 1,
+                    "directAssessments": 0,
+                    "assistedAssessments": 1,
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 1,
+                    "assistanceEpisodes": 1,
+                    "lastEvidenceId": "assistments:35305403",
+                    "lastScore": 0
+                  },
+                  "after": {
+                    "skillId": "Circle Graph",
+                    "alpha": 2,
+                    "beta": 5.665,
+                    "mean": 0.2609,
+                    "variance": 0.022255,
+                    "posteriorStd": 0.149183,
+                    "uncertainty": 0.5967,
+                    "evidenceWeight": 1.665,
+                    "observations": 2,
+                    "directAssessments": 0,
+                    "assistedAssessments": 2,
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 2,
+                    "assistanceEpisodes": 2,
+                    "lastEvidenceId": "assistments:35305686",
+                    "lastScore": 0
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:35305403"
+              ],
+              "final": [
+                "assistments:35305403",
+                "assistments:35305686"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:35305403"
+                  ],
+                  "after": [
+                    "assistments:35305403",
+                    "assistments:35305686"
+                  ]
+                }
+              ]
+            },
+            "pedagogy.recommendedMode": {
+              "path": "pedagogy.recommendedMode",
+              "base": "diagnose",
+              "final": "worked-example",
+              "steps": [
+                {
+                  "rule": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+                  "priority": 900,
+                  "op": "set",
+                  "before": "diagnose",
+                  "after": "worked-example"
+                }
+              ]
+            },
+            "pedagogy.hintLevel": {
+              "path": "pedagogy.hintLevel",
+              "base": 1,
+              "final": 2,
+              "steps": [
+                {
+                  "rule": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+                  "priority": 900,
+                  "op": "set",
+                  "before": 1,
+                  "after": 2
+                }
+              ]
+            },
+            "pedagogy.policyReason": {
+              "path": "pedagogy.policyReason",
+              "base": "high-knowledge-uncertainty",
+              "final": "low-mastery",
+              "steps": [
+                {
+                  "rule": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+                  "priority": 900,
+                  "op": "set",
+                  "before": "high-knowledge-uncertainty",
+                  "after": "low-mastery"
+                }
+              ]
+            }
+          },
+          "diagnostics": [
+            {
+              "severity": "info",
+              "code": "TUTOR_ASSISTED_FAILURE_PRESERVED",
+              "message": "首答错误/需要帮助被保留为尚未独立掌握的负证据；assistance 不会像成功证据那样对称削弱。"
+            }
+          ],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:35305686",
+              "accepted": true,
+              "skillId": "Circle Graph",
+              "score": 0,
+              "reliability": 0.9,
+              "validity": 0.9,
+              "weight": 0.81,
+              "assisted": true,
+              "assistanceUsed": true,
+              "helpRequested": true,
+              "hints": 0,
+              "attempts": 1,
+              "answerRevealed": false,
+              "direction": "nonmastery-support",
+              "reason": "first-attempt-failure-or-assistance-needed",
+              "posterior": {
+                "alpha": 2,
+                "beta": 5.665,
+                "mean": 0.2609,
+                "variance": 0.022255,
+                "posteriorStd": 0.149183,
+                "uncertainty": 0.5967
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Circle Graph"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "worked-example"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 3,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 3,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:35306351",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:35306351",
+            "learnerId": "70363",
+            "skillId": "Circle Graph",
+            "skillKey": "circle_graph",
+            "problemId": "47044",
+            "correct": false,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": false,
+              "attemptCount": 2,
+              "hintCount": 0,
+              "hintTotal": 4,
+              "firstAction": "attempt",
+              "firstActionRaw": "0",
+              "bottomHint": null,
+              "answerRevealed": false
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "35306351",
+              "userId": "70363",
+              "problemId": "47044",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "Circle Graph",
+              "currentSkillKey": "circle_graph",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "circle_graph": {
+                  "skillId": "Circle Graph",
+                  "alpha": 2,
+                  "beta": 5.665,
+                  "mean": 0.2609,
+                  "variance": 0.022255,
+                  "posteriorStd": 0.149183,
+                  "uncertainty": 0.5967,
+                  "evidenceWeight": 1.665,
+                  "observations": 2,
+                  "directAssessments": 0,
+                  "assistedAssessments": 2,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 2,
+                  "assistanceEpisodes": 2,
+                  "lastEvidenceId": "assistments:35305686",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35305403",
+                "assistments:35305686"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Circle Graph",
+              "currentSkillKey": "circle_graph",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "circle_graph": {
+                  "skillId": "Circle Graph",
+                  "alpha": 2,
+                  "beta": 6.475,
+                  "mean": 0.236,
+                  "variance": 0.019029,
+                  "posteriorStd": 0.137945,
+                  "uncertainty": 0.5518,
+                  "evidenceWeight": 2.475,
+                  "observations": 3,
+                  "directAssessments": 0,
+                  "assistedAssessments": 3,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 3,
+                  "assistanceEpisodes": 3,
+                  "lastEvidenceId": "assistments:35306351",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.circle_graph",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "Circle Graph",
+                "alpha": 2,
+                "beta": 5.665,
+                "mean": 0.2609,
+                "variance": 0.022255,
+                "posteriorStd": 0.149183,
+                "uncertainty": 0.5967,
+                "evidenceWeight": 1.665,
+                "observations": 2,
+                "directAssessments": 0,
+                "assistedAssessments": 2,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 2,
+                "lastEvidenceId": "assistments:35305686",
+                "lastScore": 0
+              },
+              "after": {
+                "skillId": "Circle Graph",
+                "alpha": 2,
+                "beta": 6.475,
+                "mean": 0.236,
+                "variance": 0.019029,
+                "posteriorStd": 0.137945,
+                "uncertainty": 0.5518,
+                "evidenceWeight": 2.475,
+                "observations": 3,
+                "directAssessments": 0,
+                "assistedAssessments": 3,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 3,
+                "assistanceEpisodes": 3,
+                "lastEvidenceId": "assistments:35306351",
+                "lastScore": 0
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:35305403",
+                "assistments:35305686"
+              ],
+              "after": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351"
+              ]
+            }
+          ],
+          "trace": {
+            "learner.skills.circle_graph": {
+              "path": "learner.skills.circle_graph",
+              "base": {
+                "skillId": "Circle Graph",
+                "alpha": 2,
+                "beta": 5.665,
+                "mean": 0.2609,
+                "variance": 0.022255,
+                "posteriorStd": 0.149183,
+                "uncertainty": 0.5967,
+                "evidenceWeight": 1.665,
+                "observations": 2,
+                "directAssessments": 0,
+                "assistedAssessments": 2,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 2,
+                "assistanceEpisodes": 2,
+                "lastEvidenceId": "assistments:35305686",
+                "lastScore": 0
+              },
+              "final": {
+                "skillId": "Circle Graph",
+                "alpha": 2,
+                "beta": 6.475,
+                "mean": 0.236,
+                "variance": 0.019029,
+                "posteriorStd": 0.137945,
+                "uncertainty": 0.5518,
+                "evidenceWeight": 2.475,
+                "observations": 3,
+                "directAssessments": 0,
+                "assistedAssessments": 3,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 3,
+                "assistanceEpisodes": 3,
+                "lastEvidenceId": "assistments:35306351",
+                "lastScore": 0
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "Circle Graph",
+                    "alpha": 2,
+                    "beta": 5.665,
+                    "mean": 0.2609,
+                    "variance": 0.022255,
+                    "posteriorStd": 0.149183,
+                    "uncertainty": 0.5967,
+                    "evidenceWeight": 1.665,
+                    "observations": 2,
+                    "directAssessments": 0,
+                    "assistedAssessments": 2,
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 2,
+                    "assistanceEpisodes": 2,
+                    "lastEvidenceId": "assistments:35305686",
+                    "lastScore": 0
+                  },
+                  "after": {
+                    "skillId": "Circle Graph",
+                    "alpha": 2,
+                    "beta": 6.475,
+                    "mean": 0.236,
+                    "variance": 0.019029,
+                    "posteriorStd": 0.137945,
+                    "uncertainty": 0.5518,
+                    "evidenceWeight": 2.475,
+                    "observations": 3,
+                    "directAssessments": 0,
+                    "assistedAssessments": 3,
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 3,
+                    "assistanceEpisodes": 3,
+                    "lastEvidenceId": "assistments:35306351",
+                    "lastScore": 0
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:35305403",
+                "assistments:35305686"
+              ],
+              "final": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:35305403",
+                    "assistments:35305686"
+                  ],
+                  "after": [
+                    "assistments:35305403",
+                    "assistments:35305686",
+                    "assistments:35306351"
+                  ]
+                }
+              ]
+            }
+          },
+          "diagnostics": [
+            {
+              "severity": "info",
+              "code": "TUTOR_ASSISTED_FAILURE_PRESERVED",
+              "message": "首答错误/需要帮助被保留为尚未独立掌握的负证据；assistance 不会像成功证据那样对称削弱。"
+            }
+          ],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:35306351",
+              "accepted": true,
+              "skillId": "Circle Graph",
+              "score": 0,
+              "reliability": 0.9,
+              "validity": 0.9,
+              "weight": 0.81,
+              "assisted": true,
+              "assistanceUsed": true,
+              "helpRequested": false,
+              "hints": 0,
+              "attempts": 2,
+              "answerRevealed": false,
+              "direction": "nonmastery-support",
+              "reason": "first-attempt-failure-or-assistance-needed",
+              "posterior": {
+                "alpha": 2,
+                "beta": 6.475,
+                "mean": 0.236,
+                "variance": 0.019029,
+                "posteriorStd": 0.137945,
+                "uncertainty": 0.5518
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Circle Graph"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "worked-example"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 4,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 4,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:35306712",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:35306712",
+            "learnerId": "70363",
+            "skillId": "Circle Graph",
+            "skillKey": "circle_graph",
+            "problemId": "57716",
+            "correct": true,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": true,
+              "attemptCount": 1,
+              "hintCount": 0,
+              "hintTotal": 0,
+              "firstAction": "attempt",
+              "firstActionRaw": "0",
+              "bottomHint": null,
+              "answerRevealed": false
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "35306712",
+              "userId": "70363",
+              "problemId": "57716",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "Circle Graph",
+              "currentSkillKey": "circle_graph",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "circle_graph": {
+                  "skillId": "Circle Graph",
+                  "alpha": 2,
+                  "beta": 6.475,
+                  "mean": 0.236,
+                  "variance": 0.019029,
+                  "posteriorStd": 0.137945,
+                  "uncertainty": 0.5518,
+                  "evidenceWeight": 2.475,
+                  "observations": 3,
+                  "directAssessments": 0,
+                  "assistedAssessments": 3,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 3,
+                  "assistanceEpisodes": 3,
+                  "lastEvidenceId": "assistments:35306351",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Circle Graph",
+              "currentSkillKey": "circle_graph",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "circle_graph": {
+                  "skillId": "Circle Graph",
+                  "alpha": 2.9,
+                  "beta": 6.475,
+                  "mean": 0.3093,
+                  "variance": 0.020592,
+                  "posteriorStd": 0.143501,
+                  "uncertainty": 0.574,
+                  "evidenceWeight": 3.375,
+                  "observations": 4,
+                  "directAssessments": 1,
+                  "assistedAssessments": 3,
+                  "unaidedSuccesses": 1,
+                  "firstAttemptFailures": 3,
+                  "assistanceEpisodes": 3,
+                  "lastEvidenceId": "assistments:35306712",
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.circle_graph",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "Circle Graph",
+                "alpha": 2,
+                "beta": 6.475,
+                "mean": 0.236,
+                "variance": 0.019029,
+                "posteriorStd": 0.137945,
+                "uncertainty": 0.5518,
+                "evidenceWeight": 2.475,
+                "observations": 3,
+                "directAssessments": 0,
+                "assistedAssessments": 3,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 3,
+                "assistanceEpisodes": 3,
+                "lastEvidenceId": "assistments:35306351",
+                "lastScore": 0
+              },
+              "after": {
+                "skillId": "Circle Graph",
+                "alpha": 2.9,
+                "beta": 6.475,
+                "mean": 0.3093,
+                "variance": 0.020592,
+                "posteriorStd": 0.143501,
+                "uncertainty": 0.574,
+                "evidenceWeight": 3.375,
+                "observations": 4,
+                "directAssessments": 1,
+                "assistedAssessments": 3,
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 3,
+                "assistanceEpisodes": 3,
+                "lastEvidenceId": "assistments:35306712",
+                "lastScore": 1
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351"
+              ],
+              "after": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712"
+              ]
+            }
+          ],
+          "trace": {
+            "learner.skills.circle_graph": {
+              "path": "learner.skills.circle_graph",
+              "base": {
+                "skillId": "Circle Graph",
+                "alpha": 2,
+                "beta": 6.475,
+                "mean": 0.236,
+                "variance": 0.019029,
+                "posteriorStd": 0.137945,
+                "uncertainty": 0.5518,
+                "evidenceWeight": 2.475,
+                "observations": 3,
+                "directAssessments": 0,
+                "assistedAssessments": 3,
+                "unaidedSuccesses": 0,
+                "firstAttemptFailures": 3,
+                "assistanceEpisodes": 3,
+                "lastEvidenceId": "assistments:35306351",
+                "lastScore": 0
+              },
+              "final": {
+                "skillId": "Circle Graph",
+                "alpha": 2.9,
+                "beta": 6.475,
+                "mean": 0.3093,
+                "variance": 0.020592,
+                "posteriorStd": 0.143501,
+                "uncertainty": 0.574,
+                "evidenceWeight": 3.375,
+                "observations": 4,
+                "directAssessments": 1,
+                "assistedAssessments": 3,
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 3,
+                "assistanceEpisodes": 3,
+                "lastEvidenceId": "assistments:35306712",
+                "lastScore": 1
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "Circle Graph",
+                    "alpha": 2,
+                    "beta": 6.475,
+                    "mean": 0.236,
+                    "variance": 0.019029,
+                    "posteriorStd": 0.137945,
+                    "uncertainty": 0.5518,
+                    "evidenceWeight": 2.475,
+                    "observations": 3,
+                    "directAssessments": 0,
+                    "assistedAssessments": 3,
+                    "unaidedSuccesses": 0,
+                    "firstAttemptFailures": 3,
+                    "assistanceEpisodes": 3,
+                    "lastEvidenceId": "assistments:35306351",
+                    "lastScore": 0
+                  },
+                  "after": {
+                    "skillId": "Circle Graph",
+                    "alpha": 2.9,
+                    "beta": 6.475,
+                    "mean": 0.3093,
+                    "variance": 0.020592,
+                    "posteriorStd": 0.143501,
+                    "uncertainty": 0.574,
+                    "evidenceWeight": 3.375,
+                    "observations": 4,
+                    "directAssessments": 1,
+                    "assistedAssessments": 3,
+                    "unaidedSuccesses": 1,
+                    "firstAttemptFailures": 3,
+                    "assistanceEpisodes": 3,
+                    "lastEvidenceId": "assistments:35306712",
+                    "lastScore": 1
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351"
+              ],
+              "final": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:35305403",
+                    "assistments:35305686",
+                    "assistments:35306351"
+                  ],
+                  "after": [
+                    "assistments:35305403",
+                    "assistments:35305686",
+                    "assistments:35306351",
+                    "assistments:35306712"
+                  ]
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:35306712",
+              "accepted": true,
+              "skillId": "Circle Graph",
+              "score": 1,
+              "reliability": 0.9,
+              "validity": 1,
+              "weight": 0.9,
+              "assisted": false,
+              "assistanceUsed": false,
+              "helpRequested": false,
+              "hints": 0,
+              "attempts": 1,
+              "answerRevealed": false,
+              "direction": "mastery-support",
+              "reason": "unaided-first-attempt-success",
+              "posterior": {
+                "alpha": 2.9,
+                "beta": 6.475,
+                "mean": 0.3093,
+                "variance": 0.020592,
+                "posteriorStd": 0.143501,
+                "uncertainty": 0.574
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Circle Graph"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "worked-example"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 5,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 5,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:35307058",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:35307058",
+            "learnerId": "70363",
+            "skillId": "Circle Graph",
+            "skillKey": "circle_graph",
+            "problemId": "57650",
+            "correct": false,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": true,
+              "attemptCount": 1,
+              "hintCount": 0,
+              "hintTotal": 0,
+              "firstAction": "scaffolding",
+              "firstActionRaw": "2",
+              "bottomHint": null,
+              "answerRevealed": false
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "35307058",
+              "userId": "70363",
+              "problemId": "57650",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "Circle Graph",
+              "currentSkillKey": "circle_graph",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "circle_graph": {
+                  "skillId": "Circle Graph",
+                  "alpha": 2.9,
+                  "beta": 6.475,
+                  "mean": 0.3093,
+                  "variance": 0.020592,
+                  "posteriorStd": 0.143501,
+                  "uncertainty": 0.574,
+                  "evidenceWeight": 3.375,
+                  "observations": 4,
+                  "directAssessments": 1,
+                  "assistedAssessments": 3,
+                  "unaidedSuccesses": 1,
+                  "firstAttemptFailures": 3,
+                  "assistanceEpisodes": 3,
+                  "lastEvidenceId": "assistments:35306712",
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Circle Graph",
+              "currentSkillKey": "circle_graph",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "circle_graph": {
+                  "skillId": "Circle Graph",
+                  "alpha": 2.9,
+                  "beta": 7.285,
+                  "mean": 0.2847,
+                  "variance": 0.018208,
+                  "posteriorStd": 0.134938,
+                  "uncertainty": 0.5398,
+                  "evidenceWeight": 4.185,
+                  "observations": 5,
+                  "directAssessments": 1,
+                  "assistedAssessments": 4,
+                  "unaidedSuccesses": 1,
+                  "firstAttemptFailures": 4,
+                  "assistanceEpisodes": 4,
+                  "lastEvidenceId": "assistments:35307058",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.circle_graph",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "Circle Graph",
+                "alpha": 2.9,
+                "beta": 6.475,
+                "mean": 0.3093,
+                "variance": 0.020592,
+                "posteriorStd": 0.143501,
+                "uncertainty": 0.574,
+                "evidenceWeight": 3.375,
+                "observations": 4,
+                "directAssessments": 1,
+                "assistedAssessments": 3,
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 3,
+                "assistanceEpisodes": 3,
+                "lastEvidenceId": "assistments:35306712",
+                "lastScore": 1
+              },
+              "after": {
+                "skillId": "Circle Graph",
+                "alpha": 2.9,
+                "beta": 7.285,
+                "mean": 0.2847,
+                "variance": 0.018208,
+                "posteriorStd": 0.134938,
+                "uncertainty": 0.5398,
+                "evidenceWeight": 4.185,
+                "observations": 5,
+                "directAssessments": 1,
+                "assistedAssessments": 4,
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 4,
+                "assistanceEpisodes": 4,
+                "lastEvidenceId": "assistments:35307058",
+                "lastScore": 0
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712"
+              ],
+              "after": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058"
+              ]
+            }
+          ],
+          "trace": {
+            "learner.skills.circle_graph": {
+              "path": "learner.skills.circle_graph",
+              "base": {
+                "skillId": "Circle Graph",
+                "alpha": 2.9,
+                "beta": 6.475,
+                "mean": 0.3093,
+                "variance": 0.020592,
+                "posteriorStd": 0.143501,
+                "uncertainty": 0.574,
+                "evidenceWeight": 3.375,
+                "observations": 4,
+                "directAssessments": 1,
+                "assistedAssessments": 3,
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 3,
+                "assistanceEpisodes": 3,
+                "lastEvidenceId": "assistments:35306712",
+                "lastScore": 1
+              },
+              "final": {
+                "skillId": "Circle Graph",
+                "alpha": 2.9,
+                "beta": 7.285,
+                "mean": 0.2847,
+                "variance": 0.018208,
+                "posteriorStd": 0.134938,
+                "uncertainty": 0.5398,
+                "evidenceWeight": 4.185,
+                "observations": 5,
+                "directAssessments": 1,
+                "assistedAssessments": 4,
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 4,
+                "assistanceEpisodes": 4,
+                "lastEvidenceId": "assistments:35307058",
+                "lastScore": 0
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "Circle Graph",
+                    "alpha": 2.9,
+                    "beta": 6.475,
+                    "mean": 0.3093,
+                    "variance": 0.020592,
+                    "posteriorStd": 0.143501,
+                    "uncertainty": 0.574,
+                    "evidenceWeight": 3.375,
+                    "observations": 4,
+                    "directAssessments": 1,
+                    "assistedAssessments": 3,
+                    "unaidedSuccesses": 1,
+                    "firstAttemptFailures": 3,
+                    "assistanceEpisodes": 3,
+                    "lastEvidenceId": "assistments:35306712",
+                    "lastScore": 1
+                  },
+                  "after": {
+                    "skillId": "Circle Graph",
+                    "alpha": 2.9,
+                    "beta": 7.285,
+                    "mean": 0.2847,
+                    "variance": 0.018208,
+                    "posteriorStd": 0.134938,
+                    "uncertainty": 0.5398,
+                    "evidenceWeight": 4.185,
+                    "observations": 5,
+                    "directAssessments": 1,
+                    "assistedAssessments": 4,
+                    "unaidedSuccesses": 1,
+                    "firstAttemptFailures": 4,
+                    "assistanceEpisodes": 4,
+                    "lastEvidenceId": "assistments:35307058",
+                    "lastScore": 0
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712"
+              ],
+              "final": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:35305403",
+                    "assistments:35305686",
+                    "assistments:35306351",
+                    "assistments:35306712"
+                  ],
+                  "after": [
+                    "assistments:35305403",
+                    "assistments:35305686",
+                    "assistments:35306351",
+                    "assistments:35306712",
+                    "assistments:35307058"
+                  ]
+                }
+              ]
+            }
+          },
+          "diagnostics": [
+            {
+              "severity": "info",
+              "code": "TUTOR_ASSISTED_FAILURE_PRESERVED",
+              "message": "首答错误/需要帮助被保留为尚未独立掌握的负证据；assistance 不会像成功证据那样对称削弱。"
+            }
+          ],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:35307058",
+              "accepted": true,
+              "skillId": "Circle Graph",
+              "score": 0,
+              "reliability": 0.9,
+              "validity": 0.9,
+              "weight": 0.81,
+              "assisted": true,
+              "assistanceUsed": true,
+              "helpRequested": true,
+              "hints": 0,
+              "attempts": 1,
+              "answerRevealed": false,
+              "direction": "nonmastery-support",
+              "reason": "first-attempt-failure-or-assistance-needed",
+              "posterior": {
+                "alpha": 2.9,
+                "beta": 7.285,
+                "mean": 0.2847,
+                "variance": 0.018208,
+                "posteriorStd": 0.134938,
+                "uncertainty": 0.5398
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Circle Graph"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "worked-example"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 6,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 6,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:35384917",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:35384917",
+            "learnerId": "70363",
+            "skillId": "Circle Graph",
+            "skillKey": "circle_graph",
+            "problemId": "47108",
+            "correct": true,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": true,
+              "attemptCount": 1,
+              "hintCount": 0,
+              "hintTotal": 0,
+              "firstAction": "attempt",
+              "firstActionRaw": "0",
+              "bottomHint": null,
+              "answerRevealed": false
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "35384917",
+              "userId": "70363",
+              "problemId": "47108",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "Circle Graph",
+              "currentSkillKey": "circle_graph",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "circle_graph": {
+                  "skillId": "Circle Graph",
+                  "alpha": 2.9,
+                  "beta": 7.285,
+                  "mean": 0.2847,
+                  "variance": 0.018208,
+                  "posteriorStd": 0.134938,
+                  "uncertainty": 0.5398,
+                  "evidenceWeight": 4.185,
+                  "observations": 5,
+                  "directAssessments": 1,
+                  "assistedAssessments": 4,
+                  "unaidedSuccesses": 1,
+                  "firstAttemptFailures": 4,
+                  "assistanceEpisodes": 4,
+                  "lastEvidenceId": "assistments:35307058",
+                  "lastScore": 0
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Circle Graph",
+              "currentSkillKey": "circle_graph",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "circle_graph": {
+                  "skillId": "Circle Graph",
+                  "alpha": 3.8,
+                  "beta": 7.285,
+                  "mean": 0.3428,
+                  "variance": 0.018642,
+                  "posteriorStd": 0.136536,
+                  "uncertainty": 0.5461,
+                  "evidenceWeight": 5.085,
+                  "observations": 6,
+                  "directAssessments": 2,
+                  "assistedAssessments": 4,
+                  "unaidedSuccesses": 2,
+                  "firstAttemptFailures": 4,
+                  "assistanceEpisodes": 4,
+                  "lastEvidenceId": "assistments:35384917",
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058",
+                "assistments:35384917"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.circle_graph",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "Circle Graph",
+                "alpha": 2.9,
+                "beta": 7.285,
+                "mean": 0.2847,
+                "variance": 0.018208,
+                "posteriorStd": 0.134938,
+                "uncertainty": 0.5398,
+                "evidenceWeight": 4.185,
+                "observations": 5,
+                "directAssessments": 1,
+                "assistedAssessments": 4,
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 4,
+                "assistanceEpisodes": 4,
+                "lastEvidenceId": "assistments:35307058",
+                "lastScore": 0
+              },
+              "after": {
+                "skillId": "Circle Graph",
+                "alpha": 3.8,
+                "beta": 7.285,
+                "mean": 0.3428,
+                "variance": 0.018642,
+                "posteriorStd": 0.136536,
+                "uncertainty": 0.5461,
+                "evidenceWeight": 5.085,
+                "observations": 6,
+                "directAssessments": 2,
+                "assistedAssessments": 4,
+                "unaidedSuccesses": 2,
+                "firstAttemptFailures": 4,
+                "assistanceEpisodes": 4,
+                "lastEvidenceId": "assistments:35384917",
+                "lastScore": 1
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058"
+              ],
+              "after": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058",
+                "assistments:35384917"
+              ]
+            }
+          ],
+          "trace": {
+            "learner.skills.circle_graph": {
+              "path": "learner.skills.circle_graph",
+              "base": {
+                "skillId": "Circle Graph",
+                "alpha": 2.9,
+                "beta": 7.285,
+                "mean": 0.2847,
+                "variance": 0.018208,
+                "posteriorStd": 0.134938,
+                "uncertainty": 0.5398,
+                "evidenceWeight": 4.185,
+                "observations": 5,
+                "directAssessments": 1,
+                "assistedAssessments": 4,
+                "unaidedSuccesses": 1,
+                "firstAttemptFailures": 4,
+                "assistanceEpisodes": 4,
+                "lastEvidenceId": "assistments:35307058",
+                "lastScore": 0
+              },
+              "final": {
+                "skillId": "Circle Graph",
+                "alpha": 3.8,
+                "beta": 7.285,
+                "mean": 0.3428,
+                "variance": 0.018642,
+                "posteriorStd": 0.136536,
+                "uncertainty": 0.5461,
+                "evidenceWeight": 5.085,
+                "observations": 6,
+                "directAssessments": 2,
+                "assistedAssessments": 4,
+                "unaidedSuccesses": 2,
+                "firstAttemptFailures": 4,
+                "assistanceEpisodes": 4,
+                "lastEvidenceId": "assistments:35384917",
+                "lastScore": 1
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "Circle Graph",
+                    "alpha": 2.9,
+                    "beta": 7.285,
+                    "mean": 0.2847,
+                    "variance": 0.018208,
+                    "posteriorStd": 0.134938,
+                    "uncertainty": 0.5398,
+                    "evidenceWeight": 4.185,
+                    "observations": 5,
+                    "directAssessments": 1,
+                    "assistedAssessments": 4,
+                    "unaidedSuccesses": 1,
+                    "firstAttemptFailures": 4,
+                    "assistanceEpisodes": 4,
+                    "lastEvidenceId": "assistments:35307058",
+                    "lastScore": 0
+                  },
+                  "after": {
+                    "skillId": "Circle Graph",
+                    "alpha": 3.8,
+                    "beta": 7.285,
+                    "mean": 0.3428,
+                    "variance": 0.018642,
+                    "posteriorStd": 0.136536,
+                    "uncertainty": 0.5461,
+                    "evidenceWeight": 5.085,
+                    "observations": 6,
+                    "directAssessments": 2,
+                    "assistedAssessments": 4,
+                    "unaidedSuccesses": 2,
+                    "firstAttemptFailures": 4,
+                    "assistanceEpisodes": 4,
+                    "lastEvidenceId": "assistments:35384917",
+                    "lastScore": 1
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058"
+              ],
+              "final": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058",
+                "assistments:35384917"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:35305403",
+                    "assistments:35305686",
+                    "assistments:35306351",
+                    "assistments:35306712",
+                    "assistments:35307058"
+                  ],
+                  "after": [
+                    "assistments:35305403",
+                    "assistments:35305686",
+                    "assistments:35306351",
+                    "assistments:35306712",
+                    "assistments:35307058",
+                    "assistments:35384917"
+                  ]
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:35384917",
+              "accepted": true,
+              "skillId": "Circle Graph",
+              "score": 1,
+              "reliability": 0.9,
+              "validity": 1,
+              "weight": 0.9,
+              "assisted": false,
+              "assistanceUsed": false,
+              "helpRequested": false,
+              "hints": 0,
+              "attempts": 1,
+              "answerRevealed": false,
+              "direction": "mastery-support",
+              "reason": "unaided-first-attempt-success",
+              "posterior": {
+                "alpha": 3.8,
+                "beta": 7.285,
+                "mean": 0.3428,
+                "variance": 0.018642,
+                "posteriorStd": 0.136536,
+                "uncertainty": 0.5461
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Circle Graph"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "worked-example"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 7,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 7,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:35385665",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:35385665",
+            "learnerId": "70363",
+            "skillId": "Circle Graph",
+            "skillKey": "circle_graph",
+            "problemId": "57704",
+            "correct": true,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": true,
+              "attemptCount": 1,
+              "hintCount": 0,
+              "hintTotal": 0,
+              "firstAction": "attempt",
+              "firstActionRaw": "0",
+              "bottomHint": null,
+              "answerRevealed": false
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "35385665",
+              "userId": "70363",
+              "problemId": "57704",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "Circle Graph",
+              "currentSkillKey": "circle_graph",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "circle_graph": {
+                  "skillId": "Circle Graph",
+                  "alpha": 3.8,
+                  "beta": 7.285,
+                  "mean": 0.3428,
+                  "variance": 0.018642,
+                  "posteriorStd": 0.136536,
+                  "uncertainty": 0.5461,
+                  "evidenceWeight": 5.085,
+                  "observations": 6,
+                  "directAssessments": 2,
+                  "assistedAssessments": 4,
+                  "unaidedSuccesses": 2,
+                  "firstAttemptFailures": 4,
+                  "assistanceEpisodes": 4,
+                  "lastEvidenceId": "assistments:35384917",
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058",
+                "assistments:35384917"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 1
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Circle Graph",
+              "currentSkillKey": "circle_graph",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "circle_graph": {
+                  "skillId": "Circle Graph",
+                  "alpha": 4.7,
+                  "beta": 7.285,
+                  "mean": 0.3922,
+                  "variance": 0.018357,
+                  "posteriorStd": 0.135489,
+                  "uncertainty": 0.542,
+                  "evidenceWeight": 5.985,
+                  "observations": 7,
+                  "directAssessments": 3,
+                  "assistedAssessments": 4,
+                  "unaidedSuccesses": 3,
+                  "firstAttemptFailures": 4,
+                  "assistanceEpisodes": 4,
+                  "lastEvidenceId": "assistments:35385665",
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058",
+                "assistments:35384917",
+                "assistments:35385665"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 2
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.circle_graph",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "Circle Graph",
+                "alpha": 3.8,
+                "beta": 7.285,
+                "mean": 0.3428,
+                "variance": 0.018642,
+                "posteriorStd": 0.136536,
+                "uncertainty": 0.5461,
+                "evidenceWeight": 5.085,
+                "observations": 6,
+                "directAssessments": 2,
+                "assistedAssessments": 4,
+                "unaidedSuccesses": 2,
+                "firstAttemptFailures": 4,
+                "assistanceEpisodes": 4,
+                "lastEvidenceId": "assistments:35384917",
+                "lastScore": 1
+              },
+              "after": {
+                "skillId": "Circle Graph",
+                "alpha": 4.7,
+                "beta": 7.285,
+                "mean": 0.3922,
+                "variance": 0.018357,
+                "posteriorStd": 0.135489,
+                "uncertainty": 0.542,
+                "evidenceWeight": 5.985,
+                "observations": 7,
+                "directAssessments": 3,
+                "assistedAssessments": 4,
+                "unaidedSuccesses": 3,
+                "firstAttemptFailures": 4,
+                "assistanceEpisodes": 4,
+                "lastEvidenceId": "assistments:35385665",
+                "lastScore": 1
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058",
+                "assistments:35384917"
+              ],
+              "after": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058",
+                "assistments:35384917",
+                "assistments:35385665"
+              ]
+            },
+            {
+              "source": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "path": "task.recommendedDifficulty",
+              "op": "set",
+              "before": 1,
+              "after": 2
+            }
+          ],
+          "trace": {
+            "learner.skills.circle_graph": {
+              "path": "learner.skills.circle_graph",
+              "base": {
+                "skillId": "Circle Graph",
+                "alpha": 3.8,
+                "beta": 7.285,
+                "mean": 0.3428,
+                "variance": 0.018642,
+                "posteriorStd": 0.136536,
+                "uncertainty": 0.5461,
+                "evidenceWeight": 5.085,
+                "observations": 6,
+                "directAssessments": 2,
+                "assistedAssessments": 4,
+                "unaidedSuccesses": 2,
+                "firstAttemptFailures": 4,
+                "assistanceEpisodes": 4,
+                "lastEvidenceId": "assistments:35384917",
+                "lastScore": 1
+              },
+              "final": {
+                "skillId": "Circle Graph",
+                "alpha": 4.7,
+                "beta": 7.285,
+                "mean": 0.3922,
+                "variance": 0.018357,
+                "posteriorStd": 0.135489,
+                "uncertainty": 0.542,
+                "evidenceWeight": 5.985,
+                "observations": 7,
+                "directAssessments": 3,
+                "assistedAssessments": 4,
+                "unaidedSuccesses": 3,
+                "firstAttemptFailures": 4,
+                "assistanceEpisodes": 4,
+                "lastEvidenceId": "assistments:35385665",
+                "lastScore": 1
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "Circle Graph",
+                    "alpha": 3.8,
+                    "beta": 7.285,
+                    "mean": 0.3428,
+                    "variance": 0.018642,
+                    "posteriorStd": 0.136536,
+                    "uncertainty": 0.5461,
+                    "evidenceWeight": 5.085,
+                    "observations": 6,
+                    "directAssessments": 2,
+                    "assistedAssessments": 4,
+                    "unaidedSuccesses": 2,
+                    "firstAttemptFailures": 4,
+                    "assistanceEpisodes": 4,
+                    "lastEvidenceId": "assistments:35384917",
+                    "lastScore": 1
+                  },
+                  "after": {
+                    "skillId": "Circle Graph",
+                    "alpha": 4.7,
+                    "beta": 7.285,
+                    "mean": 0.3922,
+                    "variance": 0.018357,
+                    "posteriorStd": 0.135489,
+                    "uncertainty": 0.542,
+                    "evidenceWeight": 5.985,
+                    "observations": 7,
+                    "directAssessments": 3,
+                    "assistedAssessments": 4,
+                    "unaidedSuccesses": 3,
+                    "firstAttemptFailures": 4,
+                    "assistanceEpisodes": 4,
+                    "lastEvidenceId": "assistments:35385665",
+                    "lastScore": 1
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058",
+                "assistments:35384917"
+              ],
+              "final": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058",
+                "assistments:35384917",
+                "assistments:35385665"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:35305403",
+                    "assistments:35305686",
+                    "assistments:35306351",
+                    "assistments:35306712",
+                    "assistments:35307058",
+                    "assistments:35384917"
+                  ],
+                  "after": [
+                    "assistments:35305403",
+                    "assistments:35305686",
+                    "assistments:35306351",
+                    "assistments:35306712",
+                    "assistments:35307058",
+                    "assistments:35384917",
+                    "assistments:35385665"
+                  ]
+                }
+              ]
+            },
+            "task.recommendedDifficulty": {
+              "path": "task.recommendedDifficulty",
+              "base": 1,
+              "final": 2,
+              "steps": [
+                {
+                  "rule": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+                  "priority": 900,
+                  "op": "set",
+                  "before": 1,
+                  "after": 2
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:35385665",
+              "accepted": true,
+              "skillId": "Circle Graph",
+              "score": 1,
+              "reliability": 0.9,
+              "validity": 1,
+              "weight": 0.9,
+              "assisted": false,
+              "assistanceUsed": false,
+              "helpRequested": false,
+              "hints": 0,
+              "attempts": 1,
+              "answerRevealed": false,
+              "direction": "mastery-support",
+              "reason": "unaided-first-attempt-success",
+              "posterior": {
+                "alpha": 4.7,
+                "beta": 7.285,
+                "mean": 0.3922,
+                "variance": 0.018357,
+                "posteriorStd": 0.135489,
+                "uncertainty": 0.542
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Circle Graph"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "worked-example"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 8,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 8,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:35397317",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:35397317",
+            "learnerId": "70363",
+            "skillId": "Circle Graph",
+            "skillKey": "circle_graph",
+            "problemId": "57644",
+            "correct": true,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": true,
+              "attemptCount": 1,
+              "hintCount": 0,
+              "hintTotal": 0,
+              "firstAction": "attempt",
+              "firstActionRaw": "0",
+              "bottomHint": null,
+              "answerRevealed": false
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "35397317",
+              "userId": "70363",
+              "problemId": "57644",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "Circle Graph",
+              "currentSkillKey": "circle_graph",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "circle_graph": {
+                  "skillId": "Circle Graph",
+                  "alpha": 4.7,
+                  "beta": 7.285,
+                  "mean": 0.3922,
+                  "variance": 0.018357,
+                  "posteriorStd": 0.135489,
+                  "uncertainty": 0.542,
+                  "evidenceWeight": 5.985,
+                  "observations": 7,
+                  "directAssessments": 3,
+                  "assistedAssessments": 4,
+                  "unaidedSuccesses": 3,
+                  "firstAttemptFailures": 4,
+                  "assistanceEpisodes": 4,
+                  "lastEvidenceId": "assistments:35385665",
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058",
+                "assistments:35384917",
+                "assistments:35385665"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 2
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Circle Graph",
+              "currentSkillKey": "circle_graph",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "circle_graph": {
+                  "skillId": "Circle Graph",
+                  "alpha": 5.6,
+                  "beta": 7.285,
+                  "mean": 0.4346,
+                  "variance": 0.017697,
+                  "posteriorStd": 0.133031,
+                  "uncertainty": 0.5321,
+                  "evidenceWeight": 6.885,
+                  "observations": 8,
+                  "directAssessments": 4,
+                  "assistedAssessments": 4,
+                  "unaidedSuccesses": 4,
+                  "firstAttemptFailures": 4,
+                  "assistanceEpisodes": 4,
+                  "lastEvidenceId": "assistments:35397317",
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058",
+                "assistments:35384917",
+                "assistments:35385665",
+                "assistments:35397317"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 2
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.circle_graph",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "Circle Graph",
+                "alpha": 4.7,
+                "beta": 7.285,
+                "mean": 0.3922,
+                "variance": 0.018357,
+                "posteriorStd": 0.135489,
+                "uncertainty": 0.542,
+                "evidenceWeight": 5.985,
+                "observations": 7,
+                "directAssessments": 3,
+                "assistedAssessments": 4,
+                "unaidedSuccesses": 3,
+                "firstAttemptFailures": 4,
+                "assistanceEpisodes": 4,
+                "lastEvidenceId": "assistments:35385665",
+                "lastScore": 1
+              },
+              "after": {
+                "skillId": "Circle Graph",
+                "alpha": 5.6,
+                "beta": 7.285,
+                "mean": 0.4346,
+                "variance": 0.017697,
+                "posteriorStd": 0.133031,
+                "uncertainty": 0.5321,
+                "evidenceWeight": 6.885,
+                "observations": 8,
+                "directAssessments": 4,
+                "assistedAssessments": 4,
+                "unaidedSuccesses": 4,
+                "firstAttemptFailures": 4,
+                "assistanceEpisodes": 4,
+                "lastEvidenceId": "assistments:35397317",
+                "lastScore": 1
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058",
+                "assistments:35384917",
+                "assistments:35385665"
+              ],
+              "after": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058",
+                "assistments:35384917",
+                "assistments:35385665",
+                "assistments:35397317"
+              ]
+            }
+          ],
+          "trace": {
+            "learner.skills.circle_graph": {
+              "path": "learner.skills.circle_graph",
+              "base": {
+                "skillId": "Circle Graph",
+                "alpha": 4.7,
+                "beta": 7.285,
+                "mean": 0.3922,
+                "variance": 0.018357,
+                "posteriorStd": 0.135489,
+                "uncertainty": 0.542,
+                "evidenceWeight": 5.985,
+                "observations": 7,
+                "directAssessments": 3,
+                "assistedAssessments": 4,
+                "unaidedSuccesses": 3,
+                "firstAttemptFailures": 4,
+                "assistanceEpisodes": 4,
+                "lastEvidenceId": "assistments:35385665",
+                "lastScore": 1
+              },
+              "final": {
+                "skillId": "Circle Graph",
+                "alpha": 5.6,
+                "beta": 7.285,
+                "mean": 0.4346,
+                "variance": 0.017697,
+                "posteriorStd": 0.133031,
+                "uncertainty": 0.5321,
+                "evidenceWeight": 6.885,
+                "observations": 8,
+                "directAssessments": 4,
+                "assistedAssessments": 4,
+                "unaidedSuccesses": 4,
+                "firstAttemptFailures": 4,
+                "assistanceEpisodes": 4,
+                "lastEvidenceId": "assistments:35397317",
+                "lastScore": 1
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "Circle Graph",
+                    "alpha": 4.7,
+                    "beta": 7.285,
+                    "mean": 0.3922,
+                    "variance": 0.018357,
+                    "posteriorStd": 0.135489,
+                    "uncertainty": 0.542,
+                    "evidenceWeight": 5.985,
+                    "observations": 7,
+                    "directAssessments": 3,
+                    "assistedAssessments": 4,
+                    "unaidedSuccesses": 3,
+                    "firstAttemptFailures": 4,
+                    "assistanceEpisodes": 4,
+                    "lastEvidenceId": "assistments:35385665",
+                    "lastScore": 1
+                  },
+                  "after": {
+                    "skillId": "Circle Graph",
+                    "alpha": 5.6,
+                    "beta": 7.285,
+                    "mean": 0.4346,
+                    "variance": 0.017697,
+                    "posteriorStd": 0.133031,
+                    "uncertainty": 0.5321,
+                    "evidenceWeight": 6.885,
+                    "observations": 8,
+                    "directAssessments": 4,
+                    "assistedAssessments": 4,
+                    "unaidedSuccesses": 4,
+                    "firstAttemptFailures": 4,
+                    "assistanceEpisodes": 4,
+                    "lastEvidenceId": "assistments:35397317",
+                    "lastScore": 1
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058",
+                "assistments:35384917",
+                "assistments:35385665"
+              ],
+              "final": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058",
+                "assistments:35384917",
+                "assistments:35385665",
+                "assistments:35397317"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:35305403",
+                    "assistments:35305686",
+                    "assistments:35306351",
+                    "assistments:35306712",
+                    "assistments:35307058",
+                    "assistments:35384917",
+                    "assistments:35385665"
+                  ],
+                  "after": [
+                    "assistments:35305403",
+                    "assistments:35305686",
+                    "assistments:35306351",
+                    "assistments:35306712",
+                    "assistments:35307058",
+                    "assistments:35384917",
+                    "assistments:35385665",
+                    "assistments:35397317"
+                  ]
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:35397317",
+              "accepted": true,
+              "skillId": "Circle Graph",
+              "score": 1,
+              "reliability": 0.9,
+              "validity": 1,
+              "weight": 0.9,
+              "assisted": false,
+              "assistanceUsed": false,
+              "helpRequested": false,
+              "hints": 0,
+              "attempts": 1,
+              "answerRevealed": false,
+              "direction": "mastery-support",
+              "reason": "unaided-first-attempt-success",
+              "posterior": {
+                "alpha": 5.6,
+                "beta": 7.285,
+                "mean": 0.4346,
+                "variance": 0.017697,
+                "posteriorStd": 0.133031,
+                "uncertainty": 0.5321
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Circle Graph"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "worked-example"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 9,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "tutor.uncertainty-verifier.default",
+          "title": "不确定性感知学习导师",
+          "kind": "tutor",
+          "version": "0.2.0",
+          "fingerprint": "1c2f1b23286876c531f6d7c9d5ba8d4b6dc3be154191ff921374db6e18420b1e",
+          "engine": {
+            "id": "tutor/uncertainty-verifier",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 9,
+          "step": 1
+        },
+        "event": {
+          "id": "assistments:35397465",
+          "type": "LEARNER_OBSERVATION",
+          "category": "knowledge-tracing",
+          "payload": {
+            "evidenceId": "assistments:35397465",
+            "learnerId": "70363",
+            "skillId": "Circle Graph",
+            "skillKey": "circle_graph",
+            "problemId": "57716",
+            "correct": true,
+            "sourceReliability": 0.9,
+            "assessment": {
+              "source": "ASSISTments-2009-2010-skill-builder",
+              "original": true,
+              "firstAttempt": true,
+              "attemptCount": 1,
+              "hintCount": 0,
+              "hintTotal": 0,
+              "firstAction": "attempt",
+              "firstActionRaw": "0",
+              "bottomHint": null,
+              "answerRevealed": false
+            },
+            "provenance": {
+              "dataset": "ASSISTments 2009-2010 Skill Builder",
+              "datasetVariant": "corrected-collapsed-compatible",
+              "rowId": "35397465",
+              "userId": "70363",
+              "problemId": "57716",
+              "documentedColumns": true
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "learner": {
+              "currentSkillId": "Circle Graph",
+              "currentSkillKey": "circle_graph",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "circle_graph": {
+                  "skillId": "Circle Graph",
+                  "alpha": 5.6,
+                  "beta": 7.285,
+                  "mean": 0.4346,
+                  "variance": 0.017697,
+                  "posteriorStd": 0.133031,
+                  "uncertainty": 0.5321,
+                  "evidenceWeight": 6.885,
+                  "observations": 8,
+                  "directAssessments": 4,
+                  "assistedAssessments": 4,
+                  "unaidedSuccesses": 4,
+                  "firstAttemptFailures": 4,
+                  "assistanceEpisodes": 4,
+                  "lastEvidenceId": "assistments:35397317",
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058",
+                "assistments:35384917",
+                "assistments:35385665",
+                "assistments:35397317"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "worked-example",
+              "hintLevel": 2,
+              "policyReason": "low-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 2
+            }
+          },
+          "resolvedState": {
+            "learner": {
+              "currentSkillId": "Circle Graph",
+              "currentSkillKey": "circle_graph",
+              "skills": {
+                "fractions_addition": {
+                  "skillId": "fractions.addition",
+                  "alpha": 2,
+                  "beta": 4,
+                  "mean": 0.3333,
+                  "variance": 0.031746,
+                  "posteriorStd": 0.178174,
+                  "uncertainty": 0.7127,
+                  "evidenceWeight": 0,
+                  "observations": 0,
+                  "directAssessments": 0,
+                  "assistedAssessments": 0,
+                  "lastEvidenceId": null,
+                  "unaidedSuccesses": 0,
+                  "firstAttemptFailures": 0,
+                  "assistanceEpisodes": 0
+                },
+                "circle_graph": {
+                  "skillId": "Circle Graph",
+                  "alpha": 6.5,
+                  "beta": 7.285,
+                  "mean": 0.4715,
+                  "variance": 0.016854,
+                  "posteriorStd": 0.129824,
+                  "uncertainty": 0.5193,
+                  "evidenceWeight": 7.785,
+                  "observations": 9,
+                  "directAssessments": 5,
+                  "assistedAssessments": 4,
+                  "unaidedSuccesses": 5,
+                  "firstAttemptFailures": 4,
+                  "assistanceEpisodes": 4,
+                  "lastEvidenceId": "assistments:35397465",
+                  "lastScore": 1
+                }
+              },
+              "misconceptions": {},
+              "evidenceIds": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058",
+                "assistments:35384917",
+                "assistments:35385665",
+                "assistments:35397317",
+                "assistments:35397465"
+              ],
+              "affect": {
+                "confidence": 0.5,
+                "frustration": 0.3,
+                "observerConfidence": 0,
+                "source": "unknown"
+              }
+            },
+            "pedagogy": {
+              "recommendedMode": "socratic",
+              "hintLevel": 1,
+              "policyReason": "developing-mastery",
+              "interventions": [],
+              "lastIntervention": null,
+              "verifier": {
+                "verified": 0,
+                "progress": 0,
+                "neutral": 0,
+                "regress": 0,
+                "effectiveness": 0.5,
+                "last": null
+              }
+            },
+            "task": {
+              "objective": "fractions.addition",
+              "recommendedDifficulty": 2
+            }
+          },
+          "activeRules": [
+            {
+              "id": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "priority": 1100,
+              "rationale": "用可解释 Beta posterior 表示掌握度与证据不足带来的不确定性。"
+            },
+            {
+              "id": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "priority": 900,
+              "rationale": "教学策略由掌握度、不确定性和错误概念证据共同决定。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.skills.circle_graph",
+              "op": "bayes-beta-update",
+              "before": {
+                "skillId": "Circle Graph",
+                "alpha": 5.6,
+                "beta": 7.285,
+                "mean": 0.4346,
+                "variance": 0.017697,
+                "posteriorStd": 0.133031,
+                "uncertainty": 0.5321,
+                "evidenceWeight": 6.885,
+                "observations": 8,
+                "directAssessments": 4,
+                "assistedAssessments": 4,
+                "unaidedSuccesses": 4,
+                "firstAttemptFailures": 4,
+                "assistanceEpisodes": 4,
+                "lastEvidenceId": "assistments:35397317",
+                "lastScore": 1
+              },
+              "after": {
+                "skillId": "Circle Graph",
+                "alpha": 6.5,
+                "beta": 7.285,
+                "mean": 0.4715,
+                "variance": 0.016854,
+                "posteriorStd": 0.129824,
+                "uncertainty": 0.5193,
+                "evidenceWeight": 7.785,
+                "observations": 9,
+                "directAssessments": 5,
+                "assistedAssessments": 4,
+                "unaidedSuccesses": 5,
+                "firstAttemptFailures": 4,
+                "assistanceEpisodes": 4,
+                "lastEvidenceId": "assistments:35397465",
+                "lastScore": 1
+              }
+            },
+            {
+              "source": "TUTOR_UNCERTAINTY_AWARE_KT",
+              "path": "learner.evidenceIds",
+              "op": "appendUnique",
+              "before": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058",
+                "assistments:35384917",
+                "assistments:35385665",
+                "assistments:35397317"
+              ],
+              "after": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058",
+                "assistments:35384917",
+                "assistments:35385665",
+                "assistments:35397317",
+                "assistments:35397465"
+              ]
+            },
+            {
+              "source": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "path": "pedagogy.recommendedMode",
+              "op": "set",
+              "before": "worked-example",
+              "after": "socratic"
+            },
+            {
+              "source": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "path": "pedagogy.hintLevel",
+              "op": "set",
+              "before": 2,
+              "after": 1
+            },
+            {
+              "source": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+              "path": "pedagogy.policyReason",
+              "op": "set",
+              "before": "low-mastery",
+              "after": "developing-mastery"
+            }
+          ],
+          "trace": {
+            "learner.skills.circle_graph": {
+              "path": "learner.skills.circle_graph",
+              "base": {
+                "skillId": "Circle Graph",
+                "alpha": 5.6,
+                "beta": 7.285,
+                "mean": 0.4346,
+                "variance": 0.017697,
+                "posteriorStd": 0.133031,
+                "uncertainty": 0.5321,
+                "evidenceWeight": 6.885,
+                "observations": 8,
+                "directAssessments": 4,
+                "assistedAssessments": 4,
+                "unaidedSuccesses": 4,
+                "firstAttemptFailures": 4,
+                "assistanceEpisodes": 4,
+                "lastEvidenceId": "assistments:35397317",
+                "lastScore": 1
+              },
+              "final": {
+                "skillId": "Circle Graph",
+                "alpha": 6.5,
+                "beta": 7.285,
+                "mean": 0.4715,
+                "variance": 0.016854,
+                "posteriorStd": 0.129824,
+                "uncertainty": 0.5193,
+                "evidenceWeight": 7.785,
+                "observations": 9,
+                "directAssessments": 5,
+                "assistedAssessments": 4,
+                "unaidedSuccesses": 5,
+                "firstAttemptFailures": 4,
+                "assistanceEpisodes": 4,
+                "lastEvidenceId": "assistments:35397465",
+                "lastScore": 1
+              },
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "bayes-beta-update",
+                  "before": {
+                    "skillId": "Circle Graph",
+                    "alpha": 5.6,
+                    "beta": 7.285,
+                    "mean": 0.4346,
+                    "variance": 0.017697,
+                    "posteriorStd": 0.133031,
+                    "uncertainty": 0.5321,
+                    "evidenceWeight": 6.885,
+                    "observations": 8,
+                    "directAssessments": 4,
+                    "assistedAssessments": 4,
+                    "unaidedSuccesses": 4,
+                    "firstAttemptFailures": 4,
+                    "assistanceEpisodes": 4,
+                    "lastEvidenceId": "assistments:35397317",
+                    "lastScore": 1
+                  },
+                  "after": {
+                    "skillId": "Circle Graph",
+                    "alpha": 6.5,
+                    "beta": 7.285,
+                    "mean": 0.4715,
+                    "variance": 0.016854,
+                    "posteriorStd": 0.129824,
+                    "uncertainty": 0.5193,
+                    "evidenceWeight": 7.785,
+                    "observations": 9,
+                    "directAssessments": 5,
+                    "assistedAssessments": 4,
+                    "unaidedSuccesses": 5,
+                    "firstAttemptFailures": 4,
+                    "assistanceEpisodes": 4,
+                    "lastEvidenceId": "assistments:35397465",
+                    "lastScore": 1
+                  }
+                }
+              ]
+            },
+            "learner.evidenceIds": {
+              "path": "learner.evidenceIds",
+              "base": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058",
+                "assistments:35384917",
+                "assistments:35385665",
+                "assistments:35397317"
+              ],
+              "final": [
+                "assistments:35305403",
+                "assistments:35305686",
+                "assistments:35306351",
+                "assistments:35306712",
+                "assistments:35307058",
+                "assistments:35384917",
+                "assistments:35385665",
+                "assistments:35397317",
+                "assistments:35397465"
+              ],
+              "steps": [
+                {
+                  "rule": "TUTOR_UNCERTAINTY_AWARE_KT",
+                  "priority": 1100,
+                  "op": "appendUnique",
+                  "before": [
+                    "assistments:35305403",
+                    "assistments:35305686",
+                    "assistments:35306351",
+                    "assistments:35306712",
+                    "assistments:35307058",
+                    "assistments:35384917",
+                    "assistments:35385665",
+                    "assistments:35397317"
+                  ],
+                  "after": [
+                    "assistments:35305403",
+                    "assistments:35305686",
+                    "assistments:35306351",
+                    "assistments:35306712",
+                    "assistments:35307058",
+                    "assistments:35384917",
+                    "assistments:35385665",
+                    "assistments:35397317",
+                    "assistments:35397465"
+                  ]
+                }
+              ]
+            },
+            "pedagogy.recommendedMode": {
+              "path": "pedagogy.recommendedMode",
+              "base": "worked-example",
+              "final": "socratic",
+              "steps": [
+                {
+                  "rule": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+                  "priority": 900,
+                  "op": "set",
+                  "before": "worked-example",
+                  "after": "socratic"
+                }
+              ]
+            },
+            "pedagogy.hintLevel": {
+              "path": "pedagogy.hintLevel",
+              "base": 2,
+              "final": 1,
+              "steps": [
+                {
+                  "rule": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+                  "priority": 900,
+                  "op": "set",
+                  "before": 2,
+                  "after": 1
+                }
+              ]
+            },
+            "pedagogy.policyReason": {
+              "path": "pedagogy.policyReason",
+              "base": "low-mastery",
+              "final": "developing-mastery",
+              "steps": [
+                {
+                  "rule": "TUTOR_POLICY_FROM_KNOWLEDGE_STATE",
+                  "priority": 900,
+                  "op": "set",
+                  "before": "low-mastery",
+                  "after": "developing-mastery"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "tutor-evidence",
+              "evidenceId": "assistments:35397465",
+              "accepted": true,
+              "skillId": "Circle Graph",
+              "score": 1,
+              "reliability": 0.9,
+              "validity": 1,
+              "weight": 0.9,
+              "assisted": false,
+              "assistanceUsed": false,
+              "helpRequested": false,
+              "hints": 0,
+              "attempts": 1,
+              "answerRevealed": false,
+              "direction": "mastery-support",
+              "reason": "unaided-first-attempt-success",
+              "posterior": {
+                "alpha": 6.5,
+                "beta": 7.285,
+                "mean": 0.4715,
+                "variance": 0.016854,
+                "posteriorStd": 0.129824,
+                "uncertainty": 0.5193
+              },
+              "source": "ASSISTments-2009-2010-skill-builder"
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "current_skill",
+                "label": "当前技能",
+                "type": "path",
+                "path": "learner.currentSkillId",
+                "value": "Circle Graph"
+              },
+              {
+                "id": "policy",
+                "label": "教学策略",
+                "type": "path",
+                "path": "pedagogy.recommendedMode",
+                "value": "socratic"
+              },
+              {
+                "id": "verifier_effectiveness",
+                "label": "干预有效性",
+                "type": "path",
+                "path": "pedagogy.verifier.effectiveness",
+                "value": 0.5,
+                "target": 0.7
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ppl.profile-resolution/0.2",
+  "title": "PPL Profile Resolution 0.2",
+  "type": "object",
+  "required": ["schema", "valid", "baseState", "resolvedState", "activeRules", "mutations", "trace", "diagnostics", "artifacts", "evaluation"],
+  "properties": {
+    "schema": { "const": "ppl.profile-resolution/0.2" },
+    "valid": { "type": "boolean" },
+    "baseState": { "type": "object" },
+    "resolvedState": { "type": "object" },
+    "activeRules": { "type": "array" },
+    "mutations": { "type": "array" },
+    "trace": { "type": "object" },
+    "diagnostics": { "type": "array" },
+    "artifacts": { "type": "array" },
+    "evaluation": { "type": "object" }
+  },
+  "additionalProperties": true
+}

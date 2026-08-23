@@ -1,0 +1,7 @@
+order_id,user_id,problem_id,skill_name,original,correct,attempt_count,hint_count,answer_revealed
+1001,student_demo,501,fractions.addition,1,0,1,0,0
+1002,student_demo,502,fractions.addition,1,1,2,2,0
+1003,student_demo,503,fractions.addition,1,0,1,0,0
+1004,student_demo,504,fractions.addition,1,1,1,0,0
+1005,student_demo,505,fractions.addition,1,1,1,0,0
+1006,student_demo,506,fractions.addition,1,1,1,0,0

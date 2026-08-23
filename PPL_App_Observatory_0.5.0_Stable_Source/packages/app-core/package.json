@@ -1,0 +1,10 @@
+{
+  "name": "@ppl/app-core",
+  "version": "0.5.0",
+  "type": "module",
+  "description": "Host-neutral PPL Observatory data model and analytics.",
+  "exports": "./src/index.mjs",
+  "files": [
+    "src"
+  ]
+}

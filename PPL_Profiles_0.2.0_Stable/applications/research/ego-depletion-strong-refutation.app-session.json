@@ -1,0 +1,4375 @@
+{
+  "schema": "ppl.app-session/0.3",
+  "title": "证据账本科研助手 · research-ego-depletion-strong-refutation",
+  "profile": {
+    "id": "research.evidence-ledger.default",
+    "title": "证据账本科研助手",
+    "kind": "research",
+    "version": "0.2.0",
+    "engine": {
+      "id": "research/evidence-ledger",
+      "version": "0.2"
+    }
+  },
+  "domain": {
+    "profileKind": "research",
+    "engine": {
+      "id": "research/evidence-ledger",
+      "version": "0.2"
+    },
+    "application": {
+      "domain": "research",
+      "maturity": "application-evolution",
+      "hostOwnsRetrieval": true
+    }
+  },
+  "observability": {
+    "metrics": [],
+    "groups": [
+      {
+        "id": "claims",
+        "label": "Claim Graph",
+        "prefix": "research.claims."
+      },
+      {
+        "id": "workflow",
+        "label": "研究流程",
+        "prefix": "workflow."
+      }
+    ]
+  },
+  "literature": [
+    {
+      "id": "arxiv:2504.11524",
+      "title": "HypoBench",
+      "mechanismBorrowed": "hypothesis generation 的发现率有限，不能把一次生成直接当作完整科学发现。"
+    },
+    {
+      "id": "arxiv:2505.14599",
+      "title": "TruthHypo / Toward Reliable Biomedical Hypothesis Generation",
+      "mechanismBorrowed": "groundedness/truthfulness 需要独立验证；生成的 plausibility 不能替代 evidence。"
+    },
+    {
+      "id": "arxiv:2505.04651",
+      "title": "Scientific Hypothesis Generation and Validation: Methods, Datasets, and Future Directions",
+      "mechanismBorrowed": "generation 与 validation 是独立阶段，需 uncertainty quantification 和 human/tool validation。"
+    },
+    {
+      "id": "arxiv:2504.08066",
+      "title": "The AI Scientist-v2",
+      "mechanismBorrowed": "research workflow 应显式覆盖 hypothesis → experiment → analysis → iterative validation。"
+    }
+  ],
+  "entries": [
+    {
+      "snapshotSeq": 1,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "research.evidence-ledger.default",
+          "title": "证据账本科研助手",
+          "kind": "research",
+          "version": "0.2.0",
+          "fingerprint": "8bdf887d7637f89e3395ec7d95fdc6ecbe568e17b1709289a49a381449745c16",
+          "engine": {
+            "id": "research/evidence-ledger",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 1,
+          "step": 1
+        },
+        "event": {
+          "id": "q-ego-refutation",
+          "type": "QUESTION_DEFINED",
+          "payload": {
+            "question": "Does prior exertion of self-control reliably cause a practically meaningful impairment on a subsequent self-control task?"
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "research": {
+              "question": "",
+              "activeClaimId": "",
+              "claimOrder": [],
+              "claims": {},
+              "evidenceLedger": [],
+              "evidenceIds": [],
+              "validationLedger": [],
+              "conclusionStatus": "blocked",
+              "conclusionDirection": "undetermined"
+            },
+            "workflow": {
+              "nextAction": "define-question"
+            }
+          },
+          "resolvedState": {
+            "research": {
+              "question": "Does prior exertion of self-control reliably cause a practically meaningful impairment on a subsequent self-control task?",
+              "activeClaimId": "",
+              "claimOrder": [],
+              "claims": {},
+              "evidenceLedger": [],
+              "evidenceIds": [],
+              "validationLedger": [],
+              "conclusionStatus": "blocked",
+              "conclusionDirection": "undetermined"
+            },
+            "workflow": {
+              "nextAction": "propose-or-collect-claims"
+            }
+          },
+          "activeRules": [
+            {
+              "id": "RESEARCH_QUESTION_LEDGER",
+              "priority": 1100,
+              "rationale": "研究问题必须成为后续 claim/evidence 的显式锚点。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "RESEARCH_QUESTION_LEDGER",
+              "path": "research.question",
+              "op": "set",
+              "before": "",
+              "after": "Does prior exertion of self-control reliably cause a practically meaningful impairment on a subsequent self-control task?"
+            },
+            {
+              "source": "RESEARCH_QUESTION_LEDGER",
+              "path": "workflow.nextAction",
+              "op": "set",
+              "before": "define-question",
+              "after": "propose-or-collect-claims"
+            }
+          ],
+          "trace": {
+            "research.question": {
+              "path": "research.question",
+              "base": "",
+              "final": "Does prior exertion of self-control reliably cause a practically meaningful impairment on a subsequent self-control task?",
+              "steps": [
+                {
+                  "rule": "RESEARCH_QUESTION_LEDGER",
+                  "priority": 1100,
+                  "op": "set",
+                  "before": "",
+                  "after": "Does prior exertion of self-control reliably cause a practically meaningful impairment on a subsequent self-control task?"
+                }
+              ]
+            },
+            "workflow.nextAction": {
+              "path": "workflow.nextAction",
+              "base": "define-question",
+              "final": "propose-or-collect-claims",
+              "steps": [
+                {
+                  "rule": "RESEARCH_QUESTION_LEDGER",
+                  "priority": 1100,
+                  "op": "set",
+                  "before": "define-question",
+                  "after": "propose-or-collect-claims"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "conclusion_status",
+                "label": "结论状态",
+                "type": "path",
+                "path": "research.conclusionStatus",
+                "value": "blocked"
+              },
+              {
+                "id": "evidence_count",
+                "label": "证据账本条目",
+                "type": "path",
+                "path": "research.evidenceLedger.length",
+                "value": 0
+              },
+              {
+                "id": "validation_count",
+                "label": "验证条目",
+                "type": "path",
+                "path": "research.validationLedger.length",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 2,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "research.evidence-ledger.default",
+          "title": "证据账本科研助手",
+          "kind": "research",
+          "version": "0.2.0",
+          "fingerprint": "8bdf887d7637f89e3395ec7d95fdc6ecbe568e17b1709289a49a381449745c16",
+          "engine": {
+            "id": "research/evidence-ledger",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 2,
+          "step": 1
+        },
+        "event": {
+          "id": "claim-ego-refutation",
+          "type": "CLAIM_PROPOSED",
+          "payload": {
+            "claimId": "claim_ego_refutation",
+            "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+            "kind": "empirical-claim"
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "research": {
+              "question": "Does prior exertion of self-control reliably cause a practically meaningful impairment on a subsequent self-control task?",
+              "activeClaimId": "",
+              "claimOrder": [],
+              "claims": {},
+              "evidenceLedger": [],
+              "evidenceIds": [],
+              "validationLedger": [],
+              "conclusionStatus": "blocked",
+              "conclusionDirection": "undetermined"
+            },
+            "workflow": {
+              "nextAction": "propose-or-collect-claims"
+            }
+          },
+          "resolvedState": {
+            "research": {
+              "question": "Does prior exertion of self-control reliably cause a practically meaningful impairment on a subsequent self-control task?",
+              "activeClaimId": "claim_ego_refutation",
+              "claimOrder": [
+                "claim_ego_refutation"
+              ],
+              "claims": {
+                "claim_ego_refutation": {
+                  "id": "claim_ego_refutation",
+                  "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                  "kind": "empirical-claim",
+                  "status": "proposed",
+                  "supportMass": 0,
+                  "opposeMass": 0,
+                  "neutralMass": 0,
+                  "uncertainty": 1,
+                  "evidenceCount": 0,
+                  "independentSourceCount": 0,
+                  "sourceGroups": [],
+                  "supportGroups": [],
+                  "opposeGroups": [],
+                  "provenanceComplete": true,
+                  "validation": {
+                    "attempts": 0,
+                    "supportive": 0,
+                    "opposing": 0,
+                    "inconclusive": 0,
+                    "reproducibleSupport": 0,
+                    "reproducibleOppose": 0,
+                    "strongSupport": 0,
+                    "strongOppose": 0,
+                    "last": null
+                  },
+                  "decision": {
+                    "status": "blocked",
+                    "reasons": [
+                      "no-evidence"
+                    ]
+                  }
+                }
+              },
+              "evidenceLedger": [],
+              "evidenceIds": [],
+              "validationLedger": [],
+              "conclusionStatus": "blocked",
+              "conclusionDirection": "undetermined"
+            },
+            "workflow": {
+              "nextAction": "collect-independent-evidence"
+            }
+          },
+          "activeRules": [
+            {
+              "id": "RESEARCH_CLAIM_LIFECYCLE",
+              "priority": 1080,
+              "rationale": "生成 hypothesis/claim 不等于建立结论；新 claim 默认 proposed。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "RESEARCH_CLAIM_LIFECYCLE",
+              "path": "research.claims.claim_ego_refutation",
+              "op": "set",
+              "after": {
+                "id": "claim_ego_refutation",
+                "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                "kind": "empirical-claim",
+                "status": "proposed",
+                "supportMass": 0,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 1,
+                "evidenceCount": 0,
+                "independentSourceCount": 0,
+                "sourceGroups": [],
+                "supportGroups": [],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "reasons": [
+                    "no-evidence"
+                  ]
+                }
+              }
+            },
+            {
+              "source": "RESEARCH_CLAIM_LIFECYCLE",
+              "path": "research.claimOrder",
+              "op": "append",
+              "before": [],
+              "after": [
+                "claim_ego_refutation"
+              ]
+            },
+            {
+              "source": "RESEARCH_CLAIM_LIFECYCLE",
+              "path": "research.activeClaimId",
+              "op": "set",
+              "before": "",
+              "after": "claim_ego_refutation"
+            },
+            {
+              "source": "RESEARCH_CLAIM_LIFECYCLE",
+              "path": "workflow.nextAction",
+              "op": "set",
+              "before": "propose-or-collect-claims",
+              "after": "collect-independent-evidence"
+            }
+          ],
+          "trace": {
+            "research.claims.claim_ego_refutation": {
+              "path": "research.claims.claim_ego_refutation",
+              "final": {
+                "id": "claim_ego_refutation",
+                "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                "kind": "empirical-claim",
+                "status": "proposed",
+                "supportMass": 0,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 1,
+                "evidenceCount": 0,
+                "independentSourceCount": 0,
+                "sourceGroups": [],
+                "supportGroups": [],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "reasons": [
+                    "no-evidence"
+                  ]
+                }
+              },
+              "steps": [
+                {
+                  "rule": "RESEARCH_CLAIM_LIFECYCLE",
+                  "priority": 1080,
+                  "op": "set",
+                  "after": {
+                    "id": "claim_ego_refutation",
+                    "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                    "kind": "empirical-claim",
+                    "status": "proposed",
+                    "supportMass": 0,
+                    "opposeMass": 0,
+                    "neutralMass": 0,
+                    "uncertainty": 1,
+                    "evidenceCount": 0,
+                    "independentSourceCount": 0,
+                    "sourceGroups": [],
+                    "supportGroups": [],
+                    "opposeGroups": [],
+                    "provenanceComplete": true,
+                    "validation": {
+                      "attempts": 0,
+                      "supportive": 0,
+                      "opposing": 0,
+                      "inconclusive": 0,
+                      "reproducibleSupport": 0,
+                      "reproducibleOppose": 0,
+                      "strongSupport": 0,
+                      "strongOppose": 0,
+                      "last": null
+                    },
+                    "decision": {
+                      "status": "blocked",
+                      "reasons": [
+                        "no-evidence"
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            "research.claimOrder": {
+              "path": "research.claimOrder",
+              "base": [],
+              "final": [
+                "claim_ego_refutation"
+              ],
+              "steps": [
+                {
+                  "rule": "RESEARCH_CLAIM_LIFECYCLE",
+                  "priority": 1080,
+                  "op": "append",
+                  "before": [],
+                  "after": [
+                    "claim_ego_refutation"
+                  ]
+                }
+              ]
+            },
+            "research.activeClaimId": {
+              "path": "research.activeClaimId",
+              "base": "",
+              "final": "claim_ego_refutation",
+              "steps": [
+                {
+                  "rule": "RESEARCH_CLAIM_LIFECYCLE",
+                  "priority": 1080,
+                  "op": "set",
+                  "before": "",
+                  "after": "claim_ego_refutation"
+                }
+              ]
+            },
+            "workflow.nextAction": {
+              "path": "workflow.nextAction",
+              "base": "propose-or-collect-claims",
+              "final": "collect-independent-evidence",
+              "steps": [
+                {
+                  "rule": "RESEARCH_CLAIM_LIFECYCLE",
+                  "priority": 1080,
+                  "op": "set",
+                  "before": "propose-or-collect-claims",
+                  "after": "collect-independent-evidence"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "research-claim",
+              "claim": {
+                "id": "claim_ego_refutation",
+                "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                "kind": "empirical-claim",
+                "status": "proposed",
+                "supportMass": 0,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 1,
+                "evidenceCount": 0,
+                "independentSourceCount": 0,
+                "sourceGroups": [],
+                "supportGroups": [],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "reasons": [
+                    "no-evidence"
+                  ]
+                }
+              }
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "conclusion_status",
+                "label": "结论状态",
+                "type": "path",
+                "path": "research.conclusionStatus",
+                "value": "blocked"
+              },
+              {
+                "id": "evidence_count",
+                "label": "证据账本条目",
+                "type": "path",
+                "path": "research.evidenceLedger.length",
+                "value": 0
+              },
+              {
+                "id": "validation_count",
+                "label": "验证条目",
+                "type": "path",
+                "path": "research.validationLedger.length",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 3,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "research.evidence-ledger.default",
+          "title": "证据账本科研助手",
+          "kind": "research",
+          "version": "0.2.0",
+          "fingerprint": "8bdf887d7637f89e3395ec7d95fdc6ecbe568e17b1709289a49a381449745c16",
+          "engine": {
+            "id": "research/evidence-ledger",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 3,
+          "step": 1
+        },
+        "event": {
+          "id": "carter2015-refutation",
+          "type": "EVIDENCE_RECORDED",
+          "payload": {
+            "evidenceId": "doi:10.1037/xge0000083",
+            "claimId": "claim_ego_refutation",
+            "stance": "oppose",
+            "summary": "Bias-adjusted meta-analytic tests questioned the existence and practical size of the depletion effect.",
+            "source": {
+              "title": "A series of meta-analytic tests of the depletion effect: Self-control does not seem to rely on a limited resource",
+              "publisher": "Journal of Experimental Psychology: General",
+              "doi": "10.1037/xge0000083",
+              "locator": "doi:10.1037/xge0000083"
+            },
+            "independenceGroup": "Carter2015-meta",
+            "quality": {
+              "relevance": 1,
+              "reliability": 0.92,
+              "independence": 1
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "research": {
+              "question": "Does prior exertion of self-control reliably cause a practically meaningful impairment on a subsequent self-control task?",
+              "activeClaimId": "claim_ego_refutation",
+              "claimOrder": [
+                "claim_ego_refutation"
+              ],
+              "claims": {
+                "claim_ego_refutation": {
+                  "id": "claim_ego_refutation",
+                  "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                  "kind": "empirical-claim",
+                  "status": "proposed",
+                  "supportMass": 0,
+                  "opposeMass": 0,
+                  "neutralMass": 0,
+                  "uncertainty": 1,
+                  "evidenceCount": 0,
+                  "independentSourceCount": 0,
+                  "sourceGroups": [],
+                  "supportGroups": [],
+                  "opposeGroups": [],
+                  "provenanceComplete": true,
+                  "validation": {
+                    "attempts": 0,
+                    "supportive": 0,
+                    "opposing": 0,
+                    "inconclusive": 0,
+                    "reproducibleSupport": 0,
+                    "reproducibleOppose": 0,
+                    "strongSupport": 0,
+                    "strongOppose": 0,
+                    "last": null
+                  },
+                  "decision": {
+                    "status": "blocked",
+                    "reasons": [
+                      "no-evidence"
+                    ]
+                  }
+                }
+              },
+              "evidenceLedger": [],
+              "evidenceIds": [],
+              "validationLedger": [],
+              "conclusionStatus": "blocked",
+              "conclusionDirection": "undetermined"
+            },
+            "workflow": {
+              "nextAction": "collect-independent-evidence"
+            }
+          },
+          "resolvedState": {
+            "research": {
+              "question": "Does prior exertion of self-control reliably cause a practically meaningful impairment on a subsequent self-control task?",
+              "activeClaimId": "claim_ego_refutation",
+              "claimOrder": [
+                "claim_ego_refutation"
+              ],
+              "claims": {
+                "claim_ego_refutation": {
+                  "id": "claim_ego_refutation",
+                  "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                  "kind": "empirical-claim",
+                  "status": "testing",
+                  "supportMass": 0,
+                  "opposeMass": 0.92,
+                  "neutralMass": 0,
+                  "uncertainty": 0.5208,
+                  "evidenceCount": 1,
+                  "independentSourceCount": 1,
+                  "sourceGroups": [
+                    "Carter2015-meta"
+                  ],
+                  "supportGroups": [],
+                  "opposeGroups": [
+                    "Carter2015-meta"
+                  ],
+                  "provenanceComplete": true,
+                  "validation": {
+                    "attempts": 0,
+                    "supportive": 0,
+                    "opposing": 0,
+                    "inconclusive": 0,
+                    "reproducibleSupport": 0,
+                    "reproducibleOppose": 0,
+                    "strongSupport": 0,
+                    "strongOppose": 0,
+                    "last": null
+                  },
+                  "decision": {
+                    "status": "blocked",
+                    "direction": "oppose",
+                    "reasons": [
+                      "no-validation-attempt"
+                    ],
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 0,
+                      "opposeMass": 0.92,
+                      "balanceRatio": 0,
+                      "dominantStance": "oppose"
+                    }
+                  },
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 0.92,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                }
+              },
+              "evidenceLedger": [
+                {
+                  "evidenceId": "doi:10.1037/xge0000083",
+                  "claimId": "claim_ego_refutation",
+                  "stance": "oppose",
+                  "summary": "Bias-adjusted meta-analytic tests questioned the existence and practical size of the depletion effect.",
+                  "source": {
+                    "title": "A series of meta-analytic tests of the depletion effect: Self-control does not seem to rely on a limited resource",
+                    "publisher": "Journal of Experimental Psychology: General",
+                    "doi": "10.1037/xge0000083",
+                    "locator": "doi:10.1037/xge0000083"
+                  },
+                  "quality": {
+                    "relevance": 1,
+                    "reliability": 0.92,
+                    "independence": 1,
+                    "group": "Carter2015-meta",
+                    "correlated": false,
+                    "correlationFactor": 1,
+                    "weight": 0.92
+                  },
+                  "provenanceComplete": true
+                }
+              ],
+              "evidenceIds": [
+                "doi:10.1037/xge0000083"
+              ],
+              "validationLedger": [],
+              "conclusionStatus": "blocked",
+              "conclusionDirection": "undetermined"
+            },
+            "workflow": {
+              "nextAction": "seek-independent-evidence"
+            }
+          },
+          "activeRules": [
+            {
+              "id": "RESEARCH_EVIDENCE_LEDGER",
+              "priority": 1120,
+              "rationale": "Evidence 以可去重 ledger 保存，support/oppose 分离，不通过平均冲突来制造确定性。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "RESEARCH_EVIDENCE_LEDGER",
+              "path": "research.evidenceLedger",
+              "op": "append",
+              "before": [],
+              "after": [
+                {
+                  "evidenceId": "doi:10.1037/xge0000083",
+                  "claimId": "claim_ego_refutation",
+                  "stance": "oppose",
+                  "summary": "Bias-adjusted meta-analytic tests questioned the existence and practical size of the depletion effect.",
+                  "source": {
+                    "title": "A series of meta-analytic tests of the depletion effect: Self-control does not seem to rely on a limited resource",
+                    "publisher": "Journal of Experimental Psychology: General",
+                    "doi": "10.1037/xge0000083",
+                    "locator": "doi:10.1037/xge0000083"
+                  },
+                  "quality": {
+                    "relevance": 1,
+                    "reliability": 0.92,
+                    "independence": 1,
+                    "group": "Carter2015-meta",
+                    "correlated": false,
+                    "correlationFactor": 1,
+                    "weight": 0.92
+                  },
+                  "provenanceComplete": true
+                }
+              ]
+            },
+            {
+              "source": "RESEARCH_EVIDENCE_LEDGER",
+              "path": "research.evidenceIds",
+              "op": "appendUnique",
+              "before": [],
+              "after": [
+                "doi:10.1037/xge0000083"
+              ]
+            },
+            {
+              "source": "RESEARCH_EVIDENCE_LEDGER",
+              "path": "research.claims.claim_ego_refutation",
+              "op": "evidence-update",
+              "before": {
+                "id": "claim_ego_refutation",
+                "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                "kind": "empirical-claim",
+                "status": "proposed",
+                "supportMass": 0,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 1,
+                "evidenceCount": 0,
+                "independentSourceCount": 0,
+                "sourceGroups": [],
+                "supportGroups": [],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "reasons": [
+                    "no-evidence"
+                  ]
+                }
+              },
+              "after": {
+                "id": "claim_ego_refutation",
+                "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 0,
+                "opposeMass": 0.92,
+                "neutralMass": 0,
+                "uncertainty": 0.5208,
+                "evidenceCount": 1,
+                "independentSourceCount": 1,
+                "sourceGroups": [
+                  "Carter2015-meta"
+                ],
+                "supportGroups": [],
+                "opposeGroups": [
+                  "Carter2015-meta"
+                ],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "direction": "oppose",
+                  "reasons": [
+                    "no-validation-attempt"
+                  ],
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 0.92,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0,
+                  "opposeMass": 0.92,
+                  "balanceRatio": 0,
+                  "dominantStance": "oppose"
+                }
+              }
+            },
+            {
+              "source": "RESEARCH_EVIDENCE_LEDGER",
+              "path": "workflow.nextAction",
+              "op": "set",
+              "before": "collect-independent-evidence",
+              "after": "seek-independent-evidence"
+            }
+          ],
+          "trace": {
+            "research.evidenceLedger": {
+              "path": "research.evidenceLedger",
+              "base": [],
+              "final": [
+                {
+                  "evidenceId": "doi:10.1037/xge0000083",
+                  "claimId": "claim_ego_refutation",
+                  "stance": "oppose",
+                  "summary": "Bias-adjusted meta-analytic tests questioned the existence and practical size of the depletion effect.",
+                  "source": {
+                    "title": "A series of meta-analytic tests of the depletion effect: Self-control does not seem to rely on a limited resource",
+                    "publisher": "Journal of Experimental Psychology: General",
+                    "doi": "10.1037/xge0000083",
+                    "locator": "doi:10.1037/xge0000083"
+                  },
+                  "quality": {
+                    "relevance": 1,
+                    "reliability": 0.92,
+                    "independence": 1,
+                    "group": "Carter2015-meta",
+                    "correlated": false,
+                    "correlationFactor": 1,
+                    "weight": 0.92
+                  },
+                  "provenanceComplete": true
+                }
+              ],
+              "steps": [
+                {
+                  "rule": "RESEARCH_EVIDENCE_LEDGER",
+                  "priority": 1120,
+                  "op": "append",
+                  "before": [],
+                  "after": [
+                    {
+                      "evidenceId": "doi:10.1037/xge0000083",
+                      "claimId": "claim_ego_refutation",
+                      "stance": "oppose",
+                      "summary": "Bias-adjusted meta-analytic tests questioned the existence and practical size of the depletion effect.",
+                      "source": {
+                        "title": "A series of meta-analytic tests of the depletion effect: Self-control does not seem to rely on a limited resource",
+                        "publisher": "Journal of Experimental Psychology: General",
+                        "doi": "10.1037/xge0000083",
+                        "locator": "doi:10.1037/xge0000083"
+                      },
+                      "quality": {
+                        "relevance": 1,
+                        "reliability": 0.92,
+                        "independence": 1,
+                        "group": "Carter2015-meta",
+                        "correlated": false,
+                        "correlationFactor": 1,
+                        "weight": 0.92
+                      },
+                      "provenanceComplete": true
+                    }
+                  ]
+                }
+              ]
+            },
+            "research.evidenceIds": {
+              "path": "research.evidenceIds",
+              "base": [],
+              "final": [
+                "doi:10.1037/xge0000083"
+              ],
+              "steps": [
+                {
+                  "rule": "RESEARCH_EVIDENCE_LEDGER",
+                  "priority": 1120,
+                  "op": "appendUnique",
+                  "before": [],
+                  "after": [
+                    "doi:10.1037/xge0000083"
+                  ]
+                }
+              ]
+            },
+            "research.claims.claim_ego_refutation": {
+              "path": "research.claims.claim_ego_refutation",
+              "base": {
+                "id": "claim_ego_refutation",
+                "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                "kind": "empirical-claim",
+                "status": "proposed",
+                "supportMass": 0,
+                "opposeMass": 0,
+                "neutralMass": 0,
+                "uncertainty": 1,
+                "evidenceCount": 0,
+                "independentSourceCount": 0,
+                "sourceGroups": [],
+                "supportGroups": [],
+                "opposeGroups": [],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "reasons": [
+                    "no-evidence"
+                  ]
+                }
+              },
+              "final": {
+                "id": "claim_ego_refutation",
+                "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 0,
+                "opposeMass": 0.92,
+                "neutralMass": 0,
+                "uncertainty": 0.5208,
+                "evidenceCount": 1,
+                "independentSourceCount": 1,
+                "sourceGroups": [
+                  "Carter2015-meta"
+                ],
+                "supportGroups": [],
+                "opposeGroups": [
+                  "Carter2015-meta"
+                ],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "direction": "oppose",
+                  "reasons": [
+                    "no-validation-attempt"
+                  ],
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 0.92,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0,
+                  "opposeMass": 0.92,
+                  "balanceRatio": 0,
+                  "dominantStance": "oppose"
+                }
+              },
+              "steps": [
+                {
+                  "rule": "RESEARCH_EVIDENCE_LEDGER",
+                  "priority": 1120,
+                  "op": "evidence-update",
+                  "before": {
+                    "id": "claim_ego_refutation",
+                    "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                    "kind": "empirical-claim",
+                    "status": "proposed",
+                    "supportMass": 0,
+                    "opposeMass": 0,
+                    "neutralMass": 0,
+                    "uncertainty": 1,
+                    "evidenceCount": 0,
+                    "independentSourceCount": 0,
+                    "sourceGroups": [],
+                    "supportGroups": [],
+                    "opposeGroups": [],
+                    "provenanceComplete": true,
+                    "validation": {
+                      "attempts": 0,
+                      "supportive": 0,
+                      "opposing": 0,
+                      "inconclusive": 0,
+                      "reproducibleSupport": 0,
+                      "reproducibleOppose": 0,
+                      "strongSupport": 0,
+                      "strongOppose": 0,
+                      "last": null
+                    },
+                    "decision": {
+                      "status": "blocked",
+                      "reasons": [
+                        "no-evidence"
+                      ]
+                    }
+                  },
+                  "after": {
+                    "id": "claim_ego_refutation",
+                    "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                    "kind": "empirical-claim",
+                    "status": "testing",
+                    "supportMass": 0,
+                    "opposeMass": 0.92,
+                    "neutralMass": 0,
+                    "uncertainty": 0.5208,
+                    "evidenceCount": 1,
+                    "independentSourceCount": 1,
+                    "sourceGroups": [
+                      "Carter2015-meta"
+                    ],
+                    "supportGroups": [],
+                    "opposeGroups": [
+                      "Carter2015-meta"
+                    ],
+                    "provenanceComplete": true,
+                    "validation": {
+                      "attempts": 0,
+                      "supportive": 0,
+                      "opposing": 0,
+                      "inconclusive": 0,
+                      "reproducibleSupport": 0,
+                      "reproducibleOppose": 0,
+                      "strongSupport": 0,
+                      "strongOppose": 0,
+                      "last": null
+                    },
+                    "decision": {
+                      "status": "blocked",
+                      "direction": "oppose",
+                      "reasons": [
+                        "no-validation-attempt"
+                      ],
+                      "conflict": {
+                        "present": false,
+                        "supportMass": 0,
+                        "opposeMass": 0.92,
+                        "balanceRatio": 0,
+                        "dominantStance": "oppose"
+                      }
+                    },
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 0,
+                      "opposeMass": 0.92,
+                      "balanceRatio": 0,
+                      "dominantStance": "oppose"
+                    }
+                  }
+                }
+              ]
+            },
+            "workflow.nextAction": {
+              "path": "workflow.nextAction",
+              "base": "collect-independent-evidence",
+              "final": "seek-independent-evidence",
+              "steps": [
+                {
+                  "rule": "RESEARCH_EVIDENCE_LEDGER",
+                  "priority": 1120,
+                  "op": "set",
+                  "before": "collect-independent-evidence",
+                  "after": "seek-independent-evidence"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "research-evidence",
+              "evidenceId": "doi:10.1037/xge0000083",
+              "claimId": "claim_ego_refutation",
+              "stance": "oppose",
+              "summary": "Bias-adjusted meta-analytic tests questioned the existence and practical size of the depletion effect.",
+              "source": {
+                "title": "A series of meta-analytic tests of the depletion effect: Self-control does not seem to rely on a limited resource",
+                "publisher": "Journal of Experimental Psychology: General",
+                "doi": "10.1037/xge0000083",
+                "locator": "doi:10.1037/xge0000083"
+              },
+              "quality": {
+                "relevance": 1,
+                "reliability": 0.92,
+                "independence": 1,
+                "group": "Carter2015-meta",
+                "correlated": false,
+                "correlationFactor": 1,
+                "weight": 0.92
+              },
+              "provenanceComplete": true,
+              "claimAfter": {
+                "id": "claim_ego_refutation",
+                "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 0,
+                "opposeMass": 0.92,
+                "neutralMass": 0,
+                "uncertainty": 0.5208,
+                "evidenceCount": 1,
+                "independentSourceCount": 1,
+                "sourceGroups": [
+                  "Carter2015-meta"
+                ],
+                "supportGroups": [],
+                "opposeGroups": [
+                  "Carter2015-meta"
+                ],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "direction": "oppose",
+                  "reasons": [
+                    "no-validation-attempt"
+                  ],
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 0.92,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0,
+                  "opposeMass": 0.92,
+                  "balanceRatio": 0,
+                  "dominantStance": "oppose"
+                }
+              }
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "conclusion_status",
+                "label": "结论状态",
+                "type": "path",
+                "path": "research.conclusionStatus",
+                "value": "blocked"
+              },
+              {
+                "id": "evidence_count",
+                "label": "证据账本条目",
+                "type": "path",
+                "path": "research.evidenceLedger.length",
+                "value": 1
+              },
+              {
+                "id": "validation_count",
+                "label": "验证条目",
+                "type": "path",
+                "path": "research.validationLedger.length",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 4,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "research.evidence-ledger.default",
+          "title": "证据账本科研助手",
+          "kind": "research",
+          "version": "0.2.0",
+          "fingerprint": "8bdf887d7637f89e3395ec7d95fdc6ecbe568e17b1709289a49a381449745c16",
+          "engine": {
+            "id": "research/evidence-ledger",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 4,
+          "step": 1
+        },
+        "event": {
+          "id": "hagger2016-refutation",
+          "type": "VALIDATION_RESULT",
+          "payload": {
+            "validationId": "doi:10.1177/1745691616652873",
+            "claimId": "claim_ego_refutation",
+            "kind": "replication",
+            "method": "23-lab-preregistered-replication",
+            "outcome": "oppose",
+            "confidence": 0.96,
+            "reproducible": true,
+            "independenceGroup": "Hagger2016-RRR",
+            "provenance": {
+              "doi": "10.1177/1745691616652873",
+              "locator": "doi:10.1177/1745691616652873"
+            },
+            "artifact": {
+              "locator": "RRR-23-labs-N2141"
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "research": {
+              "question": "Does prior exertion of self-control reliably cause a practically meaningful impairment on a subsequent self-control task?",
+              "activeClaimId": "claim_ego_refutation",
+              "claimOrder": [
+                "claim_ego_refutation"
+              ],
+              "claims": {
+                "claim_ego_refutation": {
+                  "id": "claim_ego_refutation",
+                  "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                  "kind": "empirical-claim",
+                  "status": "testing",
+                  "supportMass": 0,
+                  "opposeMass": 0.92,
+                  "neutralMass": 0,
+                  "uncertainty": 0.5208,
+                  "evidenceCount": 1,
+                  "independentSourceCount": 1,
+                  "sourceGroups": [
+                    "Carter2015-meta"
+                  ],
+                  "supportGroups": [],
+                  "opposeGroups": [
+                    "Carter2015-meta"
+                  ],
+                  "provenanceComplete": true,
+                  "validation": {
+                    "attempts": 0,
+                    "supportive": 0,
+                    "opposing": 0,
+                    "inconclusive": 0,
+                    "reproducibleSupport": 0,
+                    "reproducibleOppose": 0,
+                    "strongSupport": 0,
+                    "strongOppose": 0,
+                    "last": null
+                  },
+                  "decision": {
+                    "status": "blocked",
+                    "direction": "oppose",
+                    "reasons": [
+                      "no-validation-attempt"
+                    ],
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 0,
+                      "opposeMass": 0.92,
+                      "balanceRatio": 0,
+                      "dominantStance": "oppose"
+                    }
+                  },
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 0.92,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                }
+              },
+              "evidenceLedger": [
+                {
+                  "evidenceId": "doi:10.1037/xge0000083",
+                  "claimId": "claim_ego_refutation",
+                  "stance": "oppose",
+                  "summary": "Bias-adjusted meta-analytic tests questioned the existence and practical size of the depletion effect.",
+                  "source": {
+                    "title": "A series of meta-analytic tests of the depletion effect: Self-control does not seem to rely on a limited resource",
+                    "publisher": "Journal of Experimental Psychology: General",
+                    "doi": "10.1037/xge0000083",
+                    "locator": "doi:10.1037/xge0000083"
+                  },
+                  "quality": {
+                    "relevance": 1,
+                    "reliability": 0.92,
+                    "independence": 1,
+                    "group": "Carter2015-meta",
+                    "correlated": false,
+                    "correlationFactor": 1,
+                    "weight": 0.92
+                  },
+                  "provenanceComplete": true
+                }
+              ],
+              "evidenceIds": [
+                "doi:10.1037/xge0000083"
+              ],
+              "validationLedger": [],
+              "conclusionStatus": "blocked",
+              "conclusionDirection": "undetermined"
+            },
+            "workflow": {
+              "nextAction": "seek-independent-evidence"
+            }
+          },
+          "resolvedState": {
+            "research": {
+              "question": "Does prior exertion of self-control reliably cause a practically meaningful impairment on a subsequent self-control task?",
+              "activeClaimId": "claim_ego_refutation",
+              "claimOrder": [
+                "claim_ego_refutation"
+              ],
+              "claims": {
+                "claim_ego_refutation": {
+                  "id": "claim_ego_refutation",
+                  "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                  "kind": "empirical-claim",
+                  "status": "testing",
+                  "supportMass": 0,
+                  "opposeMass": 1.88,
+                  "neutralMass": 0,
+                  "uncertainty": 0.3472,
+                  "evidenceCount": 1,
+                  "independentSourceCount": 2,
+                  "sourceGroups": [
+                    "Carter2015-meta",
+                    "Hagger2016-RRR"
+                  ],
+                  "supportGroups": [],
+                  "opposeGroups": [
+                    "Carter2015-meta",
+                    "Hagger2016-RRR"
+                  ],
+                  "provenanceComplete": true,
+                  "validation": {
+                    "attempts": 1,
+                    "supportive": 0,
+                    "opposing": 1,
+                    "inconclusive": 0,
+                    "reproducibleSupport": 0,
+                    "reproducibleOppose": 1,
+                    "strongSupport": 0,
+                    "strongOppose": 1,
+                    "last": {
+                      "validationId": "doi:10.1177/1745691616652873",
+                      "claimId": "claim_ego_refutation",
+                      "kind": "replication",
+                      "method": "23-lab-preregistered-replication",
+                      "outcome": "oppose",
+                      "confidence": 0.96,
+                      "reproducible": true,
+                      "strong": true,
+                      "strongMethod": true,
+                      "independenceGroup": "Hagger2016-RRR",
+                      "provenanceComplete": true,
+                      "provenance": {
+                        "doi": "10.1177/1745691616652873",
+                        "locator": "doi:10.1177/1745691616652873"
+                      },
+                      "artifact": {
+                        "locator": "RRR-23-labs-N2141"
+                      }
+                    }
+                  },
+                  "decision": {
+                    "status": "ready",
+                    "direction": "oppose",
+                    "reasons": [],
+                    "counterRatio": 0,
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 0,
+                      "opposeMass": 1.88,
+                      "balanceRatio": 0,
+                      "dominantStance": "oppose"
+                    }
+                  },
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 1.88,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                }
+              },
+              "evidenceLedger": [
+                {
+                  "evidenceId": "doi:10.1037/xge0000083",
+                  "claimId": "claim_ego_refutation",
+                  "stance": "oppose",
+                  "summary": "Bias-adjusted meta-analytic tests questioned the existence and practical size of the depletion effect.",
+                  "source": {
+                    "title": "A series of meta-analytic tests of the depletion effect: Self-control does not seem to rely on a limited resource",
+                    "publisher": "Journal of Experimental Psychology: General",
+                    "doi": "10.1037/xge0000083",
+                    "locator": "doi:10.1037/xge0000083"
+                  },
+                  "quality": {
+                    "relevance": 1,
+                    "reliability": 0.92,
+                    "independence": 1,
+                    "group": "Carter2015-meta",
+                    "correlated": false,
+                    "correlationFactor": 1,
+                    "weight": 0.92
+                  },
+                  "provenanceComplete": true
+                }
+              ],
+              "evidenceIds": [
+                "doi:10.1037/xge0000083"
+              ],
+              "validationLedger": [
+                {
+                  "validationId": "doi:10.1177/1745691616652873",
+                  "claimId": "claim_ego_refutation",
+                  "kind": "replication",
+                  "method": "23-lab-preregistered-replication",
+                  "outcome": "oppose",
+                  "confidence": 0.96,
+                  "reproducible": true,
+                  "strong": true,
+                  "strongMethod": true,
+                  "independenceGroup": "Hagger2016-RRR",
+                  "provenanceComplete": true,
+                  "provenance": {
+                    "doi": "10.1177/1745691616652873",
+                    "locator": "doi:10.1177/1745691616652873"
+                  },
+                  "artifact": {
+                    "locator": "RRR-23-labs-N2141"
+                  }
+                }
+              ],
+              "conclusionStatus": "blocked",
+              "conclusionDirection": "undetermined"
+            },
+            "workflow": {
+              "nextAction": "evaluate-conclusion-gates"
+            }
+          },
+          "activeRules": [
+            {
+              "id": "RESEARCH_VALIDATION_LIFECYCLE",
+              "priority": 1140,
+              "rationale": "Validation 是独立生命周期阶段；验证结果不能被 hypothesis generation 本身替代。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "RESEARCH_VALIDATION_LIFECYCLE",
+              "path": "research.validationLedger",
+              "op": "append",
+              "before": [],
+              "after": [
+                {
+                  "validationId": "doi:10.1177/1745691616652873",
+                  "claimId": "claim_ego_refutation",
+                  "kind": "replication",
+                  "method": "23-lab-preregistered-replication",
+                  "outcome": "oppose",
+                  "confidence": 0.96,
+                  "reproducible": true,
+                  "strong": true,
+                  "strongMethod": true,
+                  "independenceGroup": "Hagger2016-RRR",
+                  "provenanceComplete": true,
+                  "provenance": {
+                    "doi": "10.1177/1745691616652873",
+                    "locator": "doi:10.1177/1745691616652873"
+                  },
+                  "artifact": {
+                    "locator": "RRR-23-labs-N2141"
+                  }
+                }
+              ]
+            },
+            {
+              "source": "RESEARCH_VALIDATION_LIFECYCLE",
+              "path": "research.claims.claim_ego_refutation",
+              "op": "validation-update",
+              "before": {
+                "id": "claim_ego_refutation",
+                "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 0,
+                "opposeMass": 0.92,
+                "neutralMass": 0,
+                "uncertainty": 0.5208,
+                "evidenceCount": 1,
+                "independentSourceCount": 1,
+                "sourceGroups": [
+                  "Carter2015-meta"
+                ],
+                "supportGroups": [],
+                "opposeGroups": [
+                  "Carter2015-meta"
+                ],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "direction": "oppose",
+                  "reasons": [
+                    "no-validation-attempt"
+                  ],
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 0.92,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0,
+                  "opposeMass": 0.92,
+                  "balanceRatio": 0,
+                  "dominantStance": "oppose"
+                }
+              },
+              "after": {
+                "id": "claim_ego_refutation",
+                "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 0,
+                "opposeMass": 1.88,
+                "neutralMass": 0,
+                "uncertainty": 0.3472,
+                "evidenceCount": 1,
+                "independentSourceCount": 2,
+                "sourceGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR"
+                ],
+                "supportGroups": [],
+                "opposeGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR"
+                ],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 1,
+                  "supportive": 0,
+                  "opposing": 1,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 1,
+                  "strongSupport": 0,
+                  "strongOppose": 1,
+                  "last": {
+                    "validationId": "doi:10.1177/1745691616652873",
+                    "claimId": "claim_ego_refutation",
+                    "kind": "replication",
+                    "method": "23-lab-preregistered-replication",
+                    "outcome": "oppose",
+                    "confidence": 0.96,
+                    "reproducible": true,
+                    "strong": true,
+                    "strongMethod": true,
+                    "independenceGroup": "Hagger2016-RRR",
+                    "provenanceComplete": true,
+                    "provenance": {
+                      "doi": "10.1177/1745691616652873",
+                      "locator": "doi:10.1177/1745691616652873"
+                    },
+                    "artifact": {
+                      "locator": "RRR-23-labs-N2141"
+                    }
+                  }
+                },
+                "decision": {
+                  "status": "ready",
+                  "direction": "oppose",
+                  "reasons": [],
+                  "counterRatio": 0,
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 1.88,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0,
+                  "opposeMass": 1.88,
+                  "balanceRatio": 0,
+                  "dominantStance": "oppose"
+                }
+              }
+            },
+            {
+              "source": "RESEARCH_VALIDATION_LIFECYCLE",
+              "path": "workflow.nextAction",
+              "op": "set",
+              "before": "seek-independent-evidence",
+              "after": "evaluate-conclusion-gates"
+            }
+          ],
+          "trace": {
+            "research.validationLedger": {
+              "path": "research.validationLedger",
+              "base": [],
+              "final": [
+                {
+                  "validationId": "doi:10.1177/1745691616652873",
+                  "claimId": "claim_ego_refutation",
+                  "kind": "replication",
+                  "method": "23-lab-preregistered-replication",
+                  "outcome": "oppose",
+                  "confidence": 0.96,
+                  "reproducible": true,
+                  "strong": true,
+                  "strongMethod": true,
+                  "independenceGroup": "Hagger2016-RRR",
+                  "provenanceComplete": true,
+                  "provenance": {
+                    "doi": "10.1177/1745691616652873",
+                    "locator": "doi:10.1177/1745691616652873"
+                  },
+                  "artifact": {
+                    "locator": "RRR-23-labs-N2141"
+                  }
+                }
+              ],
+              "steps": [
+                {
+                  "rule": "RESEARCH_VALIDATION_LIFECYCLE",
+                  "priority": 1140,
+                  "op": "append",
+                  "before": [],
+                  "after": [
+                    {
+                      "validationId": "doi:10.1177/1745691616652873",
+                      "claimId": "claim_ego_refutation",
+                      "kind": "replication",
+                      "method": "23-lab-preregistered-replication",
+                      "outcome": "oppose",
+                      "confidence": 0.96,
+                      "reproducible": true,
+                      "strong": true,
+                      "strongMethod": true,
+                      "independenceGroup": "Hagger2016-RRR",
+                      "provenanceComplete": true,
+                      "provenance": {
+                        "doi": "10.1177/1745691616652873",
+                        "locator": "doi:10.1177/1745691616652873"
+                      },
+                      "artifact": {
+                        "locator": "RRR-23-labs-N2141"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "research.claims.claim_ego_refutation": {
+              "path": "research.claims.claim_ego_refutation",
+              "base": {
+                "id": "claim_ego_refutation",
+                "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 0,
+                "opposeMass": 0.92,
+                "neutralMass": 0,
+                "uncertainty": 0.5208,
+                "evidenceCount": 1,
+                "independentSourceCount": 1,
+                "sourceGroups": [
+                  "Carter2015-meta"
+                ],
+                "supportGroups": [],
+                "opposeGroups": [
+                  "Carter2015-meta"
+                ],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 0,
+                  "supportive": 0,
+                  "opposing": 0,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 0,
+                  "strongSupport": 0,
+                  "strongOppose": 0,
+                  "last": null
+                },
+                "decision": {
+                  "status": "blocked",
+                  "direction": "oppose",
+                  "reasons": [
+                    "no-validation-attempt"
+                  ],
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 0.92,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0,
+                  "opposeMass": 0.92,
+                  "balanceRatio": 0,
+                  "dominantStance": "oppose"
+                }
+              },
+              "final": {
+                "id": "claim_ego_refutation",
+                "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 0,
+                "opposeMass": 1.88,
+                "neutralMass": 0,
+                "uncertainty": 0.3472,
+                "evidenceCount": 1,
+                "independentSourceCount": 2,
+                "sourceGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR"
+                ],
+                "supportGroups": [],
+                "opposeGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR"
+                ],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 1,
+                  "supportive": 0,
+                  "opposing": 1,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 1,
+                  "strongSupport": 0,
+                  "strongOppose": 1,
+                  "last": {
+                    "validationId": "doi:10.1177/1745691616652873",
+                    "claimId": "claim_ego_refutation",
+                    "kind": "replication",
+                    "method": "23-lab-preregistered-replication",
+                    "outcome": "oppose",
+                    "confidence": 0.96,
+                    "reproducible": true,
+                    "strong": true,
+                    "strongMethod": true,
+                    "independenceGroup": "Hagger2016-RRR",
+                    "provenanceComplete": true,
+                    "provenance": {
+                      "doi": "10.1177/1745691616652873",
+                      "locator": "doi:10.1177/1745691616652873"
+                    },
+                    "artifact": {
+                      "locator": "RRR-23-labs-N2141"
+                    }
+                  }
+                },
+                "decision": {
+                  "status": "ready",
+                  "direction": "oppose",
+                  "reasons": [],
+                  "counterRatio": 0,
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 1.88,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0,
+                  "opposeMass": 1.88,
+                  "balanceRatio": 0,
+                  "dominantStance": "oppose"
+                }
+              },
+              "steps": [
+                {
+                  "rule": "RESEARCH_VALIDATION_LIFECYCLE",
+                  "priority": 1140,
+                  "op": "validation-update",
+                  "before": {
+                    "id": "claim_ego_refutation",
+                    "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                    "kind": "empirical-claim",
+                    "status": "testing",
+                    "supportMass": 0,
+                    "opposeMass": 0.92,
+                    "neutralMass": 0,
+                    "uncertainty": 0.5208,
+                    "evidenceCount": 1,
+                    "independentSourceCount": 1,
+                    "sourceGroups": [
+                      "Carter2015-meta"
+                    ],
+                    "supportGroups": [],
+                    "opposeGroups": [
+                      "Carter2015-meta"
+                    ],
+                    "provenanceComplete": true,
+                    "validation": {
+                      "attempts": 0,
+                      "supportive": 0,
+                      "opposing": 0,
+                      "inconclusive": 0,
+                      "reproducibleSupport": 0,
+                      "reproducibleOppose": 0,
+                      "strongSupport": 0,
+                      "strongOppose": 0,
+                      "last": null
+                    },
+                    "decision": {
+                      "status": "blocked",
+                      "direction": "oppose",
+                      "reasons": [
+                        "no-validation-attempt"
+                      ],
+                      "conflict": {
+                        "present": false,
+                        "supportMass": 0,
+                        "opposeMass": 0.92,
+                        "balanceRatio": 0,
+                        "dominantStance": "oppose"
+                      }
+                    },
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 0,
+                      "opposeMass": 0.92,
+                      "balanceRatio": 0,
+                      "dominantStance": "oppose"
+                    }
+                  },
+                  "after": {
+                    "id": "claim_ego_refutation",
+                    "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                    "kind": "empirical-claim",
+                    "status": "testing",
+                    "supportMass": 0,
+                    "opposeMass": 1.88,
+                    "neutralMass": 0,
+                    "uncertainty": 0.3472,
+                    "evidenceCount": 1,
+                    "independentSourceCount": 2,
+                    "sourceGroups": [
+                      "Carter2015-meta",
+                      "Hagger2016-RRR"
+                    ],
+                    "supportGroups": [],
+                    "opposeGroups": [
+                      "Carter2015-meta",
+                      "Hagger2016-RRR"
+                    ],
+                    "provenanceComplete": true,
+                    "validation": {
+                      "attempts": 1,
+                      "supportive": 0,
+                      "opposing": 1,
+                      "inconclusive": 0,
+                      "reproducibleSupport": 0,
+                      "reproducibleOppose": 1,
+                      "strongSupport": 0,
+                      "strongOppose": 1,
+                      "last": {
+                        "validationId": "doi:10.1177/1745691616652873",
+                        "claimId": "claim_ego_refutation",
+                        "kind": "replication",
+                        "method": "23-lab-preregistered-replication",
+                        "outcome": "oppose",
+                        "confidence": 0.96,
+                        "reproducible": true,
+                        "strong": true,
+                        "strongMethod": true,
+                        "independenceGroup": "Hagger2016-RRR",
+                        "provenanceComplete": true,
+                        "provenance": {
+                          "doi": "10.1177/1745691616652873",
+                          "locator": "doi:10.1177/1745691616652873"
+                        },
+                        "artifact": {
+                          "locator": "RRR-23-labs-N2141"
+                        }
+                      }
+                    },
+                    "decision": {
+                      "status": "ready",
+                      "direction": "oppose",
+                      "reasons": [],
+                      "counterRatio": 0,
+                      "conflict": {
+                        "present": false,
+                        "supportMass": 0,
+                        "opposeMass": 1.88,
+                        "balanceRatio": 0,
+                        "dominantStance": "oppose"
+                      }
+                    },
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 0,
+                      "opposeMass": 1.88,
+                      "balanceRatio": 0,
+                      "dominantStance": "oppose"
+                    }
+                  }
+                }
+              ]
+            },
+            "workflow.nextAction": {
+              "path": "workflow.nextAction",
+              "base": "seek-independent-evidence",
+              "final": "evaluate-conclusion-gates",
+              "steps": [
+                {
+                  "rule": "RESEARCH_VALIDATION_LIFECYCLE",
+                  "priority": 1140,
+                  "op": "set",
+                  "before": "seek-independent-evidence",
+                  "after": "evaluate-conclusion-gates"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "research-validation",
+              "validationId": "doi:10.1177/1745691616652873",
+              "claimId": "claim_ego_refutation",
+              "kind": "replication",
+              "method": "23-lab-preregistered-replication",
+              "outcome": "oppose",
+              "confidence": 0.96,
+              "reproducible": true,
+              "strong": true,
+              "strongMethod": true,
+              "independenceGroup": "Hagger2016-RRR",
+              "provenanceComplete": true,
+              "provenance": {
+                "doi": "10.1177/1745691616652873",
+                "locator": "doi:10.1177/1745691616652873"
+              },
+              "artifact": {
+                "locator": "RRR-23-labs-N2141"
+              },
+              "claimAfter": {
+                "id": "claim_ego_refutation",
+                "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 0,
+                "opposeMass": 1.88,
+                "neutralMass": 0,
+                "uncertainty": 0.3472,
+                "evidenceCount": 1,
+                "independentSourceCount": 2,
+                "sourceGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR"
+                ],
+                "supportGroups": [],
+                "opposeGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR"
+                ],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 1,
+                  "supportive": 0,
+                  "opposing": 1,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 1,
+                  "strongSupport": 0,
+                  "strongOppose": 1,
+                  "last": {
+                    "validationId": "doi:10.1177/1745691616652873",
+                    "claimId": "claim_ego_refutation",
+                    "kind": "replication",
+                    "method": "23-lab-preregistered-replication",
+                    "outcome": "oppose",
+                    "confidence": 0.96,
+                    "reproducible": true,
+                    "strong": true,
+                    "strongMethod": true,
+                    "independenceGroup": "Hagger2016-RRR",
+                    "provenanceComplete": true,
+                    "provenance": {
+                      "doi": "10.1177/1745691616652873",
+                      "locator": "doi:10.1177/1745691616652873"
+                    },
+                    "artifact": {
+                      "locator": "RRR-23-labs-N2141"
+                    }
+                  }
+                },
+                "decision": {
+                  "status": "ready",
+                  "direction": "oppose",
+                  "reasons": [],
+                  "counterRatio": 0,
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 1.88,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0,
+                  "opposeMass": 1.88,
+                  "balanceRatio": 0,
+                  "dominantStance": "oppose"
+                }
+              }
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "conclusion_status",
+                "label": "结论状态",
+                "type": "path",
+                "path": "research.conclusionStatus",
+                "value": "blocked"
+              },
+              {
+                "id": "evidence_count",
+                "label": "证据账本条目",
+                "type": "path",
+                "path": "research.evidenceLedger.length",
+                "value": 1
+              },
+              {
+                "id": "validation_count",
+                "label": "验证条目",
+                "type": "path",
+                "path": "research.validationLedger.length",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 5,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "research.evidence-ledger.default",
+          "title": "证据账本科研助手",
+          "kind": "research",
+          "version": "0.2.0",
+          "fingerprint": "8bdf887d7637f89e3395ec7d95fdc6ecbe568e17b1709289a49a381449745c16",
+          "engine": {
+            "id": "research/evidence-ledger",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 5,
+          "step": 1
+        },
+        "event": {
+          "id": "vohs2021-refutation",
+          "type": "VALIDATION_RESULT",
+          "payload": {
+            "validationId": "doi:10.1177/0956797621989733",
+            "claimId": "claim_ego_refutation",
+            "kind": "replication",
+            "method": "36-site-preregistered-paradigmatic-test",
+            "outcome": "oppose",
+            "confidence": 0.96,
+            "reproducible": true,
+            "independenceGroup": "Vohs2021-multisite",
+            "provenance": {
+              "doi": "10.1177/0956797621989733",
+              "locator": "doi:10.1177/0956797621989733"
+            },
+            "artifact": {
+              "locator": "36-sites-N3531"
+            }
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "research": {
+              "question": "Does prior exertion of self-control reliably cause a practically meaningful impairment on a subsequent self-control task?",
+              "activeClaimId": "claim_ego_refutation",
+              "claimOrder": [
+                "claim_ego_refutation"
+              ],
+              "claims": {
+                "claim_ego_refutation": {
+                  "id": "claim_ego_refutation",
+                  "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                  "kind": "empirical-claim",
+                  "status": "testing",
+                  "supportMass": 0,
+                  "opposeMass": 1.88,
+                  "neutralMass": 0,
+                  "uncertainty": 0.3472,
+                  "evidenceCount": 1,
+                  "independentSourceCount": 2,
+                  "sourceGroups": [
+                    "Carter2015-meta",
+                    "Hagger2016-RRR"
+                  ],
+                  "supportGroups": [],
+                  "opposeGroups": [
+                    "Carter2015-meta",
+                    "Hagger2016-RRR"
+                  ],
+                  "provenanceComplete": true,
+                  "validation": {
+                    "attempts": 1,
+                    "supportive": 0,
+                    "opposing": 1,
+                    "inconclusive": 0,
+                    "reproducibleSupport": 0,
+                    "reproducibleOppose": 1,
+                    "strongSupport": 0,
+                    "strongOppose": 1,
+                    "last": {
+                      "validationId": "doi:10.1177/1745691616652873",
+                      "claimId": "claim_ego_refutation",
+                      "kind": "replication",
+                      "method": "23-lab-preregistered-replication",
+                      "outcome": "oppose",
+                      "confidence": 0.96,
+                      "reproducible": true,
+                      "strong": true,
+                      "strongMethod": true,
+                      "independenceGroup": "Hagger2016-RRR",
+                      "provenanceComplete": true,
+                      "provenance": {
+                        "doi": "10.1177/1745691616652873",
+                        "locator": "doi:10.1177/1745691616652873"
+                      },
+                      "artifact": {
+                        "locator": "RRR-23-labs-N2141"
+                      }
+                    }
+                  },
+                  "decision": {
+                    "status": "ready",
+                    "direction": "oppose",
+                    "reasons": [],
+                    "counterRatio": 0,
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 0,
+                      "opposeMass": 1.88,
+                      "balanceRatio": 0,
+                      "dominantStance": "oppose"
+                    }
+                  },
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 1.88,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                }
+              },
+              "evidenceLedger": [
+                {
+                  "evidenceId": "doi:10.1037/xge0000083",
+                  "claimId": "claim_ego_refutation",
+                  "stance": "oppose",
+                  "summary": "Bias-adjusted meta-analytic tests questioned the existence and practical size of the depletion effect.",
+                  "source": {
+                    "title": "A series of meta-analytic tests of the depletion effect: Self-control does not seem to rely on a limited resource",
+                    "publisher": "Journal of Experimental Psychology: General",
+                    "doi": "10.1037/xge0000083",
+                    "locator": "doi:10.1037/xge0000083"
+                  },
+                  "quality": {
+                    "relevance": 1,
+                    "reliability": 0.92,
+                    "independence": 1,
+                    "group": "Carter2015-meta",
+                    "correlated": false,
+                    "correlationFactor": 1,
+                    "weight": 0.92
+                  },
+                  "provenanceComplete": true
+                }
+              ],
+              "evidenceIds": [
+                "doi:10.1037/xge0000083"
+              ],
+              "validationLedger": [
+                {
+                  "validationId": "doi:10.1177/1745691616652873",
+                  "claimId": "claim_ego_refutation",
+                  "kind": "replication",
+                  "method": "23-lab-preregistered-replication",
+                  "outcome": "oppose",
+                  "confidence": 0.96,
+                  "reproducible": true,
+                  "strong": true,
+                  "strongMethod": true,
+                  "independenceGroup": "Hagger2016-RRR",
+                  "provenanceComplete": true,
+                  "provenance": {
+                    "doi": "10.1177/1745691616652873",
+                    "locator": "doi:10.1177/1745691616652873"
+                  },
+                  "artifact": {
+                    "locator": "RRR-23-labs-N2141"
+                  }
+                }
+              ],
+              "conclusionStatus": "blocked",
+              "conclusionDirection": "undetermined"
+            },
+            "workflow": {
+              "nextAction": "evaluate-conclusion-gates"
+            }
+          },
+          "resolvedState": {
+            "research": {
+              "question": "Does prior exertion of self-control reliably cause a practically meaningful impairment on a subsequent self-control task?",
+              "activeClaimId": "claim_ego_refutation",
+              "claimOrder": [
+                "claim_ego_refutation"
+              ],
+              "claims": {
+                "claim_ego_refutation": {
+                  "id": "claim_ego_refutation",
+                  "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                  "kind": "empirical-claim",
+                  "status": "testing",
+                  "supportMass": 0,
+                  "opposeMass": 2.84,
+                  "neutralMass": 0,
+                  "uncertainty": 0.2604,
+                  "evidenceCount": 1,
+                  "independentSourceCount": 3,
+                  "sourceGroups": [
+                    "Carter2015-meta",
+                    "Hagger2016-RRR",
+                    "Vohs2021-multisite"
+                  ],
+                  "supportGroups": [],
+                  "opposeGroups": [
+                    "Carter2015-meta",
+                    "Hagger2016-RRR",
+                    "Vohs2021-multisite"
+                  ],
+                  "provenanceComplete": true,
+                  "validation": {
+                    "attempts": 2,
+                    "supportive": 0,
+                    "opposing": 2,
+                    "inconclusive": 0,
+                    "reproducibleSupport": 0,
+                    "reproducibleOppose": 2,
+                    "strongSupport": 0,
+                    "strongOppose": 2,
+                    "last": {
+                      "validationId": "doi:10.1177/0956797621989733",
+                      "claimId": "claim_ego_refutation",
+                      "kind": "replication",
+                      "method": "36-site-preregistered-paradigmatic-test",
+                      "outcome": "oppose",
+                      "confidence": 0.96,
+                      "reproducible": true,
+                      "strong": true,
+                      "strongMethod": true,
+                      "independenceGroup": "Vohs2021-multisite",
+                      "provenanceComplete": true,
+                      "provenance": {
+                        "doi": "10.1177/0956797621989733",
+                        "locator": "doi:10.1177/0956797621989733"
+                      },
+                      "artifact": {
+                        "locator": "36-sites-N3531"
+                      }
+                    }
+                  },
+                  "decision": {
+                    "status": "ready",
+                    "direction": "oppose",
+                    "reasons": [],
+                    "counterRatio": 0,
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 0,
+                      "opposeMass": 2.84,
+                      "balanceRatio": 0,
+                      "dominantStance": "oppose"
+                    }
+                  },
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 2.84,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                }
+              },
+              "evidenceLedger": [
+                {
+                  "evidenceId": "doi:10.1037/xge0000083",
+                  "claimId": "claim_ego_refutation",
+                  "stance": "oppose",
+                  "summary": "Bias-adjusted meta-analytic tests questioned the existence and practical size of the depletion effect.",
+                  "source": {
+                    "title": "A series of meta-analytic tests of the depletion effect: Self-control does not seem to rely on a limited resource",
+                    "publisher": "Journal of Experimental Psychology: General",
+                    "doi": "10.1037/xge0000083",
+                    "locator": "doi:10.1037/xge0000083"
+                  },
+                  "quality": {
+                    "relevance": 1,
+                    "reliability": 0.92,
+                    "independence": 1,
+                    "group": "Carter2015-meta",
+                    "correlated": false,
+                    "correlationFactor": 1,
+                    "weight": 0.92
+                  },
+                  "provenanceComplete": true
+                }
+              ],
+              "evidenceIds": [
+                "doi:10.1037/xge0000083"
+              ],
+              "validationLedger": [
+                {
+                  "validationId": "doi:10.1177/1745691616652873",
+                  "claimId": "claim_ego_refutation",
+                  "kind": "replication",
+                  "method": "23-lab-preregistered-replication",
+                  "outcome": "oppose",
+                  "confidence": 0.96,
+                  "reproducible": true,
+                  "strong": true,
+                  "strongMethod": true,
+                  "independenceGroup": "Hagger2016-RRR",
+                  "provenanceComplete": true,
+                  "provenance": {
+                    "doi": "10.1177/1745691616652873",
+                    "locator": "doi:10.1177/1745691616652873"
+                  },
+                  "artifact": {
+                    "locator": "RRR-23-labs-N2141"
+                  }
+                },
+                {
+                  "validationId": "doi:10.1177/0956797621989733",
+                  "claimId": "claim_ego_refutation",
+                  "kind": "replication",
+                  "method": "36-site-preregistered-paradigmatic-test",
+                  "outcome": "oppose",
+                  "confidence": 0.96,
+                  "reproducible": true,
+                  "strong": true,
+                  "strongMethod": true,
+                  "independenceGroup": "Vohs2021-multisite",
+                  "provenanceComplete": true,
+                  "provenance": {
+                    "doi": "10.1177/0956797621989733",
+                    "locator": "doi:10.1177/0956797621989733"
+                  },
+                  "artifact": {
+                    "locator": "36-sites-N3531"
+                  }
+                }
+              ],
+              "conclusionStatus": "blocked",
+              "conclusionDirection": "undetermined"
+            },
+            "workflow": {
+              "nextAction": "evaluate-conclusion-gates"
+            }
+          },
+          "activeRules": [
+            {
+              "id": "RESEARCH_VALIDATION_LIFECYCLE",
+              "priority": 1140,
+              "rationale": "Validation 是独立生命周期阶段；验证结果不能被 hypothesis generation 本身替代。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "RESEARCH_VALIDATION_LIFECYCLE",
+              "path": "research.validationLedger",
+              "op": "append",
+              "before": [
+                {
+                  "validationId": "doi:10.1177/1745691616652873",
+                  "claimId": "claim_ego_refutation",
+                  "kind": "replication",
+                  "method": "23-lab-preregistered-replication",
+                  "outcome": "oppose",
+                  "confidence": 0.96,
+                  "reproducible": true,
+                  "strong": true,
+                  "strongMethod": true,
+                  "independenceGroup": "Hagger2016-RRR",
+                  "provenanceComplete": true,
+                  "provenance": {
+                    "doi": "10.1177/1745691616652873",
+                    "locator": "doi:10.1177/1745691616652873"
+                  },
+                  "artifact": {
+                    "locator": "RRR-23-labs-N2141"
+                  }
+                }
+              ],
+              "after": [
+                {
+                  "validationId": "doi:10.1177/1745691616652873",
+                  "claimId": "claim_ego_refutation",
+                  "kind": "replication",
+                  "method": "23-lab-preregistered-replication",
+                  "outcome": "oppose",
+                  "confidence": 0.96,
+                  "reproducible": true,
+                  "strong": true,
+                  "strongMethod": true,
+                  "independenceGroup": "Hagger2016-RRR",
+                  "provenanceComplete": true,
+                  "provenance": {
+                    "doi": "10.1177/1745691616652873",
+                    "locator": "doi:10.1177/1745691616652873"
+                  },
+                  "artifact": {
+                    "locator": "RRR-23-labs-N2141"
+                  }
+                },
+                {
+                  "validationId": "doi:10.1177/0956797621989733",
+                  "claimId": "claim_ego_refutation",
+                  "kind": "replication",
+                  "method": "36-site-preregistered-paradigmatic-test",
+                  "outcome": "oppose",
+                  "confidence": 0.96,
+                  "reproducible": true,
+                  "strong": true,
+                  "strongMethod": true,
+                  "independenceGroup": "Vohs2021-multisite",
+                  "provenanceComplete": true,
+                  "provenance": {
+                    "doi": "10.1177/0956797621989733",
+                    "locator": "doi:10.1177/0956797621989733"
+                  },
+                  "artifact": {
+                    "locator": "36-sites-N3531"
+                  }
+                }
+              ]
+            },
+            {
+              "source": "RESEARCH_VALIDATION_LIFECYCLE",
+              "path": "research.claims.claim_ego_refutation",
+              "op": "validation-update",
+              "before": {
+                "id": "claim_ego_refutation",
+                "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 0,
+                "opposeMass": 1.88,
+                "neutralMass": 0,
+                "uncertainty": 0.3472,
+                "evidenceCount": 1,
+                "independentSourceCount": 2,
+                "sourceGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR"
+                ],
+                "supportGroups": [],
+                "opposeGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR"
+                ],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 1,
+                  "supportive": 0,
+                  "opposing": 1,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 1,
+                  "strongSupport": 0,
+                  "strongOppose": 1,
+                  "last": {
+                    "validationId": "doi:10.1177/1745691616652873",
+                    "claimId": "claim_ego_refutation",
+                    "kind": "replication",
+                    "method": "23-lab-preregistered-replication",
+                    "outcome": "oppose",
+                    "confidence": 0.96,
+                    "reproducible": true,
+                    "strong": true,
+                    "strongMethod": true,
+                    "independenceGroup": "Hagger2016-RRR",
+                    "provenanceComplete": true,
+                    "provenance": {
+                      "doi": "10.1177/1745691616652873",
+                      "locator": "doi:10.1177/1745691616652873"
+                    },
+                    "artifact": {
+                      "locator": "RRR-23-labs-N2141"
+                    }
+                  }
+                },
+                "decision": {
+                  "status": "ready",
+                  "direction": "oppose",
+                  "reasons": [],
+                  "counterRatio": 0,
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 1.88,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0,
+                  "opposeMass": 1.88,
+                  "balanceRatio": 0,
+                  "dominantStance": "oppose"
+                }
+              },
+              "after": {
+                "id": "claim_ego_refutation",
+                "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 0,
+                "opposeMass": 2.84,
+                "neutralMass": 0,
+                "uncertainty": 0.2604,
+                "evidenceCount": 1,
+                "independentSourceCount": 3,
+                "sourceGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR",
+                  "Vohs2021-multisite"
+                ],
+                "supportGroups": [],
+                "opposeGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR",
+                  "Vohs2021-multisite"
+                ],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 2,
+                  "supportive": 0,
+                  "opposing": 2,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 2,
+                  "strongSupport": 0,
+                  "strongOppose": 2,
+                  "last": {
+                    "validationId": "doi:10.1177/0956797621989733",
+                    "claimId": "claim_ego_refutation",
+                    "kind": "replication",
+                    "method": "36-site-preregistered-paradigmatic-test",
+                    "outcome": "oppose",
+                    "confidence": 0.96,
+                    "reproducible": true,
+                    "strong": true,
+                    "strongMethod": true,
+                    "independenceGroup": "Vohs2021-multisite",
+                    "provenanceComplete": true,
+                    "provenance": {
+                      "doi": "10.1177/0956797621989733",
+                      "locator": "doi:10.1177/0956797621989733"
+                    },
+                    "artifact": {
+                      "locator": "36-sites-N3531"
+                    }
+                  }
+                },
+                "decision": {
+                  "status": "ready",
+                  "direction": "oppose",
+                  "reasons": [],
+                  "counterRatio": 0,
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 2.84,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0,
+                  "opposeMass": 2.84,
+                  "balanceRatio": 0,
+                  "dominantStance": "oppose"
+                }
+              }
+            }
+          ],
+          "trace": {
+            "research.validationLedger": {
+              "path": "research.validationLedger",
+              "base": [
+                {
+                  "validationId": "doi:10.1177/1745691616652873",
+                  "claimId": "claim_ego_refutation",
+                  "kind": "replication",
+                  "method": "23-lab-preregistered-replication",
+                  "outcome": "oppose",
+                  "confidence": 0.96,
+                  "reproducible": true,
+                  "strong": true,
+                  "strongMethod": true,
+                  "independenceGroup": "Hagger2016-RRR",
+                  "provenanceComplete": true,
+                  "provenance": {
+                    "doi": "10.1177/1745691616652873",
+                    "locator": "doi:10.1177/1745691616652873"
+                  },
+                  "artifact": {
+                    "locator": "RRR-23-labs-N2141"
+                  }
+                }
+              ],
+              "final": [
+                {
+                  "validationId": "doi:10.1177/1745691616652873",
+                  "claimId": "claim_ego_refutation",
+                  "kind": "replication",
+                  "method": "23-lab-preregistered-replication",
+                  "outcome": "oppose",
+                  "confidence": 0.96,
+                  "reproducible": true,
+                  "strong": true,
+                  "strongMethod": true,
+                  "independenceGroup": "Hagger2016-RRR",
+                  "provenanceComplete": true,
+                  "provenance": {
+                    "doi": "10.1177/1745691616652873",
+                    "locator": "doi:10.1177/1745691616652873"
+                  },
+                  "artifact": {
+                    "locator": "RRR-23-labs-N2141"
+                  }
+                },
+                {
+                  "validationId": "doi:10.1177/0956797621989733",
+                  "claimId": "claim_ego_refutation",
+                  "kind": "replication",
+                  "method": "36-site-preregistered-paradigmatic-test",
+                  "outcome": "oppose",
+                  "confidence": 0.96,
+                  "reproducible": true,
+                  "strong": true,
+                  "strongMethod": true,
+                  "independenceGroup": "Vohs2021-multisite",
+                  "provenanceComplete": true,
+                  "provenance": {
+                    "doi": "10.1177/0956797621989733",
+                    "locator": "doi:10.1177/0956797621989733"
+                  },
+                  "artifact": {
+                    "locator": "36-sites-N3531"
+                  }
+                }
+              ],
+              "steps": [
+                {
+                  "rule": "RESEARCH_VALIDATION_LIFECYCLE",
+                  "priority": 1140,
+                  "op": "append",
+                  "before": [
+                    {
+                      "validationId": "doi:10.1177/1745691616652873",
+                      "claimId": "claim_ego_refutation",
+                      "kind": "replication",
+                      "method": "23-lab-preregistered-replication",
+                      "outcome": "oppose",
+                      "confidence": 0.96,
+                      "reproducible": true,
+                      "strong": true,
+                      "strongMethod": true,
+                      "independenceGroup": "Hagger2016-RRR",
+                      "provenanceComplete": true,
+                      "provenance": {
+                        "doi": "10.1177/1745691616652873",
+                        "locator": "doi:10.1177/1745691616652873"
+                      },
+                      "artifact": {
+                        "locator": "RRR-23-labs-N2141"
+                      }
+                    }
+                  ],
+                  "after": [
+                    {
+                      "validationId": "doi:10.1177/1745691616652873",
+                      "claimId": "claim_ego_refutation",
+                      "kind": "replication",
+                      "method": "23-lab-preregistered-replication",
+                      "outcome": "oppose",
+                      "confidence": 0.96,
+                      "reproducible": true,
+                      "strong": true,
+                      "strongMethod": true,
+                      "independenceGroup": "Hagger2016-RRR",
+                      "provenanceComplete": true,
+                      "provenance": {
+                        "doi": "10.1177/1745691616652873",
+                        "locator": "doi:10.1177/1745691616652873"
+                      },
+                      "artifact": {
+                        "locator": "RRR-23-labs-N2141"
+                      }
+                    },
+                    {
+                      "validationId": "doi:10.1177/0956797621989733",
+                      "claimId": "claim_ego_refutation",
+                      "kind": "replication",
+                      "method": "36-site-preregistered-paradigmatic-test",
+                      "outcome": "oppose",
+                      "confidence": 0.96,
+                      "reproducible": true,
+                      "strong": true,
+                      "strongMethod": true,
+                      "independenceGroup": "Vohs2021-multisite",
+                      "provenanceComplete": true,
+                      "provenance": {
+                        "doi": "10.1177/0956797621989733",
+                        "locator": "doi:10.1177/0956797621989733"
+                      },
+                      "artifact": {
+                        "locator": "36-sites-N3531"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "research.claims.claim_ego_refutation": {
+              "path": "research.claims.claim_ego_refutation",
+              "base": {
+                "id": "claim_ego_refutation",
+                "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 0,
+                "opposeMass": 1.88,
+                "neutralMass": 0,
+                "uncertainty": 0.3472,
+                "evidenceCount": 1,
+                "independentSourceCount": 2,
+                "sourceGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR"
+                ],
+                "supportGroups": [],
+                "opposeGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR"
+                ],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 1,
+                  "supportive": 0,
+                  "opposing": 1,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 1,
+                  "strongSupport": 0,
+                  "strongOppose": 1,
+                  "last": {
+                    "validationId": "doi:10.1177/1745691616652873",
+                    "claimId": "claim_ego_refutation",
+                    "kind": "replication",
+                    "method": "23-lab-preregistered-replication",
+                    "outcome": "oppose",
+                    "confidence": 0.96,
+                    "reproducible": true,
+                    "strong": true,
+                    "strongMethod": true,
+                    "independenceGroup": "Hagger2016-RRR",
+                    "provenanceComplete": true,
+                    "provenance": {
+                      "doi": "10.1177/1745691616652873",
+                      "locator": "doi:10.1177/1745691616652873"
+                    },
+                    "artifact": {
+                      "locator": "RRR-23-labs-N2141"
+                    }
+                  }
+                },
+                "decision": {
+                  "status": "ready",
+                  "direction": "oppose",
+                  "reasons": [],
+                  "counterRatio": 0,
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 1.88,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0,
+                  "opposeMass": 1.88,
+                  "balanceRatio": 0,
+                  "dominantStance": "oppose"
+                }
+              },
+              "final": {
+                "id": "claim_ego_refutation",
+                "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 0,
+                "opposeMass": 2.84,
+                "neutralMass": 0,
+                "uncertainty": 0.2604,
+                "evidenceCount": 1,
+                "independentSourceCount": 3,
+                "sourceGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR",
+                  "Vohs2021-multisite"
+                ],
+                "supportGroups": [],
+                "opposeGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR",
+                  "Vohs2021-multisite"
+                ],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 2,
+                  "supportive": 0,
+                  "opposing": 2,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 2,
+                  "strongSupport": 0,
+                  "strongOppose": 2,
+                  "last": {
+                    "validationId": "doi:10.1177/0956797621989733",
+                    "claimId": "claim_ego_refutation",
+                    "kind": "replication",
+                    "method": "36-site-preregistered-paradigmatic-test",
+                    "outcome": "oppose",
+                    "confidence": 0.96,
+                    "reproducible": true,
+                    "strong": true,
+                    "strongMethod": true,
+                    "independenceGroup": "Vohs2021-multisite",
+                    "provenanceComplete": true,
+                    "provenance": {
+                      "doi": "10.1177/0956797621989733",
+                      "locator": "doi:10.1177/0956797621989733"
+                    },
+                    "artifact": {
+                      "locator": "36-sites-N3531"
+                    }
+                  }
+                },
+                "decision": {
+                  "status": "ready",
+                  "direction": "oppose",
+                  "reasons": [],
+                  "counterRatio": 0,
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 2.84,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0,
+                  "opposeMass": 2.84,
+                  "balanceRatio": 0,
+                  "dominantStance": "oppose"
+                }
+              },
+              "steps": [
+                {
+                  "rule": "RESEARCH_VALIDATION_LIFECYCLE",
+                  "priority": 1140,
+                  "op": "validation-update",
+                  "before": {
+                    "id": "claim_ego_refutation",
+                    "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                    "kind": "empirical-claim",
+                    "status": "testing",
+                    "supportMass": 0,
+                    "opposeMass": 1.88,
+                    "neutralMass": 0,
+                    "uncertainty": 0.3472,
+                    "evidenceCount": 1,
+                    "independentSourceCount": 2,
+                    "sourceGroups": [
+                      "Carter2015-meta",
+                      "Hagger2016-RRR"
+                    ],
+                    "supportGroups": [],
+                    "opposeGroups": [
+                      "Carter2015-meta",
+                      "Hagger2016-RRR"
+                    ],
+                    "provenanceComplete": true,
+                    "validation": {
+                      "attempts": 1,
+                      "supportive": 0,
+                      "opposing": 1,
+                      "inconclusive": 0,
+                      "reproducibleSupport": 0,
+                      "reproducibleOppose": 1,
+                      "strongSupport": 0,
+                      "strongOppose": 1,
+                      "last": {
+                        "validationId": "doi:10.1177/1745691616652873",
+                        "claimId": "claim_ego_refutation",
+                        "kind": "replication",
+                        "method": "23-lab-preregistered-replication",
+                        "outcome": "oppose",
+                        "confidence": 0.96,
+                        "reproducible": true,
+                        "strong": true,
+                        "strongMethod": true,
+                        "independenceGroup": "Hagger2016-RRR",
+                        "provenanceComplete": true,
+                        "provenance": {
+                          "doi": "10.1177/1745691616652873",
+                          "locator": "doi:10.1177/1745691616652873"
+                        },
+                        "artifact": {
+                          "locator": "RRR-23-labs-N2141"
+                        }
+                      }
+                    },
+                    "decision": {
+                      "status": "ready",
+                      "direction": "oppose",
+                      "reasons": [],
+                      "counterRatio": 0,
+                      "conflict": {
+                        "present": false,
+                        "supportMass": 0,
+                        "opposeMass": 1.88,
+                        "balanceRatio": 0,
+                        "dominantStance": "oppose"
+                      }
+                    },
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 0,
+                      "opposeMass": 1.88,
+                      "balanceRatio": 0,
+                      "dominantStance": "oppose"
+                    }
+                  },
+                  "after": {
+                    "id": "claim_ego_refutation",
+                    "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                    "kind": "empirical-claim",
+                    "status": "testing",
+                    "supportMass": 0,
+                    "opposeMass": 2.84,
+                    "neutralMass": 0,
+                    "uncertainty": 0.2604,
+                    "evidenceCount": 1,
+                    "independentSourceCount": 3,
+                    "sourceGroups": [
+                      "Carter2015-meta",
+                      "Hagger2016-RRR",
+                      "Vohs2021-multisite"
+                    ],
+                    "supportGroups": [],
+                    "opposeGroups": [
+                      "Carter2015-meta",
+                      "Hagger2016-RRR",
+                      "Vohs2021-multisite"
+                    ],
+                    "provenanceComplete": true,
+                    "validation": {
+                      "attempts": 2,
+                      "supportive": 0,
+                      "opposing": 2,
+                      "inconclusive": 0,
+                      "reproducibleSupport": 0,
+                      "reproducibleOppose": 2,
+                      "strongSupport": 0,
+                      "strongOppose": 2,
+                      "last": {
+                        "validationId": "doi:10.1177/0956797621989733",
+                        "claimId": "claim_ego_refutation",
+                        "kind": "replication",
+                        "method": "36-site-preregistered-paradigmatic-test",
+                        "outcome": "oppose",
+                        "confidence": 0.96,
+                        "reproducible": true,
+                        "strong": true,
+                        "strongMethod": true,
+                        "independenceGroup": "Vohs2021-multisite",
+                        "provenanceComplete": true,
+                        "provenance": {
+                          "doi": "10.1177/0956797621989733",
+                          "locator": "doi:10.1177/0956797621989733"
+                        },
+                        "artifact": {
+                          "locator": "36-sites-N3531"
+                        }
+                      }
+                    },
+                    "decision": {
+                      "status": "ready",
+                      "direction": "oppose",
+                      "reasons": [],
+                      "counterRatio": 0,
+                      "conflict": {
+                        "present": false,
+                        "supportMass": 0,
+                        "opposeMass": 2.84,
+                        "balanceRatio": 0,
+                        "dominantStance": "oppose"
+                      }
+                    },
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 0,
+                      "opposeMass": 2.84,
+                      "balanceRatio": 0,
+                      "dominantStance": "oppose"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "research-validation",
+              "validationId": "doi:10.1177/0956797621989733",
+              "claimId": "claim_ego_refutation",
+              "kind": "replication",
+              "method": "36-site-preregistered-paradigmatic-test",
+              "outcome": "oppose",
+              "confidence": 0.96,
+              "reproducible": true,
+              "strong": true,
+              "strongMethod": true,
+              "independenceGroup": "Vohs2021-multisite",
+              "provenanceComplete": true,
+              "provenance": {
+                "doi": "10.1177/0956797621989733",
+                "locator": "doi:10.1177/0956797621989733"
+              },
+              "artifact": {
+                "locator": "36-sites-N3531"
+              },
+              "claimAfter": {
+                "id": "claim_ego_refutation",
+                "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 0,
+                "opposeMass": 2.84,
+                "neutralMass": 0,
+                "uncertainty": 0.2604,
+                "evidenceCount": 1,
+                "independentSourceCount": 3,
+                "sourceGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR",
+                  "Vohs2021-multisite"
+                ],
+                "supportGroups": [],
+                "opposeGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR",
+                  "Vohs2021-multisite"
+                ],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 2,
+                  "supportive": 0,
+                  "opposing": 2,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 2,
+                  "strongSupport": 0,
+                  "strongOppose": 2,
+                  "last": {
+                    "validationId": "doi:10.1177/0956797621989733",
+                    "claimId": "claim_ego_refutation",
+                    "kind": "replication",
+                    "method": "36-site-preregistered-paradigmatic-test",
+                    "outcome": "oppose",
+                    "confidence": 0.96,
+                    "reproducible": true,
+                    "strong": true,
+                    "strongMethod": true,
+                    "independenceGroup": "Vohs2021-multisite",
+                    "provenanceComplete": true,
+                    "provenance": {
+                      "doi": "10.1177/0956797621989733",
+                      "locator": "doi:10.1177/0956797621989733"
+                    },
+                    "artifact": {
+                      "locator": "36-sites-N3531"
+                    }
+                  }
+                },
+                "decision": {
+                  "status": "ready",
+                  "direction": "oppose",
+                  "reasons": [],
+                  "counterRatio": 0,
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 2.84,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0,
+                  "opposeMass": 2.84,
+                  "balanceRatio": 0,
+                  "dominantStance": "oppose"
+                }
+              }
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "conclusion_status",
+                "label": "结论状态",
+                "type": "path",
+                "path": "research.conclusionStatus",
+                "value": "blocked"
+              },
+              {
+                "id": "evidence_count",
+                "label": "证据账本条目",
+                "type": "path",
+                "path": "research.evidenceLedger.length",
+                "value": 1
+              },
+              {
+                "id": "validation_count",
+                "label": "验证条目",
+                "type": "path",
+                "path": "research.validationLedger.length",
+                "value": 2
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    },
+    {
+      "snapshotSeq": 6,
+      "kind": "profile",
+      "endReason": "completed",
+      "snapshot": {
+        "schema": "ppl.profile-snapshot/0.2",
+        "profile": {
+          "id": "research.evidence-ledger.default",
+          "title": "证据账本科研助手",
+          "kind": "research",
+          "version": "0.2.0",
+          "fingerprint": "8bdf887d7637f89e3395ec7d95fdc6ecbe568e17b1709289a49a381449745c16",
+          "engine": {
+            "id": "research/evidence-ledger",
+            "version": "0.2"
+          }
+        },
+        "host": {
+          "turn": 6,
+          "step": 1
+        },
+        "event": {
+          "id": "conclusion-ego-refutation",
+          "type": "CONCLUSION_REQUESTED",
+          "payload": {
+            "claimId": "claim_ego_refutation"
+          }
+        },
+        "resolution": {
+          "schema": "ppl.profile-resolution/0.2",
+          "valid": true,
+          "baseState": {
+            "research": {
+              "question": "Does prior exertion of self-control reliably cause a practically meaningful impairment on a subsequent self-control task?",
+              "activeClaimId": "claim_ego_refutation",
+              "claimOrder": [
+                "claim_ego_refutation"
+              ],
+              "claims": {
+                "claim_ego_refutation": {
+                  "id": "claim_ego_refutation",
+                  "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                  "kind": "empirical-claim",
+                  "status": "testing",
+                  "supportMass": 0,
+                  "opposeMass": 2.84,
+                  "neutralMass": 0,
+                  "uncertainty": 0.2604,
+                  "evidenceCount": 1,
+                  "independentSourceCount": 3,
+                  "sourceGroups": [
+                    "Carter2015-meta",
+                    "Hagger2016-RRR",
+                    "Vohs2021-multisite"
+                  ],
+                  "supportGroups": [],
+                  "opposeGroups": [
+                    "Carter2015-meta",
+                    "Hagger2016-RRR",
+                    "Vohs2021-multisite"
+                  ],
+                  "provenanceComplete": true,
+                  "validation": {
+                    "attempts": 2,
+                    "supportive": 0,
+                    "opposing": 2,
+                    "inconclusive": 0,
+                    "reproducibleSupport": 0,
+                    "reproducibleOppose": 2,
+                    "strongSupport": 0,
+                    "strongOppose": 2,
+                    "last": {
+                      "validationId": "doi:10.1177/0956797621989733",
+                      "claimId": "claim_ego_refutation",
+                      "kind": "replication",
+                      "method": "36-site-preregistered-paradigmatic-test",
+                      "outcome": "oppose",
+                      "confidence": 0.96,
+                      "reproducible": true,
+                      "strong": true,
+                      "strongMethod": true,
+                      "independenceGroup": "Vohs2021-multisite",
+                      "provenanceComplete": true,
+                      "provenance": {
+                        "doi": "10.1177/0956797621989733",
+                        "locator": "doi:10.1177/0956797621989733"
+                      },
+                      "artifact": {
+                        "locator": "36-sites-N3531"
+                      }
+                    }
+                  },
+                  "decision": {
+                    "status": "ready",
+                    "direction": "oppose",
+                    "reasons": [],
+                    "counterRatio": 0,
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 0,
+                      "opposeMass": 2.84,
+                      "balanceRatio": 0,
+                      "dominantStance": "oppose"
+                    }
+                  },
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 2.84,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                }
+              },
+              "evidenceLedger": [
+                {
+                  "evidenceId": "doi:10.1037/xge0000083",
+                  "claimId": "claim_ego_refutation",
+                  "stance": "oppose",
+                  "summary": "Bias-adjusted meta-analytic tests questioned the existence and practical size of the depletion effect.",
+                  "source": {
+                    "title": "A series of meta-analytic tests of the depletion effect: Self-control does not seem to rely on a limited resource",
+                    "publisher": "Journal of Experimental Psychology: General",
+                    "doi": "10.1037/xge0000083",
+                    "locator": "doi:10.1037/xge0000083"
+                  },
+                  "quality": {
+                    "relevance": 1,
+                    "reliability": 0.92,
+                    "independence": 1,
+                    "group": "Carter2015-meta",
+                    "correlated": false,
+                    "correlationFactor": 1,
+                    "weight": 0.92
+                  },
+                  "provenanceComplete": true
+                }
+              ],
+              "evidenceIds": [
+                "doi:10.1037/xge0000083"
+              ],
+              "validationLedger": [
+                {
+                  "validationId": "doi:10.1177/1745691616652873",
+                  "claimId": "claim_ego_refutation",
+                  "kind": "replication",
+                  "method": "23-lab-preregistered-replication",
+                  "outcome": "oppose",
+                  "confidence": 0.96,
+                  "reproducible": true,
+                  "strong": true,
+                  "strongMethod": true,
+                  "independenceGroup": "Hagger2016-RRR",
+                  "provenanceComplete": true,
+                  "provenance": {
+                    "doi": "10.1177/1745691616652873",
+                    "locator": "doi:10.1177/1745691616652873"
+                  },
+                  "artifact": {
+                    "locator": "RRR-23-labs-N2141"
+                  }
+                },
+                {
+                  "validationId": "doi:10.1177/0956797621989733",
+                  "claimId": "claim_ego_refutation",
+                  "kind": "replication",
+                  "method": "36-site-preregistered-paradigmatic-test",
+                  "outcome": "oppose",
+                  "confidence": 0.96,
+                  "reproducible": true,
+                  "strong": true,
+                  "strongMethod": true,
+                  "independenceGroup": "Vohs2021-multisite",
+                  "provenanceComplete": true,
+                  "provenance": {
+                    "doi": "10.1177/0956797621989733",
+                    "locator": "doi:10.1177/0956797621989733"
+                  },
+                  "artifact": {
+                    "locator": "36-sites-N3531"
+                  }
+                }
+              ],
+              "conclusionStatus": "blocked",
+              "conclusionDirection": "undetermined"
+            },
+            "workflow": {
+              "nextAction": "evaluate-conclusion-gates"
+            }
+          },
+          "resolvedState": {
+            "research": {
+              "question": "Does prior exertion of self-control reliably cause a practically meaningful impairment on a subsequent self-control task?",
+              "activeClaimId": "claim_ego_refutation",
+              "claimOrder": [
+                "claim_ego_refutation"
+              ],
+              "claims": {
+                "claim_ego_refutation": {
+                  "id": "claim_ego_refutation",
+                  "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                  "kind": "empirical-claim",
+                  "status": "ready",
+                  "supportMass": 0,
+                  "opposeMass": 2.84,
+                  "neutralMass": 0,
+                  "uncertainty": 0.2604,
+                  "evidenceCount": 1,
+                  "independentSourceCount": 3,
+                  "sourceGroups": [
+                    "Carter2015-meta",
+                    "Hagger2016-RRR",
+                    "Vohs2021-multisite"
+                  ],
+                  "supportGroups": [],
+                  "opposeGroups": [
+                    "Carter2015-meta",
+                    "Hagger2016-RRR",
+                    "Vohs2021-multisite"
+                  ],
+                  "provenanceComplete": true,
+                  "validation": {
+                    "attempts": 2,
+                    "supportive": 0,
+                    "opposing": 2,
+                    "inconclusive": 0,
+                    "reproducibleSupport": 0,
+                    "reproducibleOppose": 2,
+                    "strongSupport": 0,
+                    "strongOppose": 2,
+                    "last": {
+                      "validationId": "doi:10.1177/0956797621989733",
+                      "claimId": "claim_ego_refutation",
+                      "kind": "replication",
+                      "method": "36-site-preregistered-paradigmatic-test",
+                      "outcome": "oppose",
+                      "confidence": 0.96,
+                      "reproducible": true,
+                      "strong": true,
+                      "strongMethod": true,
+                      "independenceGroup": "Vohs2021-multisite",
+                      "provenanceComplete": true,
+                      "provenance": {
+                        "doi": "10.1177/0956797621989733",
+                        "locator": "doi:10.1177/0956797621989733"
+                      },
+                      "artifact": {
+                        "locator": "36-sites-N3531"
+                      }
+                    }
+                  },
+                  "decision": {
+                    "status": "ready",
+                    "direction": "oppose",
+                    "reasons": [],
+                    "counterRatio": 0,
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 0,
+                      "opposeMass": 2.84,
+                      "balanceRatio": 0,
+                      "dominantStance": "oppose"
+                    }
+                  },
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 2.84,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                }
+              },
+              "evidenceLedger": [
+                {
+                  "evidenceId": "doi:10.1037/xge0000083",
+                  "claimId": "claim_ego_refutation",
+                  "stance": "oppose",
+                  "summary": "Bias-adjusted meta-analytic tests questioned the existence and practical size of the depletion effect.",
+                  "source": {
+                    "title": "A series of meta-analytic tests of the depletion effect: Self-control does not seem to rely on a limited resource",
+                    "publisher": "Journal of Experimental Psychology: General",
+                    "doi": "10.1037/xge0000083",
+                    "locator": "doi:10.1037/xge0000083"
+                  },
+                  "quality": {
+                    "relevance": 1,
+                    "reliability": 0.92,
+                    "independence": 1,
+                    "group": "Carter2015-meta",
+                    "correlated": false,
+                    "correlationFactor": 1,
+                    "weight": 0.92
+                  },
+                  "provenanceComplete": true
+                }
+              ],
+              "evidenceIds": [
+                "doi:10.1037/xge0000083"
+              ],
+              "validationLedger": [
+                {
+                  "validationId": "doi:10.1177/1745691616652873",
+                  "claimId": "claim_ego_refutation",
+                  "kind": "replication",
+                  "method": "23-lab-preregistered-replication",
+                  "outcome": "oppose",
+                  "confidence": 0.96,
+                  "reproducible": true,
+                  "strong": true,
+                  "strongMethod": true,
+                  "independenceGroup": "Hagger2016-RRR",
+                  "provenanceComplete": true,
+                  "provenance": {
+                    "doi": "10.1177/1745691616652873",
+                    "locator": "doi:10.1177/1745691616652873"
+                  },
+                  "artifact": {
+                    "locator": "RRR-23-labs-N2141"
+                  }
+                },
+                {
+                  "validationId": "doi:10.1177/0956797621989733",
+                  "claimId": "claim_ego_refutation",
+                  "kind": "replication",
+                  "method": "36-site-preregistered-paradigmatic-test",
+                  "outcome": "oppose",
+                  "confidence": 0.96,
+                  "reproducible": true,
+                  "strong": true,
+                  "strongMethod": true,
+                  "independenceGroup": "Vohs2021-multisite",
+                  "provenanceComplete": true,
+                  "provenance": {
+                    "doi": "10.1177/0956797621989733",
+                    "locator": "doi:10.1177/0956797621989733"
+                  },
+                  "artifact": {
+                    "locator": "36-sites-N3531"
+                  }
+                }
+              ],
+              "conclusionStatus": "ready",
+              "conclusionDirection": "oppose"
+            },
+            "workflow": {
+              "nextAction": "report-refutation"
+            }
+          },
+          "activeRules": [
+            {
+              "id": "RESEARCH_CONCLUSION_GATE",
+              "priority": 1200,
+              "rationale": "结论必须经过 evidence independence、provenance、validation 和 uncertainty gate。"
+            }
+          ],
+          "mutations": [
+            {
+              "source": "RESEARCH_CONCLUSION_GATE",
+              "path": "research.claims.claim_ego_refutation",
+              "op": "decision-gate",
+              "before": {
+                "id": "claim_ego_refutation",
+                "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 0,
+                "opposeMass": 2.84,
+                "neutralMass": 0,
+                "uncertainty": 0.2604,
+                "evidenceCount": 1,
+                "independentSourceCount": 3,
+                "sourceGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR",
+                  "Vohs2021-multisite"
+                ],
+                "supportGroups": [],
+                "opposeGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR",
+                  "Vohs2021-multisite"
+                ],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 2,
+                  "supportive": 0,
+                  "opposing": 2,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 2,
+                  "strongSupport": 0,
+                  "strongOppose": 2,
+                  "last": {
+                    "validationId": "doi:10.1177/0956797621989733",
+                    "claimId": "claim_ego_refutation",
+                    "kind": "replication",
+                    "method": "36-site-preregistered-paradigmatic-test",
+                    "outcome": "oppose",
+                    "confidence": 0.96,
+                    "reproducible": true,
+                    "strong": true,
+                    "strongMethod": true,
+                    "independenceGroup": "Vohs2021-multisite",
+                    "provenanceComplete": true,
+                    "provenance": {
+                      "doi": "10.1177/0956797621989733",
+                      "locator": "doi:10.1177/0956797621989733"
+                    },
+                    "artifact": {
+                      "locator": "36-sites-N3531"
+                    }
+                  }
+                },
+                "decision": {
+                  "status": "ready",
+                  "direction": "oppose",
+                  "reasons": [],
+                  "counterRatio": 0,
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 2.84,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0,
+                  "opposeMass": 2.84,
+                  "balanceRatio": 0,
+                  "dominantStance": "oppose"
+                }
+              },
+              "after": {
+                "id": "claim_ego_refutation",
+                "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                "kind": "empirical-claim",
+                "status": "ready",
+                "supportMass": 0,
+                "opposeMass": 2.84,
+                "neutralMass": 0,
+                "uncertainty": 0.2604,
+                "evidenceCount": 1,
+                "independentSourceCount": 3,
+                "sourceGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR",
+                  "Vohs2021-multisite"
+                ],
+                "supportGroups": [],
+                "opposeGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR",
+                  "Vohs2021-multisite"
+                ],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 2,
+                  "supportive": 0,
+                  "opposing": 2,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 2,
+                  "strongSupport": 0,
+                  "strongOppose": 2,
+                  "last": {
+                    "validationId": "doi:10.1177/0956797621989733",
+                    "claimId": "claim_ego_refutation",
+                    "kind": "replication",
+                    "method": "36-site-preregistered-paradigmatic-test",
+                    "outcome": "oppose",
+                    "confidence": 0.96,
+                    "reproducible": true,
+                    "strong": true,
+                    "strongMethod": true,
+                    "independenceGroup": "Vohs2021-multisite",
+                    "provenanceComplete": true,
+                    "provenance": {
+                      "doi": "10.1177/0956797621989733",
+                      "locator": "doi:10.1177/0956797621989733"
+                    },
+                    "artifact": {
+                      "locator": "36-sites-N3531"
+                    }
+                  }
+                },
+                "decision": {
+                  "status": "ready",
+                  "direction": "oppose",
+                  "reasons": [],
+                  "counterRatio": 0,
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 2.84,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0,
+                  "opposeMass": 2.84,
+                  "balanceRatio": 0,
+                  "dominantStance": "oppose"
+                }
+              }
+            },
+            {
+              "source": "RESEARCH_CONCLUSION_GATE",
+              "path": "research.conclusionStatus",
+              "op": "set",
+              "before": "blocked",
+              "after": "ready"
+            },
+            {
+              "source": "RESEARCH_CONCLUSION_GATE",
+              "path": "research.conclusionDirection",
+              "op": "set",
+              "before": "undetermined",
+              "after": "oppose"
+            },
+            {
+              "source": "RESEARCH_CONCLUSION_GATE",
+              "path": "workflow.nextAction",
+              "op": "set",
+              "before": "evaluate-conclusion-gates",
+              "after": "report-refutation"
+            }
+          ],
+          "trace": {
+            "research.claims.claim_ego_refutation": {
+              "path": "research.claims.claim_ego_refutation",
+              "base": {
+                "id": "claim_ego_refutation",
+                "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                "kind": "empirical-claim",
+                "status": "testing",
+                "supportMass": 0,
+                "opposeMass": 2.84,
+                "neutralMass": 0,
+                "uncertainty": 0.2604,
+                "evidenceCount": 1,
+                "independentSourceCount": 3,
+                "sourceGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR",
+                  "Vohs2021-multisite"
+                ],
+                "supportGroups": [],
+                "opposeGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR",
+                  "Vohs2021-multisite"
+                ],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 2,
+                  "supportive": 0,
+                  "opposing": 2,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 2,
+                  "strongSupport": 0,
+                  "strongOppose": 2,
+                  "last": {
+                    "validationId": "doi:10.1177/0956797621989733",
+                    "claimId": "claim_ego_refutation",
+                    "kind": "replication",
+                    "method": "36-site-preregistered-paradigmatic-test",
+                    "outcome": "oppose",
+                    "confidence": 0.96,
+                    "reproducible": true,
+                    "strong": true,
+                    "strongMethod": true,
+                    "independenceGroup": "Vohs2021-multisite",
+                    "provenanceComplete": true,
+                    "provenance": {
+                      "doi": "10.1177/0956797621989733",
+                      "locator": "doi:10.1177/0956797621989733"
+                    },
+                    "artifact": {
+                      "locator": "36-sites-N3531"
+                    }
+                  }
+                },
+                "decision": {
+                  "status": "ready",
+                  "direction": "oppose",
+                  "reasons": [],
+                  "counterRatio": 0,
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 2.84,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0,
+                  "opposeMass": 2.84,
+                  "balanceRatio": 0,
+                  "dominantStance": "oppose"
+                }
+              },
+              "final": {
+                "id": "claim_ego_refutation",
+                "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                "kind": "empirical-claim",
+                "status": "ready",
+                "supportMass": 0,
+                "opposeMass": 2.84,
+                "neutralMass": 0,
+                "uncertainty": 0.2604,
+                "evidenceCount": 1,
+                "independentSourceCount": 3,
+                "sourceGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR",
+                  "Vohs2021-multisite"
+                ],
+                "supportGroups": [],
+                "opposeGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR",
+                  "Vohs2021-multisite"
+                ],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 2,
+                  "supportive": 0,
+                  "opposing": 2,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 2,
+                  "strongSupport": 0,
+                  "strongOppose": 2,
+                  "last": {
+                    "validationId": "doi:10.1177/0956797621989733",
+                    "claimId": "claim_ego_refutation",
+                    "kind": "replication",
+                    "method": "36-site-preregistered-paradigmatic-test",
+                    "outcome": "oppose",
+                    "confidence": 0.96,
+                    "reproducible": true,
+                    "strong": true,
+                    "strongMethod": true,
+                    "independenceGroup": "Vohs2021-multisite",
+                    "provenanceComplete": true,
+                    "provenance": {
+                      "doi": "10.1177/0956797621989733",
+                      "locator": "doi:10.1177/0956797621989733"
+                    },
+                    "artifact": {
+                      "locator": "36-sites-N3531"
+                    }
+                  }
+                },
+                "decision": {
+                  "status": "ready",
+                  "direction": "oppose",
+                  "reasons": [],
+                  "counterRatio": 0,
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 2.84,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0,
+                  "opposeMass": 2.84,
+                  "balanceRatio": 0,
+                  "dominantStance": "oppose"
+                }
+              },
+              "steps": [
+                {
+                  "rule": "RESEARCH_CONCLUSION_GATE",
+                  "priority": 1200,
+                  "op": "decision-gate",
+                  "before": {
+                    "id": "claim_ego_refutation",
+                    "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                    "kind": "empirical-claim",
+                    "status": "testing",
+                    "supportMass": 0,
+                    "opposeMass": 2.84,
+                    "neutralMass": 0,
+                    "uncertainty": 0.2604,
+                    "evidenceCount": 1,
+                    "independentSourceCount": 3,
+                    "sourceGroups": [
+                      "Carter2015-meta",
+                      "Hagger2016-RRR",
+                      "Vohs2021-multisite"
+                    ],
+                    "supportGroups": [],
+                    "opposeGroups": [
+                      "Carter2015-meta",
+                      "Hagger2016-RRR",
+                      "Vohs2021-multisite"
+                    ],
+                    "provenanceComplete": true,
+                    "validation": {
+                      "attempts": 2,
+                      "supportive": 0,
+                      "opposing": 2,
+                      "inconclusive": 0,
+                      "reproducibleSupport": 0,
+                      "reproducibleOppose": 2,
+                      "strongSupport": 0,
+                      "strongOppose": 2,
+                      "last": {
+                        "validationId": "doi:10.1177/0956797621989733",
+                        "claimId": "claim_ego_refutation",
+                        "kind": "replication",
+                        "method": "36-site-preregistered-paradigmatic-test",
+                        "outcome": "oppose",
+                        "confidence": 0.96,
+                        "reproducible": true,
+                        "strong": true,
+                        "strongMethod": true,
+                        "independenceGroup": "Vohs2021-multisite",
+                        "provenanceComplete": true,
+                        "provenance": {
+                          "doi": "10.1177/0956797621989733",
+                          "locator": "doi:10.1177/0956797621989733"
+                        },
+                        "artifact": {
+                          "locator": "36-sites-N3531"
+                        }
+                      }
+                    },
+                    "decision": {
+                      "status": "ready",
+                      "direction": "oppose",
+                      "reasons": [],
+                      "counterRatio": 0,
+                      "conflict": {
+                        "present": false,
+                        "supportMass": 0,
+                        "opposeMass": 2.84,
+                        "balanceRatio": 0,
+                        "dominantStance": "oppose"
+                      }
+                    },
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 0,
+                      "opposeMass": 2.84,
+                      "balanceRatio": 0,
+                      "dominantStance": "oppose"
+                    }
+                  },
+                  "after": {
+                    "id": "claim_ego_refutation",
+                    "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                    "kind": "empirical-claim",
+                    "status": "ready",
+                    "supportMass": 0,
+                    "opposeMass": 2.84,
+                    "neutralMass": 0,
+                    "uncertainty": 0.2604,
+                    "evidenceCount": 1,
+                    "independentSourceCount": 3,
+                    "sourceGroups": [
+                      "Carter2015-meta",
+                      "Hagger2016-RRR",
+                      "Vohs2021-multisite"
+                    ],
+                    "supportGroups": [],
+                    "opposeGroups": [
+                      "Carter2015-meta",
+                      "Hagger2016-RRR",
+                      "Vohs2021-multisite"
+                    ],
+                    "provenanceComplete": true,
+                    "validation": {
+                      "attempts": 2,
+                      "supportive": 0,
+                      "opposing": 2,
+                      "inconclusive": 0,
+                      "reproducibleSupport": 0,
+                      "reproducibleOppose": 2,
+                      "strongSupport": 0,
+                      "strongOppose": 2,
+                      "last": {
+                        "validationId": "doi:10.1177/0956797621989733",
+                        "claimId": "claim_ego_refutation",
+                        "kind": "replication",
+                        "method": "36-site-preregistered-paradigmatic-test",
+                        "outcome": "oppose",
+                        "confidence": 0.96,
+                        "reproducible": true,
+                        "strong": true,
+                        "strongMethod": true,
+                        "independenceGroup": "Vohs2021-multisite",
+                        "provenanceComplete": true,
+                        "provenance": {
+                          "doi": "10.1177/0956797621989733",
+                          "locator": "doi:10.1177/0956797621989733"
+                        },
+                        "artifact": {
+                          "locator": "36-sites-N3531"
+                        }
+                      }
+                    },
+                    "decision": {
+                      "status": "ready",
+                      "direction": "oppose",
+                      "reasons": [],
+                      "counterRatio": 0,
+                      "conflict": {
+                        "present": false,
+                        "supportMass": 0,
+                        "opposeMass": 2.84,
+                        "balanceRatio": 0,
+                        "dominantStance": "oppose"
+                      }
+                    },
+                    "conflict": {
+                      "present": false,
+                      "supportMass": 0,
+                      "opposeMass": 2.84,
+                      "balanceRatio": 0,
+                      "dominantStance": "oppose"
+                    }
+                  }
+                }
+              ]
+            },
+            "research.conclusionStatus": {
+              "path": "research.conclusionStatus",
+              "base": "blocked",
+              "final": "ready",
+              "steps": [
+                {
+                  "rule": "RESEARCH_CONCLUSION_GATE",
+                  "priority": 1200,
+                  "op": "set",
+                  "before": "blocked",
+                  "after": "ready"
+                }
+              ]
+            },
+            "research.conclusionDirection": {
+              "path": "research.conclusionDirection",
+              "base": "undetermined",
+              "final": "oppose",
+              "steps": [
+                {
+                  "rule": "RESEARCH_CONCLUSION_GATE",
+                  "priority": 1200,
+                  "op": "set",
+                  "before": "undetermined",
+                  "after": "oppose"
+                }
+              ]
+            },
+            "workflow.nextAction": {
+              "path": "workflow.nextAction",
+              "base": "evaluate-conclusion-gates",
+              "final": "report-refutation",
+              "steps": [
+                {
+                  "rule": "RESEARCH_CONCLUSION_GATE",
+                  "priority": 1200,
+                  "op": "set",
+                  "before": "evaluate-conclusion-gates",
+                  "after": "report-refutation"
+                }
+              ]
+            }
+          },
+          "diagnostics": [],
+          "artifacts": [
+            {
+              "type": "research-decision",
+              "claimId": "claim_ego_refutation",
+              "decision": {
+                "status": "ready",
+                "direction": "oppose",
+                "reasons": [],
+                "counterRatio": 0,
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0,
+                  "opposeMass": 2.84,
+                  "balanceRatio": 0,
+                  "dominantStance": "oppose"
+                }
+              },
+              "claim": {
+                "id": "claim_ego_refutation",
+                "text": "Prior exertion of self-control reliably causes a practically meaningful impairment on a subsequent self-control task.",
+                "kind": "empirical-claim",
+                "status": "ready",
+                "supportMass": 0,
+                "opposeMass": 2.84,
+                "neutralMass": 0,
+                "uncertainty": 0.2604,
+                "evidenceCount": 1,
+                "independentSourceCount": 3,
+                "sourceGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR",
+                  "Vohs2021-multisite"
+                ],
+                "supportGroups": [],
+                "opposeGroups": [
+                  "Carter2015-meta",
+                  "Hagger2016-RRR",
+                  "Vohs2021-multisite"
+                ],
+                "provenanceComplete": true,
+                "validation": {
+                  "attempts": 2,
+                  "supportive": 0,
+                  "opposing": 2,
+                  "inconclusive": 0,
+                  "reproducibleSupport": 0,
+                  "reproducibleOppose": 2,
+                  "strongSupport": 0,
+                  "strongOppose": 2,
+                  "last": {
+                    "validationId": "doi:10.1177/0956797621989733",
+                    "claimId": "claim_ego_refutation",
+                    "kind": "replication",
+                    "method": "36-site-preregistered-paradigmatic-test",
+                    "outcome": "oppose",
+                    "confidence": 0.96,
+                    "reproducible": true,
+                    "strong": true,
+                    "strongMethod": true,
+                    "independenceGroup": "Vohs2021-multisite",
+                    "provenanceComplete": true,
+                    "provenance": {
+                      "doi": "10.1177/0956797621989733",
+                      "locator": "doi:10.1177/0956797621989733"
+                    },
+                    "artifact": {
+                      "locator": "36-sites-N3531"
+                    }
+                  }
+                },
+                "decision": {
+                  "status": "ready",
+                  "direction": "oppose",
+                  "reasons": [],
+                  "counterRatio": 0,
+                  "conflict": {
+                    "present": false,
+                    "supportMass": 0,
+                    "opposeMass": 2.84,
+                    "balanceRatio": 0,
+                    "dominantStance": "oppose"
+                  }
+                },
+                "conflict": {
+                  "present": false,
+                  "supportMass": 0,
+                  "opposeMass": 2.84,
+                  "balanceRatio": 0,
+                  "dominantStance": "oppose"
+                }
+              }
+            }
+          ],
+          "evaluation": {
+            "schema": "ppl.profile-evaluation/0.2",
+            "metrics": [
+              {
+                "id": "conclusion_status",
+                "label": "结论状态",
+                "type": "path",
+                "path": "research.conclusionStatus",
+                "value": "ready"
+              },
+              {
+                "id": "evidence_count",
+                "label": "证据账本条目",
+                "type": "path",
+                "path": "research.evidenceLedger.length",
+                "value": 1
+              },
+              {
+                "id": "validation_count",
+                "label": "验证条目",
+                "type": "path",
+                "path": "research.validationLedger.length",
+                "value": 2
+              }
+            ]
+          }
+        },
+        "transaction": {
+          "endReason": "completed",
+          "status": "applied",
+          "committed": true
+        }
+      }
+    }
+  ]
+}
