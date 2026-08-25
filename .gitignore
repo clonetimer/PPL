@@ -24,3 +24,5 @@ Thumbs.db
 # Temp / archives
 *.tmp
 *.bak
+*.zip
+*.tgz

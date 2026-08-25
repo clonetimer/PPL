@@ -1,0 +1,28 @@
+{
+  "schema": "ppl.application-mainline-state/0.1",
+  "asOf": "2026-08-25",
+  "s1_12": "closed-pass",
+  "stablePromotion": "PASS",
+  "foundation": {
+    "core": "0.3.0 Frozen",
+    "runtime": "0.1.0 Frozen",
+    "profiles": "0.2.0 Stable",
+    "appObservatory": "0.5.0 Stable",
+    "provider": "0.1.0 Stable",
+    "judgeTransport": "0.1.0 Stable"
+  },
+  "applicationProducts": {
+    "host": "0.1.12 Stable",
+    "lifeBinding": "0.1.1 Stable"
+  },
+  "releaseQualification": {
+    "realRun": "S1.12 Q5",
+    "tutor": "18/18",
+    "research": "20/20",
+    "life": "18/18",
+    "researchTools": "14/14 exactly-once",
+    "semanticFindings": 0,
+    "observatory": "PASS",
+    "manualUserVisibleReview": "PASS"
+  }
+}

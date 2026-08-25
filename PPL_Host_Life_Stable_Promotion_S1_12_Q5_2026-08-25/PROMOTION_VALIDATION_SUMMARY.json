@@ -1,0 +1,64 @@
+{
+  "schema": "ppl.s1.12-q5-stable-promotion-validation/0.1",
+  "date": "2026-08-25",
+  "decision": "PASS",
+  "promoted": {
+    "host": "0.1.12 Stable",
+    "lifeBinding": "0.1.1 Stable"
+  },
+  "realQ5": {
+    "source": "evidence/PPL_SUSTAINED_SOAK_S1_12_Q5_RESULTS.zip",
+    "sha256": "9baa4833c1846681edfe1ca958f2b82f7fb64f0d5df71c748ee4723a4c66e582",
+    "candidateAttestation": "PASS",
+    "judgeQualification": "PASS 10/10",
+    "executionReadiness": "PASS",
+    "modelResidency": "PASS Agent=8192 Judge=8192",
+    "tutor": "18/18",
+    "research": "20/20",
+    "life": "18/18",
+    "researchTools": "14/14 exactly-once",
+    "semanticFindings": 0,
+    "observatory": "PASS",
+    "restartRecoverableState": "PASS",
+    "manualUserVisibleReview": "PASS 56/56, 0 findings"
+  },
+  "promotionValidation": {
+    "codeIdentity": "PASS",
+    "hostTests": "140/140 PASS",
+    "hostCheck": "PASS",
+    "lifeTests": "5/5 PASS against Host 0.1.12",
+    "stableStackFreshOfflineInstall": "PASS Host 0.1.12 + Life 0.1.1 + Provider 0.1.0",
+    "hostSourceZipRetest": "140/140 PASS",
+    "lifeSourceZipRetest": "5/5 PASS"
+  },
+  "artifacts": {
+    "dist/ppl-llm-host-adapter-0.1.12.tgz": {
+      "bytes": 122164,
+      "sha256": "96a365875543bec22edb2b12807c02058efe28502c701422e0d13c80b05227f4"
+    },
+    "dist/ppl-host-binding-life-0.1.1.tgz": {
+      "bytes": 10166,
+      "sha256": "afae0ab9e94eaf39fc575245172e65d3b11c5af93868c782d349c5dd07eec2f2"
+    },
+    "source/PPL_LLM_Host_Adapter_0.1.12_Stable_Source.zip": {
+      "bytes": 184893,
+      "sha256": "64cd10ba17b409011586724d0582256d122274e589fc7b27e3a36041232770d3"
+    },
+    "source/PPL_Life_Binding_0.1.1_Stable_Source.zip": {
+      "bytes": 15871,
+      "sha256": "786de1357140a71db050cea246f3d67f8ef11469c283f28ddb93ae2b7d272369"
+    },
+    "review/PPL_S1_12_Q5_FINAL_STABLE_PROMOTION_REVIEW_2026-08-25.md": {
+      "bytes": 3507,
+      "sha256": "2be3d98823a409c90babc6c3f4ef4a758510bdf0be7f405e3632b07faa9b4936"
+    },
+    "validation/PROMOTION_CODE_IDENTITY.json": {
+      "bytes": 4468,
+      "sha256": "c13e8e28d6c547c7f86472931d348dc9045375ea38971c2abfa760797f37098d"
+    },
+    "validation/MANUAL_USER_VISIBLE_REVIEW.json": {
+      "bytes": 17097,
+      "sha256": "8a8b4b59049f93cc8cd32c69e07b3e62eee81d755751be083a84980a9bfebba5"
+    }
+  }
+}

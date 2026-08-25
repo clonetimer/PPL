@@ -1,0 +1,109 @@
+{
+  "schema": "ppl.stable-promotion-code-identity/0.2",
+  "scope": "runtime-bearing source/profile/bin files; generated example outputs and release metadata excluded",
+  "passed": true,
+  "products": {
+    "host": {
+      "passed": true,
+      "files": 13,
+      "rows": [
+        {
+          "path": "src/index.mjs",
+          "rcSha256": "753b643618d6dceaf891372f3e8cfb32f635f1135546b1f122cf239969e4c854",
+          "stableSha256": "753b643618d6dceaf891372f3e8cfb32f635f1135546b1f122cf239969e4c854",
+          "same": true
+        },
+        {
+          "path": "src/main.mjs",
+          "rcSha256": "12f32a78568e0bfa621d42cf14a29120a04a3ebfe7f667d8eed9dd0fb26418b2",
+          "stableSha256": "12f32a78568e0bfa621d42cf14a29120a04a3ebfe7f667d8eed9dd0fb26418b2",
+          "same": true
+        },
+        {
+          "path": "src/orchestrator.mjs",
+          "rcSha256": "698fd9ea564db2e24c8bd4a87819270cf2c3767a658915d3dcde650d8a86c51f",
+          "stableSha256": "698fd9ea564db2e24c8bd4a87819270cf2c3767a658915d3dcde650d8a86c51f",
+          "same": true
+        },
+        {
+          "path": "src/providers/openai-responses.mjs",
+          "rcSha256": "335f5d8a14904c2a7dc4760cecff66921956d3f1827c4e989119beb28c908d39",
+          "stableSha256": "335f5d8a14904c2a7dc4760cecff66921956d3f1827c4e989119beb28c908d39",
+          "same": true
+        },
+        {
+          "path": "src/recoverable-lifecycle.mjs",
+          "rcSha256": "a24996fa0af5108967fa58084a96d8edde9f3ff36aad7c334910461841497677",
+          "stableSha256": "a24996fa0af5108967fa58084a96d8edde9f3ff36aad7c334910461841497677",
+          "same": true
+        },
+        {
+          "path": "src/tools.mjs",
+          "rcSha256": "bd2a3df452a88623ee01f43ad39475786ca63900fa332763759e59dd5a31d935",
+          "stableSha256": "bd2a3df452a88623ee01f43ad39475786ca63900fa332763759e59dd5a31d935",
+          "same": true
+        },
+        {
+          "path": "src/transport.mjs",
+          "rcSha256": "6abae378d32c373219cba8a00b4b920d9ccfd935437cdbb212c4d6d28490876c",
+          "stableSha256": "6abae378d32c373219cba8a00b4b920d9ccfd935437cdbb212c4d6d28490876c",
+          "same": true
+        },
+        {
+          "path": "profiles/research.profile.json",
+          "rcSha256": "fc4f4a21d3cf58e49c2fd6aa959faf8a18bdf838e03fecf6bc9dc4943e235257",
+          "stableSha256": "fc4f4a21d3cf58e49c2fd6aa959faf8a18bdf838e03fecf6bc9dc4943e235257",
+          "same": true
+        },
+        {
+          "path": "profiles/tutor.profile.json",
+          "rcSha256": "05769f9849bba9c4a9af1ef8376599e6218b55ce923243febc552353312225ea",
+          "stableSha256": "05769f9849bba9c4a9af1ef8376599e6218b55ce923243febc552353312225ea",
+          "same": true
+        },
+        {
+          "path": "bin/live-openai-smoke.mjs",
+          "rcSha256": "203ff6fdfe8e4a6842aea876a12f6cd9eb56e413c8f81e0577be6ce71e93da6f",
+          "stableSha256": "203ff6fdfe8e4a6842aea876a12f6cd9eb56e413c8f81e0577be6ce71e93da6f",
+          "same": true
+        },
+        {
+          "path": "bin/run-live-gpt-demo.mjs",
+          "rcSha256": "df71d915ea6c8d58960356f5c873746353f747b91f32f6556bf41810fabf210b",
+          "stableSha256": "df71d915ea6c8d58960356f5c873746353f747b91f32f6556bf41810fabf210b",
+          "same": true
+        },
+        {
+          "path": "bin/run-rc2-live-loop.mjs",
+          "rcSha256": "f098d105dd0549ea41a610bc69ef86237da252f35f4385540c41356b6ce14858",
+          "stableSha256": "f098d105dd0549ea41a610bc69ef86237da252f35f4385540c41356b6ce14858",
+          "same": true
+        },
+        {
+          "path": "bin/run-stable-candidate-live.mjs",
+          "rcSha256": "a181ff7a540effb7bdd5a2b1cc6182e67aa4a47f58cea5d5564aa62e6517adfb",
+          "stableSha256": "a181ff7a540effb7bdd5a2b1cc6182e67aa4a47f58cea5d5564aa62e6517adfb",
+          "same": true
+        }
+      ]
+    },
+    "life": {
+      "passed": true,
+      "files": 2,
+      "rows": [
+        {
+          "path": "src/index.mjs",
+          "rcSha256": "71c03f02d8d7ec643a9d4c68ce03a96a071c3db517c47813616eff30d037818d",
+          "stableSha256": "71c03f02d8d7ec643a9d4c68ce03a96a071c3db517c47813616eff30d037818d",
+          "same": true
+        },
+        {
+          "path": "profiles/life.profile.json",
+          "rcSha256": "7374297da602f836b6f8f558786e88d6ba8a88e3e24b1b3aade6ea2c7cc1c54b",
+          "stableSha256": "7374297da602f836b6f8f558786e88d6ba8a88e3e24b1b3aade6ea2c7cc1c54b",
+          "same": true
+        }
+      ]
+    }
+  }
+}

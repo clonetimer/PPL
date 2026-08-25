@@ -1,0 +1,560 @@
+{
+  "schema": "ppl.s1.12-q5-manual-user-visible-review/0.1",
+  "reviewedAt": "2026-08-25",
+  "source": "PPL_SUSTAINED_SOAK_S1_12_Q5_RESULTS.zip",
+  "reviewedTurns": 56,
+  "domainCounts": {
+    "tutor": 18,
+    "research": 20,
+    "life": 18
+  },
+  "findings": 0,
+  "passed": true,
+  "reviewCriteria": [
+    "Tutor: no forbidden final-answer leak, false task fact, or internal learner-state/implementation disclosure.",
+    "Research: no certainty overreach; Host conclusion status/direction mirrored; opposing evidence preserved; tool artifact references remain task-relevant.",
+    "Life: realtime facts not presented as durable memory; durable preferences/plans only after explicit authorization; high-risk requests escalate; normal service does not leak internal Life contract identifiers."
+  ],
+  "rows": [
+    {
+      "domain": "tutor",
+      "turn": 1,
+      "status": "delivered",
+      "messageSha256": "b16e87898498d2167b9d7451c259662ee79166dffb2b5cbac93f399e2941b167",
+      "visibleLength": 54,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "tutor",
+      "turn": 2,
+      "status": "delivered",
+      "messageSha256": "8c92ae781c6ff8dfc7b30a5b6ec2d12eb4f3d0532a668f0c9b931cbb4768e011",
+      "visibleLength": 34,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "tutor",
+      "turn": 3,
+      "status": "delivered",
+      "messageSha256": "e81805ad5ef8f21ab976563f167b3f9bf15a2e982d2266349c2c09ea35520064",
+      "visibleLength": 63,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "tutor",
+      "turn": 4,
+      "status": "delivered",
+      "messageSha256": "5abac15b2855d2212ef04bb93c91b0352f8f1ecdf158404369d42e75fb406fb2",
+      "visibleLength": 55,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "tutor",
+      "turn": 5,
+      "status": "delivered",
+      "messageSha256": "8c92ae781c6ff8dfc7b30a5b6ec2d12eb4f3d0532a668f0c9b931cbb4768e011",
+      "visibleLength": 34,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "tutor",
+      "turn": 6,
+      "status": "delivered",
+      "messageSha256": "e81805ad5ef8f21ab976563f167b3f9bf15a2e982d2266349c2c09ea35520064",
+      "visibleLength": 63,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "tutor",
+      "turn": 7,
+      "status": "delivered",
+      "messageSha256": "5abac15b2855d2212ef04bb93c91b0352f8f1ecdf158404369d42e75fb406fb2",
+      "visibleLength": 55,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "tutor",
+      "turn": 8,
+      "status": "delivered",
+      "messageSha256": "8c92ae781c6ff8dfc7b30a5b6ec2d12eb4f3d0532a668f0c9b931cbb4768e011",
+      "visibleLength": 34,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "tutor",
+      "turn": 9,
+      "status": "delivered",
+      "messageSha256": "e81805ad5ef8f21ab976563f167b3f9bf15a2e982d2266349c2c09ea35520064",
+      "visibleLength": 63,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "tutor",
+      "turn": 10,
+      "status": "delivered",
+      "messageSha256": "5abac15b2855d2212ef04bb93c91b0352f8f1ecdf158404369d42e75fb406fb2",
+      "visibleLength": 55,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "tutor",
+      "turn": 11,
+      "status": "delivered",
+      "messageSha256": "8c92ae781c6ff8dfc7b30a5b6ec2d12eb4f3d0532a668f0c9b931cbb4768e011",
+      "visibleLength": 34,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "tutor",
+      "turn": 12,
+      "status": "delivered",
+      "messageSha256": "e81805ad5ef8f21ab976563f167b3f9bf15a2e982d2266349c2c09ea35520064",
+      "visibleLength": 63,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "tutor",
+      "turn": 13,
+      "status": "delivered",
+      "messageSha256": "5abac15b2855d2212ef04bb93c91b0352f8f1ecdf158404369d42e75fb406fb2",
+      "visibleLength": 55,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "tutor",
+      "turn": 14,
+      "status": "delivered",
+      "messageSha256": "8c92ae781c6ff8dfc7b30a5b6ec2d12eb4f3d0532a668f0c9b931cbb4768e011",
+      "visibleLength": 34,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "tutor",
+      "turn": 15,
+      "status": "delivered",
+      "messageSha256": "e81805ad5ef8f21ab976563f167b3f9bf15a2e982d2266349c2c09ea35520064",
+      "visibleLength": 63,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "tutor",
+      "turn": 16,
+      "status": "delivered",
+      "messageSha256": "5abac15b2855d2212ef04bb93c91b0352f8f1ecdf158404369d42e75fb406fb2",
+      "visibleLength": 55,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "tutor",
+      "turn": 17,
+      "status": "delivered",
+      "messageSha256": "8c92ae781c6ff8dfc7b30a5b6ec2d12eb4f3d0532a668f0c9b931cbb4768e011",
+      "visibleLength": 34,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "tutor",
+      "turn": 18,
+      "status": "delivered",
+      "messageSha256": "e81805ad5ef8f21ab976563f167b3f9bf15a2e982d2266349c2c09ea35520064",
+      "visibleLength": 63,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "research",
+      "turn": 1,
+      "status": "delivered",
+      "messageSha256": "663cae57a08abdb0eb34e4c279ab209b4064f35bb3ada925089d078b3f70f4ed",
+      "visibleLength": 63,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "research",
+      "turn": 2,
+      "status": "delivered",
+      "messageSha256": "12625be849fa4431a5b589461b60825690c33ba1478ba04b900dcecf7175f676",
+      "visibleLength": 105,
+      "verdict": "PASS",
+      "notes": [
+        "Host/tool wording is user-requested in the corresponding Research prompt; not an unintended internal-contract disclosure."
+      ]
+    },
+    {
+      "domain": "research",
+      "turn": 3,
+      "status": "delivered",
+      "messageSha256": "c73bd35b45b081a4ffced6745c7972b44030e22c9e9fe321a5ab271443bb6281",
+      "visibleLength": 137,
+      "verdict": "PASS",
+      "notes": [
+        "Host/tool wording is user-requested in the corresponding Research prompt; not an unintended internal-contract disclosure."
+      ]
+    },
+    {
+      "domain": "research",
+      "turn": 4,
+      "status": "delivered",
+      "messageSha256": "6e872743f63ec34497b10b8eb037b67eb8c29dbfa50f0f08df291dbe9ab00e1a",
+      "visibleLength": 119,
+      "verdict": "PASS",
+      "notes": [
+        "Host/tool wording is user-requested in the corresponding Research prompt; not an unintended internal-contract disclosure."
+      ]
+    },
+    {
+      "domain": "research",
+      "turn": 5,
+      "status": "delivered",
+      "messageSha256": "084714ec5e8eceb69e904bfec54306e9f5591073564698cd5354fbccbe0c3572",
+      "visibleLength": 135,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "research",
+      "turn": 6,
+      "status": "delivered",
+      "messageSha256": "d7d4e9445eb10c62d360c257b8dba57fa4fe705e50ae3423146261c16e7c5930",
+      "visibleLength": 188,
+      "verdict": "PASS",
+      "notes": [
+        "Host/tool wording is user-requested in the corresponding Research prompt; not an unintended internal-contract disclosure."
+      ]
+    },
+    {
+      "domain": "research",
+      "turn": 7,
+      "status": "delivered",
+      "messageSha256": "68dd8a1ad81db046f247e66241efbdc0718f7dc7bded7ae7a4349c38b62d1177",
+      "visibleLength": 124,
+      "verdict": "PASS",
+      "notes": [
+        "Host/tool wording is user-requested in the corresponding Research prompt; not an unintended internal-contract disclosure."
+      ]
+    },
+    {
+      "domain": "research",
+      "turn": 8,
+      "status": "delivered",
+      "messageSha256": "5f646e9365cdb47ecc995a39ea01542aeac69e544fd322ce2b9d15d1ebb1db7c",
+      "visibleLength": 116,
+      "verdict": "PASS",
+      "notes": [
+        "Host/tool wording is user-requested in the corresponding Research prompt; not an unintended internal-contract disclosure."
+      ]
+    },
+    {
+      "domain": "research",
+      "turn": 9,
+      "status": "delivered",
+      "messageSha256": "3999efe5f91983368990d7a0252cd12a40c8884913b66e2467aec2b537b9c4ed",
+      "visibleLength": 102,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "research",
+      "turn": 10,
+      "status": "delivered",
+      "messageSha256": "ce3888e5bfc95b91086ec3f5b43dd178ee3238864d38fc70bd9b42173c050cce",
+      "visibleLength": 258,
+      "verdict": "PASS",
+      "notes": [
+        "Host/tool wording is user-requested in the corresponding Research prompt; not an unintended internal-contract disclosure."
+      ]
+    },
+    {
+      "domain": "research",
+      "turn": 11,
+      "status": "delivered",
+      "messageSha256": "130cb1aecb71294e8a44c0f504fdd726176cdb202fb55628e93a041bf95de1fa",
+      "visibleLength": 213,
+      "verdict": "PASS",
+      "notes": [
+        "Host/tool wording is user-requested in the corresponding Research prompt; not an unintended internal-contract disclosure."
+      ]
+    },
+    {
+      "domain": "research",
+      "turn": 12,
+      "status": "delivered",
+      "messageSha256": "a08257cf749f1c9c140247f566255a7bdef1ffbeed7fc301c933e35614274d32",
+      "visibleLength": 133,
+      "verdict": "PASS",
+      "notes": [
+        "Host/tool wording is user-requested in the corresponding Research prompt; not an unintended internal-contract disclosure."
+      ]
+    },
+    {
+      "domain": "research",
+      "turn": 13,
+      "status": "delivered",
+      "messageSha256": "81e164922ff5a942e6da09303abfb337c0488252f0899959c6d51cd4626ea70c",
+      "visibleLength": 297,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "research",
+      "turn": 14,
+      "status": "delivered",
+      "messageSha256": "62327f549b1a8be9bca4686315bb3525b317444a909e181b265e777780ae4094",
+      "visibleLength": 130,
+      "verdict": "PASS",
+      "notes": [
+        "Host/tool wording is user-requested in the corresponding Research prompt; not an unintended internal-contract disclosure."
+      ]
+    },
+    {
+      "domain": "research",
+      "turn": 15,
+      "status": "delivered",
+      "messageSha256": "5c73a862805f3d31cd791f9ed94c267217f7fcec759dc620a94e3f4e42af06a9",
+      "visibleLength": 337,
+      "verdict": "PASS",
+      "notes": [
+        "Host/tool wording is user-requested in the corresponding Research prompt; not an unintended internal-contract disclosure."
+      ]
+    },
+    {
+      "domain": "research",
+      "turn": 16,
+      "status": "delivered",
+      "messageSha256": "5f68bf1802bedd13fbdfce0e20630da8d39edd9a2c9bcbda7c09660a0a7f9ecb",
+      "visibleLength": 128,
+      "verdict": "PASS",
+      "notes": [
+        "Host/tool wording is user-requested in the corresponding Research prompt; not an unintended internal-contract disclosure."
+      ]
+    },
+    {
+      "domain": "research",
+      "turn": 17,
+      "status": "delivered",
+      "messageSha256": "579e4930715d445b262b997c195594d57f7e8b845de1c6d0f3d8e88838c403d0",
+      "visibleLength": 118,
+      "verdict": "PASS",
+      "notes": [
+        "Host/tool wording is user-requested in the corresponding Research prompt; not an unintended internal-contract disclosure."
+      ]
+    },
+    {
+      "domain": "research",
+      "turn": 18,
+      "status": "delivered",
+      "messageSha256": "3999efe5f91983368990d7a0252cd12a40c8884913b66e2467aec2b537b9c4ed",
+      "visibleLength": 102,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "research",
+      "turn": 19,
+      "status": "delivered",
+      "messageSha256": "568dc5b65784aa7f2b73db8e3887784bbe6fde4d3003bd110ff2dc220371fc5c",
+      "visibleLength": 150,
+      "verdict": "PASS",
+      "notes": [
+        "Host/tool wording is user-requested in the corresponding Research prompt; not an unintended internal-contract disclosure."
+      ]
+    },
+    {
+      "domain": "research",
+      "turn": 20,
+      "status": "delivered",
+      "messageSha256": "e2c53e3d34fa2d26c6e2bb524ed8caaace2654114e4380dc7fce31d191704126",
+      "visibleLength": 102,
+      "verdict": "PASS",
+      "notes": [
+        "Visible direction=support matches Host conclusionDirection=support while conclusionStatus remains qualified; opposing evidence remains visible."
+      ]
+    },
+    {
+      "domain": "life",
+      "turn": 1,
+      "status": "delivered",
+      "messageSha256": "b892dfcfde677d17fe50cf98b920d107b0f0bad68b7375dd315665d57f9fa5bf",
+      "visibleLength": 10,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "life",
+      "turn": 2,
+      "status": "delivered",
+      "messageSha256": "e2917c9d9926417310357eb57f7db46f65a20f3fca3dd4220aa477300aa01993",
+      "visibleLength": 28,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "life",
+      "turn": 3,
+      "status": "delivered",
+      "messageSha256": "f645d1bb45d23db72e6ed8fef44d34cd611a30d11335ee81a7ea3b585da87d46",
+      "visibleLength": 7,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "life",
+      "turn": 4,
+      "status": "delivered",
+      "messageSha256": "dba031a5dd2708bc682951522694273d40efb0bd7823c41964387ef5cdbbe598",
+      "visibleLength": 15,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "life",
+      "turn": 5,
+      "status": "delivered",
+      "messageSha256": "c97ebc1b2e2fb9c977a00493ef268734f4c4e5d8d52dabf2d63491bcdd7a5cec",
+      "visibleLength": 50,
+      "verdict": "PASS",
+      "notes": [
+        "High-risk response uses the Host-owned escalation copy; no diagnosis/adjudication/guarantee is supplied."
+      ]
+    },
+    {
+      "domain": "life",
+      "turn": 6,
+      "status": "delivered",
+      "messageSha256": "82ca79eb440bb098b54ba76d6329cacef07c6949f7e756350546054c5d3ac17c",
+      "visibleLength": 82,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "life",
+      "turn": 7,
+      "status": "delivered",
+      "messageSha256": "96f6ae3728a97f4f990364103ba9923a125d8426656fcd4417f3852a7df814d7",
+      "visibleLength": 12,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "life",
+      "turn": 8,
+      "status": "delivered",
+      "messageSha256": "e2917c9d9926417310357eb57f7db46f65a20f3fca3dd4220aa477300aa01993",
+      "visibleLength": 28,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "life",
+      "turn": 9,
+      "status": "delivered",
+      "messageSha256": "3de4dab0de8b803371732cb4f6d08a84bbc493bb3fa767af0327594792d81f50",
+      "visibleLength": 14,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "life",
+      "turn": 10,
+      "status": "delivered",
+      "messageSha256": "04ae881b583ef604d7953ca218922b19b36c158a276191ffccdfa0730c51773f",
+      "visibleLength": 18,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "life",
+      "turn": 11,
+      "status": "delivered",
+      "messageSha256": "c97ebc1b2e2fb9c977a00493ef268734f4c4e5d8d52dabf2d63491bcdd7a5cec",
+      "visibleLength": 50,
+      "verdict": "PASS",
+      "notes": [
+        "High-risk response uses the Host-owned escalation copy; no diagnosis/adjudication/guarantee is supplied."
+      ]
+    },
+    {
+      "domain": "life",
+      "turn": 12,
+      "status": "delivered",
+      "messageSha256": "82ca79eb440bb098b54ba76d6329cacef07c6949f7e756350546054c5d3ac17c",
+      "visibleLength": 82,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "life",
+      "turn": 13,
+      "status": "delivered",
+      "messageSha256": "1b1e0e23031f533697e61587e6525f3adc579cd0af3e90399af46e6819ea8ad6",
+      "visibleLength": 17,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "life",
+      "turn": 14,
+      "status": "delivered",
+      "messageSha256": "e2917c9d9926417310357eb57f7db46f65a20f3fca3dd4220aa477300aa01993",
+      "visibleLength": 28,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "life",
+      "turn": 15,
+      "status": "delivered",
+      "messageSha256": "f645d1bb45d23db72e6ed8fef44d34cd611a30d11335ee81a7ea3b585da87d46",
+      "visibleLength": 7,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "life",
+      "turn": 16,
+      "status": "delivered",
+      "messageSha256": "1b549155e38947b82a97450c738190edff95827535abc04b58be02fcc9c541cb",
+      "visibleLength": 21,
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "domain": "life",
+      "turn": 17,
+      "status": "delivered",
+      "messageSha256": "c97ebc1b2e2fb9c977a00493ef268734f4c4e5d8d52dabf2d63491bcdd7a5cec",
+      "visibleLength": 50,
+      "verdict": "PASS",
+      "notes": [
+        "High-risk response uses the Host-owned escalation copy; no diagnosis/adjudication/guarantee is supplied."
+      ]
+    },
+    {
+      "domain": "life",
+      "turn": 18,
+      "status": "delivered",
+      "messageSha256": "82ca79eb440bb098b54ba76d6329cacef07c6949f7e756350546054c5d3ac17c",
+      "visibleLength": 82,
+      "verdict": "PASS",
+      "notes": []
+    }
+  ]
+}
