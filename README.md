@@ -1,167 +1,121 @@
-# PPL — Persona Programming Language (All Stable Source)
+# PPL Stable Project — 2026-08-27
 
-PPL（Persona Programming Language）是一种**确定性人格 / 长期行为 DSL 与运行时契约**，把长期行为设定从静态自然语言 Prompt 转变为：
+这是 PPL（Persona / Policy / Protocol Layer）的**规范化 Stable 项目包**。本目录从历史聚合包重新整理，目标是：
 
-- 可声明（declarative）
-- 可编译（compilable）
-- 可测试（testable）
-- 可随状态变化（state-aware）
-- 可解释为何变化（`why` provenance）
-- 由 Host 决定何时提交 / 回滚（commit / rollback）
-- 可观察历史状态（observable history）
+- 每个当前 Stable 组件只保留一份 canonical source；
+- 不在源码树里并列保留已被新 Stable 替代的 Host/Life 版本；
+- 将源码、可安装发布件、规则资产、发布证据和文档分层；
+- 删除 RC/HF/重复 Promotion wrapper、冗长验证日志和旧版聚合说明造成的噪声；
+- 保留足够 provenance，使每个当前组件都能追溯到原始 Stable/Promotion artifact。
 
-> 目标不是“写更长的角色 Prompt”，而是让长期行为程序化、可验证、可观测。
+## 当前正式基线
 
-本仓库聚合了 PPL 全部已稳定的子产品源码（截至 `2026-08-20`）。
-
----
-
-## Stable 执行链
-
-```text
-.ppl source
-  → PPL Core compile
-  → ppl.persona-ir/0.3
-  → Runtime + Host Context + Event
-  → deterministic resolve
-  → pending commit / transition
-  → Host model call / interaction
-  → commit or rollback
-  → ppl.host-snapshot/0.1
-  → PPL APP / Observatory
-```
-
----
-
-## 稳定子产品（12 个）
-
-| 子产品 | 版本 | 职责 |
+| 层 | 组件 | 版本/状态 |
 |---|---|---|
-| **PPL Core** | `0.3.0` | 核心编译器 / 运行时契约——lexer/parser/AST、module graph、semantic registry、静态检查、Persona IR、规则匹配、优先级、transition/commit、invariant、renderer、`why` 溯源 |
-| **PPL Runtime** | `0.1.0` | 在真实会话里如何执行——多 Snapshot、resolve 与 mutation 分离、staged state、terminal commit/rollback、JSON-safe `ppl.host-snapshot/0.1` |
-| **PPL DSH Adapter** | `0.1.0` | 把 DeepSeek Harness 事件生命周期接入 Runtime |
-| **PPL DSH Persona Inspector** | `0.1.0` | 只读观测已持久化的 Snapshot |
-| **PPL LLM Host Adapter** | `0.1.6` | 通用 LLM Host 适配层（live-gpt / rc2-live 等示例） |
-| **PPL Local Provider** | `0.1.0` | 本地模型 Provider 接入 |
-| **PPL LMStudio Native Judge** | `0.1.0` | LMStudio 原生评测 / Judge |
-| **PPL App Observatory** | `0.5.0` | 独立化 APP——会话 / 状态 / provenance 观测台 |
-| **PPL Life Binding** | `0.1.0` | 生活服务场景绑定（preferences / plan / service boundary） |
-| **PPL Profiles** | `0.2.0` | 应用主线——Character / Tutor / Research / Life 四类 Reference Profile |
-| **docs/** | — | 架构、使用指南、场景、路线图 |
-| **STABLE_VALIDATION.json** / **PROMOTION_DECISION_*.md** | — | 稳定性验证与版本晋升记录 |
+| Foundation | PPL Core | `0.3.0 Frozen` |
+| Foundation | PPL Runtime | `0.1.0 Frozen` |
+| Foundation | PPL Profiles | `0.2.0 Stable` |
+| Governance | PPL Multi-Agent Governance | **`0.1.0 Stable`** |
+| Application | PPL LLM Host Adapter | **`0.1.13 Stable`** |
+| Application | PPL Life Host Binding | **`0.1.1 Stable`** |
+| Application | PPL App / Observatory | `0.5.0 Stable` |
+| Infrastructure | Local Provider | `0.1.0 Stable` |
+| Infrastructure | LM Studio Native Judge Transport | `0.1.0 Stable` |
+| Integration | DeepSeek Harness Adapter | `0.1.0 Stable` |
+| Integration | DSH Persona Inspector | `0.1.0 Stable`（legacy optional UI） |
+| Experience | Experience Rule Evolution | **`0.2.0 Stable`** |
 
-### PPL Profiles（应用主线）
+首个 validated Experience Rule：
 
-`PPL_Profiles_0.2.0_Stable` 把 PPL 从 Character/Role-play 扩展到学习、科研、生活服务等长期 Agent 应用。
+`rule_research_conflict_erasure_prejudge_fastpath@0.1.0`
 
-```text
-Profile
- = Persona Binding（可选）
- + Mission
- + Interaction Protocol
- + User Model
- + Application State
- + Domain Policy
- + Capability Requirements
- + Evaluation Contract
-```
-
-四类 Reference Profiles：
-
-| Profile | 重点状态 | 目标 |
-|---|---|---|
-| Character | relationship / interaction | 兼容现有人格/角色应用 |
-| Tutor | mastery / misconception / confidence | 可验证学习进展 |
-| Research | evidence / contradiction / provenance | 可追溯科研结论 |
-| Life | preferences / plan / service boundary | 长期服务偏好与风险边界 |
-
----
-
-## 仓库结构
+## 目录
 
 ```text
-.
-├── PPL_Core_0.3.0_Stable_Source/                # 核心编译器 / 运行时契约
-├── PPL_Runtime_0.1.0_Stable_Source/             # 运行时
-├── PPL_DSH_Adapter_0.1.0_Stable_Source/         # DeepSeek Harness Adapter
-├── PPL_DSH_Persona_Inspector_0.1.0_Stable_Source/  # 只读 Persona 观测工具
-├── PPL_LLM_Host_Adapter_0.1.6_Stable_Source/    # 通用 LLM Host 适配
-├── PPL_Local_Provider_0.1.0_Stable_Source/      # 本地 Provider
-├── PPL_LMStudio_Native_Judge_0.1.0_Stable_Source/  # LMStudio 评测
-├── PPL_App_Observatory_0.5.0_Stable_Source/     # 观测台 APP
-├── PPL_Life_Binding_0.1.0_Stable_Source/        # 生活场景绑定
-├── PPL_Profiles_0.2.0_Stable/                   # Profiles 应用主线
-├── docs/                                        # 架构、指南、场景、路线图
-├── STABLE_VALIDATION.json                       # 稳定性验证结果
-└── PROMOTION_DECISION_*.md                       # 版本晋升决策记录
+components/
+  foundation/       Core / Runtime / Profiles
+  governance/       Multi-Agent Governance (handoff/authority/fidelity plane)
+  application/      Host / Life Binding / Observatory
+  infrastructure/   Local Provider / LM Studio Native Judge
+  integrations/     DeepSeek Harness Adapter / Persona Inspector
+  experience/       Experience Rule Evolution
+rules/               validated rules + capsules
+dist/npm/            当前随聚合包提供的 Stable npm artifacts
+docs/                当前规范文档
+evidence/            精简 Promotion evidence + 必要 raw evidence
+manifest/            版本矩阵、组件清单、来源与全包哈希
+provenance/          清理记录与原始归档哈希
 ```
 
----
+## 推荐 Application 链
 
-## 快速开始
+```text
+Profiles 0.2
+    ↓
+MAG 0.1.0 (optional governance plane for multi-agent handoffs; not orchestration)
+    ↓
+Host 0.1.13
+    ├─ Local Provider 0.1.0 (Agent transport)
+    ├─ LM Studio Native Judge 0.1.0
+    ├─ Life Binding 0.1.1 (Life domain, as needed)
+    └─ Experience Rule Evolution 0.2.0 (default off; validated rules only in enforce)
+    ↓
+Observatory 0.5 (read-only visibility)
+```
 
-### PPL Core
+Experience Rule Evolution 不生成用户答案。它把真实运行经验提炼为 provenance-bound deterministic rules；未知问题仍保留 Judge 路径，安装 Host 后规则不会自动开启。
+
+## 快速验证
+
+关键组件可分别在对应目录执行其自身 README 中的测试命令。Host Stable 的源码包定义：
 
 ```bash
-cd PPL_Core_0.3.0_Stable_Source
-npm install
-npm run build
+cd components/application/host
+npm ci --offline
+npm test
+npm run check
+```
+
+PPL Multi-Agent Governance：
+
+```bash
+cd components/governance/multi-agent-governance
+npm test
+npm run check
+```
+
+Experience Rule Evolution：
+
+```bash
+cd components/experience/rule-evolution
 npm test
 ```
 
-CLI 子命令：`check` · `build` · `test` · `render` · `why` · `fmt`
-
-### PPL Profiles
+Life Binding：
 
 ```bash
-cd PPL_Profiles_0.2.0_Stable
+cd components/application/life-binding
 npm test
-npm run validate
-npm run examples
-
-node bin/ppl-profiles.mjs validate profiles/tutor/profile.json
-node bin/ppl-profiles.mjs simulate profiles/tutor/profile.json profiles/tutor/scenarios/learning-cycle.json
-node bin/ppl-profiles.mjs export-app profiles/research/profile.json profiles/research/scenarios/evidence-cycle.json > research-session.json
 ```
 
-### Host 集成（PPL Core）
+> 其他组件的依赖/构建方式以各自源码 README/package.json 为准；本规范化包没有擅自重写 Stable 产品内部依赖。
 
-```ts
-import { compileFile, resolve, render, applyResolution } from "./dist/src/index.js";
+## 重要边界
 
-const compiled = compileFile("persona.ppl", { moduleRoot: "modules" });
-if (!compiled.ir) throw new Error("compile failed");
+- `components/` 中不包含 Host 0.1.6、Host 0.1.12、Life 0.1.0 等被当前 Stable 明确替代的旧源码。
+- R0/R1/R2 runtime Gene Overlay 资格包不属于当前 Stable 产品树；R2 raw result 仅作为 Rule Evolution 的经验来源证据保留。
+- DeepSeek Harness Adapter 与 Application Host 是不同集成边界；不要把 DSH Runtime Adapter 当作 Host transport adapter。
+- MAG 是治理平面，不调度 Agent、不拥有模型/队列/工具生命周期；Execution Graph 与 Authority Graph 必须分离。
+- Observatory 是只读观察层，不拥有 Profile/Host durable-state authority。
 
-const resolution = resolve(compiled.ir, runtimeState, hostContext, event);
-const prompt = render(compiled.ir, resolution, "standard");
-const llmResult = await callYourModel(prompt.staticPrompt, prompt.dynamicPrompt);
+详见 `docs/` 与 `provenance/CLEANUP_REPORT.md`。
 
-if (llmResult.ok && resolution.valid) {
-  runtimeState = applyResolution(runtimeState, resolution);
-}
+## 项目结构验证
+
+本包不是强行拼成一个 root npm workspace：各 Stable 组件保留自己的 package boundary，避免根级依赖解析改变已发布语义。可运行：
+
+```bash
+node tools/verify-project.mjs
 ```
 
-> Host 拥有事件分类、上下文事实、模型调用，以及是否持久化 staged mutation 的最终决定权。
-
----
-
-## 稳定边界（Stable Boundaries）
-
-PPL Core `0.3` 刻意**不提供**：任意函数、循环、`eval`、网络访问、PPL 源码内文件访问、动态运行时导入、记忆数据库、概率规则、多 Agent 协调。
-
-下一阶段优先推进 **APP 独立化**（App Observatory）、**Profiles 扩展** 与 **Host Adapter 生态**，而非重开 Core。
-
----
-
-## 文档
-
-- `docs/01_PPL_ARCHITECTURE_AND_VERSION.md` — 架构与版本说明
-- `docs/02_PPL_USAGE_GUIDE.md` — 使用指南
-- `docs/03_APPLICABLE_SCENARIOS.md` — 适用场景
-- `docs/04_APP_INDEPENDENCE_AND_UI_REDESIGN.md` — APP 独立化与 UI 重设计
-- `docs/05_PPL_PROFILES_NEW_MAINLINE.md` — Profiles 新应用主线
-- `docs/06_ROADMAP_AND_ACCEPTANCE.md` — 路线图与验收标准
-
-## License
-
-参见各子产品 `package.json`。
+Windows 也可直接执行 `VERIFY_PROJECT.cmd`。详细整理后测试结果见 `provenance/CLEAN_PROJECT_VALIDATION.json`。

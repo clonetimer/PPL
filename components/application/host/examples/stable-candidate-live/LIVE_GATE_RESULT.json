@@ -1,0 +1,35 @@
+{
+  "schema": "ppl.llm-host-live-gate/0.1",
+  "executedAt": "2026-08-25T16:11:29.829Z",
+  "model": {
+    "provider": "OpenAI ChatGPT",
+    "model": "GPT-5.6 Sol",
+    "transport": "current-conversation callback",
+    "modelIndependence": false
+  },
+  "tutor": {
+    "firstDraftBlocked": true,
+    "retryDelivered": true,
+    "durableInterventions": 1,
+    "deliveredMessage": "只做第一步：找一个 3 和 5 都能整除的共同分母，把两个分数分别改写成这个分母；先不要做最后的加法。"
+  },
+  "research": {
+    "status": "ready",
+    "direction": "oppose",
+    "firstDraftBlocked": true,
+    "retryDelivered": true,
+    "deliveredMessage": "当前证据对“稳定、普遍且具有实际意义的 ego-depletion 强版本主张”形成成熟反对。Bias-adjusted meta-analytic tests questioned the existence and practical size of the depletion effect. 独立的预注册多实验室/多站点验证也不支持该强版本；这个结论不应外推为“所有与自我控制有关的情境性或小效应都不存在”。"
+  },
+  "tools": {
+    "executions": 1,
+    "firstReplayed": false,
+    "secondReplayed": true
+  },
+  "invariants": {
+    "blockedDraftMutatedProfile": false,
+    "policyRetryPreservedProfileAuthority": true,
+    "sameGptIndependenceWarningPresent": true,
+    "toolDuplicateSideEffectPrevented": true
+  },
+  "passed": true
+}

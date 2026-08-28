@@ -1,0 +1,72 @@
+{
+  "schema": "ppl.source-copy-identity/1",
+  "allIdentical": true,
+  "components": {
+    "core": {
+      "sourceTreeSha256": "71772a720bb3f5fa30827e77f492a79ce6b1095059601e4e1f1ca15f961908af",
+      "normalizedTreeSha256": "71772a720bb3f5fa30827e77f492a79ce6b1095059601e4e1f1ca15f961908af",
+      "files": 66,
+      "identical": true
+    },
+    "runtime": {
+      "sourceTreeSha256": "ca38b58ac53473537cba6f6c04939f924aeb9d996155019e544b9b23750d5c0b",
+      "normalizedTreeSha256": "ca38b58ac53473537cba6f6c04939f924aeb9d996155019e544b9b23750d5c0b",
+      "files": 8,
+      "identical": true
+    },
+    "profiles": {
+      "sourceTreeSha256": "1003a109238a7faad3b54e3bf50d9a560321e74b6a1191a989fd144a549d0a57",
+      "normalizedTreeSha256": "1003a109238a7faad3b54e3bf50d9a560321e74b6a1191a989fd144a549d0a57",
+      "files": 76,
+      "identical": true
+    },
+    "observatory": {
+      "sourceTreeSha256": "ea8f1e8abf1fc625727600be8e375f64e41369fa451f5481450b51650be6e894",
+      "normalizedTreeSha256": "ea8f1e8abf1fc625727600be8e375f64e41369fa451f5481450b51650be6e894",
+      "files": 45,
+      "identical": true
+    },
+    "provider-local": {
+      "sourceTreeSha256": "b0143cc3fd26800c8f055e0d5966cafdac9147a330053370168227f452e780fc",
+      "normalizedTreeSha256": "b0143cc3fd26800c8f055e0d5966cafdac9147a330053370168227f452e780fc",
+      "files": 15,
+      "identical": true
+    },
+    "judge-lmstudio-native": {
+      "sourceTreeSha256": "d4afc5f13be28fee798e778013458271e9c843c9a33dbc1415637ab9a4d0d0c6",
+      "normalizedTreeSha256": "d4afc5f13be28fee798e778013458271e9c843c9a33dbc1415637ab9a4d0d0c6",
+      "files": 5,
+      "identical": true
+    },
+    "dsh-adapter": {
+      "sourceTreeSha256": "645032683f8f5c8038c4e1b9dbf7812ee87ee10c7e9bc8b56aff9c401c22d610",
+      "normalizedTreeSha256": "645032683f8f5c8038c4e1b9dbf7812ee87ee10c7e9bc8b56aff9c401c22d610",
+      "files": 7,
+      "identical": true
+    },
+    "dsh-persona-inspector": {
+      "sourceTreeSha256": "a190867f2fac1a3ba4436f3e5572ad0b318864ce2f4735fb25cfd2a13234e663",
+      "normalizedTreeSha256": "a190867f2fac1a3ba4436f3e5572ad0b318864ce2f4735fb25cfd2a13234e663",
+      "files": 18,
+      "identical": true
+    },
+    "host": {
+      "sourceTreeSha256": "24e0d1878049b385b55f5d741f97d01e5717b5f4aa4d8f8cc68cbbf70a7a04fa",
+      "normalizedTreeSha256": "24e0d1878049b385b55f5d741f97d01e5717b5f4aa4d8f8cc68cbbf70a7a04fa",
+      "files": 61,
+      "identical": true
+    },
+    "life-binding": {
+      "sourceTreeSha256": "6564c15271564266d0b170282f8a5eab4a03153dee5686987c27d191ed183e52",
+      "normalizedTreeSha256": "6564c15271564266d0b170282f8a5eab4a03153dee5686987c27d191ed183e52",
+      "files": 9,
+      "identical": true
+    },
+    "experience-rule-evolution": {
+      "sourceTreeSha256": "2a5aa23880f88c693cdc6fd217b01787cc1958a23d0be0618d5694134a5edf1c",
+      "normalizedTreeSha256": "2a5aa23880f88c693cdc6fd217b01787cc1958a23d0be0618d5694134a5edf1c",
+      "files": 6,
+      "identical": true
+    }
+  }
+}

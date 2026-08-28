@@ -1,0 +1,35 @@
+{
+  "schema": "ppl.experience-rule-capsule/0.1",
+  "capsuleId": "capsule_0e770f3acbf6da0623be",
+  "rule": {
+    "ruleId": "rule_research_conflict_erasure_prejudge_fastpath",
+    "version": "0.1.0",
+    "status": "validated"
+  },
+  "outcome": {
+    "decision": "validated-for-enforce",
+    "realR2ReplayCoverage": 1,
+    "realR3FastPaths": 4,
+    "fullApplication": "56/56",
+    "semanticFindings": 0,
+    "observatory": "PASS",
+    "manualUserVisibleReview": "PASS"
+  },
+  "replay": {
+    "realEvidence": true,
+    "totalRecords": 100,
+    "artifacts": [
+      {
+        "kind": "r2-real-ab-results",
+        "sha256": "0ac95a28b3f8fecea3aa4ce0362066db331c4f061b37dcbe87a8ae94c74abea1",
+        "records": 96
+      },
+      {
+        "kind": "r3-real-full-application-results",
+        "sha256": "f265cff94345a07facafbf155f695b6ba44c881be3a72b75ab16fbf553158caa",
+        "matchedFastPaths": 4
+      }
+    ]
+  },
+  "createdAt": "2026-08-26T00:20:00+08:00"
+}

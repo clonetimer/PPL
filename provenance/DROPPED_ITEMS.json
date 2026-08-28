@@ -1,0 +1,26 @@
+{
+  "schema": "ppl.cleanup-dropped-items/1",
+  "note": "This records outer-layout items intentionally not copied verbatim. Current content may have been extracted/normalized elsewhere.",
+  "notCopiedVerbatim": [
+    {
+      "path": "PPL_LLM_Host_Adapter_0.1.6_Stable_Source",
+      "reason": "superseded by Host 0.1.13 Stable"
+    },
+    {
+      "path": "PPL_Life_Binding_0.1.0_Stable_Source",
+      "reason": "superseded by Life Binding 0.1.1 Stable"
+    },
+    {
+      "path": "PPL_Host_Life_Stable_Promotion_S1_12_Q5_2026-08-25",
+      "reason": "flattened; only current Life artifact and compact release evidence retained; Host 0.1.12 source/dist superseded"
+    },
+    {
+      "path": "PPL_GEP_Rule_Evolution_Stable_Promotion_2026-08-26",
+      "reason": "flattened into current Host/Rule artifacts, rules and compact evidence"
+    },
+    {
+      "path": "docs/* (2026-08-20 aggregate docs)",
+      "reason": "rewritten as canonical 2026-08-26 docs to remove stale Host/Life versions and unavailable release-kit paths"
+    }
+  ]
+}

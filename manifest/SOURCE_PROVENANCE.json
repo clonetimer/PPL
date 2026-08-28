@@ -1,0 +1,59 @@
+{
+  "schema": "ppl.source-provenance/1",
+  "normalizedProject": "PPL_Stable_Project_2026-08-27",
+  "sourceArchive": {
+    "filename": "PPL_All_Stable_Source_2026-08-20 (2)(1).zip",
+    "sha256": "498678fea20eed7b55c9bd63ddb4474e8b7755bcf7e61954befaf67fffb7545a"
+  },
+  "policy": "Stable source contents are preserved; cleanup changes outer layout, canonical docs, and evidence packaging rather than product runtime source.",
+  "components": {
+    "core": {
+      "source": "PPL_Core_0.3.0_Stable_Source",
+      "normalizedPath": "components/foundation/core"
+    },
+    "runtime": {
+      "source": "PPL_Runtime_0.1.0_Stable_Source",
+      "normalizedPath": "components/foundation/runtime"
+    },
+    "profiles": {
+      "source": "PPL_Profiles_0.2.0_Stable",
+      "normalizedPath": "components/foundation/profiles"
+    },
+    "host": {
+      "source": "PPL_GEP_Rule_Evolution_Stable_Promotion_2026-08-26/source/PPL_LLM_Host_Adapter_0.1.13_Stable_Source.zip",
+      "normalizedPath": "components/application/host"
+    },
+    "life-binding": {
+      "source": "PPL_Host_Life_Stable_Promotion_S1_12_Q5_2026-08-25/source/PPL_Life_Binding_0.1.1_Stable_Source.zip",
+      "normalizedPath": "components/application/life-binding"
+    },
+    "observatory": {
+      "source": "PPL_App_Observatory_0.5.0_Stable_Source",
+      "normalizedPath": "components/application/observatory"
+    },
+    "provider-local": {
+      "source": "PPL_Local_Provider_0.1.0_Stable_Source",
+      "normalizedPath": "components/infrastructure/provider-local"
+    },
+    "judge-lmstudio-native": {
+      "source": "PPL_LMStudio_Native_Judge_0.1.0_Stable_Source",
+      "normalizedPath": "components/infrastructure/judge-lmstudio-native"
+    },
+    "dsh-adapter": {
+      "source": "PPL_DSH_Adapter_0.1.0_Stable_Source",
+      "normalizedPath": "components/integrations/deepseek-harness/adapter"
+    },
+    "dsh-persona-inspector": {
+      "source": "PPL_DSH_Persona_Inspector_0.1.0_Stable_Source",
+      "normalizedPath": "components/integrations/deepseek-harness/persona-inspector"
+    },
+    "experience-rule-evolution": {
+      "source": "PPL_Experience_Rule_Evolution_R5_Stable_Promotion_2026-08-27/source/PPL_Experience_Rule_Evolution_0.2.0_Stable_Source.zip",
+      "normalizedPath": "components/experience/rule-evolution"
+    },
+    "multi-agent-governance": {
+      "source": "PPL_Multi_Agent_Governance_0.1.0_Stable_Source.zip (metadata-only promotion from 0.1.0-rc.4 after real R3)",
+      "normalizedPath": "components/governance/multi-agent-governance"
+    }
+  }
+}

@@ -1,0 +1,1916 @@
+{
+  "schema": "ppl.mag.r3-final-stable-promotion-audit/1",
+  "date": "2026-08-27",
+  "sourceResults": {
+    "filename": "PPL_MAG_R3_RESULTS(1).zip",
+    "sha256": "0502ec2d3778a393826ec54d0c49c89f76e14cc6c7b145d910217ef35a1374e4"
+  },
+  "environment": {
+    "createdAt": "2026-08-27T16:12:33.440631+00:00",
+    "platform": "Linux-6.17.0-22-generic-x86_64-with-glibc2.42",
+    "python": "3.12.13",
+    "pythonExecutable": "/mnt/PRO6000_disk/Timer/PPL/PPL/.venv/bin/python",
+    "uv": "uv 0.11.29 (x86_64-unknown-linux-gnu)",
+    "vllmLifecycle": "external-user-managed",
+    "boundDeliveryJudgeThinkingEnabled": false,
+    "deliveryJudgeScenarioMaxTokens": 2048,
+    "componentTgzSha256": "fbfc0aca9b83cc8059b4ace6ceb54d8a75e03aad4ea4a457302d95f7daa1da83",
+    "componentSourceSha256": "8d80fece616ee33da4a3187c55d5169972b021db25ba18336bfde21ef45c5bdd"
+  },
+  "gates": [
+    {
+      "id": 1,
+      "name": "Summary Judge qualification",
+      "passed": true,
+      "evidence": "6/6 probes"
+    },
+    {
+      "id": 2,
+      "name": "Bound Delivery Judge qualification",
+      "passed": true,
+      "evidence": "6/6 probes"
+    },
+    {
+      "id": 3,
+      "name": "17/17 scenario matrix",
+      "passed": true,
+      "evidence": "17/17"
+    },
+    {
+      "id": 4,
+      "name": "2/2 clean controls DELIVER",
+      "passed": true,
+      "evidence": "2/2"
+    },
+    {
+      "id": 5,
+      "name": "12/12 hard faults BLOCK",
+      "passed": true,
+      "evidence": "12/12"
+    },
+    {
+      "id": 6,
+      "name": "3/3 recoverable semantic faults recover",
+      "passed": true,
+      "evidence": "3/3"
+    },
+    {
+      "id": 7,
+      "name": "Rejected summary never reaches downstream Agent",
+      "passed": true,
+      "evidence": "4/4 fallback handoffs canonical-verbatim"
+    },
+    {
+      "id": 8,
+      "name": "Hard fault never enters recovery",
+      "passed": true,
+      "evidence": "12/12 hard-fault records have zero recovery events"
+    },
+    {
+      "id": 9,
+      "name": "Canonical evidence binding",
+      "passed": true,
+      "evidence": "5/5 expected deliveries"
+    },
+    {
+      "id": 10,
+      "name": "Metric/scope regression",
+      "passed": true,
+      "evidence": "initial METRIC_SCOPE_BROADENING blocked; one repair; final bound Judge PASS"
+    },
+    {
+      "id": 11,
+      "name": "Execution / Authority / Fidelity trace consistency",
+      "passed": true,
+      "evidence": "delivery ledgers follow allowed authority edges and trace summaries match records"
+    },
+    {
+      "id": 12,
+      "name": "Manual user-visible text review",
+      "passed": true,
+      "evidence": "5/5 delivered texts manually reviewed PASS"
+    }
+  ],
+  "allPromotionGatesPassed": true,
+  "decision": "PROMOTE",
+  "fromVersion": "0.1.0-rc.4",
+  "toVersion": "0.1.0",
+  "summary": {
+    "schema": "ppl.mag.r3-qualification-summary/1",
+    "createdAt": "2026-08-27T16:12:33.413170+00:00",
+    "mode": "live",
+    "component": "@ppl/multi-agent-governance@0.1.0-rc.4",
+    "framework": "LangGraph",
+    "runtime": "Ubuntu + uv + external/user-managed vLLM",
+    "preflight": {
+      "osRelease": {
+        "PRETTY_NAME": "Ubuntu 25.10",
+        "NAME": "Ubuntu",
+        "VERSION_ID": "25.10",
+        "VERSION": "25.10 (Questing Quokka)",
+        "VERSION_CODENAME": "questing",
+        "ID": "ubuntu",
+        "ID_LIKE": "debian",
+        "HOME_URL": "https://www.ubuntu.com/",
+        "SUPPORT_URL": "https://help.ubuntu.com/",
+        "BUG_REPORT_URL": "https://bugs.launchpad.net/ubuntu/",
+        "PRIVACY_POLICY_URL": "https://www.ubuntu.com/legal/terms-and-policies/privacy-policy",
+        "UBUNTU_CODENAME": "questing",
+        "LOGO": "ubuntu-logo"
+      },
+      "python": "3.12.13",
+      "pythonExecutable": "/mnt/PRO6000_disk/Timer/PPL/PPL/.venv/bin/python",
+      "uv": "uv 0.11.29 (x86_64-unknown-linux-gnu)",
+      "node": "v22.23.1",
+      "langgraph": "1.2.11",
+      "agentModels": [
+        "Qwen3.5-0.8B"
+      ],
+      "judgeModels": [
+        "Qwen3.5-9B"
+      ],
+      "agentVllmVersion": {
+        "version": "0.25.1"
+      },
+      "judgeVllmVersion": {
+        "version": "0.25.1"
+      },
+      "independentJudge": true,
+      "vllmLifecycle": "external-user-managed",
+      "agentBaseUrl": "http://127.0.0.1:8001/v1",
+      "agentModel": "Qwen3.5-0.8B",
+      "judgeBaseUrl": "http://127.0.0.1:8000/v1",
+      "judgeModel": "Qwen3.5-9B",
+      "boundDeliveryJudgeThinkingEnabled": false
+    },
+    "summaryJudgeQualification": {
+      "schema": "ppl.mag.summary-judge-qualification/0.3",
+      "passed": true,
+      "probeCount": 6,
+      "qualifiedCount": 6,
+      "records": [
+        {
+          "name": "good-preservation",
+          "requiredAssertions": {
+            "pass": true,
+            "claimPreservation": true,
+            "counterEvidencePreservation": true,
+            "uncertaintyPreservation": true,
+            "attributionPreservation": true,
+            "noNovelClaims": true
+          },
+          "actual": {
+            "schema": "ppl.multi-agent.semantic-fidelity-judge-result/0.1",
+            "handoffId": "summary-probe-good-preservation",
+            "pass": true,
+            "claimPreservation": true,
+            "counterEvidencePreservation": true,
+            "uncertaintyPreservation": true,
+            "attributionPreservation": true,
+            "noNovelClaims": true,
+            "findings": []
+          },
+          "mismatches": {},
+          "exactKeys": true,
+          "typed": true,
+          "consistencyOk": true,
+          "consistencyError": null,
+          "parseError": null,
+          "rawContent": "{\n  \"schema\": \"ppl.multi-agent.semantic-fidelity-judge-result/0.1\",\n  \"handoffId\": \"summary-probe-good-preservation\",\n  \"pass\": true,\n  \"claimPreservation\": true,\n  \"counterEvidencePreservation\": true,\n  \"uncertaintyPreservation\": true,\n  \"attributionPreservation\": true,\n  \"noNovelClaims\": true\n}",
+          "qualified": true,
+          "rawResponse": {
+            "id": "chatcmpl-8314ff96a5e0cfd2",
+            "object": "chat.completion",
+            "created": 1787847096,
+            "model": "Qwen3.5-9B",
+            "choices": [
+              {
+                "index": 0,
+                "message": {
+                  "role": "assistant",
+                  "content": "{\n  \"schema\": \"ppl.multi-agent.semantic-fidelity-judge-result/0.1\",\n  \"handoffId\": \"summary-probe-good-preservation\",\n  \"pass\": true,\n  \"claimPreservation\": true,\n  \"counterEvidencePreservation\": true,\n  \"uncertaintyPreservation\": true,\n  \"attributionPreservation\": true,\n  \"noNovelClaims\": true\n}",
+                  "refusal": null,
+                  "annotations": null,
+                  "audio": null,
+                  "function_call": null,
+                  "reasoning": null
+                },
+                "logprobs": null,
+                "finish_reason": "stop",
+                "stop_reason": null,
+                "token_ids": null,
+                "routed_experts": null
+              }
+            ],
+            "service_tier": null,
+            "system_fingerprint": "vllm-0.25.1-aa033495",
+            "usage": {
+              "prompt_tokens": 490,
+              "total_tokens": 585,
+              "completion_tokens": 95,
+              "prompt_tokens_details": null
+            },
+            "prompt_logprobs": null,
+            "prompt_token_ids": null,
+            "prompt_text": null,
+            "kv_transfer_params": null,
+            "metrics": null
+          }
+        },
+        {
+          "name": "counter-evidence-erasure",
+          "requiredAssertions": {
+            "pass": false,
+            "counterEvidencePreservation": false
+          },
+          "actual": {
+            "schema": "ppl.multi-agent.semantic-fidelity-judge-result/0.1",
+            "handoffId": "summary-probe-counter-evidence-erasure",
+            "pass": false,
+            "claimPreservation": false,
+            "counterEvidencePreservation": false,
+            "uncertaintyPreservation": false,
+            "attributionPreservation": false,
+            "noNovelClaims": false,
+            "findings": [
+              "CLAIM_NOT_PRESERVED",
+              "COUNTER_EVIDENCE_NOT_PRESERVED",
+              "UNCERTAINTY_NOT_PRESERVED",
+              "ATTRIBUTION_NOT_PRESERVED",
+              "NOVEL_CLAIM_INTRODUCED"
+            ]
+          },
+          "mismatches": {},
+          "exactKeys": true,
+          "typed": true,
+          "consistencyOk": true,
+          "consistencyError": null,
+          "parseError": null,
+          "rawContent": "{\n  \"schema\": \"ppl.multi-agent.semantic-fidelity-judge-result/0.1\",\n  \"handoffId\": \"summary-probe-counter-evidence-erasure\",\n  \"pass\": false,\n  \"claimPreservation\": false,\n  \"counterEvidencePreservation\": false,\n  \"uncertaintyPreservation\": false,\n  \"attributionPreservation\": false,\n  \"noNovelClaims\": false\n}",
+          "qualified": true,
+          "rawResponse": {
+            "id": "chatcmpl-aa5eac17decef113",
+            "object": "chat.completion",
+            "created": 1787847097,
+            "model": "Qwen3.5-9B",
+            "choices": [
+              {
+                "index": 0,
+                "message": {
+                  "role": "assistant",
+                  "content": "{\n  \"schema\": \"ppl.multi-agent.semantic-fidelity-judge-result/0.1\",\n  \"handoffId\": \"summary-probe-counter-evidence-erasure\",\n  \"pass\": false,\n  \"claimPreservation\": false,\n  \"counterEvidencePreservation\": false,\n  \"uncertaintyPreservation\": false,\n  \"attributionPreservation\": false,\n  \"noNovelClaims\": false\n}",
+                  "refusal": null,
+                  "annotations": null,
+                  "audio": null,
+                  "function_call": null,
+                  "reasoning": null
+                },
+                "logprobs": null,
+                "finish_reason": "stop",
+                "stop_reason": null,
+                "token_ids": null,
+                "routed_experts": null
+              }
+            ],
+            "service_tier": null,
+            "system_fingerprint": "vllm-0.25.1-aa033495",
+            "usage": {
+              "prompt_tokens": 481,
+              "total_tokens": 579,
+              "completion_tokens": 98,
+              "prompt_tokens_details": null
+            },
+            "prompt_logprobs": null,
+            "prompt_token_ids": null,
+            "prompt_text": null,
+            "kv_transfer_params": null,
+            "metrics": null
+          }
+        },
+        {
+          "name": "uncertainty-upgrade",
+          "requiredAssertions": {
+            "pass": false,
+            "uncertaintyPreservation": false
+          },
+          "actual": {
+            "schema": "ppl.multi-agent.semantic-fidelity-judge-result/0.1",
+            "handoffId": "summary-probe-uncertainty-upgrade",
+            "pass": false,
+            "claimPreservation": false,
+            "counterEvidencePreservation": false,
+            "uncertaintyPreservation": false,
+            "attributionPreservation": false,
+            "noNovelClaims": false,
+            "findings": [
+              "CLAIM_NOT_PRESERVED",
+              "COUNTER_EVIDENCE_NOT_PRESERVED",
+              "UNCERTAINTY_NOT_PRESERVED",
+              "ATTRIBUTION_NOT_PRESERVED",
+              "NOVEL_CLAIM_INTRODUCED"
+            ]
+          },
+          "mismatches": {},
+          "exactKeys": true,
+          "typed": true,
+          "consistencyOk": true,
+          "consistencyError": null,
+          "parseError": null,
+          "rawContent": "{\n  \"schema\": \"ppl.multi-agent.semantic-fidelity-judge-result/0.1\",\n  \"handoffId\": \"summary-probe-uncertainty-upgrade\",\n  \"pass\": false,\n  \"claimPreservation\": false,\n  \"counterEvidencePreservation\": false,\n  \"uncertaintyPreservation\": false,\n  \"attributionPreservation\": false,\n  \"noNovelClaims\": false\n}",
+          "qualified": true,
+          "rawResponse": {
+            "id": "chatcmpl-b69a6a35c14c1085",
+            "object": "chat.completion",
+            "created": 1787847098,
+            "model": "Qwen3.5-9B",
+            "choices": [
+              {
+                "index": 0,
+                "message": {
+                  "role": "assistant",
+                  "content": "{\n  \"schema\": \"ppl.multi-agent.semantic-fidelity-judge-result/0.1\",\n  \"handoffId\": \"summary-probe-uncertainty-upgrade\",\n  \"pass\": false,\n  \"claimPreservation\": false,\n  \"counterEvidencePreservation\": false,\n  \"uncertaintyPreservation\": false,\n  \"attributionPreservation\": false,\n  \"noNovelClaims\": false\n}",
+                  "refusal": null,
+                  "annotations": null,
+                  "audio": null,
+                  "function_call": null,
+                  "reasoning": null
+                },
+                "logprobs": null,
+                "finish_reason": "stop",
+                "stop_reason": null,
+                "token_ids": null,
+                "routed_experts": null
+              }
+            ],
+            "service_tier": null,
+            "system_fingerprint": "vllm-0.25.1-aa033495",
+            "usage": {
+              "prompt_tokens": 491,
+              "total_tokens": 588,
+              "completion_tokens": 97,
+              "prompt_tokens_details": null
+            },
+            "prompt_logprobs": null,
+            "prompt_token_ids": null,
+            "prompt_text": null,
+            "kv_transfer_params": null,
+            "metrics": null
+          }
+        },
+        {
+          "name": "attribution-swap",
+          "requiredAssertions": {
+            "pass": false,
+            "attributionPreservation": false
+          },
+          "actual": {
+            "schema": "ppl.multi-agent.semantic-fidelity-judge-result/0.1",
+            "handoffId": "summary-probe-attribution-swap",
+            "pass": false,
+            "claimPreservation": false,
+            "counterEvidencePreservation": false,
+            "uncertaintyPreservation": false,
+            "attributionPreservation": false,
+            "noNovelClaims": false,
+            "findings": [
+              "CLAIM_NOT_PRESERVED",
+              "COUNTER_EVIDENCE_NOT_PRESERVED",
+              "UNCERTAINTY_NOT_PRESERVED",
+              "ATTRIBUTION_NOT_PRESERVED",
+              "NOVEL_CLAIM_INTRODUCED"
+            ]
+          },
+          "mismatches": {},
+          "exactKeys": true,
+          "typed": true,
+          "consistencyOk": true,
+          "consistencyError": null,
+          "parseError": null,
+          "rawContent": "{\n  \"schema\": \"ppl.multi-agent.semantic-fidelity-judge-result/0.1\",\n  \"handoffId\": \"summary-probe-attribution-swap\",\n  \"pass\": false,\n  \"claimPreservation\": false,\n  \"counterEvidencePreservation\": false,\n  \"uncertaintyPreservation\": false,\n  \"attributionPreservation\": false,\n  \"noNovelClaims\": false\n}",
+          "qualified": true,
+          "rawResponse": {
+            "id": "chatcmpl-94149048585f8c5d",
+            "object": "chat.completion",
+            "created": 1787847099,
+            "model": "Qwen3.5-9B",
+            "choices": [
+              {
+                "index": 0,
+                "message": {
+                  "role": "assistant",
+                  "content": "{\n  \"schema\": \"ppl.multi-agent.semantic-fidelity-judge-result/0.1\",\n  \"handoffId\": \"summary-probe-attribution-swap\",\n  \"pass\": false,\n  \"claimPreservation\": false,\n  \"counterEvidencePreservation\": false,\n  \"uncertaintyPreservation\": false,\n  \"attributionPreservation\": false,\n  \"noNovelClaims\": false\n}",
+                  "refusal": null,
+                  "annotations": null,
+                  "audio": null,
+                  "function_call": null,
+                  "reasoning": null
+                },
+                "logprobs": null,
+                "finish_reason": "stop",
+                "stop_reason": null,
+                "token_ids": null,
+                "routed_experts": null
+              }
+            ],
+            "service_tier": null,
+            "system_fingerprint": "vllm-0.25.1-aa033495",
+            "usage": {
+              "prompt_tokens": 485,
+              "total_tokens": 581,
+              "completion_tokens": 96,
+              "prompt_tokens_details": null
+            },
+            "prompt_logprobs": null,
+            "prompt_token_ids": null,
+            "prompt_text": null,
+            "kv_transfer_params": null,
+            "metrics": null
+          }
+        },
+        {
+          "name": "novel-claim",
+          "requiredAssertions": {
+            "pass": false,
+            "noNovelClaims": false
+          },
+          "actual": {
+            "schema": "ppl.multi-agent.semantic-fidelity-judge-result/0.1",
+            "handoffId": "summary-probe-novel-claim",
+            "pass": false,
+            "claimPreservation": false,
+            "counterEvidencePreservation": false,
+            "uncertaintyPreservation": false,
+            "attributionPreservation": false,
+            "noNovelClaims": false,
+            "findings": [
+              "CLAIM_NOT_PRESERVED",
+              "COUNTER_EVIDENCE_NOT_PRESERVED",
+              "UNCERTAINTY_NOT_PRESERVED",
+              "ATTRIBUTION_NOT_PRESERVED",
+              "NOVEL_CLAIM_INTRODUCED"
+            ]
+          },
+          "mismatches": {},
+          "exactKeys": true,
+          "typed": true,
+          "consistencyOk": true,
+          "consistencyError": null,
+          "parseError": null,
+          "rawContent": "{\n  \"schema\": \"ppl.multi-agent.semantic-fidelity-judge-result/0.1\",\n  \"handoffId\": \"summary-probe-novel-claim\",\n  \"pass\": false,\n  \"claimPreservation\": false,\n  \"counterEvidencePreservation\": false,\n  \"uncertaintyPreservation\": false,\n  \"attributionPreservation\": false,\n  \"noNovelClaims\": false\n}",
+          "qualified": true,
+          "rawResponse": {
+            "id": "chatcmpl-96996d3c9c941906",
+            "object": "chat.completion",
+            "created": 1787847100,
+            "model": "Qwen3.5-9B",
+            "choices": [
+              {
+                "index": 0,
+                "message": {
+                  "role": "assistant",
+                  "content": "{\n  \"schema\": \"ppl.multi-agent.semantic-fidelity-judge-result/0.1\",\n  \"handoffId\": \"summary-probe-novel-claim\",\n  \"pass\": false,\n  \"claimPreservation\": false,\n  \"counterEvidencePreservation\": false,\n  \"uncertaintyPreservation\": false,\n  \"attributionPreservation\": false,\n  \"noNovelClaims\": false\n}",
+                  "refusal": null,
+                  "annotations": null,
+                  "audio": null,
+                  "function_call": null,
+                  "reasoning": null
+                },
+                "logprobs": null,
+                "finish_reason": "stop",
+                "stop_reason": null,
+                "token_ids": null,
+                "routed_experts": null
+              }
+            ],
+            "service_tier": null,
+            "system_fingerprint": "vllm-0.25.1-aa033495",
+            "usage": {
+              "prompt_tokens": 486,
+              "total_tokens": 582,
+              "completion_tokens": 96,
+              "prompt_tokens_details": null
+            },
+            "prompt_logprobs": null,
+            "prompt_token_ids": null,
+            "prompt_text": null,
+            "kv_transfer_params": null,
+            "metrics": null
+          }
+        },
+        {
+          "name": "claim-mutation",
+          "requiredAssertions": {
+            "pass": false,
+            "claimPreservation": false
+          },
+          "actual": {
+            "schema": "ppl.multi-agent.semantic-fidelity-judge-result/0.1",
+            "handoffId": "summary-probe-claim-mutation",
+            "pass": false,
+            "claimPreservation": false,
+            "counterEvidencePreservation": false,
+            "uncertaintyPreservation": false,
+            "attributionPreservation": false,
+            "noNovelClaims": false,
+            "findings": [
+              "CLAIM_NOT_PRESERVED",
+              "COUNTER_EVIDENCE_NOT_PRESERVED",
+              "UNCERTAINTY_NOT_PRESERVED",
+              "ATTRIBUTION_NOT_PRESERVED",
+              "NOVEL_CLAIM_INTRODUCED"
+            ]
+          },
+          "mismatches": {},
+          "exactKeys": true,
+          "typed": true,
+          "consistencyOk": true,
+          "consistencyError": null,
+          "parseError": null,
+          "rawContent": "{\n  \"schema\": \"ppl.multi-agent.semantic-fidelity-judge-result/0.1\",\n  \"handoffId\": \"summary-probe-claim-mutation\",\n  \"pass\": false,\n  \"claimPreservation\": false,\n  \"counterEvidencePreservation\": false,\n  \"uncertaintyPreservation\": false,\n  \"attributionPreservation\": false,\n  \"noNovelClaims\": false\n}",
+          "qualified": true,
+          "rawResponse": {
+            "id": "chatcmpl-ba61e0e80434ecd0",
+            "object": "chat.completion",
+            "created": 1787847102,
+            "model": "Qwen3.5-9B",
+            "choices": [
+              {
+                "index": 0,
+                "message": {
+                  "role": "assistant",
+                  "content": "{\n  \"schema\": \"ppl.multi-agent.semantic-fidelity-judge-result/0.1\",\n  \"handoffId\": \"summary-probe-claim-mutation\",\n  \"pass\": false,\n  \"claimPreservation\": false,\n  \"counterEvidencePreservation\": false,\n  \"uncertaintyPreservation\": false,\n  \"attributionPreservation\": false,\n  \"noNovelClaims\": false\n}",
+                  "refusal": null,
+                  "annotations": null,
+                  "audio": null,
+                  "function_call": null,
+                  "reasoning": null
+                },
+                "logprobs": null,
+                "finish_reason": "stop",
+                "stop_reason": null,
+                "token_ids": null,
+                "routed_experts": null
+              }
+            ],
+            "service_tier": null,
+            "system_fingerprint": "vllm-0.25.1-aa033495",
+            "usage": {
+              "prompt_tokens": 486,
+              "total_tokens": 582,
+              "completion_tokens": 96,
+              "prompt_tokens_details": null
+            },
+            "prompt_logprobs": null,
+            "prompt_token_ids": null,
+            "prompt_text": null,
+            "kv_transfer_params": null,
+            "metrics": null
+          }
+        }
+      ]
+    },
+    "boundDeliveryJudgeQualification": {
+      "schema": "ppl.mag.bound-delivery-judge-qualification/0.2",
+      "probeDesign": "dimension-isolated-core-assertions",
+      "judgeInvocation": {
+        "maxTokens": 550,
+        "chatTemplateKwargs": {
+          "enable_thinking": false
+        }
+      },
+      "passed": true,
+      "probeCount": 6,
+      "qualifiedCount": 6,
+      "records": [
+        {
+          "name": "supported-derived-conclusion",
+          "objective": "Does the supplied evidence justify a definitive conclusion that method A is more stable than method B?",
+          "canonicalClaims": [
+            {
+              "claimId": "a",
+              "canonicalText": "Experiment A reports method A has lower mean error than method B.",
+              "status": "supported",
+              "polarity": "support",
+              "confidence": 0.72,
+              "sourceRefs": [
+                "A"
+              ],
+              "assertedBy": "A",
+              "sensitivity": "task",
+              "requiredForDecision": true,
+              "conflictSetId": "stability",
+              "derivedFrom": [],
+              "authorityScope": "evidence-read"
+            },
+            {
+              "claimId": "b",
+              "canonicalText": "Experiment B reports no stability advantage for method A and higher tail variance.",
+              "status": "supported",
+              "polarity": "oppose",
+              "confidence": 0.69,
+              "sourceRefs": [
+                "B"
+              ],
+              "assertedBy": "B",
+              "sensitivity": "task",
+              "requiredForDecision": true,
+              "conflictSetId": "stability",
+              "derivedFrom": [],
+              "authorityScope": "evidence-read"
+            },
+            {
+              "claimId": "scope",
+              "canonicalText": "The experiments use different workloads, so direct aggregation remains uncertain.",
+              "status": "provisional",
+              "polarity": "neutral",
+              "confidence": 0.6,
+              "sourceRefs": [
+                "A",
+                "B"
+              ],
+              "assertedBy": "study-design",
+              "sensitivity": "task",
+              "requiredForDecision": true,
+              "conflictSetId": null,
+              "derivedFrom": [
+                "a",
+                "b"
+              ],
+              "authorityScope": "evidence-read"
+            }
+          ],
+          "derivedConclusion": "The supplied evidence does not justify a definitive conclusion that method A is more stable overall than method B.",
+          "requiredAssertions": {
+            "pass": true,
+            "counterEvidenceIntegrated": true,
+            "uncertaintyCalibrated": true,
+            "attributionPreservation": true,
+            "metricScopePreservation": true,
+            "conclusionSupported": true,
+            "noNovelFacts": true
+          },
+          "actual": {
+            "schema": "ppl.multi-agent.bound-delivery-fidelity-judge-result/0.1",
+            "handoffId": "bound-delivery-probe-supported-derived-conclusion",
+            "bindingId": "delivery_binding_effc7574583a7d5abcb3",
+            "pass": true,
+            "counterEvidenceIntegrated": true,
+            "uncertaintyCalibrated": true,
+            "attributionPreservation": true,
+            "metricScopePreservation": true,
+            "conclusionSupported": true,
+            "noNovelFacts": true,
+            "findings": []
+          },
+          "mismatches": {},
+          "exactKeys": true,
+          "typed": true,
+          "consistencyOk": true,
+          "consistencyError": null,
+          "parseError": null,
+          "rawContent": "{\n  \"schema\": \"ppl.multi-agent.bound-delivery-fidelity-judge-result/0.1\",\n  \"handoffId\": \"bound-delivery-probe-supported-derived-conclusion\",\n  \"bindingId\": \"delivery_binding_effc7574583a7d5abcb3\",\n  \"pass\": true,\n  \"counterEvidenceIntegrated\": true,\n  \"uncertaintyCalibrated\": true,\n  \"attributionPreservation\": true,\n  \"metricScopePreservation\": true,\n  \"conclusionSupported\": true\n  ,\n  \"noNovelFacts\": true\n}",
+          "qualified": true,
+          "binding": {
+            "schema": "ppl.multi-agent.delivery-evidence-binding/0.1",
+            "bindingId": "delivery_binding_effc7574583a7d5abcb3",
+            "handoffId": "bound-delivery-probe-supported-derived-conclusion",
+            "objective": {
+              "objective": "Does the supplied evidence justify a definitive conclusion that method A is more stable than method B?"
+            },
+            "evidence": [
+              {
+                "claimId": "a",
+                "canonicalText": "Experiment A reports method A has lower mean error than method B.",
+                "status": "supported",
+                "polarity": "support",
+                "confidence": 0.72,
+                "sourceRefs": [
+                  "A"
+                ],
+                "assertedBy": "A",
+                "requiredForDecision": true,
+                "conflictSetId": "stability"
+              },
+              {
+                "claimId": "b",
+                "canonicalText": "Experiment B reports no stability advantage for method A and higher tail variance.",
+                "status": "supported",
+                "polarity": "oppose",
+                "confidence": 0.69,
+                "sourceRefs": [
+                  "B"
+                ],
+                "assertedBy": "B",
+                "requiredForDecision": true,
+                "conflictSetId": "stability"
+              },
+              {
+                "claimId": "scope",
+                "canonicalText": "The experiments use different workloads, so direct aggregation remains uncertain.",
+                "status": "provisional",
+                "polarity": "neutral",
+                "confidence": 0.6,
+                "sourceRefs": [
+                  "A",
+                  "B"
+                ],
+                "assertedBy": "study-design",
+                "requiredForDecision": true,
+                "conflictSetId": null
+              }
+            ],
+            "derivedConclusion": {
+              "text": "The supplied evidence does not justify a definitive conclusion that method A is more stable overall than method B.",
+              "parentClaimIds": [
+                "a",
+                "b",
+                "scope"
+              ]
+            },
+            "canonicalEvidenceHash": "6ee56c0f7e5ceb82cc566cca57fbdf668c7b042dbdbd7c0d2f31958b5bf31591"
+          },
+          "rawResponse": {
+            "id": "chatcmpl-b335b1421447b2c1",
+            "object": "chat.completion",
+            "created": 1787847103,
+            "model": "Qwen3.5-9B",
+            "choices": [
+              {
+                "index": 0,
+                "message": {
+                  "role": "assistant",
+                  "content": "{\n  \"schema\": \"ppl.multi-agent.bound-delivery-fidelity-judge-result/0.1\",\n  \"handoffId\": \"bound-delivery-probe-supported-derived-conclusion\",\n  \"bindingId\": \"delivery_binding_effc7574583a7d5abcb3\",\n  \"pass\": true,\n  \"counterEvidenceIntegrated\": true,\n  \"uncertaintyCalibrated\": true,\n  \"attributionPreservation\": true,\n  \"metricScopePreservation\": true,\n  \"conclusionSupported\": true\n  ,\n  \"noNovelFacts\": true\n}",
+                  "refusal": null,
+                  "annotations": null,
+                  "audio": null,
+                  "function_call": null,
+                  "reasoning": null
+                },
+                "logprobs": null,
+                "finish_reason": "stop",
+                "stop_reason": null,
+                "token_ids": null,
+                "routed_experts": null
+              }
+            ],
+            "service_tier": null,
+            "system_fingerprint": "vllm-0.25.1-aa033495",
+            "usage": {
+              "prompt_tokens": 756,
+              "total_tokens": 900,
+              "completion_tokens": 144,
+              "prompt_tokens_details": null
+            },
+            "prompt_logprobs": null,
+            "prompt_token_ids": null,
+            "prompt_text": null,
+            "kv_transfer_params": null,
+            "metrics": null
+          }
+        },
+        {
+          "name": "metric-scope-broadening",
+          "objective": "What does the supplied evidence establish about mean error versus overall stability?",
+          "canonicalClaims": [
+            {
+              "claimId": "a",
+              "canonicalText": "Experiment A reports method A has lower mean error than method B.",
+              "status": "supported",
+              "polarity": "support",
+              "confidence": 0.82,
+              "sourceRefs": [
+                "A"
+              ],
+              "assertedBy": "A",
+              "sensitivity": "task",
+              "requiredForDecision": true,
+              "conflictSetId": null,
+              "derivedFrom": [],
+              "authorityScope": "evidence-read"
+            },
+            {
+              "claimId": "scope",
+              "canonicalText": "No supplied claim establishes that lower mean error is equivalent to greater overall stability.",
+              "status": "supported",
+              "polarity": "neutral",
+              "confidence": 0.9,
+              "sourceRefs": [
+                "protocol"
+              ],
+              "assertedBy": "protocol",
+              "sensitivity": "task",
+              "requiredForDecision": true,
+              "conflictSetId": null,
+              "derivedFrom": [],
+              "authorityScope": "evidence-read"
+            }
+          ],
+          "derivedConclusion": "Experiment A's lower mean error proves that method A is more stable overall than method B.",
+          "requiredAssertions": {
+            "pass": false,
+            "metricScopePreservation": false,
+            "conclusionSupported": false
+          },
+          "actual": {
+            "schema": "ppl.multi-agent.bound-delivery-fidelity-judge-result/0.1",
+            "handoffId": "bound-delivery-probe-metric-scope-broadening",
+            "bindingId": "delivery_binding_75890a74efb4f76427ea",
+            "pass": false,
+            "counterEvidenceIntegrated": false,
+            "uncertaintyCalibrated": false,
+            "attributionPreservation": false,
+            "metricScopePreservation": false,
+            "conclusionSupported": false,
+            "noNovelFacts": true,
+            "findings": [
+              "COUNTER_EVIDENCE_NOT_INTEGRATED",
+              "UNCERTAINTY_NOT_CALIBRATED",
+              "ATTRIBUTION_NOT_PRESERVED",
+              "METRIC_SCOPE_BROADENING",
+              "CONCLUSION_UNSUPPORTED"
+            ]
+          },
+          "mismatches": {},
+          "exactKeys": true,
+          "typed": true,
+          "consistencyOk": true,
+          "consistencyError": null,
+          "parseError": null,
+          "rawContent": "{\n  \"schema\": \"ppl.multi-agent.bound-delivery-fidelity-judge-result/0.1\",\n  \"handoffId\": \"bound-delivery-probe-metric-scope-broadening\",\n  \"bindingId\": \"delivery_binding_75890a74efb4f76427ea\",\n  \"pass\": false,\n  \"counterEvidenceIntegrated\": false,\n  \"uncertaintyCalibrated\": false,\n  \"attributionPreservation\": false,\n  \"metricScopePreservation\": false,\n  \"conclusionSupported\": false\n  ,\n  \"noNovelFacts\": true\n}",
+          "qualified": true,
+          "binding": {
+            "schema": "ppl.multi-agent.delivery-evidence-binding/0.1",
+            "bindingId": "delivery_binding_75890a74efb4f76427ea",
+            "handoffId": "bound-delivery-probe-metric-scope-broadening",
+            "objective": {
+              "objective": "What does the supplied evidence establish about mean error versus overall stability?"
+            },
+            "evidence": [
+              {
+                "claimId": "a",
+                "canonicalText": "Experiment A reports method A has lower mean error than method B.",
+                "status": "supported",
+                "polarity": "support",
+                "confidence": 0.82,
+                "sourceRefs": [
+                  "A"
+                ],
+                "assertedBy": "A",
+                "requiredForDecision": true,
+                "conflictSetId": null
+              },
+              {
+                "claimId": "scope",
+                "canonicalText": "No supplied claim establishes that lower mean error is equivalent to greater overall stability.",
+                "status": "supported",
+                "polarity": "neutral",
+                "confidence": 0.9,
+                "sourceRefs": [
+                  "protocol"
+                ],
+                "assertedBy": "protocol",
+                "requiredForDecision": true,
+                "conflictSetId": null
+              }
+            ],
+            "derivedConclusion": {
+              "text": "Experiment A's lower mean error proves that method A is more stable overall than method B.",
+              "parentClaimIds": [
+                "a",
+                "scope"
+              ]
+            },
+            "canonicalEvidenceHash": "9c143d21a3e3f900fb4412f93dfbdd7452c4cde64bebbf10652a7e358b551802"
+          },
+          "rawResponse": {
+            "id": "chatcmpl-9cd826976091f0ea",
+            "object": "chat.completion",
+            "created": 1787847105,
+            "model": "Qwen3.5-9B",
+            "choices": [
+              {
+                "index": 0,
+                "message": {
+                  "role": "assistant",
+                  "content": "{\n  \"schema\": \"ppl.multi-agent.bound-delivery-fidelity-judge-result/0.1\",\n  \"handoffId\": \"bound-delivery-probe-metric-scope-broadening\",\n  \"bindingId\": \"delivery_binding_75890a74efb4f76427ea\",\n  \"pass\": false,\n  \"counterEvidenceIntegrated\": false,\n  \"uncertaintyCalibrated\": false,\n  \"attributionPreservation\": false,\n  \"metricScopePreservation\": false,\n  \"conclusionSupported\": false\n  ,\n  \"noNovelFacts\": true\n}",
+                  "refusal": null,
+                  "annotations": null,
+                  "audio": null,
+                  "function_call": null,
+                  "reasoning": null
+                },
+                "logprobs": null,
+                "finish_reason": "stop",
+                "stop_reason": null,
+                "token_ids": null,
+                "routed_experts": null
+              }
+            ],
+            "service_tier": null,
+            "system_fingerprint": "vllm-0.25.1-aa033495",
+            "usage": {
+              "prompt_tokens": 666,
+              "total_tokens": 818,
+              "completion_tokens": 152,
+              "prompt_tokens_details": null
+            },
+            "prompt_logprobs": null,
+            "prompt_token_ids": null,
+            "prompt_text": null,
+            "kv_transfer_params": null,
+            "metrics": null
+          }
+        },
+        {
+          "name": "counter-evidence-erasure",
+          "objective": "Does the evidence establish that method A has a stability advantage?",
+          "canonicalClaims": [
+            {
+              "claimId": "a",
+              "canonicalText": "Experiment A reports a stability advantage for method A.",
+              "status": "supported",
+              "polarity": "support",
+              "confidence": 0.72,
+              "sourceRefs": [
+                "A"
+              ],
+              "assertedBy": "A",
+              "sensitivity": "task",
+              "requiredForDecision": true,
+              "conflictSetId": "stability",
+              "derivedFrom": [],
+              "authorityScope": "evidence-read"
+            },
+            {
+              "claimId": "b",
+              "canonicalText": "Experiment B reports no stability advantage for method A.",
+              "status": "supported",
+              "polarity": "oppose",
+              "confidence": 0.7,
+              "sourceRefs": [
+                "B"
+              ],
+              "assertedBy": "B",
+              "sensitivity": "task",
+              "requiredForDecision": true,
+              "conflictSetId": "stability",
+              "derivedFrom": [],
+              "authorityScope": "evidence-read"
+            }
+          ],
+          "derivedConclusion": "Method A is more stable overall; Experiment B is not material to the conclusion.",
+          "requiredAssertions": {
+            "pass": false,
+            "counterEvidenceIntegrated": false
+          },
+          "actual": {
+            "schema": "ppl.multi-agent.bound-delivery-fidelity-judge-result/0.1",
+            "handoffId": "bound-delivery-probe-counter-evidence-erasure",
+            "bindingId": "delivery_binding_b14d579e816fac1273ae",
+            "pass": false,
+            "counterEvidenceIntegrated": false,
+            "uncertaintyCalibrated": false,
+            "attributionPreservation": true,
+            "metricScopePreservation": false,
+            "conclusionSupported": false,
+            "noNovelFacts": true,
+            "findings": [
+              "COUNTER_EVIDENCE_NOT_INTEGRATED",
+              "UNCERTAINTY_NOT_CALIBRATED",
+              "METRIC_SCOPE_BROADENING",
+              "CONCLUSION_UNSUPPORTED"
+            ]
+          },
+          "mismatches": {},
+          "exactKeys": true,
+          "typed": true,
+          "consistencyOk": true,
+          "consistencyError": null,
+          "parseError": null,
+          "rawContent": "{\n  \"schema\": \"ppl.multi-agent.bound-delivery-fidelity-judge-result/0.1\",\n  \"handoffId\": \"bound-delivery-probe-counter-evidence-erasure\",\n  \"bindingId\": \"delivery_binding_b14d579e816fac1273ae\",\n  \"pass\": false,\n  \"counterEvidenceIntegrated\": false,\n  \"uncertaintyCalibrated\": false,\n  \"attributionPreservation\": true,\n  \"metricScopePreservation\": false,\n  \"conclusionSupported\": false\n  ,\n  \"noNovelFacts\": true\n}",
+          "qualified": true,
+          "binding": {
+            "schema": "ppl.multi-agent.delivery-evidence-binding/0.1",
+            "bindingId": "delivery_binding_b14d579e816fac1273ae",
+            "handoffId": "bound-delivery-probe-counter-evidence-erasure",
+            "objective": {
+              "objective": "Does the evidence establish that method A has a stability advantage?"
+            },
+            "evidence": [
+              {
+                "claimId": "a",
+                "canonicalText": "Experiment A reports a stability advantage for method A.",
+                "status": "supported",
+                "polarity": "support",
+                "confidence": 0.72,
+                "sourceRefs": [
+                  "A"
+                ],
+                "assertedBy": "A",
+                "requiredForDecision": true,
+                "conflictSetId": "stability"
+              },
+              {
+                "claimId": "b",
+                "canonicalText": "Experiment B reports no stability advantage for method A.",
+                "status": "supported",
+                "polarity": "oppose",
+                "confidence": 0.7,
+                "sourceRefs": [
+                  "B"
+                ],
+                "assertedBy": "B",
+                "requiredForDecision": true,
+                "conflictSetId": "stability"
+              }
+            ],
+            "derivedConclusion": {
+              "text": "Method A is more stable overall; Experiment B is not material to the conclusion.",
+              "parentClaimIds": [
+                "a",
+                "b"
+              ]
+            },
+            "canonicalEvidenceHash": "ff7ecd88554703dd9462ec73c95643b7970bcdb8007059584d5b8c39dd7e34d3"
+          },
+          "rawResponse": {
+            "id": "chatcmpl-bf5b0a9ff67058d0",
+            "object": "chat.completion",
+            "created": 1787847106,
+            "model": "Qwen3.5-9B",
+            "choices": [
+              {
+                "index": 0,
+                "message": {
+                  "role": "assistant",
+                  "content": "{\n  \"schema\": \"ppl.multi-agent.bound-delivery-fidelity-judge-result/0.1\",\n  \"handoffId\": \"bound-delivery-probe-counter-evidence-erasure\",\n  \"bindingId\": \"delivery_binding_b14d579e816fac1273ae\",\n  \"pass\": false,\n  \"counterEvidenceIntegrated\": false,\n  \"uncertaintyCalibrated\": false,\n  \"attributionPreservation\": true,\n  \"metricScopePreservation\": false,\n  \"conclusionSupported\": false\n  ,\n  \"noNovelFacts\": true\n}",
+                  "refusal": null,
+                  "annotations": null,
+                  "audio": null,
+                  "function_call": null,
+                  "reasoning": null
+                },
+                "logprobs": null,
+                "finish_reason": "stop",
+                "stop_reason": null,
+                "token_ids": null,
+                "routed_experts": null
+              }
+            ],
+            "service_tier": null,
+            "system_fingerprint": "vllm-0.25.1-aa033495",
+            "usage": {
+              "prompt_tokens": 658,
+              "total_tokens": 807,
+              "completion_tokens": 149,
+              "prompt_tokens_details": null
+            },
+            "prompt_logprobs": null,
+            "prompt_token_ids": null,
+            "prompt_text": null,
+            "kv_transfer_params": null,
+            "metrics": null
+          }
+        },
+        {
+          "name": "uncertainty-upgrade",
+          "objective": "Is a definitive stability advantage established?",
+          "canonicalClaims": [
+            {
+              "claimId": "u",
+              "canonicalText": "The current evidence suggests a possible stability advantage for method A, but the result is provisional and remains uncertain.",
+              "status": "provisional",
+              "polarity": "support",
+              "confidence": 0.55,
+              "sourceRefs": [
+                "A"
+              ],
+              "assertedBy": "A",
+              "sensitivity": "task",
+              "requiredForDecision": true,
+              "conflictSetId": null,
+              "derivedFrom": [],
+              "authorityScope": "evidence-read"
+            },
+            {
+              "claimId": "limit",
+              "canonicalText": "No definitive stability advantage is established by the current evidence.",
+              "status": "supported",
+              "polarity": "neutral",
+              "confidence": 0.9,
+              "sourceRefs": [
+                "A"
+              ],
+              "assertedBy": "A",
+              "sensitivity": "task",
+              "requiredForDecision": true,
+              "conflictSetId": null,
+              "derivedFrom": [],
+              "authorityScope": "evidence-read"
+            }
+          ],
+          "derivedConclusion": "Method A is definitively more stable overall than method B.",
+          "requiredAssertions": {
+            "pass": false,
+            "uncertaintyCalibrated": false,
+            "conclusionSupported": false
+          },
+          "actual": {
+            "schema": "ppl.multi-agent.bound-delivery-fidelity-judge-result/0.1",
+            "handoffId": "bound-delivery-probe-uncertainty-upgrade",
+            "bindingId": "delivery_binding_4e91dfe42fcfd672a974",
+            "pass": false,
+            "counterEvidenceIntegrated": false,
+            "uncertaintyCalibrated": false,
+            "attributionPreservation": false,
+            "metricScopePreservation": false,
+            "conclusionSupported": false,
+            "noNovelFacts": true,
+            "findings": [
+              "COUNTER_EVIDENCE_NOT_INTEGRATED",
+              "UNCERTAINTY_NOT_CALIBRATED",
+              "ATTRIBUTION_NOT_PRESERVED",
+              "METRIC_SCOPE_BROADENING",
+              "CONCLUSION_UNSUPPORTED"
+            ]
+          },
+          "mismatches": {},
+          "exactKeys": true,
+          "typed": true,
+          "consistencyOk": true,
+          "consistencyError": null,
+          "parseError": null,
+          "rawContent": "{\n  \"schema\": \"ppl.multi-agent.bound-delivery-fidelity-judge-result/0.1\",\n  \"handoffId\": \"bound-delivery-probe-uncertainty-upgrade\",\n  \"bindingId\": \"delivery_binding_4e91dfe42fcfd672a974\",\n  \"pass\": false,\n  \"counterEvidenceIntegrated\": false,\n  \"uncertaintyCalibrated\": false,\n  \"attributionPreservation\": false,\n  \"metricScopePreservation\": false,\n  \"conclusionSupported\": false\n  ,\n  \"noNovelFacts\": true\n}",
+          "qualified": true,
+          "binding": {
+            "schema": "ppl.multi-agent.delivery-evidence-binding/0.1",
+            "bindingId": "delivery_binding_4e91dfe42fcfd672a974",
+            "handoffId": "bound-delivery-probe-uncertainty-upgrade",
+            "objective": {
+              "objective": "Is a definitive stability advantage established?"
+            },
+            "evidence": [
+              {
+                "claimId": "u",
+                "canonicalText": "The current evidence suggests a possible stability advantage for method A, but the result is provisional and remains uncertain.",
+                "status": "provisional",
+                "polarity": "support",
+                "confidence": 0.55,
+                "sourceRefs": [
+                  "A"
+                ],
+                "assertedBy": "A",
+                "requiredForDecision": true,
+                "conflictSetId": null
+              },
+              {
+                "claimId": "limit",
+                "canonicalText": "No definitive stability advantage is established by the current evidence.",
+                "status": "supported",
+                "polarity": "neutral",
+                "confidence": 0.9,
+                "sourceRefs": [
+                  "A"
+                ],
+                "assertedBy": "A",
+                "requiredForDecision": true,
+                "conflictSetId": null
+              }
+            ],
+            "derivedConclusion": {
+              "text": "Method A is definitively more stable overall than method B.",
+              "parentClaimIds": [
+                "u",
+                "limit"
+              ]
+            },
+            "canonicalEvidenceHash": "6be39d94d6b2a09f7369a982958b0fe95aae8b46e1fd7790f2c71a5bc17cb57f"
+          },
+          "rawResponse": {
+            "id": "chatcmpl-9120805c60574112",
+            "object": "chat.completion",
+            "created": 1787847108,
+            "model": "Qwen3.5-9B",
+            "choices": [
+              {
+                "index": 0,
+                "message": {
+                  "role": "assistant",
+                  "content": "{\n  \"schema\": \"ppl.multi-agent.bound-delivery-fidelity-judge-result/0.1\",\n  \"handoffId\": \"bound-delivery-probe-uncertainty-upgrade\",\n  \"bindingId\": \"delivery_binding_4e91dfe42fcfd672a974\",\n  \"pass\": false,\n  \"counterEvidenceIntegrated\": false,\n  \"uncertaintyCalibrated\": false,\n  \"attributionPreservation\": false,\n  \"metricScopePreservation\": false,\n  \"conclusionSupported\": false\n  ,\n  \"noNovelFacts\": true\n}",
+                  "refusal": null,
+                  "annotations": null,
+                  "audio": null,
+                  "function_call": null,
+                  "reasoning": null
+                },
+                "logprobs": null,
+                "finish_reason": "stop",
+                "stop_reason": null,
+                "token_ids": null,
+                "routed_experts": null
+              }
+            ],
+            "service_tier": null,
+            "system_fingerprint": "vllm-0.25.1-aa033495",
+            "usage": {
+              "prompt_tokens": 656,
+              "total_tokens": 805,
+              "completion_tokens": 149,
+              "prompt_tokens_details": null
+            },
+            "prompt_logprobs": null,
+            "prompt_token_ids": null,
+            "prompt_text": null,
+            "kv_transfer_params": null,
+            "metrics": null
+          }
+        },
+        {
+          "name": "novel-source-fact",
+          "objective": "What do the supplied studies establish?",
+          "canonicalClaims": [
+            {
+              "claimId": "a",
+              "canonicalText": "Experiment A reports a possible benefit for method A.",
+              "status": "supported",
+              "polarity": "support",
+              "confidence": 0.65,
+              "sourceRefs": [
+                "A"
+              ],
+              "assertedBy": "A",
+              "sensitivity": "task",
+              "requiredForDecision": true,
+              "conflictSetId": null,
+              "derivedFrom": [],
+              "authorityScope": "evidence-read"
+            },
+            {
+              "claimId": "b",
+              "canonicalText": "Experiment B reports no clear benefit for method A.",
+              "status": "supported",
+              "polarity": "oppose",
+              "confidence": 0.65,
+              "sourceRefs": [
+                "B"
+              ],
+              "assertedBy": "B",
+              "sensitivity": "task",
+              "requiredForDecision": true,
+              "conflictSetId": null,
+              "derivedFrom": [],
+              "authorityScope": "evidence-read"
+            }
+          ],
+          "derivedConclusion": "A third experiment independently confirms that method A is more stable overall.",
+          "requiredAssertions": {
+            "pass": false,
+            "noNovelFacts": false
+          },
+          "actual": {
+            "schema": "ppl.multi-agent.bound-delivery-fidelity-judge-result/0.1",
+            "handoffId": "bound-delivery-probe-novel-source-fact",
+            "bindingId": "delivery_binding_74e6684ad17da314bb86",
+            "pass": false,
+            "counterEvidenceIntegrated": false,
+            "uncertaintyCalibrated": false,
+            "attributionPreservation": false,
+            "metricScopePreservation": false,
+            "conclusionSupported": false,
+            "noNovelFacts": false,
+            "findings": [
+              "COUNTER_EVIDENCE_NOT_INTEGRATED",
+              "UNCERTAINTY_NOT_CALIBRATED",
+              "ATTRIBUTION_NOT_PRESERVED",
+              "METRIC_SCOPE_BROADENING",
+              "CONCLUSION_UNSUPPORTED",
+              "NOVEL_FACT_INTRODUCED"
+            ]
+          },
+          "mismatches": {},
+          "exactKeys": true,
+          "typed": true,
+          "consistencyOk": true,
+          "consistencyError": null,
+          "parseError": null,
+          "rawContent": "{\n  \"schema\": \"ppl.multi-agent.bound-delivery-fidelity-judge-result/0.1\",\n  \"handoffId\": \"bound-delivery-probe-novel-source-fact\",\n  \"bindingId\": \"delivery_binding_74e6684ad17da314bb86\",\n  \"pass\": false,\n  \"counterEvidenceIntegrated\": false,\n  \"uncertaintyCalibrated\": false,\n  \"attributionPreservation\": false,\n  \"metricScopePreservation\": false,\n  \"conclusionSupported\": false\n  ,\n  \"noNovelFacts\": false\n}",
+          "qualified": true,
+          "binding": {
+            "schema": "ppl.multi-agent.delivery-evidence-binding/0.1",
+            "bindingId": "delivery_binding_74e6684ad17da314bb86",
+            "handoffId": "bound-delivery-probe-novel-source-fact",
+            "objective": {
+              "objective": "What do the supplied studies establish?"
+            },
+            "evidence": [
+              {
+                "claimId": "a",
+                "canonicalText": "Experiment A reports a possible benefit for method A.",
+                "status": "supported",
+                "polarity": "support",
+                "confidence": 0.65,
+                "sourceRefs": [
+                  "A"
+                ],
+                "assertedBy": "A",
+                "requiredForDecision": true,
+                "conflictSetId": null
+              },
+              {
+                "claimId": "b",
+                "canonicalText": "Experiment B reports no clear benefit for method A.",
+                "status": "supported",
+                "polarity": "oppose",
+                "confidence": 0.65,
+                "sourceRefs": [
+                  "B"
+                ],
+                "assertedBy": "B",
+                "requiredForDecision": true,
+                "conflictSetId": null
+              }
+            ],
+            "derivedConclusion": {
+              "text": "A third experiment independently confirms that method A is more stable overall.",
+              "parentClaimIds": [
+                "a",
+                "b"
+              ]
+            },
+            "canonicalEvidenceHash": "d2d089c2f8149225282bed2b9166b04e18d2b3468ae530e0b9976c813fe21010"
+          },
+          "rawResponse": {
+            "id": "chatcmpl-881d3dacd4858c87",
+            "object": "chat.completion",
+            "created": 1787847110,
+            "model": "Qwen3.5-9B",
+            "choices": [
+              {
+                "index": 0,
+                "message": {
+                  "role": "assistant",
+                  "content": "{\n  \"schema\": \"ppl.multi-agent.bound-delivery-fidelity-judge-result/0.1\",\n  \"handoffId\": \"bound-delivery-probe-novel-source-fact\",\n  \"bindingId\": \"delivery_binding_74e6684ad17da314bb86\",\n  \"pass\": false,\n  \"counterEvidenceIntegrated\": false,\n  \"uncertaintyCalibrated\": false,\n  \"attributionPreservation\": false,\n  \"metricScopePreservation\": false,\n  \"conclusionSupported\": false\n  ,\n  \"noNovelFacts\": false\n}",
+                  "refusal": null,
+                  "annotations": null,
+                  "audio": null,
+                  "function_call": null,
+                  "reasoning": null
+                },
+                "logprobs": null,
+                "finish_reason": "stop",
+                "stop_reason": null,
+                "token_ids": null,
+                "routed_experts": null
+              }
+            ],
+            "service_tier": null,
+            "system_fingerprint": "vllm-0.25.1-aa033495",
+            "usage": {
+              "prompt_tokens": 646,
+              "total_tokens": 794,
+              "completion_tokens": 148,
+              "prompt_tokens_details": null
+            },
+            "prompt_logprobs": null,
+            "prompt_token_ids": null,
+            "prompt_text": null,
+            "kv_transfer_params": null,
+            "metrics": null
+          }
+        },
+        {
+          "name": "attribution-swap",
+          "objective": "Which experiment reports lower mean error?",
+          "canonicalClaims": [
+            {
+              "claimId": "a",
+              "canonicalText": "Experiment A reports method A has lower mean error than method B.",
+              "status": "supported",
+              "polarity": "support",
+              "confidence": 0.8,
+              "sourceRefs": [
+                "A"
+              ],
+              "assertedBy": "A",
+              "sensitivity": "task",
+              "requiredForDecision": true,
+              "conflictSetId": null,
+              "derivedFrom": [],
+              "authorityScope": "evidence-read"
+            },
+            {
+              "claimId": "b",
+              "canonicalText": "Experiment B reports higher tail variance for method A.",
+              "status": "supported",
+              "polarity": "oppose",
+              "confidence": 0.75,
+              "sourceRefs": [
+                "B"
+              ],
+              "assertedBy": "B",
+              "sensitivity": "task",
+              "requiredForDecision": true,
+              "conflictSetId": null,
+              "derivedFrom": [],
+              "authorityScope": "evidence-read"
+            }
+          ],
+          "derivedConclusion": "Experiment B reports that method A has lower mean error than method B.",
+          "requiredAssertions": {
+            "pass": false,
+            "attributionPreservation": false
+          },
+          "actual": {
+            "schema": "ppl.multi-agent.bound-delivery-fidelity-judge-result/0.1",
+            "handoffId": "bound-delivery-probe-attribution-swap",
+            "bindingId": "delivery_binding_9d302be2a696c930cf22",
+            "pass": false,
+            "counterEvidenceIntegrated": false,
+            "uncertaintyCalibrated": false,
+            "attributionPreservation": false,
+            "metricScopePreservation": false,
+            "conclusionSupported": false,
+            "noNovelFacts": true,
+            "findings": [
+              "COUNTER_EVIDENCE_NOT_INTEGRATED",
+              "UNCERTAINTY_NOT_CALIBRATED",
+              "ATTRIBUTION_NOT_PRESERVED",
+              "METRIC_SCOPE_BROADENING",
+              "CONCLUSION_UNSUPPORTED"
+            ]
+          },
+          "mismatches": {},
+          "exactKeys": true,
+          "typed": true,
+          "consistencyOk": true,
+          "consistencyError": null,
+          "parseError": null,
+          "rawContent": "{\n  \"schema\": \"ppl.multi-agent.bound-delivery-fidelity-judge-result/0.1\",\n  \"handoffId\": \"bound-delivery-probe-attribution-swap\",\n  \"bindingId\": \"delivery_binding_9d302be2a696c930cf22\",\n  \"pass\": false,\n  \"counterEvidenceIntegrated\": false,\n  \"uncertaintyCalibrated\": false,\n  \"attributionPreservation\": false,\n  \"metricScopePreservation\": false,\n  \"conclusionSupported\": false\n  ,\n  \"noNovelFacts\": true\n}",
+          "qualified": true,
+          "binding": {
+            "schema": "ppl.multi-agent.delivery-evidence-binding/0.1",
+            "bindingId": "delivery_binding_9d302be2a696c930cf22",
+            "handoffId": "bound-delivery-probe-attribution-swap",
+            "objective": {
+              "objective": "Which experiment reports lower mean error?"
+            },
+            "evidence": [
+              {
+                "claimId": "a",
+                "canonicalText": "Experiment A reports method A has lower mean error than method B.",
+                "status": "supported",
+                "polarity": "support",
+                "confidence": 0.8,
+                "sourceRefs": [
+                  "A"
+                ],
+                "assertedBy": "A",
+                "requiredForDecision": true,
+                "conflictSetId": null
+              },
+              {
+                "claimId": "b",
+                "canonicalText": "Experiment B reports higher tail variance for method A.",
+                "status": "supported",
+                "polarity": "oppose",
+                "confidence": 0.75,
+                "sourceRefs": [
+                  "B"
+                ],
+                "assertedBy": "B",
+                "requiredForDecision": true,
+                "conflictSetId": null
+              }
+            ],
+            "derivedConclusion": {
+              "text": "Experiment B reports that method A has lower mean error than method B.",
+              "parentClaimIds": [
+                "a",
+                "b"
+              ]
+            },
+            "canonicalEvidenceHash": "2f6d32f01fa6118619fb18a91f3d5ef24063f773cc7c4f1b2146f4436c457850"
+          },
+          "rawResponse": {
+            "id": "chatcmpl-af1fafcbd62ccf1b",
+            "object": "chat.completion",
+            "created": 1787847112,
+            "model": "Qwen3.5-9B",
+            "choices": [
+              {
+                "index": 0,
+                "message": {
+                  "role": "assistant",
+                  "content": "{\n  \"schema\": \"ppl.multi-agent.bound-delivery-fidelity-judge-result/0.1\",\n  \"handoffId\": \"bound-delivery-probe-attribution-swap\",\n  \"bindingId\": \"delivery_binding_9d302be2a696c930cf22\",\n  \"pass\": false,\n  \"counterEvidenceIntegrated\": false,\n  \"uncertaintyCalibrated\": false,\n  \"attributionPreservation\": false,\n  \"metricScopePreservation\": false,\n  \"conclusionSupported\": false\n  ,\n  \"noNovelFacts\": true\n}",
+                  "refusal": null,
+                  "annotations": null,
+                  "audio": null,
+                  "function_call": null,
+                  "reasoning": null
+                },
+                "logprobs": null,
+                "finish_reason": "stop",
+                "stop_reason": null,
+                "token_ids": null,
+                "routed_experts": null
+              }
+            ],
+            "service_tier": null,
+            "system_fingerprint": "vllm-0.25.1-aa033495",
+            "usage": {
+              "prompt_tokens": 650,
+              "total_tokens": 799,
+              "completion_tokens": 149,
+              "prompt_tokens_details": null
+            },
+            "prompt_logprobs": null,
+            "prompt_token_ids": null,
+            "prompt_text": null,
+            "kv_transfer_params": null,
+            "metrics": null
+          }
+        }
+      ]
+    },
+    "deliveryRecoveryQualification": {
+      "schema": "ppl.mag.delivery-recovery-qualification/0.1",
+      "passed": true,
+      "rejectedConclusion": "Experiment A's lower mean error proves that method A is more stable overall than method B.",
+      "findingsToRepair": [
+        "COUNTER_EVIDENCE_NOT_INTEGRATED",
+        "UNCERTAINTY_NOT_CALIBRATED",
+        "ATTRIBUTION_NOT_PRESERVED",
+        "METRIC_SCOPE_BROADENING",
+        "CONCLUSION_UNSUPPORTED"
+      ],
+      "repairedConclusion": "The evidence does not establish that method A is more stable than method B, as the lack of stability advantage in Experiment B and the uncertainty regarding workload aggregation prevent a definitive comparison of mean error across the two methods.",
+      "structuralPassed": true,
+      "binding": {
+        "schema": "ppl.multi-agent.delivery-evidence-binding/0.1",
+        "bindingId": "delivery_binding_c73016571926f9597665",
+        "handoffId": "handoff_25842b35b760e3ff61df",
+        "objective": {
+          "objective": "Assess whether the supplied evidence justifies a conclusion that method A is more stable than method B."
+        },
+        "evidence": [
+          {
+            "claimId": "claim-a",
+            "canonicalText": "Experiment A reports method A has lower mean error than method B.",
+            "status": "supported",
+            "polarity": "support",
+            "confidence": 0.72,
+            "sourceRefs": [
+              "experiment:A"
+            ],
+            "assertedBy": "source:experiment-A",
+            "requiredForDecision": true,
+            "conflictSetId": "method-a-stability"
+          },
+          {
+            "claimId": "claim-b",
+            "canonicalText": "Experiment B reports no stability advantage for method A and higher tail variance.",
+            "status": "supported",
+            "polarity": "oppose",
+            "confidence": 0.69,
+            "sourceRefs": [
+              "experiment:B"
+            ],
+            "assertedBy": "source:experiment-B",
+            "requiredForDecision": true,
+            "conflictSetId": "method-a-stability"
+          },
+          {
+            "claimId": "claim-scope",
+            "canonicalText": "The experiments use different workloads, so direct aggregation remains uncertain.",
+            "status": "provisional",
+            "polarity": "neutral",
+            "confidence": 0.6,
+            "sourceRefs": [
+              "experiment:A",
+              "experiment:B"
+            ],
+            "assertedBy": "source:study-design",
+            "requiredForDecision": true,
+            "conflictSetId": null
+          }
+        ],
+        "derivedConclusion": {
+          "text": "The evidence does not establish that method A is more stable than method B, as the lack of stability advantage in Experiment B and the uncertainty regarding workload aggregation prevent a definitive comparison of mean error across the two methods.",
+          "parentClaimIds": [
+            "claim-a",
+            "claim-b",
+            "claim-scope"
+          ]
+        },
+        "canonicalEvidenceHash": "40195c2e1b6c30a5a8df7045dd21925f0f4cceac3702a2a3c0ca4cb4590335db"
+      },
+      "judgeResult": {
+        "schema": "ppl.multi-agent.bound-delivery-fidelity-judge-result/0.1",
+        "handoffId": "handoff_25842b35b760e3ff61df",
+        "bindingId": "delivery_binding_c73016571926f9597665",
+        "pass": true,
+        "counterEvidenceIntegrated": true,
+        "uncertaintyCalibrated": true,
+        "attributionPreservation": true,
+        "metricScopePreservation": true,
+        "conclusionSupported": true,
+        "noNovelFacts": true,
+        "findings": []
+      },
+      "finalFidelityPassed": true,
+      "canonicalBound": true,
+      "renderedDelivery": {
+        "schema": "ppl.multi-agent.governed-delivery/0.1",
+        "deliveryId": "governed_delivery_494947e60e5e59bb36e9",
+        "bindingId": "delivery_binding_c73016571926f9597665",
+        "handoffId": "handoff_25842b35b760e3ff61df",
+        "renderedText": "Evidence:\n- Experiment A reports method A has lower mean error than method B.\n- Experiment B reports no stability advantage for method A and higher tail variance.\n- The experiments use different workloads, so direct aggregation remains uncertain.\n\nConclusion:\nThe evidence does not establish that method A is more stable than method B, as the lack of stability advantage in Experiment B and the uncertainty regarding workload aggregation prevent a definitive comparison of mean error across the two methods.",
+        "evidenceCount": 3,
+        "parentClaimIds": [
+          "claim-a",
+          "claim-b",
+          "claim-scope"
+        ]
+      },
+      "agentRawResponse": {
+        "id": "chatcmpl-8851fd0b3019cb35",
+        "object": "chat.completion",
+        "created": 1787847114,
+        "model": "Qwen3.5-0.8B",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "The evidence does not establish that method A is more stable than method B, as the lack of stability advantage in Experiment B and the uncertainty regarding workload aggregation prevent a definitive comparison of mean error across the two methods.",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.25.1-34ee5043",
+        "usage": {
+          "prompt_tokens": 533,
+          "total_tokens": 576,
+          "completion_tokens": 43,
+          "prompt_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "metrics": null
+      },
+      "judgeRawResponse": {
+        "id": "chatcmpl-a39ff2aec8ff19af",
+        "object": "chat.completion",
+        "created": 1787847114,
+        "model": "Qwen3.5-9B",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"schema\": \"ppl.multi-agent.bound-delivery-fidelity-judge-result/0.1\",\n  \"handoffId\": \"handoff_25842b35b760e3ff61df\",\n  \"bindingId\": \"delivery_binding_c73016571926f9597665\",\n  \"pass\": true,\n  \"counterEvidenceIntegrated\": true,\n  \"uncertaintyCalibrated\": true,\n  \"attributionPreservation\": true,\n  \"metricScopePreservation\": true,\n  \"conclusionSupported\": true\n  ,\n  \"noNovelFacts\": true\n}",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.25.1-aa033495",
+        "usage": {
+          "prompt_tokens": 817,
+          "total_tokens": 977,
+          "completion_tokens": 160,
+          "prompt_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "metrics": null
+      }
+    },
+    "scenarioCount": 17,
+    "scenarioPassCount": 17,
+    "allScenariosPassed": true,
+    "cleanDelivered": 2,
+    "hardFaultsBlockedAsExpected": 12,
+    "recoverableFaultsRecovered": 3,
+    "summaryFallbackCount": 4,
+    "deliveryRepairCount": 2,
+    "expectedDeliveryCount": 5,
+    "canonicalBoundDeliveryCount": 5,
+    "allDeliveredCanonicalBound": true,
+    "metricScopeRegressionPassed": true,
+    "recordsFile": "R3_RECORDS.json",
+    "promotionEligible": true
+  },
+  "deliveryRecoveryQualificationPassed": true,
+  "fallbackChecks": [
+    {
+      "scenarioId": "clean-summary",
+      "phase": "supervisor_to_analyst",
+      "nextTransformMode": "verbatim",
+      "nextSummary": null,
+      "passed": true
+    },
+    {
+      "scenarioId": "clean-summary",
+      "phase": "analyst_to_reviewer",
+      "nextTransformMode": "verbatim",
+      "nextSummary": null,
+      "passed": true
+    },
+    {
+      "scenarioId": "summary-semantic-drift",
+      "phase": "supervisor_to_analyst",
+      "nextTransformMode": "verbatim",
+      "nextSummary": null,
+      "passed": true
+    },
+    {
+      "scenarioId": "summary-semantic-drift",
+      "phase": "analyst_to_reviewer",
+      "nextTransformMode": "verbatim",
+      "nextSummary": null,
+      "passed": true
+    }
+  ],
+  "canonicalBindingChecks": [
+    {
+      "scenarioId": "clean-verbatim",
+      "bindingId": "delivery_binding_af086ade66dfbee3e4b7",
+      "canonicalEvidenceHash": "40195c2e1b6c30a5a8df7045dd21925f0f4cceac3702a2a3c0ca4cb4590335db",
+      "judgePass": true,
+      "allJudgeDimensionsPass": true,
+      "requiredClaimParentsCovered": true,
+      "renderEqualsDelivered": true,
+      "passed": true
+    },
+    {
+      "scenarioId": "clean-summary",
+      "bindingId": "delivery_binding_af086ade66dfbee3e4b7",
+      "canonicalEvidenceHash": "40195c2e1b6c30a5a8df7045dd21925f0f4cceac3702a2a3c0ca4cb4590335db",
+      "judgePass": true,
+      "allJudgeDimensionsPass": true,
+      "requiredClaimParentsCovered": true,
+      "renderEqualsDelivered": true,
+      "passed": true
+    },
+    {
+      "scenarioId": "summary-semantic-drift",
+      "bindingId": "delivery_binding_af086ade66dfbee3e4b7",
+      "canonicalEvidenceHash": "40195c2e1b6c30a5a8df7045dd21925f0f4cceac3702a2a3c0ca4cb4590335db",
+      "judgePass": true,
+      "allJudgeDimensionsPass": true,
+      "requiredClaimParentsCovered": true,
+      "renderEqualsDelivered": true,
+      "passed": true
+    },
+    {
+      "scenarioId": "final-answer-semantic-drift",
+      "bindingId": "delivery_binding_d2216612eb255e5291cd",
+      "canonicalEvidenceHash": "40195c2e1b6c30a5a8df7045dd21925f0f4cceac3702a2a3c0ca4cb4590335db",
+      "judgePass": true,
+      "allJudgeDimensionsPass": true,
+      "requiredClaimParentsCovered": true,
+      "renderEqualsDelivered": true,
+      "passed": true
+    },
+    {
+      "scenarioId": "final-metric-scope-broadening",
+      "bindingId": "delivery_binding_ad3e212ebc4e45ee809f",
+      "canonicalEvidenceHash": "40195c2e1b6c30a5a8df7045dd21925f0f4cceac3702a2a3c0ca4cb4590335db",
+      "judgePass": true,
+      "allJudgeDimensionsPass": true,
+      "requiredClaimParentsCovered": true,
+      "renderEqualsDelivered": true,
+      "passed": true
+    }
+  ],
+  "metricScopeRegression": {
+    "passed": true,
+    "initialJudge": {
+      "schema": "ppl.multi-agent.bound-delivery-fidelity-judge-result/0.1",
+      "handoffId": "handoff_d292c6ac5a827cb6c7b3",
+      "bindingId": "delivery_binding_b3bbdbc3d63bc4c41761",
+      "pass": false,
+      "counterEvidenceIntegrated": false,
+      "uncertaintyCalibrated": false,
+      "attributionPreservation": false,
+      "metricScopePreservation": false,
+      "conclusionSupported": false,
+      "noNovelFacts": true,
+      "findings": [
+        "COUNTER_EVIDENCE_NOT_INTEGRATED",
+        "UNCERTAINTY_NOT_CALIBRATED",
+        "ATTRIBUTION_NOT_PRESERVED",
+        "METRIC_SCOPE_BROADENING",
+        "CONCLUSION_UNSUPPORTED"
+      ]
+    },
+    "finalJudge": {
+      "schema": "ppl.multi-agent.bound-delivery-fidelity-judge-result/0.1",
+      "handoffId": "handoff_c6b399492e6ad5e6ee3f",
+      "bindingId": "delivery_binding_ad3e212ebc4e45ee809f",
+      "pass": true,
+      "counterEvidenceIntegrated": true,
+      "uncertaintyCalibrated": true,
+      "attributionPreservation": true,
+      "metricScopePreservation": true,
+      "conclusionSupported": true,
+      "noNovelFacts": true,
+      "findings": []
+    }
+  },
+  "graphConsistency": {
+    "executionAuthorityConsistent": true,
+    "fidelityTraceConsistent": true
+  },
+  "manualReview": [
+    {
+      "scenarioId": "clean-verbatim",
+      "passed": true,
+      "checks": {
+        "metricScopeBroadening": false,
+        "opposingEvidenceErasure": false,
+        "confidenceLaundering": false,
+        "attributionSwap": false,
+        "novelFactInjection": false,
+        "conclusionStrengthBeyondCanonicalEvidence": false
+      },
+      "deliveredAnswer": "Evidence:\n- Experiment A reports method A has lower mean error than method B.\n- Experiment B reports no stability advantage for method A and higher tail variance.\n- The experiments use different workloads, so direct aggregation remains uncertain.\n\nConclusion:\nThe evidence does not justify a definitive conclusion that method A is more stable than method B, as the conflicting claims regarding stability and tail variance, combined with the lack of a clear, unified metric for stability, prevent a valid assessment."
+    },
+    {
+      "scenarioId": "clean-summary",
+      "passed": true,
+      "checks": {
+        "metricScopeBroadening": false,
+        "opposingEvidenceErasure": false,
+        "confidenceLaundering": false,
+        "attributionSwap": false,
+        "novelFactInjection": false,
+        "conclusionStrengthBeyondCanonicalEvidence": false
+      },
+      "deliveredAnswer": "Evidence:\n- Experiment A reports method A has lower mean error than method B.\n- Experiment B reports no stability advantage for method A and higher tail variance.\n- The experiments use different workloads, so direct aggregation remains uncertain.\n\nConclusion:\nThe evidence does not justify a definitive conclusion that method A is more stable than method B, as the conflicting claims regarding stability and tail variance, combined with the lack of a clear, unified metric for stability, prevent a valid assessment."
+    },
+    {
+      "scenarioId": "summary-semantic-drift",
+      "passed": true,
+      "checks": {
+        "metricScopeBroadening": false,
+        "opposingEvidenceErasure": false,
+        "confidenceLaundering": false,
+        "attributionSwap": false,
+        "novelFactInjection": false,
+        "conclusionStrengthBeyondCanonicalEvidence": false
+      },
+      "deliveredAnswer": "Evidence:\n- Experiment A reports method A has lower mean error than method B.\n- Experiment B reports no stability advantage for method A and higher tail variance.\n- The experiments use different workloads, so direct aggregation remains uncertain.\n\nConclusion:\nThe evidence does not justify a definitive conclusion that method A is more stable than method B, as the conflicting claims regarding stability and tail variance, combined with the lack of a clear, unified metric for stability, prevent a valid assessment."
+    },
+    {
+      "scenarioId": "final-answer-semantic-drift",
+      "passed": true,
+      "checks": {
+        "metricScopeBroadening": false,
+        "opposingEvidenceErasure": false,
+        "confidenceLaundering": false,
+        "attributionSwap": false,
+        "novelFactInjection": false,
+        "conclusionStrengthBeyondCanonicalEvidence": false
+      },
+      "deliveredAnswer": "Evidence:\n- Experiment A reports method A has lower mean error than method B.\n- Experiment B reports no stability advantage for method A and higher tail variance.\n- The experiments use different workloads, so direct aggregation remains uncertain.\n\nConclusion:\nThe evidence does not support the conclusion that method A is more stable than method B, as the counter-evidence regarding tail variance and the uncertainty in workload aggregation prevent a definitive comparison."
+    },
+    {
+      "scenarioId": "final-metric-scope-broadening",
+      "passed": true,
+      "checks": {
+        "metricScopeBroadening": false,
+        "opposingEvidenceErasure": false,
+        "confidenceLaundering": false,
+        "attributionSwap": false,
+        "novelFactInjection": false,
+        "conclusionStrengthBeyondCanonicalEvidence": false
+      },
+      "deliveredAnswer": "Evidence:\n- Experiment A reports method A has lower mean error than method B.\n- Experiment B reports no stability advantage for method A and higher tail variance.\n- The experiments use different workloads, so direct aggregation remains uncertain.\n\nConclusion:\nThe evidence does not support the conclusion that method A is more stable than method B, as the lack of stability advantage for method A and the uncertainty regarding workload aggregation prevent a definitive comparison of stability metrics."
+    }
+  ]
+}

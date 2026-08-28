@@ -1,0 +1,63 @@
+{
+  "schema": "ppl.r5-stable-promotion-validation/0.1",
+  "generatedAt": "2026-08-27T08:10:00Z",
+  "decision": "PASS",
+  "promotions": {
+    "experienceRuleEvolution": "0.2.0 Stable",
+    "tutorRule": "rule_tutor_known_bad_draft_prejudge_fastpath@0.1.0 Validated",
+    "host": "0.1.13 Stable unchanged"
+  },
+  "realQualification": {
+    "resultSha256": "7e646a7e2710e5a3dbe21b95d12882e15316f2500412ccd9dc447075d6430ecb",
+    "tutor": "18/18",
+    "research": "20/20",
+    "life": "18/18",
+    "researchTools": "14/14 exactly-once",
+    "semanticFindings": 0,
+    "observatoryPass": true,
+    "liveFastPaths": 7,
+    "fastPathTurns": [
+      1,
+      4,
+      7,
+      9,
+      10,
+      13,
+      16
+    ],
+    "codeCounts": {
+      "TUTOR_TASK_FACTUAL_ERROR": 5,
+      "TUTOR_FINAL_ANSWER_LEAK": 5,
+      "overlapTurns": 3
+    },
+    "manualVisibleText": "56/56 PASS"
+  },
+  "governance": {
+    "finalReviewId": "review_091f082202ff688cf475",
+    "eligible": true,
+    "fitnessScore": 0.9,
+    "totalEvidenceSamples": 148,
+    "evidenceClasses": [
+      "fault-injection",
+      "real-replay",
+      "real-soak"
+    ],
+    "activeValidatedCandidateId": "candidate_fb35ff2a5416aaae2a11",
+    "gen0FinalStatus": "retired",
+    "gen1FinalStatus": "validated"
+  },
+  "stablePackage": {
+    "componentTests": "33/33 PASS",
+    "sourceReextractTests": "33/33 PASS",
+    "freshOfflineTarballInstall": "PASS",
+    "publicImport": "PASS",
+    "hostRuntimeCompatibility": "PASS",
+    "rcToStableSourceIdentity": true
+  },
+  "futureLocalQualificationDefault": {
+    "os": "Ubuntu",
+    "inferenceServer": "vLLM",
+    "transport": "OpenAI-compatible HTTP API",
+    "note": "Applies to future local test instructions; this R5 evidence was produced by the already-completed Windows/LM Studio run."
+  }
+}

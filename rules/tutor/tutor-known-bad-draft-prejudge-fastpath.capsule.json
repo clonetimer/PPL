@@ -1,0 +1,110 @@
+{
+  "schema": "ppl.experience-rule-capsule/0.1",
+  "capsuleId": "capsule_e820dc24aa6ed535e784",
+  "rule": {
+    "ruleId": "rule_tutor_known_bad_draft_prejudge_fastpath",
+    "version": "0.1.0",
+    "status": "validated"
+  },
+  "outcome": {
+    "finalDecision": "validated",
+    "fitnessScore": 0.9,
+    "liveFastPaths": 7,
+    "liveFastPathTurns": [
+      {
+        "domain": "tutor",
+        "turn": 1,
+        "requestId": "gpt:tutor:1:1",
+        "ruleIds": [
+          "rule_tutor_known_bad_draft_prejudge_fastpath"
+        ]
+      },
+      {
+        "domain": "tutor",
+        "turn": 4,
+        "requestId": "gpt:tutor:4:1",
+        "ruleIds": [
+          "rule_tutor_known_bad_draft_prejudge_fastpath"
+        ]
+      },
+      {
+        "domain": "tutor",
+        "turn": 7,
+        "requestId": "gpt:tutor:7:1",
+        "ruleIds": [
+          "rule_tutor_known_bad_draft_prejudge_fastpath"
+        ]
+      },
+      {
+        "domain": "tutor",
+        "turn": 9,
+        "requestId": "gpt:tutor:9:1",
+        "ruleIds": [
+          "rule_tutor_known_bad_draft_prejudge_fastpath"
+        ]
+      },
+      {
+        "domain": "tutor",
+        "turn": 10,
+        "requestId": "gpt:tutor:10:1",
+        "ruleIds": [
+          "rule_tutor_known_bad_draft_prejudge_fastpath"
+        ]
+      },
+      {
+        "domain": "tutor",
+        "turn": 13,
+        "requestId": "gpt:tutor:13:1",
+        "ruleIds": [
+          "rule_tutor_known_bad_draft_prejudge_fastpath"
+        ]
+      },
+      {
+        "domain": "tutor",
+        "turn": 16,
+        "requestId": "gpt:tutor:16:1",
+        "ruleIds": [
+          "rule_tutor_known_bad_draft_prejudge_fastpath"
+        ]
+      }
+    ],
+    "semanticFindings": 0,
+    "observatoryPass": true
+  },
+  "replay": {
+    "realEvidence": true,
+    "totalRecords": 148,
+    "artifacts": [
+      {
+        "kind": "real-replay",
+        "evaluationId": "eval_ddb727431b029bacf769",
+        "evidenceSha256": [
+          "9baa4833c1846681edfe1ca958f2b82f7fb64f0d5df71c748ee4723a4c66e582",
+          "f265cff94345a07facafbf155f695b6ba44c881be3a72b75ab16fbf553158caa",
+          "bc52315d7932e920c904205de47a0899472962c2dbbb7bdf626e4012211b9119"
+        ]
+      },
+      {
+        "kind": "fault-injection",
+        "evaluationId": "eval_51e0d3cc814aa1e73632",
+        "evidenceSha256": [
+          "6af452d7ccac4d06500763792e6056761ca8528eca5ec86e2fe45e0e0203308d",
+          "50d4d67bc4ce0d764960a8b982e43ac02a6b1d50bd21d6603436bb0d97793603",
+          "59029d5d33f8e66311207a45b4734d05a4a0b5acb33bf03ff54253420ebfb5e8"
+        ]
+      },
+      {
+        "kind": "real-soak",
+        "evaluationId": "eval_38a178dffbae45069f77",
+        "evidenceSha256": [
+          "7e646a7e2710e5a3dbe21b95d12882e15316f2500412ccd9dc447075d6430ecb",
+          "bf82b3ba6a57b7769326ff2cc6a6e578cb18b0c09a8aef4eb78df14bb8819faa",
+          "5b1cf21019f84793d57be24188c2755a58fe286b556628476a5dfb39e67d67d1",
+          "6288ed715175fa8c9f931de91f28cd1567f3024b7f17ba28282079b32a1ef426",
+          "0d8055cae49794d85a186851ed62bd956bb14bda451a6e5c813d9e9be9311d37"
+        ]
+      }
+    ]
+  },
+  "createdAt": "2026-08-27T08:00:00.000Z"
+}

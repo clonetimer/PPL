@@ -1,0 +1,227 @@
+{
+  "schema": "ppl.llm-host-release-surface/0.1",
+  "version": "0.1.13",
+  "stableCandidate": [
+    "provider-neutral callback transport",
+    "retry/timeout/abort lifecycle",
+    "stream accumulation with no partial Profile mutation",
+    "single-writer session coordinator",
+    "tool allowlist/schema/provenance/idempotency ledger",
+    "Agent/Observer/Evidence Judge/Policy Judge authority separation",
+    "delivery gate with retry and mutation-after-delivery only",
+    "Agent/Judge independence policy required|preferred|disabled",
+    "Host-owned constrained Independent-Judge response contract with role-scoped taxonomy and Host-owned severity",
+    "Host-side JSON Schema subset validation for response contracts",
+    "append-only durable tool ledger backend",
+    "productized recoverable tool-mediated Agent lifecycle with durable turn checkpoint state machine",
+    "state/input identity fail-closed resume guards and committed-turn replay"
+  ],
+  "providerPreview": {
+    "openaiResponses": {
+      "status": "preview-protocol-validated-no-live-key",
+      "notes": "Validated against a local HTTP/SSE protocol server. A live OpenAI API request was not executed in this build environment because OPENAI_API_KEY is absent."
+    }
+  },
+  "status": "stable",
+  "stableBaseline": "0.1.13",
+  "applicationChanges": [
+    "optional Experience Rule Evolution rule set with explicit off|observe|evaluation|enforce modes",
+    "pre-Judge fast-path only for provenance-bound Host deterministic error codes selected by an Experience Rule",
+    "Host-owned compileRetryRequest remains the only repair compiler; unknown failures still invoke the external Judge",
+    "structurally invalid parsed drafts retry locally before external Judge because they can never be delivered",
+    "audit records Experience Rule evaluation/match/fast-path provenance without exposing rule content to the user-visible message"
+  ],
+  "livePromotionEvidence": {
+    "localProvider": "LM Studio Qwen3.5-0.8B live-certified",
+    "independentJudge": "LM Studio Qwen3.5-9B structured Judge live-qualified",
+    "recoverableLifecycle": "RC10 real crash/restart lifecycle PASS; side effect remained exactly once",
+    "applicationR10": "R10 real restricted-repair gate PASS for Tutor final-answer leak repair and Research opposing-evidence disclosure repair"
+  },
+  "applicationCandidate": true,
+  "changesFromStable": [
+    "adds @ppl/experience-rule-evolution 0.1.0 Stable as a bundled optional protocol dependency",
+    "adds provenance-bound deterministic Experience Rule support distilled from real Research failure episodes",
+    "default experienceRuleMode=off preserves the 0.1.12 Stable policy/Judge path unless a validated rule is explicitly configured"
+  ],
+  "features": [
+    "candidate rules may execute only in explicit evaluation mode; production enforce mode requires validated status",
+    "rule authority is below response contract, Profile policy, durable state, and Judge authority on unknown failures",
+    "rejected known drafts can skip one redundant external Judge call, but the repaired draft is still Judge-gated before delivery"
+  ],
+  "promotionDecision": "PASS: real R3 full-Application qualification passed 56/56 with 4 real Experience Rule fast-path matches, 14/14 Research tools exactly-once, semantic findings=0, Observatory PASS, and manual user-visible review PASS. Runtime/profile source is unchanged from 0.1.13-rc.2 during promotion.",
+  "s1SemanticCloseoutEvidence": {
+    "s1Original": {
+      "semanticFindings": 19,
+      "affectedTurns": 17
+    },
+    "s1_1": {
+      "topology": "56 turns / 17 processes; 14 Research tool executions",
+      "delivery": {
+        "tutor": "14/18",
+        "research": "17/20",
+        "life": "18/18"
+      },
+      "observatory": "build + validation PASS",
+      "toolExactlyOnce": "14/14 executions retained",
+      "recoverableLedgerBytes": 776569,
+      "legacyS1RecoverableLedgerBytes": 3600163,
+      "reductionPercent": 78.43,
+      "promotion": "HOLD"
+    },
+    "rc2Regression": {
+      "hostTests": "96/96 PASS",
+      "recoverablePolicyRetry": "PASS; tool executes once across blocked continuation + restricted retry",
+      "structuredOutputRetry": "PASS for Agent and Judge",
+      "tutorProfileStatePrivacy": "S1.1 Turn 14 wording covered"
+    },
+    "s1_2": {
+      "candidateStack": "Host 0.1.12-rc.2 + Life Binding 0.1.1-rc.1 attested",
+      "topology": "56 turns / 17 processes; 14 Research tool executions",
+      "delivery": {
+        "tutor": "14/18",
+        "research": "20/20",
+        "life": "18/18"
+      },
+      "observatory": "build + validation PASS",
+      "toolExactlyOnce": "14/14 executions retained",
+      "promotion": "HOLD",
+      "newTutorEvidence": [
+        "Judge/Agent structured output can truncate on long responses",
+        "restricted privacy safe copy can be misclassified by Judge",
+        "delivered Tutor content contained task-grounded mathematical/semantic errors",
+        "S1.2 Tutor harness used comparison tasks while Profile skill was fractions.addition"
+      ]
+    },
+    "rc3Regression": {
+      "hostTests": "103/103 PASS before packaging",
+      "generationStateMinimization": "raw Tutor posterior/counters hidden by default",
+      "boundedStructuredRepair": "Agent/Judge retry requests tightened instead of identical replay",
+      "judgeEvidenceAnchoring": "exact spans <=220 chars; deterministic spans prioritized",
+      "tutorFactualCorrectness": "Host-owned TUTOR_TASK_FACTUAL_ERROR with task/rubric context"
+    },
+    "s1_4": {
+      "candidateStack": "Host 0.1.12-rc.4 + Life Binding 0.1.1-rc.1 attested",
+      "topology": "56 turns / 17 processes; 14 Research tool executions",
+      "delivery": {
+        "tutor": "14/18",
+        "research": "19/20",
+        "life": "18/18"
+      },
+      "observatory": "build + validation PASS",
+      "toolExactlyOnce": "14/14 executions retained",
+      "recoverableLedgerBytes": 1500351,
+      "legacyS1RecoverableLedgerBytes": 3600163,
+      "reductionPercent": 58.33,
+      "promotion": "HOLD",
+      "manualAudit": [
+        "Tutor Turn 9 solved and mis-solved a newly invented exercise despite explicit no-answer request",
+        "Research blocked/undetermined prose asserted a direction",
+        "Research response-envelope violation recurred on free-form retry"
+      ]
+    },
+    "rc5Regression": {
+      "hostTests": "112/112 PASS",
+      "hostCheck": "PASS including callback live gate",
+      "deterministicTutorRecovery": "PASS",
+      "nextPracticeAnswerWithholding": "PASS",
+      "researchConclusionMirror": "PASS with hypothesis/question safe harbor",
+      "researchHostOwnedRecovery": "PASS"
+    },
+    "s1_5": {
+      "topology": "56 turns / 17 processes; 14 Research tool executions",
+      "delivery": {
+        "tutor": "16/18",
+        "research": "20/20",
+        "life": "18/18"
+      },
+      "observatory": "PASS",
+      "toolExactlyOnce": "14/14",
+      "promotion": "HOLD",
+      "lowestImplicatedLayer": "Host Tutor envelope-leak recovery"
+    },
+    "s1_6": {
+      "candidateStack": "Host 0.1.12-rc.6 + Life Binding 0.1.1-rc.1 attested",
+      "topology": "56 turns / 17 processes; 14 Research tool executions",
+      "delivery": {
+        "tutor": "18/18",
+        "research": "19/20",
+        "life": "18/18"
+      },
+      "observatory": "PASS",
+      "toolExactlyOnce": "14/14",
+      "recoverableLedgerBytes": 1528326,
+      "promotion": "HOLD",
+      "manualAudit": [
+        "Research Turn 19 certainty-overreach correctly blocked, but free retry emitted response-envelope content and terminated",
+        "Research turns 7/12/13 delivered action-label-only user-visible messages",
+        "Research Turn 8 cross-wired evidence:E with validation V1 provenance metadata"
+      ]
+    },
+    "rc7Regression": {
+      "hostTests": "119/119 PASS",
+      "hostCheck": "PASS including callback live gate",
+      "certaintyRecovery": "Host-owned",
+      "placeholderGate": "deterministic",
+      "provenanceBinding": "Host/Judge context + deterministic S1.6 pattern backstop"
+    },
+    "s1_7": {
+      "candidateStack": "Host 0.1.12-rc.7 + Life Binding 0.1.1-rc.1 attested",
+      "life": "18/18 delivered",
+      "tutor": "early structured Agent/Judge HTTP 400 failures; run treated as execution-readiness contaminated",
+      "research": "process exits on claim-proposal missing claim payload after policy retry; only one audit turn materialized",
+      "toolQualification": "planned 14 real tool lifecycle turns were not reached; qualification evidence absent, not an exactly-once failure",
+      "promotion": "HOLD",
+      "lowestImplicatedLayer": "Host Research retry/mutation contract"
+    },
+    "rc8Regression": {
+      "preCommitClaimValidation": "claim-proposal without id/text rejected before mutation",
+      "structuredActionPinning": "Host-owned policy repair preserves prior valid claim/action",
+      "orchestratorRegression": "blocked placeholder -> constrained retry -> one durable claim commit"
+    },
+    "s1_8": {
+      "candidateStack": "Host 0.1.12-rc.8 + Life Binding 0.1.1-rc.1 attested",
+      "readiness": "Tutor Agent / Research Agent / Policy Judge all PASS attempt 1",
+      "topology": "56 turns / 17 processes; 14 Research tool executions",
+      "delivery": {
+        "tutor": "18/18",
+        "research": "20/20",
+        "life": "18/18"
+      },
+      "observatory": "PASS",
+      "toolExactlyOnce": "14/14",
+      "oldSemanticEvaluator": "0 findings / PASS",
+      "manualStrengthenedBackstop": "9 findings total: Host Tutor Turn15, Host Research Turn1, Life turns 2/6/8/12/13/14/18",
+      "promotion": "HOLD"
+    },
+    "rc9Regression": {
+      "hostTests": "126/126 PASS",
+      "hostCheck": "PASS including callback live gate",
+      "tutorNextPractice": "actionable checkpoint required",
+      "researchClaimVisibility": "exact accepted claim text required in user-visible message"
+    },
+    "s1_12_q5": {
+      "candidateStack": "Host 0.1.12-rc.11 + Life Binding 0.1.1-rc.4 attested",
+      "models": "Agent qwen3.5-0.8b / Judge qwen/qwen3-vl-4b",
+      "contextResidency": "Agent 8192 / Judge 8192 verified",
+      "delivery": {
+        "tutor": "18/18",
+        "research": "20/20",
+        "life": "18/18"
+      },
+      "researchTools": "14/14 exactly-once",
+      "semanticFindings": 0,
+      "observatory": "PASS",
+      "restartRecoverableState": "PASS",
+      "manualUserVisibleReview": "PASS",
+      "promotion": "PASS -> Host 0.1.12 Stable + Life Binding 0.1.1 Stable"
+    }
+  },
+  "r3QualificationEvidence": {
+    "realR2Replay": "96 real R2 first drafts replayed; 91 structurally valid drafts matched RESEARCH_CONFLICT_ERASURE; 5 were structurally invalid",
+    "syntheticBaseline": "56/56 full Application PASS; semantic findings=0; Observatory PASS",
+    "syntheticFaultInjection": "one RESEARCH_CONFLICT_ERASURE injected; candidate rule skipped Judge on rejected draft; Host-owned retry delivered clean response and final Judge PASS; full 56/56 remained PASS",
+    "stablePromotion": true,
+    "realR3FullApplication": "PASS: Tutor 18/18; Research 20/20; Life 18/18; 4 real fast-path matches; semantic 0; Observatory PASS; manual visible-text PASS"
+  },
+  "promotedFrom": "0.1.13-rc.2"
+}

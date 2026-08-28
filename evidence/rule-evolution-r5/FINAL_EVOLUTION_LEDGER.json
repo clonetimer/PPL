@@ -1,0 +1,208 @@
+{
+  "schema": "ppl.experience-evolution-ledger/0.2",
+  "ledgerId": "ledger_tutor_known_bad_draft_fastpath_r5_final",
+  "asset": {
+    "assetType": "rule",
+    "assetId": "rule_tutor_known_bad_draft_prejudge_fastpath"
+  },
+  "candidates": [
+    {
+      "schema": "ppl.experience-candidate/0.2",
+      "candidateId": "candidate_a0e80f4949937b725673",
+      "asset": {
+        "assetType": "rule",
+        "assetId": "rule_tutor_known_bad_draft_prejudge_fastpath",
+        "version": "0.1.0-candidate.1",
+        "sha256": "726c165a97179fd40347a8f8069b253d409f0bc93d65e942fc1d37ad3af5a4f3"
+      },
+      "generation": 0,
+      "parentCandidateIds": [],
+      "operator": {
+        "kind": "distill",
+        "name": "real-tutor-factual-error-fastpath",
+        "parameters": {
+          "policyCodes": [
+            "TUTOR_TASK_FACTUAL_ERROR"
+          ]
+        }
+      },
+      "sourceEpisodeSha256": [
+        "9baa4833c1846681edfe1ca958f2b82f7fb64f0d5df71c748ee4723a4c66e582",
+        "f265cff94345a07facafbf155f695b6ba44c881be3a72b75ab16fbf553158caa",
+        "bc52315d7932e920c904205de47a0899472962c2dbbb7bdf626e4012211b9119"
+      ],
+      "lifecycle": "candidate",
+      "assetSnapshot": {
+        "schema": "ppl.experience-rule/0.1",
+        "ruleId": "rule_tutor_known_bad_draft_prejudge_fastpath",
+        "version": "0.1.0-candidate.1",
+        "status": "candidate",
+        "domain": "tutor",
+        "summary": "Generation 0: fast-path repeated Host-deterministic Tutor factual-error drafts to Host-owned repair before the external Judge.",
+        "activation": {
+          "detector": "host-deterministic-policy-code",
+          "policyCodes": [
+            "TUTOR_TASK_FACTUAL_ERROR"
+          ]
+        },
+        "action": {
+          "phase": "pre-judge",
+          "effect": "retry-with-host-owned-repair",
+          "skipJudgeOnMatchedDraft": true,
+          "repairCompiler": "compileRetryRequest"
+        },
+        "authority": {
+          "precedence": "below-host-policy",
+          "mustNotOverride": [
+            "response-contract",
+            "profile-policy",
+            "durable-state",
+            "judge-on-unknown-failures"
+          ]
+        },
+        "provenance": {
+          "sourceKind": "real-execution-replay",
+          "evidenceSha256": [
+            "9baa4833c1846681edfe1ca958f2b82f7fb64f0d5df71c748ee4723a4c66e582",
+            "f265cff94345a07facafbf155f695b6ba44c881be3a72b75ab16fbf553158caa",
+            "bc52315d7932e920c904205de47a0899472962c2dbbb7bdf626e4012211b9119"
+          ],
+          "totalTutorFirstDraftRecords": 36,
+          "targetPoolRecords": 16,
+          "observedTargetRecords": 12,
+          "observedTargetUniqueDrafts": 6,
+          "deterministicTargetUniqueDrafts": 6,
+          "deterministicCoverage": 1,
+          "extraUniqueDeterministicMatches": 0,
+          "distilledAt": "2026-08-27T01:19:48.731Z"
+        }
+      },
+      "createdAt": "2026-08-27T01:19:48.732Z"
+    },
+    {
+      "schema": "ppl.experience-candidate/0.2",
+      "candidateId": "candidate_fb35ff2a5416aaae2a11",
+      "asset": {
+        "assetType": "rule",
+        "assetId": "rule_tutor_known_bad_draft_prejudge_fastpath",
+        "version": "0.1.0-candidate.2",
+        "sha256": "faefeb4d78be4ac18bbc569fc45736886f08be5606c76349e674201423d06c78"
+      },
+      "generation": 1,
+      "parentCandidateIds": [
+        "candidate_a0e80f4949937b725673"
+      ],
+      "operator": {
+        "kind": "expand-activation",
+        "name": "add-final-answer-leak-family",
+        "parameters": {
+          "addedPolicyCode": "TUTOR_FINAL_ANSWER_LEAK"
+        }
+      },
+      "sourceEpisodeSha256": [
+        "9baa4833c1846681edfe1ca958f2b82f7fb64f0d5df71c748ee4723a4c66e582",
+        "f265cff94345a07facafbf155f695b6ba44c881be3a72b75ab16fbf553158caa",
+        "bc52315d7932e920c904205de47a0899472962c2dbbb7bdf626e4012211b9119"
+      ],
+      "lifecycle": "candidate",
+      "assetSnapshot": {
+        "schema": "ppl.experience-rule/0.1",
+        "ruleId": "rule_tutor_known_bad_draft_prejudge_fastpath",
+        "version": "0.1.0-candidate.2",
+        "status": "candidate",
+        "domain": "tutor",
+        "summary": "Generation 1: extend the same Tutor known-bad-draft fast-path asset to both task factual errors and forbidden final-answer leaks, preserving Host-owned repair and Judge authority on unknown failures.",
+        "activation": {
+          "detector": "host-deterministic-policy-code",
+          "policyCodes": [
+            "TUTOR_TASK_FACTUAL_ERROR",
+            "TUTOR_FINAL_ANSWER_LEAK"
+          ]
+        },
+        "action": {
+          "phase": "pre-judge",
+          "effect": "retry-with-host-owned-repair",
+          "skipJudgeOnMatchedDraft": true,
+          "repairCompiler": "compileRetryRequest"
+        },
+        "authority": {
+          "precedence": "below-host-policy",
+          "mustNotOverride": [
+            "response-contract",
+            "profile-policy",
+            "durable-state",
+            "judge-on-unknown-failures"
+          ]
+        },
+        "provenance": {
+          "sourceKind": "real-execution-replay",
+          "evidenceSha256": [
+            "9baa4833c1846681edfe1ca958f2b82f7fb64f0d5df71c748ee4723a4c66e582",
+            "f265cff94345a07facafbf155f695b6ba44c881be3a72b75ab16fbf553158caa",
+            "bc52315d7932e920c904205de47a0899472962c2dbbb7bdf626e4012211b9119"
+          ],
+          "totalTutorFirstDraftRecords": 36,
+          "targetPoolRecords": 16,
+          "observedTargetRecords": 16,
+          "observedTargetUniqueDrafts": 8,
+          "deterministicTargetUniqueDrafts": 8,
+          "deterministicCoverage": 1,
+          "extraUniqueDeterministicMatches": 0,
+          "distilledAt": "2026-08-27T01:19:48.731Z"
+        }
+      },
+      "createdAt": "2026-08-27T01:19:48.732Z"
+    }
+  ],
+  "transitions": [
+    {
+      "candidateId": "candidate_a0e80f4949937b725673",
+      "from": "candidate",
+      "to": "qualified",
+      "reason": "R5 offline replay and fault-injection qualification passed",
+      "evidenceRefs": [
+        "eval_ddb727431b029bacf769"
+      ],
+      "at": "2026-08-27T07:54:22.865Z"
+    },
+    {
+      "candidateId": "candidate_fb35ff2a5416aaae2a11",
+      "from": "candidate",
+      "to": "qualified",
+      "reason": "R5 offline lineage ranking selected Gen1",
+      "evidenceRefs": [
+        "eval_ddb727431b029bacf769",
+        "eval_51e0d3cc814aa1e73632"
+      ],
+      "at": "2026-08-27T07:54:22.867Z"
+    },
+    {
+      "candidateId": "candidate_fb35ff2a5416aaae2a11",
+      "from": "qualified",
+      "to": "validated",
+      "reason": "R5 real 56-turn soak passed with seven live fast-paths and zero semantic findings",
+      "evidenceRefs": [
+        "eval_38a178dffbae45069f77",
+        "review_091f082202ff688cf475",
+        "7e646a7e2710e5a3dbe21b95d12882e15316f2500412ccd9dc447075d6430ecb"
+      ],
+      "at": "2026-08-27T07:54:22.867Z"
+    },
+    {
+      "candidateId": "candidate_a0e80f4949937b725673",
+      "from": "qualified",
+      "to": "retired",
+      "reason": "superseded by validated Gen1 with broader deterministic coverage and higher fitness",
+      "evidenceRefs": [
+        "review_091f082202ff688cf475"
+      ],
+      "at": "2026-08-27T07:54:22.867Z"
+    }
+  ],
+  "statusByCandidateId": {
+    "candidate_a0e80f4949937b725673": "retired",
+    "candidate_fb35ff2a5416aaae2a11": "validated"
+  },
+  "activeValidatedCandidateId": "candidate_fb35ff2a5416aaae2a11",
+  "generatedAt": "2026-08-27T07:59:00.000Z"
+}

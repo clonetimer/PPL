@@ -1,0 +1,62 @@
+{
+  "schema": "ppl.experience-rule/0.1",
+  "ruleId": "rule_tutor_known_bad_draft_prejudge_fastpath",
+  "version": "0.1.0",
+  "status": "validated",
+  "domain": "tutor",
+  "summary": "Validated Tutor known-bad-draft pre-Judge fast-path for deterministic factual errors and forbidden final-answer leaks; matched drafts are repaired by the Host before external Judge invocation, while unknown failures retain normal Judge authority.",
+  "activation": {
+    "detector": "host-deterministic-policy-code",
+    "policyCodes": [
+      "TUTOR_TASK_FACTUAL_ERROR",
+      "TUTOR_FINAL_ANSWER_LEAK"
+    ]
+  },
+  "action": {
+    "phase": "pre-judge",
+    "effect": "retry-with-host-owned-repair",
+    "skipJudgeOnMatchedDraft": true,
+    "repairCompiler": "compileRetryRequest"
+  },
+  "authority": {
+    "precedence": "below-host-policy",
+    "mustNotOverride": [
+      "response-contract",
+      "profile-policy",
+      "durable-state",
+      "judge-on-unknown-failures"
+    ]
+  },
+  "provenance": {
+    "sourceKind": "real-execution-replay",
+    "evidenceSha256": [
+      "9baa4833c1846681edfe1ca958f2b82f7fb64f0d5df71c748ee4723a4c66e582",
+      "f265cff94345a07facafbf155f695b6ba44c881be3a72b75ab16fbf553158caa",
+      "bc52315d7932e920c904205de47a0899472962c2dbbb7bdf626e4012211b9119"
+    ],
+    "totalTutorFirstDraftRecords": 36,
+    "targetPoolRecords": 16,
+    "observedTargetRecords": 16,
+    "observedTargetUniqueDrafts": 8,
+    "deterministicTargetUniqueDrafts": 8,
+    "deterministicCoverage": 1,
+    "extraUniqueDeterministicMatches": 0,
+    "distilledAt": "2026-08-27T01:19:48.731Z"
+  },
+  "validation": {
+    "evolutionGovernance": {
+      "candidateId": "candidate_fb35ff2a5416aaae2a11",
+      "reviewId": "review_091f082202ff688cf475",
+      "fitnessScore": 0.9,
+      "promotedAt": "2026-08-27T07:57:00.000Z"
+    },
+    "release": {
+      "stableVersion": "0.1.0",
+      "promotedFromVersion": "0.1.0-candidate.2",
+      "candidateId": "candidate_fb35ff2a5416aaae2a11",
+      "candidateRuleSha256": "faefeb4d78be4ac18bbc569fc45736886f08be5606c76349e674201423d06c78",
+      "realSoakResultSha256": "7e646a7e2710e5a3dbe21b95d12882e15316f2500412ccd9dc447075d6430ecb",
+      "releasedAt": "2026-08-27T07:58:00.000Z"
+    }
+  }
+}

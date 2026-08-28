@@ -1,0 +1,25 @@
+{
+  "name": "@ppl/host-binding-life",
+  "version": "0.1.1",
+  "private": false,
+  "type": "module",
+  "description": "PPL Life Host Binding 0.1.1 Stable: Host-owned service, escalation, and authorized durable-mutation contracts.",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs"
+  },
+  "main": "./src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs"
+  },
+  "files": [
+    "src/",
+    "profiles/",
+    "docs/",
+    "README.md",
+    "CHANGELOG.md",
+    "RC_DECISION_0.1.1.md"
+  ],
+  "peerDependencies": {
+    "ppl-llm-host-adapter": "^0.1.11 || >=0.1.12-rc.1 <0.2.0"
+  }
+}

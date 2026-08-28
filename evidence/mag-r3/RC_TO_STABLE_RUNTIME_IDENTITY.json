@@ -1,0 +1,33 @@
+{
+  "schema": "ppl.mag.rc-to-stable-runtime-identity/1",
+  "rcVersion": "0.1.0-rc.4",
+  "stableVersion": "0.1.0",
+  "scope": [
+    "src/",
+    "bin/",
+    "adapters/"
+  ],
+  "files": [
+    {
+      "path": "src/index.mjs",
+      "rcSha256": "1ed4a6eaf8593d8d253560c89a121342b2ccfbf90bb1a3fa41881f399868e9ca",
+      "stableSha256": "1ed4a6eaf8593d8d253560c89a121342b2ccfbf90bb1a3fa41881f399868e9ca",
+      "identical": true
+    },
+    {
+      "path": "bin/ppl-mag.mjs",
+      "rcSha256": "ef5896a5eb6f4535cf90f482146139a1a70d2ed143c6977a7020583badd27dd9",
+      "stableSha256": "ef5896a5eb6f4535cf90f482146139a1a70d2ed143c6977a7020583badd27dd9",
+      "identical": true
+    },
+    {
+      "path": "adapters/langgraph/ppl_mag_gate.py",
+      "rcSha256": "8f4f2932e9178edca72f15bf8595efeacb4d5757b6aa44db83c6abce46f50cc2",
+      "stableSha256": "8f4f2932e9178edca72f15bf8595efeacb4d5757b6aa44db83c6abce46f50cc2",
+      "identical": true
+    }
+  ],
+  "allFilesIdentical": true,
+  "rcRuntimeTreeSha256": "2d9bd5695371ec5e19b6adce3da80568a501f1aeebe70f44ad5784df9151a95a",
+  "stableRuntimeTreeSha256": "2d9bd5695371ec5e19b6adce3da80568a501f1aeebe70f44ad5784df9151a95a"
+}

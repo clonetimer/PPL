@@ -1,0 +1,89 @@
+{
+  "contracts": [
+    {
+      "schema": "ppl.multi-agent.agent-contract/0.1",
+      "agentId": "supervisor",
+      "role": "manager",
+      "authorityScopes": ["research-task", "evidence-routing"],
+      "capabilities": ["plan", "delegate"],
+      "tools": [],
+      "delegation": {
+        "allowedTargets": ["analyst"],
+        "maxDepth": 2,
+        "transferableAuthorityScopes": ["research-task"],
+        "allowCycles": false
+      },
+      "contextPolicy": {
+        "allowedSensitivities": ["public", "task", "private"],
+        "allowedStatePaths": ["task"],
+        "preserveConflictSets": true
+      }
+    },
+    {
+      "schema": "ppl.multi-agent.agent-contract/0.1",
+      "agentId": "analyst",
+      "role": "research-analyst",
+      "authorityScopes": ["research-task"],
+      "capabilities": ["evidence-analysis"],
+      "tools": ["paper-read"],
+      "delegation": {
+        "allowedTargets": [],
+        "maxDepth": 0,
+        "transferableAuthorityScopes": [],
+        "allowCycles": false
+      },
+      "contextPolicy": {
+        "allowedSensitivities": ["public", "task"],
+        "allowedStatePaths": ["task.question", "task.constraints"],
+        "preserveConflictSets": true
+      }
+    }
+  ],
+  "context": {
+    "schema": "ppl.multi-agent.context/0.1",
+    "state": {
+      "task": {"question": "Does method A outperform B?", "constraints": ["preserve counter-evidence"]},
+      "user": {"privatePreference": "do not share"}
+    },
+    "claims": [
+      {
+        "claimId": "claim-a",
+        "canonicalText": "Study A reports a benefit for method A.",
+        "status": "supported",
+        "polarity": "support",
+        "confidence": 0.72,
+        "sourceRefs": ["paper:A"],
+        "assertedBy": "tool:paper-reader",
+        "sensitivity": "task",
+        "requiredForDecision": true,
+        "conflictSetId": "method-a-effect",
+        "authorityScope": "research-task"
+      },
+      {
+        "claimId": "claim-b",
+        "canonicalText": "Study B reports no advantage for method A.",
+        "status": "supported",
+        "polarity": "oppose",
+        "confidence": 0.69,
+        "sourceRefs": ["paper:B"],
+        "assertedBy": "tool:paper-reader",
+        "sensitivity": "task",
+        "requiredForDecision": true,
+        "conflictSetId": "method-a-effect",
+        "authorityScope": "research-task"
+      },
+      {
+        "claimId": "private-note",
+        "canonicalText": "User privately prefers method A.",
+        "status": "provisional",
+        "polarity": "support",
+        "confidence": 0.5,
+        "sourceRefs": ["user:private"],
+        "assertedBy": "user",
+        "sensitivity": "private",
+        "requiredForDecision": false,
+        "authorityScope": "user-preference"
+      }
+    ]
+  }
+}

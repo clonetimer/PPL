@@ -1,0 +1,25 @@
+{
+  "schema": "ppl.mag.stable-promotion-validation/1",
+  "date": "2026-08-27",
+  "component": "@ppl/multi-agent-governance",
+  "from": "0.1.0-rc.4",
+  "to": "0.1.0",
+  "decision": "PASS",
+  "realR3": {
+    "scenarioMatrix": "17/17",
+    "cleanDelivered": "2/2",
+    "hardFaultsBlocked": "12/12",
+    "recoverableSemanticFaults": "3/3",
+    "canonicalBoundDeliveries": "5/5",
+    "metricScopeRegression": "PASS",
+    "manualVisibleText": "5/5 PASS"
+  },
+  "stableSourceTests": "56/56 PASS",
+  "stableCheck": "PASS",
+  "freshInstallImport": "PASS",
+  "runtimeIdentity": "PASS",
+  "runtimeTreeSha256": "2d9bd5695371ec5e19b6adce3da80568a501f1aeebe70f44ad5784df9151a95a",
+  "stableSourceZipSha256": "2b7475fff57ecb00da69ee90fffa33acf0097e1bdb6406dedeb26616e5839bf5",
+  "stableTgzSha256": "35e7d5de2d02379ba1365890f730231f31e2961370446ac62ba190130fee72bc",
+  "r3ResultsSha256": "0502ec2d3778a393826ec54d0c49c89f76e14cc6c7b145d910217ef35a1374e4"
+}

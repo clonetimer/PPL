@@ -1,0 +1,25 @@
+{
+  "name": "@ppl/experience-rule-evolution",
+  "version": "0.2.0",
+  "type": "module",
+  "description": "PPL Experience Rule Evolution 0.2 Stable: provenance-bound rule runtime plus offline multi-objective evolution governance, lineage, convergence, rollback and restore-best.",
+  "main": "./src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs"
+  },
+  "bin": {
+    "ppl-experience-rule-inspect": "./bin/inspect-rule.mjs",
+    "ppl-experience-evolution-review": "./bin/review-evolution.mjs"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "npm test"
+  },
+  "files": [
+    "src/",
+    "bin/",
+    "examples/",
+    "README.md",
+    "CHANGELOG.md"
+  ]
+}

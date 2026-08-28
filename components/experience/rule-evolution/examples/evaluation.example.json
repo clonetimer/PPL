@@ -1,0 +1,18 @@
+{
+  "asset": {"assetType":"rule","assetId":"rule_example","version":"0.2.0-candidate.1"},
+  "evidenceClass": "real-soak",
+  "sampleCount": 56,
+  "evidenceSha256": ["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"],
+  "hardGates": {
+    "authority-inversion": {"passed":true,"count":0},
+    "state-corruption": {"passed":true,"count":0},
+    "tool-duplication": {"passed":true,"count":0},
+    "user-visible-leakage": {"passed":true,"count":0},
+    "terminal-regression": {"passed":true,"count":0}
+  },
+  "metrics": {
+    "deliveryRate": {"direction":"maximize","candidate":1,"baseline":1},
+    "judgeCallsOnKnownBadDraft": {"direction":"minimize","candidate":0,"baseline":1}
+  },
+  "findings": []
+}

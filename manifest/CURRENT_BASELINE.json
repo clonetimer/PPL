@@ -1,0 +1,43 @@
+{
+  "schema": "ppl.current-baseline/1",
+  "asOf": "2026-08-27",
+  "project": "PPL (Persona / Policy / Protocol Layer)",
+  "foundation": {
+    "core": "0.3.0 Frozen",
+    "runtime": "0.1.0 Frozen",
+    "profiles": "0.2.0 Stable"
+  },
+  "application": {
+    "host": "0.1.13 Stable",
+    "lifeBinding": "0.1.1 Stable",
+    "appObservatory": "0.5.0 Stable"
+  },
+  "infrastructure": {
+    "providerLocal": "0.1.0 Stable",
+    "judgeTransportLmStudioNative": "0.1.0 Stable"
+  },
+  "integrations": {
+    "deepseekHarnessAdapter": "0.1.0 Stable",
+    "deepseekHarnessPersonaInspector": "0.1.0 Stable (legacy optional UI)"
+  },
+  "experience": {
+    "ruleEvolution": "0.2.0 Stable",
+    "validatedRules": [
+      "rule_research_conflict_erasure_prejudge_fastpath@0.1.0",
+      "rule_tutor_known_bad_draft_prejudge_fastpath@0.1.0"
+    ]
+  },
+  "supersededInThisCleanup": {
+    "host": [
+      "0.1.6",
+      "0.1.12"
+    ],
+    "lifeBinding": [
+      "0.1.0"
+    ],
+    "runtimeGeneOverlay": "experimental path closed; not part of Stable baseline"
+  },
+  "governance": {
+    "multiAgentGovernance": "0.1.0 Stable"
+  }
+}

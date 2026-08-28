@@ -1,0 +1,11 @@
+{
+  "schema": "ppl.mag.stable-project-update/1",
+  "date": "2026-08-27",
+  "action": "add MAG 0.1.0 Stable governance component",
+  "runtimeCodeChangedFromRc4": false,
+  "componentPath": "components/governance/multi-agent-governance",
+  "dist": "dist/npm/ppl-multi-agent-governance-0.1.0.tgz",
+  "evidencePath": "evidence/mag-r3",
+  "rawEvidence": "evidence/raw/PPL_MAG_R3_RESULTS.zip",
+  "note": "No PPL foundation/application/provider/observatory/experience product runtime was reopened or modified; unrelated README stale version references were aligned to existing manifest 0.2.0 only."
+}

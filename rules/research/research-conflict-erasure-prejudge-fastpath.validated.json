@@ -1,0 +1,76 @@
+{
+  "schema": "ppl.experience-rule/0.1",
+  "ruleId": "rule_research_conflict_erasure_prejudge_fastpath",
+  "version": "0.1.0",
+  "status": "validated",
+  "domain": "research",
+  "summary": "R2 showed runtime advisory Gene text did not improve visible answers, while the Host deterministic conflict-erasure detector covered every structurally valid recorded draft. Fast-path those known failures to Host-owned retry before invoking the external Judge.",
+  "activation": {
+    "detector": "host-deterministic-policy-code",
+    "policyCodes": [
+      "RESEARCH_CONFLICT_ERASURE"
+    ]
+  },
+  "action": {
+    "phase": "pre-judge",
+    "effect": "retry-with-host-owned-repair",
+    "skipJudgeOnMatchedDraft": true,
+    "repairCompiler": "compileRetryRequest"
+  },
+  "authority": {
+    "precedence": "below-host-policy",
+    "mustNotOverride": [
+      "response-contract",
+      "profile-policy",
+      "durable-state",
+      "judge-on-unknown-failures"
+    ]
+  },
+  "provenance": {
+    "sourceKind": "real-execution-replay",
+    "evidenceSha256": [
+      "0ac95a28b3f8fecea3aa4ce0362066db331c4f061b37dcbe87a8ae94c74abea1",
+      "9991b097e7d12273497fe5c6004f5254ddc29339a0f6cb158becca9f212174d0",
+      "27a8b87928a7f18487107283cfbebebb26845c6d8381e15e44af0d27d4e111a4",
+      "f265cff94345a07facafbf155f695b6ba44c881be3a72b75ab16fbf553158caa"
+    ],
+    "totalRecords": 96,
+    "structurallyValidRecords": 91,
+    "targetPolicyCodeMatches": 91,
+    "deterministicCoverage": 1,
+    "distilledAt": "2026-08-25T21:30:00+08:00"
+  },
+  "validation": {
+    "promotedAt": "2026-08-26T00:20:00+08:00",
+    "realR2Replay": {
+      "records": 96,
+      "structurallyValidRecords": 91,
+      "targetPolicyCodeMatches": 91,
+      "deterministicCoverage": 1.0
+    },
+    "realR3FullApplication": {
+      "tutor": "18/18",
+      "research": "20/20",
+      "life": "18/18",
+      "researchToolsExactlyOnce": "14/14",
+      "semanticFindings": 0,
+      "observatory": "PASS",
+      "ruleEvaluations": 42,
+      "matchedDrafts": 4,
+      "fastPaths": 4,
+      "fastPathTurns": [
+        5,
+        9,
+        18,
+        20
+      ],
+      "manualUserVisibleReview": "PASS"
+    },
+    "productionContract": {
+      "mode": "enforce",
+      "defaultHostModeRemains": "off",
+      "unknownFailuresStillJudge": true,
+      "lifeNotTargeted": true
+    }
+  }
+}

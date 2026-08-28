@@ -1,0 +1,11 @@
+{
+  "schema": "ppl.canonical-stable-update/0.1",
+  "date": "2026-08-27",
+  "changes": [
+    "Experience Rule Evolution 0.1.0 -> 0.2.0 Stable",
+    "Added validated Tutor known-bad-draft fast-path rule 0.1.0",
+    "Host 0.1.13 Stable unchanged",
+    "Life Binding 0.1.1 Stable unchanged"
+  ],
+  "sourcePromotionPackageSha256": "dd203693f50ee73003904c98b3334ce280101de47ca19349f0e3fceb8e0e6515"
+}

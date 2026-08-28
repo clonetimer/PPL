@@ -1,0 +1,27 @@
+{
+  "schema": "ppl.mag.total-project-integration/1",
+  "date": "2026-08-27",
+  "action": "integrate PPL Multi-Agent Governance 0.1.0 Stable into canonical PPL Stable Project",
+  "baseProject": {
+    "file": "PPL_Stable_Project_2026-08-27(2).zip",
+    "sha256": "b404f7cd250d3b5f35a4da39b49293c1aebbda54a2e046af2eb4552f46e57b99"
+  },
+  "magStableSource": {
+    "file": "PPL_Multi_Agent_Governance_0.1.0_Stable_Source.zip",
+    "sha256": "2b7475fff57ecb00da69ee90fffa33acf0097e1bdb6406dedeb26616e5839bf5"
+  },
+  "magStableNpm": {
+    "file": "ppl-multi-agent-governance-0.1.0.tgz",
+    "sha256": "35e7d5de2d02379ba1365890f730231f31e2961370446ac62ba190130fee72bc"
+  },
+  "realR3Evidence": {
+    "file": "PPL_MAG_R3_RESULTS(1).zip",
+    "sha256": "0502ec2d3778a393826ec54d0c49c89f76e14cc6c7b145d910217ef35a1374e4"
+  },
+  "componentPath": "components/governance/multi-agent-governance",
+  "distPath": "dist/npm/ppl-multi-agent-governance-0.1.0.tgz",
+  "evidencePath": "evidence/mag-r3",
+  "productVersion": "0.1.0 Stable",
+  "boundary": "governance plane; not an orchestration framework",
+  "unrelatedProductRuntimeModified": false
+}

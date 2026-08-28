@@ -1,0 +1,57 @@
+{
+  "name": "ppl-llm-host-adapter",
+  "version": "0.1.13",
+  "private": false,
+  "type": "module",
+  "description": "PPL LLM Host Adapter 0.1.13 Stable: provenance-bound Experience Rule Evolution pre-Judge deterministic fast-path over the 0.1.12 Stable baseline.",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "test:transport": "node --test tests/transport.test.mjs tests/openai-provider.test.mjs tests/orchestrator.test.mjs",
+    "demo:live": "node bin/run-stable-candidate-live.mjs",
+    "check": "npm test && npm run demo:live",
+    "live:openai": "node bin/live-openai-smoke.mjs --phase=all",
+    "live:openai:tool-crash": "node bin/live-openai-smoke.mjs --phase=tool-crash",
+    "live:openai:tool-resume": "node bin/live-openai-smoke.mjs --phase=tool-resume"
+  },
+  "dependencies": {
+    "@ppl/profile-core": "file:vendor/npm/ppl-profile-core-0.2.0.tgz",
+    "@ppl/profile-research": "file:vendor/npm/ppl-profile-research-0.2.0.tgz",
+    "@ppl/profile-runtime": "file:vendor/npm/ppl-profile-runtime-0.2.0.tgz",
+    "@ppl/profile-tutor": "file:vendor/npm/ppl-profile-tutor-0.2.0.tgz",
+    "@ppl/experience-rule-evolution": "file:vendor/npm/ppl-experience-rule-evolution-0.1.0.tgz"
+  },
+  "main": "./src/main.mjs",
+  "exports": {
+    ".": "./src/main.mjs",
+    "./contracts": "./src/index.mjs",
+    "./transport": "./src/transport.mjs",
+    "./tools": "./src/tools.mjs",
+    "./orchestrator": "./src/orchestrator.mjs",
+    "./providers/openai-responses": "./src/providers/openai-responses.mjs",
+    "./recoverable-lifecycle": "./src/recoverable-lifecycle.mjs"
+  },
+  "files": [
+    "src/",
+    "profiles/",
+    "vendor/npm/",
+    "bin/",
+    "docs/",
+    "README.md",
+    "CHANGELOG.md",
+    "RELEASE_SURFACE.json"
+  ],
+  "bundledDependencies": [
+    "@ppl/profile-core",
+    "@ppl/profile-runtime",
+    "@ppl/profile-tutor",
+    "@ppl/profile-research",
+    "@ppl/experience-rule-evolution"
+  ],
+  "bundleDependencies": [
+    "@ppl/profile-core",
+    "@ppl/profile-runtime",
+    "@ppl/profile-tutor",
+    "@ppl/profile-research",
+    "@ppl/experience-rule-evolution"
+  ]
+}

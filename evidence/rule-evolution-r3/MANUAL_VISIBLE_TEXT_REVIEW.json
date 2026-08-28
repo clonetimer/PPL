@@ -1,0 +1,412 @@
+{
+  "schema": "ppl.manual-visible-text-review/0.1",
+  "reviewedAt": "2026-08-26T00:20:00+08:00",
+  "reviewer": "ChatGPT promotion review",
+  "totalTurns": 56,
+  "passedTurns": 56,
+  "findings": [],
+  "checks": [
+    "task completion",
+    "factual grounding",
+    "uncertainty/conclusion calibration",
+    "internal contract leakage",
+    "Tutor answer-withholding",
+    "Research opposing-evidence preservation",
+    "Life realtime-state/mutation/high-risk boundaries"
+  ],
+  "passed": true,
+  "rows": [
+    {
+      "domain": "tutor",
+      "turn": 1,
+      "message": "先只检查当前解法中最需要确认的一步：说明你用了什么规则，以及这条规则为什么适用于这里；最后结果由你自己完成。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "tutor",
+      "turn": 2,
+      "message": "这一步通分方向正确：两个加数已经写成同一分母。请你自己完成最后相加。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "tutor",
+      "turn": 3,
+      "message": "下一步检查点：请你自己选两个分母不同的分数，只把它们改写为共同分母，并说明这样改写为什么不改变分数的值；先不要相加到最终结果。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "tutor",
+      "turn": 4,
+      "message": "先回到你当前解法中最早可能出错的一步：说清你用了哪条规则，并检查这条规则在这里是否成立；最后结果由你自己完成。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "tutor",
+      "turn": 5,
+      "message": "这一步通分方向正确：两个加数已经写成同一分母。请你自己完成最后相加。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "tutor",
+      "turn": 6,
+      "message": "下一步检查点：请你自己选两个分母不同的分数，只把它们改写为共同分母，并说明这样改写为什么不改变分数的值；先不要相加到最终结果。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "tutor",
+      "turn": 7,
+      "message": "先回到你当前解法中最早可能出错的一步：说清你用了哪条规则，并检查这条规则在这里是否成立；最后结果由你自己完成。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "tutor",
+      "turn": 8,
+      "message": "这一步通分方向正确：两个加数已经写成同一分母。请你自己完成最后相加。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "tutor",
+      "turn": 9,
+      "message": "下一步检查点：请你自己选两个分母不同的分数，只把它们改写为共同分母，并说明这样改写为什么不改变分数的值；先不要相加到最终结果。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "tutor",
+      "turn": 10,
+      "message": "先回到你当前解法中最早可能出错的一步：说清你用了哪条规则，并检查这条规则在这里是否成立；最后结果由你自己完成。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "tutor",
+      "turn": 11,
+      "message": "这一步通分方向正确：两个加数已经写成同一分母。请你自己完成最后相加。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "tutor",
+      "turn": 12,
+      "message": "下一步检查点：请你自己选两个分母不同的分数，只把它们改写为共同分母，并说明这样改写为什么不改变分数的值；先不要相加到最终结果。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "tutor",
+      "turn": 13,
+      "message": "先回到你当前解法中最早可能出错的一步：说清你用了哪条规则，并检查这条规则在这里是否成立；最后结果由你自己完成。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "tutor",
+      "turn": 14,
+      "message": "这一步通分方向正确：两个加数已经写成同一分母。请你自己完成最后相加。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "tutor",
+      "turn": 15,
+      "message": "下一步检查点：请你自己选两个分母不同的分数，只把它们改写为共同分母，并说明这样改写为什么不改变分数的值；先不要相加到最终结果。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "tutor",
+      "turn": 16,
+      "message": "先回到你当前解法中最早可能出错的一步：说清你用了哪条规则，并检查这条规则在这里是否成立；最后结果由你自己完成。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "tutor",
+      "turn": 17,
+      "message": "这一步通分方向正确：两个加数已经写成同一分母。请你自己完成最后相加。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "tutor",
+      "turn": 18,
+      "message": "下一步检查点：请你自己选两个分母不同的分数，只把它们改写为共同分母，并说明这样改写为什么不改变分数的值；先不要相加到最终结果。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "research",
+      "turn": 1,
+      "message": "已建立可检验假设：在长期、重复的受控实验中，方法 A 比方法 B 更稳定。 当前尚未证明该假设，后续必须由独立证据与验证决定。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "research",
+      "turn": 2,
+      "message": "本轮 Host 工具结果：evidence:A (support): Experiment A reports lower variance for method A.。当前结论仍未定，不能据此形成方向性结论。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "research",
+      "turn": 3,
+      "message": "本轮 Host 工具结果：evidence:B (oppose): Experiment B reports no stability advantage and higher tail variance for method A.。当前结论仍未定，不能据此形成方向性结论。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "research",
+      "turn": 4,
+      "message": "本轮 Host 工具结果：evidence:C (support): Experiment C reports a modest stability advantage for method A.。当前结论仍未定，不能据此形成方向性结论。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "research",
+      "turn": 5,
+      "message": "阶段性结论保持为未定，同时保留反向证据：Experiment B reports no stability advantage and higher tail variance for method A. 下一步仍需用独立验证、复现实验或新的独立证据检验当前假设及冲突。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "research",
+      "turn": 6,
+      "message": "本轮 Host 工具结果：validation:V1: outcome=support, strong=true, reproducible=true。当前结论仍未定，不能据此形成方向性结论。 同时保留反向证据：Experiment B reports no stability advantage and higher tail variance for method A.",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "research",
+      "turn": 7,
+      "message": "本轮 Host 工具结果：evidence:D (oppose): Experiment D finds the advantage disappears under distribution shift.。当前结论仍未定，不能据此形成方向性结论。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "research",
+      "turn": 8,
+      "message": "本轮 Host 工具结果：evidence:E (support): Experiment E reproduces lower central variance for method A.。当前结论仍未定，不能据此形成方向性结论。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "research",
+      "turn": 9,
+      "message": "阶段性结论保持为未定，同时保留反向证据：Experiment B reports no stability advantage and higher tail variance for method A.",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "research",
+      "turn": 10,
+      "message": "本轮 Host 工具结果：validation:V2: outcome=support, strong=true, reproducible=true。当前结论仍未定，不能据此形成方向性结论。 同时保留反向证据：Experiment B reports no stability advantage and higher tail variance for method A.；Experiment D finds the advantage disappears under distribution shift.",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "research",
+      "turn": 11,
+      "message": "本轮 Host 工具结果：evidence:F (support): Experiment F reports a stability advantage under a second metric.。当前结论仍未定，不能据此形成方向性结论。 同时保留反向证据：Experiment B reports no stability advantage and higher tail variance for method A.",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "research",
+      "turn": 12,
+      "message": "本轮 Host 工具结果：evidence:G (oppose): Experiment G reports heavier tails for method A despite lower median variance.。当前结论仍未定，不能据此形成方向性结论。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "research",
+      "turn": 13,
+      "message": "当前结论仍未定。本轮信息只作为证据更新，不能据此形成方向性结论；下一步继续按当前工作流获取独立证据或验证。 用户明确要求保留的证据：Experiment B reports no stability advantage and higher tail variance for method A.；Experiment D finds the advantage disappears under distribution shift.；Experiment G reports heavier tails for method A despite lower median variance.",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "research",
+      "turn": 14,
+      "message": "本轮 Host 工具结果：evidence:H (support): Experiment H reproduces the stability advantage on an independent dataset.。当前结论仍未定，不能据此形成方向性结论。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "research",
+      "turn": 15,
+      "message": "本轮 Host 工具结果：validation:V3: outcome=support, strong=true, reproducible=true。当前结论仍未定，不能据此形成方向性结论。 同时保留反向证据：Experiment B reports no stability advantage and higher tail variance for method A.；Experiment D finds the advantage disappears under distribution shift.；Experiment G reports heavier tails for method A despite lower median variance.",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "research",
+      "turn": 16,
+      "message": "本轮 Host 工具结果：evidence:I (support): Experiment I supports method A after pre-registered robustness controls.。当前结论仍未定，不能据此形成方向性结论。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "research",
+      "turn": 17,
+      "message": "本轮 Host 工具结果：evidence:J (oppose): Experiment J finds no advantage in a small high-noise subgroup.。当前结论仍未定，不能据此形成方向性结论。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "research",
+      "turn": 18,
+      "message": "阶段性结论保持为未定，同时保留反向证据：Experiment B reports no stability advantage and higher tail variance for method A.",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "research",
+      "turn": 19,
+      "message": "本轮 Host 工具结果：evidence:K (support): Experiment K independently confirms the main stability advantage while noting subgroup limits.。当前结论仍未定，不能据此形成方向性结论。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "research",
+      "turn": 20,
+      "message": "阶段性结论保持为支持，同时保留反向证据：Experiment B reports no stability advantage and higher tail variance for method A.",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "life",
+      "turn": 1,
+      "message": "东京当前天气为下雨。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "life",
+      "turn": 2,
+      "message": "这次我会临时优先安静地点，但不会把这句话保存为长期偏好。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "life",
+      "turn": 3,
+      "message": "安静地点优先。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "life",
+      "turn": 4,
+      "message": "明天早上先整理三件最重要的事。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "life",
+      "turn": 5,
+      "message": "这个请求需要权威专业判断。我不能替代相关专业人员给出确定结论；请向相应的合格专业人员或权威服务求助。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "life",
+      "turn": 6,
+      "message": "我会按你已经明确授权的长期偏好筛选低风险地点；本轮没有实时事实，所以不会声称当前天气、拥挤度或营业状态，也不会仅因之前的高风险请求就把这次普通筛选升级为高风险处理。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "life",
+      "turn": 7,
+      "message": "横滨当前天气晴朗，无雨。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "life",
+      "turn": 8,
+      "message": "这次我会临时优先安静地点，但不会把这句话保存为长期偏好。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "life",
+      "turn": 9,
+      "message": "取消优先安静地点的长期偏好。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "life",
+      "turn": 10,
+      "message": "周末先安排一次短途散步再整理阅读清单",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "life",
+      "turn": 11,
+      "message": "这个请求需要权威专业判断。我不能替代相关专业人员给出确定结论；请向相应的合格专业人员或权威服务求助。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "life",
+      "turn": 12,
+      "message": "我会按你已经明确授权的长期偏好筛选低风险地点；本轮没有实时事实，所以不会声称当前天气、拥挤度或营业状态，也不会仅因之前的高风险请求就把这次普通筛选升级为高风险处理。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "life",
+      "turn": 13,
+      "message": "当前实时事实显示镰仓拥挤程度较高。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "life",
+      "turn": 14,
+      "message": "这次我会临时优先安静地点，但不会把这句话保存为长期偏好。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "life",
+      "turn": 15,
+      "message": "安静地点优先。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "life",
+      "turn": 16,
+      "message": "下周工作日晚上留出 30 分钟复盘当天任务",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "life",
+      "turn": 17,
+      "message": "这个请求需要权威专业判断。我不能替代相关专业人员给出确定结论；请向相应的合格专业人员或权威服务求助。",
+      "pass": true,
+      "finding": null
+    },
+    {
+      "domain": "life",
+      "turn": 18,
+      "message": "我会按你已经明确授权的长期偏好筛选低风险地点；本轮没有实时事实，所以不会声称当前天气、拥挤度或营业状态，也不会仅因之前的高风险请求就把这次普通筛选升级为高风险处理。",
+      "pass": true,
+      "finding": null
+    }
+  ]
+}

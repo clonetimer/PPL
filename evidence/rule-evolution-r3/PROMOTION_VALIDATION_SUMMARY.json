@@ -1,0 +1,64 @@
+{
+  "schema": "ppl.gep-rule-evolution-stable-promotion/0.1",
+  "reviewedAt": "2026-08-26T00:20:00+08:00",
+  "decision": "PASS",
+  "promotions": {
+    "experienceRuleEvolution": {
+      "from": "0.1.0-rc.1",
+      "to": "0.1.0 Stable"
+    },
+    "host": {
+      "from": "0.1.13-rc.2",
+      "to": "0.1.13 Stable"
+    },
+    "validatedRule": {
+      "ruleId": "rule_research_conflict_erasure_prejudge_fastpath",
+      "version": "0.1.0",
+      "status": "validated"
+    },
+    "lifeBinding": "0.1.1 Stable unchanged"
+  },
+  "realR3": {
+    "resultsSha256": "f265cff94345a07facafbf155f695b6ba44c881be3a72b75ab16fbf553158caa",
+    "candidateAttestation": true,
+    "readiness": true,
+    "judgeQualification": true,
+    "delivery": {
+      "tutor": "18/18",
+      "research": "20/20",
+      "life": "18/18"
+    },
+    "researchToolsExactlyOnce": "14/14",
+    "semanticFindings": 0,
+    "observatory": "PASS",
+    "experienceRules": {
+      "evaluations": 42,
+      "matchedDrafts": 4,
+      "fastPaths": 4,
+      "turns": [
+        5,
+        9,
+        18,
+        20
+      ]
+    },
+    "manualVisibleTextReview": "56/56 PASS"
+  },
+  "identity": {
+    "hostRuntimeProfilesByteIdenticalRcToStable": true,
+    "ruleRuntimeByteIdenticalRcToStable": true
+  },
+  "stableValidation": {
+    "ruleTests": "12/12 PASS",
+    "hostTests": "145/145 PASS",
+    "hostCheck": "PASS",
+    "sourceZipReextract": "PASS",
+    "freshOfflineInstall": "PASS",
+    "validatedRuleEnforceSmoke": "PASS"
+  },
+  "notes": [
+    "The separately uploaded PPL_SUSTAINED_SOAK_S1_12_RESULTS(4).zip is byte-identical to PPL_RULE_EVOLUTION_R3_RESULTS.zip and is not counted as independent evidence.",
+    "Host experienceRuleMode remains off by default; installing Stable does not silently enable the validated rule.",
+    "Unknown deterministic failure codes remain on the external Judge path."
+  ]
+}

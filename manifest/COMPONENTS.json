@@ -1,0 +1,117 @@
+{
+  "schema": "ppl.components/1",
+  "components": [
+    {
+      "id": "core",
+      "name": "PPL Core",
+      "path": "components/foundation/core",
+      "version": "0.3.0",
+      "status": "Frozen/Stable baseline",
+      "role": "Persona DSL compiler, static semantics, Persona IR, deterministic resolve/render contracts",
+      "provenance": "PPL_Core_0.3.0_Stable_Source"
+    },
+    {
+      "id": "runtime",
+      "name": "PPL Runtime",
+      "path": "components/foundation/runtime",
+      "version": "0.1.0",
+      "status": "Frozen/Stable baseline",
+      "role": "Host-neutral snapshot, staged resolution, commit/rollback runtime",
+      "provenance": "PPL_Runtime_0.1.0_Stable_Source"
+    },
+    {
+      "id": "profiles",
+      "name": "PPL Profiles",
+      "path": "components/foundation/profiles",
+      "version": "0.2.0",
+      "status": "Stable",
+      "role": "Character/Tutor/Research/Life reference profiles and application contracts",
+      "provenance": "PPL_Profiles_0.2.0_Stable"
+    },
+    {
+      "id": "multi-agent-governance",
+      "name": "PPL Multi-Agent Governance",
+      "path": "components/governance/multi-agent-governance",
+      "version": "0.1.0",
+      "status": "Stable",
+      "role": "Framework-neutral multi-agent governance plane for delegation authority, context projection, handoff fidelity, canonical evidence binding, fail-closed gates, and controlled semantic recovery; not an orchestration framework.",
+      "provenance": "PPL MAG R3 Stable Promotion 2026-08-27 from 0.1.0-rc.4",
+      "dist": "dist/npm/ppl-multi-agent-governance-0.1.0.tgz"
+    },
+    {
+      "id": "host",
+      "name": "PPL LLM Host Adapter",
+      "path": "components/application/host",
+      "version": "0.1.13",
+      "status": "Stable",
+      "role": "Application Host, Agent/tool/Judge/delivery lifecycle and Experience Rule integration",
+      "provenance": "PPL_GEP_Rule_Evolution_Stable_Promotion_2026-08-26/source/PPL_LLM_Host_Adapter_0.1.13_Stable_Source.zip",
+      "dist": "dist/npm/ppl-llm-host-adapter-0.1.13.tgz"
+    },
+    {
+      "id": "life-binding",
+      "name": "PPL Life Host Binding",
+      "path": "components/application/life-binding",
+      "version": "0.1.1",
+      "status": "Stable",
+      "role": "Life service, risk, realtime-fact and authorized durable-mutation contracts",
+      "provenance": "PPL_Host_Life_Stable_Promotion_S1_12_Q5_2026-08-25/source/PPL_Life_Binding_0.1.1_Stable_Source.zip",
+      "dist": "dist/npm/ppl-host-binding-life-0.1.1.tgz"
+    },
+    {
+      "id": "observatory",
+      "name": "PPL App / Observatory",
+      "path": "components/application/observatory",
+      "version": "0.5.0",
+      "status": "Stable",
+      "role": "Standalone read-only application/session/provenance observability UI",
+      "provenance": "PPL_App_Observatory_0.5.0_Stable_Source"
+    },
+    {
+      "id": "provider-local",
+      "name": "PPL Local Provider",
+      "path": "components/infrastructure/provider-local",
+      "version": "0.1.0",
+      "status": "Stable",
+      "role": "OpenAI-compatible local model provider transport",
+      "provenance": "PPL_Local_Provider_0.1.0_Stable_Source"
+    },
+    {
+      "id": "judge-lmstudio-native",
+      "name": "PPL LM Studio Native Judge Transport",
+      "path": "components/infrastructure/judge-lmstudio-native",
+      "version": "0.1.0",
+      "status": "Stable",
+      "role": "LM Studio native Judge transport including non-thinking evaluation path",
+      "provenance": "PPL_LMStudio_Native_Judge_0.1.0_Stable_Source"
+    },
+    {
+      "id": "dsh-adapter",
+      "name": "PPL DeepSeek Harness Adapter",
+      "path": "components/integrations/deepseek-harness/adapter",
+      "version": "0.1.0",
+      "status": "Stable",
+      "role": "DeepSeek Harness lifecycle bridge to PPL Runtime",
+      "provenance": "PPL_DSH_Adapter_0.1.0_Stable_Source"
+    },
+    {
+      "id": "dsh-persona-inspector",
+      "name": "PPL DSH Persona Inspector",
+      "path": "components/integrations/deepseek-harness/persona-inspector",
+      "version": "0.1.0",
+      "status": "Stable / legacy optional UI",
+      "role": "Read-only inspection of persisted persona/runtime snapshots in DSH context",
+      "provenance": "PPL_DSH_Persona_Inspector_0.1.0_Stable_Source"
+    },
+    {
+      "id": "experience-rule-evolution",
+      "name": "PPL Experience Rule Evolution",
+      "path": "components/experience/rule-evolution",
+      "version": "0.2.0",
+      "status": "Stable",
+      "role": "Experience distillation, unified evaluation feedback, candidate lineage, multi-objective qualification, convergence, rollback/restore-best governance, and provenance-bound deterministic rule lifecycle",
+      "provenance": "PPL_Experience_Rule_Evolution_R5_Stable_Promotion_2026-08-27/source/PPL_Experience_Rule_Evolution_0.2.0_Stable_Source.zip",
+      "dist": "dist/npm/ppl-experience-rule-evolution-0.2.0.tgz"
+    }
+  ]
+}

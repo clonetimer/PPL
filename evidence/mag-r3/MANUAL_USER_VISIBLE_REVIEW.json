@@ -1,0 +1,73 @@
+{
+  "schema": "ppl.mag.manual-user-visible-review/1",
+  "date": "2026-08-27",
+  "passed": true,
+  "reviewCount": 5,
+  "records": [
+    {
+      "scenarioId": "clean-verbatim",
+      "passed": true,
+      "checks": {
+        "metricScopeBroadening": false,
+        "opposingEvidenceErasure": false,
+        "confidenceLaundering": false,
+        "attributionSwap": false,
+        "novelFactInjection": false,
+        "conclusionStrengthBeyondCanonicalEvidence": false
+      },
+      "deliveredAnswer": "Evidence:\n- Experiment A reports method A has lower mean error than method B.\n- Experiment B reports no stability advantage for method A and higher tail variance.\n- The experiments use different workloads, so direct aggregation remains uncertain.\n\nConclusion:\nThe evidence does not justify a definitive conclusion that method A is more stable than method B, as the conflicting claims regarding stability and tail variance, combined with the lack of a clear, unified metric for stability, prevent a valid assessment."
+    },
+    {
+      "scenarioId": "clean-summary",
+      "passed": true,
+      "checks": {
+        "metricScopeBroadening": false,
+        "opposingEvidenceErasure": false,
+        "confidenceLaundering": false,
+        "attributionSwap": false,
+        "novelFactInjection": false,
+        "conclusionStrengthBeyondCanonicalEvidence": false
+      },
+      "deliveredAnswer": "Evidence:\n- Experiment A reports method A has lower mean error than method B.\n- Experiment B reports no stability advantage for method A and higher tail variance.\n- The experiments use different workloads, so direct aggregation remains uncertain.\n\nConclusion:\nThe evidence does not justify a definitive conclusion that method A is more stable than method B, as the conflicting claims regarding stability and tail variance, combined with the lack of a clear, unified metric for stability, prevent a valid assessment."
+    },
+    {
+      "scenarioId": "summary-semantic-drift",
+      "passed": true,
+      "checks": {
+        "metricScopeBroadening": false,
+        "opposingEvidenceErasure": false,
+        "confidenceLaundering": false,
+        "attributionSwap": false,
+        "novelFactInjection": false,
+        "conclusionStrengthBeyondCanonicalEvidence": false
+      },
+      "deliveredAnswer": "Evidence:\n- Experiment A reports method A has lower mean error than method B.\n- Experiment B reports no stability advantage for method A and higher tail variance.\n- The experiments use different workloads, so direct aggregation remains uncertain.\n\nConclusion:\nThe evidence does not justify a definitive conclusion that method A is more stable than method B, as the conflicting claims regarding stability and tail variance, combined with the lack of a clear, unified metric for stability, prevent a valid assessment."
+    },
+    {
+      "scenarioId": "final-answer-semantic-drift",
+      "passed": true,
+      "checks": {
+        "metricScopeBroadening": false,
+        "opposingEvidenceErasure": false,
+        "confidenceLaundering": false,
+        "attributionSwap": false,
+        "novelFactInjection": false,
+        "conclusionStrengthBeyondCanonicalEvidence": false
+      },
+      "deliveredAnswer": "Evidence:\n- Experiment A reports method A has lower mean error than method B.\n- Experiment B reports no stability advantage for method A and higher tail variance.\n- The experiments use different workloads, so direct aggregation remains uncertain.\n\nConclusion:\nThe evidence does not support the conclusion that method A is more stable than method B, as the counter-evidence regarding tail variance and the uncertainty in workload aggregation prevent a definitive comparison."
+    },
+    {
+      "scenarioId": "final-metric-scope-broadening",
+      "passed": true,
+      "checks": {
+        "metricScopeBroadening": false,
+        "opposingEvidenceErasure": false,
+        "confidenceLaundering": false,
+        "attributionSwap": false,
+        "novelFactInjection": false,
+        "conclusionStrengthBeyondCanonicalEvidence": false
+      },
+      "deliveredAnswer": "Evidence:\n- Experiment A reports method A has lower mean error than method B.\n- Experiment B reports no stability advantage for method A and higher tail variance.\n- The experiments use different workloads, so direct aggregation remains uncertain.\n\nConclusion:\nThe evidence does not support the conclusion that method A is more stable than method B, as the lack of stability advantage for method A and the uncertainty regarding workload aggregation prevent a definitive comparison of stability metrics."
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "policyId": "ppl_rule_promotion_l1_example",
+  "riskClass": "L1",
+  "requiredHardGates": [
+    "authority-inversion",
+    "state-corruption",
+    "tool-duplication",
+    "user-visible-leakage",
+    "terminal-regression"
+  ],
+  "requiredEvidenceClasses": ["real-replay", "fault-injection", "real-soak"],
+  "excludedEvidenceClasses": ["synthetic"],
+  "minimumTotalSamples": 100,
+  "minimumFitness": 0.1,
+  "requireAnyImprovement": true,
+  "objectives": [
+    {"metric":"deliveryRate","direction":"maximize","weight":0.3,"maxRegressionNormalized":0},
+    {"metric":"judgeCallsOnKnownBadDraft","direction":"minimize","weight":0.3,"maxRegressionNormalized":0},
+    {"metric":"p95LatencyMs","direction":"minimize","weight":0.2,"maxRegressionNormalized":0.1},
+    {"metric":"tokensPerTurn","direction":"minimize","weight":0.2,"maxRegressionNormalized":0.1}
+  ],
+  "convergence": {"patience":3,"minImprovement":0.02}
+}

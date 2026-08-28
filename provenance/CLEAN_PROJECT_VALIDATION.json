@@ -1,0 +1,62 @@
+{
+  "schema": "ppl.clean-project-validation/1",
+  "date": "2026-08-26",
+  "result": "PASS_WITH_PACKAGING_NOTE",
+  "checks": [
+    {
+      "component": "PPL Core 0.3.0",
+      "setup": "system TypeScript 5.8.3; source has no package-lock, so npm ci was not applicable",
+      "test": "npm test",
+      "result": "21/21 PASS"
+    },
+    {
+      "component": "PPL Profiles 0.2.0",
+      "setup": "npm ci --offline (workspace links)",
+      "test": "npm test",
+      "result": "28/28 PASS"
+    },
+    {
+      "component": "PPL App/Observatory 0.5.0",
+      "setup": "npm ci --offline (workspace links)",
+      "test": "npm test",
+      "result": "20/20 PASS"
+    },
+    {
+      "component": "PPL LLM Host Adapter 0.1.13",
+      "setup": "fresh temp copy + npm ci --offline",
+      "test": "npm test + npm run check",
+      "result": "145/145 PASS; check PASS"
+    },
+    {
+      "component": "PPL Life Host Binding 0.1.1",
+      "setup": "fresh temp copy + current Host 0.1.13 official tgz",
+      "test": "npm test",
+      "result": "5/5 PASS"
+    },
+    {
+      "component": "PPL Experience Rule Evolution 0.1.0",
+      "setup": "source copy",
+      "test": "npm test",
+      "result": "12/12 PASS"
+    },
+    {
+      "component": "PPL LM Studio Native Judge Transport 0.1.0",
+      "setup": "source copy",
+      "test": "npm test",
+      "result": "4/4 PASS"
+    },
+    {
+      "component": "PPL Local Provider 0.1.0",
+      "setup": "fresh temp copy; current Host 0.1.13 linked as test dependency",
+      "test": "npm test",
+      "result": "16/16 PASS",
+      "note": "Original Stable package.json still declares ppl-llm-host-adapter=0.1.0. Cleanup intentionally did not rewrite Stable package metadata. A future Provider release should normalize this dependency if repackaging is desired."
+    }
+  ],
+  "copiedWithoutStandaloneRequalification": [
+    "PPL Runtime 0.1.0 (no standalone test script)",
+    "PPL DeepSeek Harness Adapter 0.1.0 (integration-specific)",
+    "PPL DSH Persona Inspector 0.1.0 (build dependencies not repackaged by cleanup)"
+  ],
+  "scope": "This validates the normalized layout did not break selected self-contained/current Application components. It is not a new product Stable Promotion."
+}
