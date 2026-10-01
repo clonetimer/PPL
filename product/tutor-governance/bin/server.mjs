@@ -1,0 +1,8 @@
+import { createProductStore } from '@ppl/platform-core'
+import { createTutorGovernanceServer } from '../src/server.mjs'
+const store = createProductStore({ filePath: process.env.PPL_DB })
+const { server } = createTutorGovernanceServer({ store })
+const host = process.env.PPL_HOST || '127.0.0.1'
+const port = Number(process.env.PPL_PORT || 8788)
+server.listen(port, host, () => console.log(`PPL Tutor Governance listening on http://${host}:${port}`))
+process.on('SIGINT', () => { server.close(); store.close(); process.exit(0) })

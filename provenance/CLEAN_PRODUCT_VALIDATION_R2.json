@@ -1,0 +1,24 @@
+{
+  "schema": "ppl.clean-product-validation/2",
+  "version": "1.0.0-dev.3",
+  "phase": "R2 Real Execution Integration",
+  "date": "2026-09-30",
+  "sourceHadNodeModules": false,
+  "emptyNpmCache": true,
+  "offlineInstall": true,
+  "verifyProductPassed": true,
+  "verifySchema": "ppl.product-verify/3",
+  "checksPassed": 23,
+  "externalModelLiveQualification": false,
+  "note": "External model endpoints were not reachable in the build environment; localhost HTTP protocol smoke is not presented as live model qualification.",
+  "httpFailureInjectionPassed": true,
+  "stableHostRegression": "145/145",
+  "localProviderRegression": "16/16",
+  "nativeJudgeRegression": "4/4",
+  "externalEndpointProbe": {
+    "127.0.0.1:8000": "unreachable",
+    "127.0.0.1:8001": "unreachable",
+    "127.0.0.1:1234": "unreachable"
+  },
+  "toolLedgerBoundary": "completed entries persist through SQLite restart; atomic side-effect-to-ledger crash-window exactly-once is not claimed"
+}

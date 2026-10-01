@@ -1,0 +1,401 @@
+{
+  "schema": "ppl.r4-qualification-http-smoke/1",
+  "passed": true,
+  "evidenceMode": "fixture-http",
+  "externalModelIdentityVerified": false,
+  "scenarios": [
+    {
+      "name": "valid-full-chain",
+      "passed": true,
+      "expectedQualificationPass": true,
+      "observedStatus": "passed",
+      "checks": [
+        {
+          "name": "execution-config",
+          "status": "passed"
+        },
+        {
+          "name": "configured-model-independence",
+          "status": "passed",
+          "basis": "configured-model-identifiers-and-groups",
+          "statisticalIndependenceProven": false
+        },
+        {
+          "name": "agent-response-contract",
+          "status": "passed",
+          "transportStatus": "completed",
+          "code": null,
+          "contractIssues": []
+        },
+        {
+          "name": "judge-response-contract",
+          "status": "passed",
+          "transportStatus": "completed",
+          "code": null,
+          "contractIssues": []
+        },
+        {
+          "name": "retrieval-nonempty",
+          "status": "passed",
+          "code": null,
+          "documentCount": 1
+        },
+        {
+          "name": "agent-handoff-sample",
+          "status": "passed",
+          "runStatus": "completed",
+          "sampleKind": "synthetic-canonical-handoff",
+          "findingCodes": [],
+          "sideEffectToolsTested": false
+        },
+        {
+          "name": "judge-positive-control",
+          "status": "passed",
+          "sampleKind": "synthetic-semantic-control",
+          "expectedPass": true,
+          "receivedPass": true,
+          "contractValid": true,
+          "bindingValid": true,
+          "finalizationStatus": "delivered"
+        },
+        {
+          "name": "judge-negative-control",
+          "status": "passed",
+          "sampleKind": "synthetic-semantic-control",
+          "expectedPass": false,
+          "receivedPass": false,
+          "contractValid": true,
+          "bindingValid": true,
+          "finalizationStatus": "blocked"
+        },
+        {
+          "name": "research-task-sample",
+          "status": "passed",
+          "runStatus": "delivered",
+          "sampleKind": "configured-retrieval-and-models",
+          "documentCount": 2,
+          "claimCount": 2,
+          "evidenceFingerprint": "fc2179dd7100fbf771c61332ef7f65b0bd140f803d06311e7d1f8303d4230770",
+          "renderedFingerprint": "f72b9ef2f38b00c48a40c27c3332f79ad49b6e4a5d43803f88fa5bd37609a66e",
+          "findingCodes": []
+        }
+      ]
+    },
+    {
+      "name": "invalid-probe",
+      "passed": true,
+      "expectedQualificationPass": false,
+      "observedStatus": "failed",
+      "checks": [
+        {
+          "name": "execution-config",
+          "status": "passed"
+        },
+        {
+          "name": "configured-model-independence",
+          "status": "passed",
+          "basis": "configured-model-identifiers-and-groups",
+          "statisticalIndependenceProven": false
+        },
+        {
+          "name": "agent-response-contract",
+          "status": "failed",
+          "transportStatus": "completed",
+          "code": "RESPONSE_CONTRACT_INVALID",
+          "contractIssues": [
+            {
+              "path": "$/ok",
+              "code": "CONST"
+            },
+            {
+              "path": "$/nonce",
+              "code": "CONST"
+            }
+          ]
+        },
+        {
+          "name": "judge-response-contract",
+          "status": "failed",
+          "transportStatus": "completed",
+          "code": "RESPONSE_CONTRACT_INVALID",
+          "contractIssues": [
+            {
+              "path": "$/ok",
+              "code": "CONST"
+            },
+            {
+              "path": "$/nonce",
+              "code": "CONST"
+            }
+          ]
+        },
+        {
+          "name": "retrieval-nonempty",
+          "status": "passed",
+          "code": null,
+          "documentCount": 1
+        }
+      ]
+    },
+    {
+      "name": "always-approve-judge",
+      "passed": true,
+      "expectedQualificationPass": false,
+      "observedStatus": "failed",
+      "checks": [
+        {
+          "name": "execution-config",
+          "status": "passed"
+        },
+        {
+          "name": "configured-model-independence",
+          "status": "passed",
+          "basis": "configured-model-identifiers-and-groups",
+          "statisticalIndependenceProven": false
+        },
+        {
+          "name": "agent-response-contract",
+          "status": "passed",
+          "transportStatus": "completed",
+          "code": null,
+          "contractIssues": []
+        },
+        {
+          "name": "judge-response-contract",
+          "status": "passed",
+          "transportStatus": "completed",
+          "code": null,
+          "contractIssues": []
+        },
+        {
+          "name": "retrieval-nonempty",
+          "status": "passed",
+          "code": null,
+          "documentCount": 1
+        },
+        {
+          "name": "agent-handoff-sample",
+          "status": "passed",
+          "runStatus": "completed",
+          "sampleKind": "synthetic-canonical-handoff",
+          "findingCodes": [],
+          "sideEffectToolsTested": false
+        },
+        {
+          "name": "judge-positive-control",
+          "status": "passed",
+          "sampleKind": "synthetic-semantic-control",
+          "expectedPass": true,
+          "receivedPass": true,
+          "contractValid": true,
+          "bindingValid": true,
+          "finalizationStatus": "delivered"
+        },
+        {
+          "name": "judge-negative-control",
+          "status": "failed",
+          "sampleKind": "synthetic-semantic-control",
+          "expectedPass": false,
+          "receivedPass": true,
+          "contractValid": true,
+          "bindingValid": true,
+          "finalizationStatus": "delivered"
+        },
+        {
+          "name": "research-task-sample",
+          "status": "skipped",
+          "code": "JUDGE_CONTROLS_FAILED"
+        }
+      ]
+    },
+    {
+      "name": "always-reject-judge",
+      "passed": true,
+      "expectedQualificationPass": false,
+      "observedStatus": "failed",
+      "checks": [
+        {
+          "name": "execution-config",
+          "status": "passed"
+        },
+        {
+          "name": "configured-model-independence",
+          "status": "passed",
+          "basis": "configured-model-identifiers-and-groups",
+          "statisticalIndependenceProven": false
+        },
+        {
+          "name": "agent-response-contract",
+          "status": "passed",
+          "transportStatus": "completed",
+          "code": null,
+          "contractIssues": []
+        },
+        {
+          "name": "judge-response-contract",
+          "status": "passed",
+          "transportStatus": "completed",
+          "code": null,
+          "contractIssues": []
+        },
+        {
+          "name": "retrieval-nonempty",
+          "status": "passed",
+          "code": null,
+          "documentCount": 1
+        },
+        {
+          "name": "agent-handoff-sample",
+          "status": "passed",
+          "runStatus": "completed",
+          "sampleKind": "synthetic-canonical-handoff",
+          "findingCodes": [],
+          "sideEffectToolsTested": false
+        },
+        {
+          "name": "judge-positive-control",
+          "status": "failed",
+          "sampleKind": "synthetic-semantic-control",
+          "expectedPass": true,
+          "receivedPass": false,
+          "contractValid": true,
+          "bindingValid": true,
+          "finalizationStatus": "blocked"
+        },
+        {
+          "name": "judge-negative-control",
+          "status": "passed",
+          "sampleKind": "synthetic-semantic-control",
+          "expectedPass": false,
+          "receivedPass": false,
+          "contractValid": true,
+          "bindingValid": true,
+          "finalizationStatus": "blocked"
+        },
+        {
+          "name": "research-task-sample",
+          "status": "skipped",
+          "code": "JUDGE_CONTROLS_FAILED"
+        }
+      ]
+    },
+    {
+      "name": "analyst-erasure",
+      "passed": true,
+      "expectedQualificationPass": false,
+      "observedStatus": "failed",
+      "checks": [
+        {
+          "name": "execution-config",
+          "status": "passed"
+        },
+        {
+          "name": "configured-model-independence",
+          "status": "passed",
+          "basis": "configured-model-identifiers-and-groups",
+          "statisticalIndependenceProven": false
+        },
+        {
+          "name": "agent-response-contract",
+          "status": "passed",
+          "transportStatus": "completed",
+          "code": null,
+          "contractIssues": []
+        },
+        {
+          "name": "judge-response-contract",
+          "status": "passed",
+          "transportStatus": "completed",
+          "code": null,
+          "contractIssues": []
+        },
+        {
+          "name": "retrieval-nonempty",
+          "status": "passed",
+          "code": null,
+          "documentCount": 1
+        },
+        {
+          "name": "agent-handoff-sample",
+          "status": "passed",
+          "runStatus": "completed",
+          "sampleKind": "synthetic-canonical-handoff",
+          "findingCodes": [],
+          "sideEffectToolsTested": false
+        },
+        {
+          "name": "judge-positive-control",
+          "status": "passed",
+          "sampleKind": "synthetic-semantic-control",
+          "expectedPass": true,
+          "receivedPass": true,
+          "contractValid": true,
+          "bindingValid": true,
+          "finalizationStatus": "delivered"
+        },
+        {
+          "name": "judge-negative-control",
+          "status": "passed",
+          "sampleKind": "synthetic-semantic-control",
+          "expectedPass": false,
+          "receivedPass": false,
+          "contractValid": true,
+          "bindingValid": true,
+          "finalizationStatus": "blocked"
+        },
+        {
+          "name": "research-task-sample",
+          "status": "failed",
+          "runStatus": "blocked-analyst-fidelity",
+          "sampleKind": "configured-retrieval-and-models",
+          "documentCount": 2,
+          "claimCount": 2,
+          "evidenceFingerprint": "5c56915860e4e70bb53930735db8b7c338289c217a37a09944979e50ff648259",
+          "renderedFingerprint": null,
+          "findingCodes": [
+            "REQUIRED_CLAIM_OMISSION",
+            "COUNTER_EVIDENCE_ERASURE"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "empty-retrieval",
+      "passed": true,
+      "expectedQualificationPass": false,
+      "observedStatus": "failed",
+      "checks": [
+        {
+          "name": "execution-config",
+          "status": "passed"
+        },
+        {
+          "name": "configured-model-independence",
+          "status": "passed",
+          "basis": "configured-model-identifiers-and-groups",
+          "statisticalIndependenceProven": false
+        },
+        {
+          "name": "agent-response-contract",
+          "status": "passed",
+          "transportStatus": "completed",
+          "code": null,
+          "contractIssues": []
+        },
+        {
+          "name": "judge-response-contract",
+          "status": "passed",
+          "transportStatus": "completed",
+          "code": null,
+          "contractIssues": []
+        },
+        {
+          "name": "retrieval-nonempty",
+          "status": "failed",
+          "code": "RETRIEVAL_EMPTY_OR_INVALID",
+          "documentCount": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "schema": "ppl.product-surface/5",
+  "product": "PPL Multi-Vertical Governance Suite",
+  "version": "1.0.0-dev.5",
+  "status": "development / not stable",
+  "positioning": "Shared governance/persistence/execution kernel with independent application semantics per vertical",
+  "entrypoint": "product/platform-gateway",
+  "sharedKernel": {
+    "path": "platform/core",
+    "capabilities": [
+      "session repository",
+      "audit event repository",
+      "evidence repository",
+      "SQLite persistence",
+      "optimistic revision checking",
+      "idempotency and exactly-once event keys",
+      "shared HTTP utilities",
+      "OpenAI-compatible structured HTTP transport",
+      "Host-owned tool execution ledger and continuation",
+      "HTTP/SearXNG retrieval adapters",
+      "independent model/Judge transport identities",
+      "RecordStore-backed completed tool-call ledger persistence",
+      "execution-run listing for Agent/Research observability",
+      "owned response-contract validation",
+      "bounded non-streaming configured HTTP",
+      "role-neutral configured model identity checks",
+      "isolated scoped qualification with Judge positive/negative controls"
+    ],
+    "executionPath": "platform/execution"
+  },
+  "verticals": [
+    {
+      "id": "agent",
+      "path": "product/agent-governance",
+      "purpose": "generic multi-agent authority/context/fidelity gateway",
+      "sharedBusinessSchema": false
+    },
+    {
+      "id": "research",
+      "path": "product/research-governance",
+      "purpose": "canonical evidence and evidence-safe delivery",
+      "sharedBusinessSchema": false
+    },
+    {
+      "id": "tutor",
+      "path": "product/tutor-governance",
+      "purpose": "learner state, uncertainty and intervention verification",
+      "sharedBusinessSchema": false
+    },
+    {
+      "id": "life",
+      "path": "product/life-governance",
+      "purpose": "durable preferences/plans, realtime isolation and risk escalation",
+      "sharedBusinessSchema": false
+    },
+    {
+      "id": "character",
+      "path": "product/character-governance",
+      "purpose": "NPC/character relationship state transitions",
+      "sharedBusinessSchema": false
+    }
+  ],
+  "interfaces": {
+    "unifiedHttpGateway": true,
+    "independentVerticalServers": true,
+    "persistentStore": true,
+    "sqliteReferenceStore": true,
+    "cleanOfflineInstall": true,
+    "realRetrieval": true,
+    "realLlmHost": true,
+    "semanticJudgeTransportInProductFlow": true,
+    "webUi": true,
+    "hostOwnedToolLifecycle": true,
+    "liveExternalQualificationInThisBuild": false,
+    "completedToolLedgerPersistence": true,
+    "crashWindowExactlyOnceRecovery": false,
+    "readOnlyObservatoryApi": true,
+    "offlineExecutionHistory": true,
+    "diagnosticExport": true,
+    "explicitFixtureConsole": true,
+    "authentication": false,
+    "remoteMultiUserQualified": false,
+    "browserNetworkE2eQualified": false,
+    "executionQualificationCli": true,
+    "strictResponseContractValidation": true,
+    "configuredHttpBounds": true,
+    "externalFrameworkAdapterImplemented": false
+  },
+  "hardBoundaries": [
+    "Only infrastructure concerns are unified across verticals; domain state models remain independent.",
+    "LLM output is untrusted candidate data.",
+    "Realtime facts are not silently persisted as long-term Life state.",
+    "Tutor assistance affects the interpretation of mastery evidence.",
+    "Research conflict evidence fails closed on material omission.",
+    "Generic agent execution graph does not grant authority by itself.",
+    "External model output remains candidate data until deterministic/MAG gates pass.",
+    "Tool calls are requests only; allowlisted side effects are executed by the Host-owned tool ledger.",
+    "Research delivery requires explicit bound-delivery semantic Judge evidence; a separate Judge identity is preferred/optionally required.",
+    "Retrieved document text is untrusted data; evidence extraction instructions explicitly reject embedded prompt/tool/role instructions.",
+    "Completed tool-call ledger records can survive normal SQLite-backed restart, but R2 does not claim atomic exactly-once behavior across the crash window between an external side effect and ledger persistence.",
+    "Observatory is local-owner and unauthenticated; no remote or multi-tenant claim.",
+    "Read-only observability does not replace trusted Host authorization for legacy domain commands.",
+    "Fixture qualification is not real model qualification; configuration is not health or qualification.",
+    "Execution overlap protection is scoped to one Gateway process, not crash-safe distributed exactly-once.",
+    "Exports are best-effort credential-redacted and may retain sensitive business data; not signed audit proofs.",
+    "Configured model identity is not proof of distinct weights or statistical independence.",
+    "Only env-created finite product HTTP and supplied retrieval providers have R4a HTTP bounds; frozen SDK/custom transports remain caller-owned.",
+    "The response validator implements only the owned JSON Schema subset and rejects unsupported keywords.",
+    "Qualification does not touch the normal business store; a passed scope cannot replace a wider scope or production qualification."
+  ],
+  "observatory": {
+    "path": "product/observatory",
+    "shared": "navigation / read projections / audit / execution display",
+    "independent": "domain state models / application operation forms",
+    "demoPort": 8788,
+    "normalPort": 8787,
+    "browserQualification": "offline DOM only; network E2E blocked by managed URL policy",
+    "externalModelQualification": false
+  },
+  "qualification": {
+    "scope": "R4a implementation / configured endpoint samples / no identity attestation",
+    "default": "endpoints",
+    "scopes": [
+      "endpoints",
+      "agent",
+      "research",
+      "all"
+    ],
+    "evidenceMode": "fixture-http for included tests; configured-endpoints-unattested for operator CLI",
+    "businessStoreTouched": false,
+    "browserHttp": "blocked-environment",
+    "externalConfiguredExecution": "not-configured",
+    "stableEligible": false
+  }
+}

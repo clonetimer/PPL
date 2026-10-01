@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>PPL Observatory · 治理工作台</title>
+  <link rel="stylesheet" href="/observatory/style.css">
+  <script type="module" src="/observatory/app.mjs"></script>
+</head>
+<body>
+<a href="#main" class="skip-link">跳到工作区</a>
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="PPL Observatory 首页"><span class="brand-symbol">P</span><span>PPL <small>OBSERVATORY</small></span></a>
+    <div class="edition">1.0.0-dev.4 <span>DEVELOPMENT</span></div>
+    <p class="nav-heading">应用工作区</p>
+    <nav id="apps" aria-label="应用导航"></nav>
+    <div class="sidebar-note"><b>共享治理，独立语义。</b><p>每个应用拥有独立的状态模型。这里展示记录与门禁结果，不替模型证明事实为真。</p></div>
+    <div class="local-note"><span class="local-dot"></span> 本地单用户 · 未配置身份认证</div>
+  </aside>
+  <div class="page">
+    <header class="topbar">
+      <div><span class="eyebrow">GOVERNANCE WORKSPACE</span><h1 id="workspace-title">研究与证据</h1></div>
+      <div class="top-actions"><span id="connect-state" class="badge neutral">连接中</span><button id="refresh" type="button" class="secondary">刷新</button><button id="create-open" type="button">新建会话</button></div>
+    </header>
+    <div id="mode-banner" class="mode-banner" hidden></div>
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+    <main id="main" class="layout">
+      <section class="session-pane" aria-label="会话列表">
+        <div class="pane-title"><h2>会话</h2><span id="session-total" class="count">0</span></div>
+        <form id="search-form" class="search"><label class="sr-only" for="search">搜索会话</label><input id="search" name="q" type="search" placeholder="搜索问题或会话 ID"><button class="secondary" type="submit">搜索</button></form>
+        <div id="session-list" class="session-list"><p class="empty">正在读取会话…</p></div>
+        <div class="pagination"><button type="button" id="sessions-prev" class="quiet">上一页</button><span id="sessions-page"></span><button type="button" id="sessions-next" class="quiet">下一页</button></div>
+      </section>
+      <section class="work-pane" aria-label="当前会话">
+        <div id="session-heading"></div>
+        <div id="metrics" class="metrics"></div>
+        <div id="tabs" class="tabs" role="tablist" aria-label="会话视图"></div>
+        <div id="content" class="content" role="tabpanel"><p class="empty">选择会话，查看证据和执行过程。</p></div>
+      </section>
+    </main>
+    <footer>本地诊断界面 · 凭据脱敏为尽力处理，导出仍可能包含业务数据 · 当前版本不是 Stable</footer>
+  </div>
+</div>
+<dialog id="create-dialog" aria-labelledby="create-title"><div class="dialog-heading"><h2 id="create-title">新建会话</h2><button type="button" id="create-close" class="quiet" aria-label="关闭新建会话">关闭</button></div><div id="create-fields"></div></dialog>
+<noscript>此工作台需要启用 JavaScript。HTTP API 仍可使用。</noscript>
+</body>
+</html>

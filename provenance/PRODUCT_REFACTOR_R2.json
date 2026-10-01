@@ -1,0 +1,39 @@
+{
+  "schema": "ppl.product-refactor/3",
+  "version": "1.0.0-dev.3",
+  "phase": "R2 Real Execution Integration",
+  "date": "2026-09-30",
+  "status": "development-not-stable",
+  "implemented": [
+    "shared platform/execution package",
+    "OpenAI-compatible structured HTTP model transport bridge",
+    "HTTP JSON and SearXNG retrieval adapters",
+    "Generic Agent governed model execution",
+    "Host-owned allowlisted tool execution and continuation",
+    "Research retrieval/extraction/analyst/reviewer/bound-delivery-Judge pipeline",
+    "Gateway execution routes",
+    "live endpoint probe",
+    "RecordStore-backed persistence for completed Host tool ledger entries",
+    "localhost HTTP failure injection for counter-evidence erasure and semantic-Judge rejection",
+    "Agent/Research execution-run list endpoints"
+  ],
+  "qualification": {
+    "scriptedRegression": true,
+    "localhostHttpProtocolSmoke": true,
+    "cleanOfflineInstall": true,
+    "externalModelLiveQualification": false,
+    "externalModelReason": "No service reachable on 127.0.0.1 ports 8000, 8001 or 1234 in build environment.",
+    "cleanOfflineInstallDetails": {
+      "source": "dependency-free staged copy",
+      "npmCache": "empty",
+      "command": "npm ci --offline --ignore-scripts --no-audit --no-fund && ./VERIFY_PRODUCT.sh",
+      "result": "passed"
+    },
+    "localhostHttpFailureInjection": true,
+    "stableHostRegression": "145/145 passed",
+    "localProviderRegression": "16/16 passed",
+    "nativeJudgeRegression": "4/4 passed"
+  },
+  "stableBaselinePolicy": "Existing Stable component sources remain frozen and are identity checked.",
+  "knownBoundary": "R2 persists completed tool ledger entries but does not claim atomic crash-window exactly-once recovery for external side effects."
+}

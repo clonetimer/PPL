@@ -1,7 +1,7 @@
 {
   "schema": "ppl.current-baseline/1",
-  "asOf": "2026-08-27",
-  "project": "PPL (Persona / Policy / Protocol Layer)",
+  "asOf": "2026-09-30",
+  "project": "PPL — Stateful AI Agent Governance Runtime",
   "foundation": {
     "core": "0.3.0 Frozen",
     "runtime": "0.1.0 Frozen",
@@ -39,5 +39,21 @@
   },
   "governance": {
     "multiAgentGovernance": "0.1.0 Stable"
+  },
+  "stableComponentBaselineAsOf": "2026-08-27",
+  "productRefactor": {
+    "version": "1.0.0-dev.5",
+    "status": "Development / not Stable",
+    "productModel": "Shared Governance/Execution Kernel + Independent Verticals + Unified Gateway",
+    "verticals": [
+      "agent",
+      "research",
+      "tutor",
+      "life",
+      "character"
+    ],
+    "entrypoint": "product/platform-gateway",
+    "completedPhase": "R3 UI implementation + R4a execution hardening (not external/live-qualified)",
+    "nextPhase": "target browser/live qualification, then R4b external Agent adapter"
   }
 }

@@ -1,0 +1,133 @@
+{
+  "schema": "ppl.product-migration/5",
+  "target": "PPL 1.0 productized multi-vertical governance runtime",
+  "phases": [
+    {
+      "id": "R0",
+      "name": "Product Boundary",
+      "status": "completed",
+      "priority": "P0"
+    },
+    {
+      "id": "R1",
+      "name": "Packaging, Persistence & Multi-Vertical Split",
+      "status": "completed",
+      "priority": "P0"
+    },
+    {
+      "id": "R2",
+      "name": "Real Host / Retrieval / Judge Integration",
+      "status": "completed",
+      "priority": "P0"
+    },
+    {
+      "id": "R3",
+      "name": "Observatory Product UI",
+      "status": "implemented / HTTP+offline-DOM qualified / browser-network-E2E pending",
+      "priority": "P0"
+    },
+    {
+      "id": "R4",
+      "name": "Qualification Hardening + External Agent Runtime Adapter",
+      "status": "partial: R4a implemented; target browser/live qualification and R4b adapter pending",
+      "priority": "P0",
+      "subphases": [
+        {
+          "id": "R4a",
+          "name": "Execution qualification and boundary hardening",
+          "status": "implemented / local regressions and fixture HTTP qualified"
+        },
+        {
+          "id": "R4b",
+          "name": "One external Agent runtime adapter",
+          "status": "not implemented / after target qualification"
+        }
+      ]
+    },
+    {
+      "id": "R5",
+      "name": "Stable Candidate",
+      "status": "planned",
+      "priority": "P0"
+    }
+  ],
+  "r1VerticalDecision": {
+    "unified": [
+      "persistence",
+      "audit",
+      "session repository",
+      "idempotency",
+      "HTTP utilities",
+      "single gateway"
+    ],
+    "independent": [
+      "generic agent governance",
+      "research",
+      "tutor",
+      "life/personal assistant",
+      "character/NPC"
+    ]
+  },
+  "frozenMainlineFeatureAreasUntilR4": [
+    "Persona DSL language expansion",
+    "new Tutor learning model beyond the uncalibrated reference model",
+    "new Life business domains beyond durable preference/plan boundary",
+    "new harness-specific inspectors",
+    "online autonomous rule self-modification"
+  ],
+  "r2ExecutionDecision": {
+    "shared": [
+      "transport resilience",
+      "OpenAI-compatible provider bridge",
+      "retrieval interfaces",
+      "tool execution ledger",
+      "execution run persistence"
+    ],
+    "independent": [
+      "generic agent execution semantics",
+      "research evidence extraction/analysis/review/delivery pipeline"
+    ],
+    "qualification": [
+      "deterministic scripted regression",
+      "real localhost HTTP protocol smoke",
+      "external model live qualification intentionally not claimed in build environment",
+      "localhost HTTP injected counter-evidence erasure must be blocked",
+      "localhost HTTP injected semantic Judge rejection must fail closed",
+      "Stable Host/Local Provider/Native Judge regressions"
+    ],
+    "knownBoundary": "completed tool-call records are durable; atomic crash-window external-side-effect recovery is deferred"
+  },
+  "r3Decision": {
+    "shared": [
+      "local UI shell",
+      "read projections",
+      "audit and execution details",
+      "credential minimization"
+    ],
+    "independent": [
+      "Research evidence/operations",
+      "Agent contracts/tools",
+      "Tutor learner events",
+      "Life preferences/realtime boundary",
+      "Character relationship events"
+    ],
+    "remainingQualification": [
+      "browser HTTP E2E",
+      "real model/Judge/retrieval",
+      "Windows/macOS",
+      "production security and scale"
+    ]
+  },
+  "r4Decision": {
+    "noNewVerticals": true,
+    "frozenComponentsUnchanged": true,
+    "databaseMigration": false,
+    "remaining": [
+      "target browser HTTP E2E",
+      "operator-attested real model/Judge/retrieval task qualification",
+      "external Agent adapter",
+      "multi-sample effectiveness and false-blocking evaluation",
+      "production security/recovery scope"
+    ]
+  }
+}

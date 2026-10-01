@@ -5,6 +5,7 @@
 .env
 .env.*
 !.env.example
+!.env.*.example
 
 # Test / temporary output
 **/coverage/
@@ -17,16 +18,16 @@ local-results/
 # Local logs
 *.log
 
-# Component build outputs
-# NOTE: root dist/npm/*.tgz are intentional Stable npm release artifacts — kept on purpose
-components/**/dist/
-components/**/build/
-
-# Raw experiment result archives (derived, reproducible)
-evidence/raw/*.zip
-
 # OS / editor noise
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
+
+# Product persistence
+var/*.sqlite
+var/*.sqlite-*
+
+# R3 optional validation output
+local-results/
+__pycache__/

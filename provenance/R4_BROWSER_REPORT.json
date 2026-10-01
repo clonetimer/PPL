@@ -1,0 +1,12 @@
+{
+  "schema": "ppl.r3-browser-smoke/1",
+  "passed": false,
+  "mode": "fixture",
+  "externalLiveQualified": false,
+  "productVersion": "1.0.0-dev.5",
+  "checks": [],
+  "browserVersion": "144.0.7559.96",
+  "error": "Error: Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:35029/\nCall log:\n  - navigating to \"http://127.0.0.1:35029/\", waiting until \"networkidle\"\n",
+  "status": "blocked-environment",
+  "checkCount": 0
+}

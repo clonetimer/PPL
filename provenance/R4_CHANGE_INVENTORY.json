@@ -1,0 +1,391 @@
+{
+  "schema": "ppl.r4-change-inventory/1",
+  "baseVersion": "1.0.0-dev.4",
+  "targetVersion": "1.0.0-dev.5",
+  "excludedSelfAndDerivedManifest": [
+    "manifest/SHA256SUMS.txt",
+    "provenance/R4_CHANGE_INVENTORY.json"
+  ],
+  "frozenArtifactsChanged": 0,
+  "changeCount": 63,
+  "changes": [
+    {
+      "path": ".env.execution.example",
+      "status": "modified",
+      "before": "c87f7f16bd87e9669d558eefe9e5c9c7278e48be3ed528de90633617a58ea729",
+      "after": "2c137a064be242a0d7ddf6735613f2c0381dc3099149600a027b06bb533affb7"
+    },
+    {
+      "path": "CHANGELOG_PRODUCT.md",
+      "status": "modified",
+      "before": "bfecbe29f8684be00c95460d79cea9a845666e21e5c37fca84bc5e3104824d0b",
+      "after": "61fee9e6afdae32614008242be660b93c6d916912698dc45ead3ce73a0bee1d0"
+    },
+    {
+      "path": "INSTALL_PRODUCT.cmd",
+      "status": "modified",
+      "before": "434a3206610114c941d2c6904f1b79df067bd049e96bd8c3c0a7cb30e5c16d60",
+      "after": "59ac803d547917bdd2f4fc51d1d8a8ea681e342b5236b00763c4c570b9eb96b3"
+    },
+    {
+      "path": "INSTALL_PRODUCT.sh",
+      "status": "modified",
+      "before": "a602d9361ab6290facb201326df27f719ff452592792d4d20cd5a3e0f08c380a",
+      "after": "9506f135565518f97493f28d364c7b15d73a443fecb360be9aad6f5ec99f2fe5"
+    },
+    {
+      "path": "README.md",
+      "status": "modified",
+      "before": "c2b9bb301a142c9afa9073faa86671320bd6e2b6f7e01a1fb87f4c76acc1fad4",
+      "after": "5c4f15c38dcaa33cd19bbe4a860b68f6eb050a6d1cbeca7b9e626a6e5b14424d"
+    },
+    {
+      "path": "RUN_R2_LIVE_PROBE.sh",
+      "status": "modified",
+      "before": "c29d126f298248a5669d297845ec602a17990daf8b989b43827c6eed18452e2a",
+      "after": "6722ae6138067e4e6ec189fc446b1451b3a350b7b34edb1200772725f8eae0c8"
+    },
+    {
+      "path": "RUN_R4_QUALIFY.ps1",
+      "status": "added",
+      "before": null,
+      "after": "86eb2778f7d853e760b7d9040814aae5b690ce5ffdc038bdf1ae0c8b7df9ccee"
+    },
+    {
+      "path": "RUN_R4_QUALIFY.sh",
+      "status": "added",
+      "before": null,
+      "after": "678a654b07d7b34e1e67c1e417de209aa9a997eb6d82f5f4360bc5c4742cda8a"
+    },
+    {
+      "path": "docs/product/10_R4a_执行边界与架构.md",
+      "status": "added",
+      "before": null,
+      "after": "76d0cc3f8c18eabb8a0bcab9523e77899a600b70815cedf6d18a587f26ebe5fc"
+    },
+    {
+      "path": "docs/product/11_R4a_目标环境验收手册.md",
+      "status": "added",
+      "before": null,
+      "after": "163eb83082337fd1cc41bcf2abff819136f2a5d850996f49fb050788b62d5919"
+    },
+    {
+      "path": "docs/product/HISTORY_R3_README.md",
+      "status": "added",
+      "before": null,
+      "after": "c2b9bb301a142c9afa9073faa86671320bd6e2b6f7e01a1fb87f4c76acc1fad4"
+    },
+    {
+      "path": "manifest/CURRENT_BASELINE.json",
+      "status": "modified",
+      "before": "a89b59367df72c7faac020c512d508fe71be8dddc472680f2e3f247270d6da5b",
+      "after": "ce5b511c8197d2194f1531f8dc9102de6836ea5e4670fb8b7e1bf7ed15bdb75a"
+    },
+    {
+      "path": "manifest/PROJECT_TREE.txt",
+      "status": "modified",
+      "before": "5df55f2e712decff3d8058dc945eaf6b88531495bdf3ff54d34c5ed68c9ba001",
+      "after": "50ebe92438ea44812927aa07253aa594aa063e99bc787ee4757e746ccf78b6ae"
+    },
+    {
+      "path": "manifest/product/MIGRATION_PLAN.json",
+      "status": "modified",
+      "before": "5d50a1efe08fcb914978f67f421b0296dfefeeaacfab257eaebdc584fde0bde7",
+      "after": "3a8cf2edcd0ee7aca74a0bd6d6510a8099dbdd2216f29e56daed0a9e4b11ab42"
+    },
+    {
+      "path": "manifest/product/PRODUCT_SURFACE.json",
+      "status": "modified",
+      "before": "f143fdda26601398806fdfd45db063cb74ff8c275c5e6e8af5ca4fe3b6c76526",
+      "after": "895dbc6e5e0e37d0ac7a9ce2903c5fb0683ce9a1cc498e03540a9d15a242845f"
+    },
+    {
+      "path": "package-lock.json",
+      "status": "modified",
+      "before": "dbd3fa2511f289551211ccf975388ebce91afa9f31b03f2d28382c117e197b76",
+      "after": "2b67398b547021364e7274a210c5ae93c5e30905ae2188a1ea762ed0b8d15052"
+    },
+    {
+      "path": "package.json",
+      "status": "modified",
+      "before": "f66defb8bf89a89db3a069c5044151d1dc7989c16b49732a8c3c8cb5dbcb895a",
+      "after": "4c20d9d474fef0d48a2fc41f190a275edc05e49be9d86bebd3a0d7011d00532c"
+    },
+    {
+      "path": "platform/core/package.json",
+      "status": "modified",
+      "before": "b66a871f61646ad7d2117f0586cce6304ee9a95eb7b258bb9b74b9093d595eb9",
+      "after": "46434101acdb72fe741aecbf8a2fbca6ce8c2281b0444c221fa828f57010c560"
+    },
+    {
+      "path": "platform/execution/bin/live-probe.mjs",
+      "status": "modified",
+      "before": "aec7eb25b52983ad7fb27e4e09cce9756607bee3d743026408ada173dbf77486",
+      "after": "1b5d666e1c5200eec358a6628e9d6c4bcdfaddf0b77207de60b5b05f6ac213f4"
+    },
+    {
+      "path": "platform/execution/package.json",
+      "status": "modified",
+      "before": "b6bc44ed4ede05838c11d73b25d02501ab631f40c0d7fa5452407256639c2d25",
+      "after": "b3e977befd53872d8f9b6f16fed5933d0487b5c7e927ce60857cd441f6261e66"
+    },
+    {
+      "path": "platform/execution/src/contracts.mjs",
+      "status": "modified",
+      "before": "161d333cbbd76bd27fb35738989ab81ef24e880294a621d75bcf729669027c3a",
+      "after": "deaaf6d8b628c0e35ed4fe9a1889d397e50bba8230edcf5ada9622775047d1cb"
+    },
+    {
+      "path": "platform/execution/src/env.mjs",
+      "status": "modified",
+      "before": "f4b55924877e5e84fbb086d0fae0bdeedceb6dcdcc492c5b8910a584fa8e5e35",
+      "after": "14a006501edf97cbe2898ef5e7487c022fe3e7063ca97c94e07fca0c947e9fd6"
+    },
+    {
+      "path": "platform/execution/src/http-boundary.mjs",
+      "status": "added",
+      "before": null,
+      "after": "748137acc6a74b9aaa6006adf6647d3907df0672faf50d04d1a6cb0083d312d9"
+    },
+    {
+      "path": "platform/execution/src/independence.mjs",
+      "status": "added",
+      "before": null,
+      "after": "5ae420a6b4db656e753f7702c759bcb883498b713d7825084140762b1e6cb6fd"
+    },
+    {
+      "path": "platform/execution/src/index.mjs",
+      "status": "modified",
+      "before": "dc605083b0cac97c06c348b01f9116edb1a19e34bc3a196b0e8dac753788f72e",
+      "after": "8bb9ea9aefc21323fca315e68fc8a492befed3cd6428b6537042ae5b80195745"
+    },
+    {
+      "path": "platform/execution/src/json-contract.mjs",
+      "status": "added",
+      "before": null,
+      "after": "0a389185b39d876a0090a68d03eb369af523544f2bd951314b753540d76cc043"
+    },
+    {
+      "path": "platform/execution/src/probe.mjs",
+      "status": "added",
+      "before": null,
+      "after": "ae47eb60f3cd5d12728844d44104aac00cbfed9f35cb2ae3e76a56bdde07d69f"
+    },
+    {
+      "path": "platform/execution/src/retrieval.mjs",
+      "status": "modified",
+      "before": "c577cb9d688c8100d5c640327e24ced14528aa69914d2bd66ed17c5427f2d3d0",
+      "after": "d4582ba624b40b1fa0367f041cbf3f810addacfe46484f768ff2583a0d8eb6e8"
+    },
+    {
+      "path": "platform/execution/src/transports.mjs",
+      "status": "modified",
+      "before": "fcc3c1a209e935dc4051412fcd5efd65cc78bed62b7b295446229d2731e8bf14",
+      "after": "a9e314067e680636e2634270c04784444bd419a5ba30d73f26566481dfd9dff2"
+    },
+    {
+      "path": "platform/execution/tests/r4-boundaries.test.mjs",
+      "status": "added",
+      "before": null,
+      "after": "a5bd070b9326963abc9946e8ff6159d4448a0765b3a83afce206533c09878729"
+    },
+    {
+      "path": "product/agent-governance/package.json",
+      "status": "modified",
+      "before": "cb7d3daa041be13a28d8d405ada21445eb500f7286a88891d545ee480c14c469",
+      "after": "227ddd0cac46edaf0fca590027e26703c15e01ce6d191675b43e2274987f849b"
+    },
+    {
+      "path": "product/agent-governance/src/execution-service.mjs",
+      "status": "modified",
+      "before": "39954260b624d71ebd0e4ce151d3e6f7f604d4287938889c8ee0db0da284bec3",
+      "after": "6fe3ca700174243d0bf7d54fea57e9f7099d713f9e53d1192e994c374d106e28"
+    },
+    {
+      "path": "product/agent-governance/tests/execution-service.test.mjs",
+      "status": "modified",
+      "before": "a1ebe5741f2f02af99f5c549925ea352e4a5cc93ee4e0b112e4acfd0301fbd86",
+      "after": "75aee1de930b079ea759d51cebc3296fa038c6e0bfd2c484f8603037de330985"
+    },
+    {
+      "path": "product/character-governance/package.json",
+      "status": "modified",
+      "before": "cafa79ca05372c57aac64a9c64d942b531df45048fa7f9fd20d300bba6349927",
+      "after": "0a1448905b5b8a2092cb058a56b2f8367645c0b3ceef69d95c5ecddd056949a8"
+    },
+    {
+      "path": "product/life-governance/package.json",
+      "status": "modified",
+      "before": "d9171b53eff768d04246704edcfd1bdd274fe0673ef2b85bcdcbd783bc855348",
+      "after": "2be9061f2599ff79102cd14ad8355af76fc3f8cb70939fce0c965afe4b68e301"
+    },
+    {
+      "path": "product/observatory/package.json",
+      "status": "modified",
+      "before": "86e10a5d9923907b08572a89b5955b6a1e99825ca02230b71b626c5c361390c6",
+      "after": "f998ba48ffe941906bca506207962ef2c85559ca37404d92e74db2e7e94d6f4f"
+    },
+    {
+      "path": "product/observatory/src/catalog.mjs",
+      "status": "modified",
+      "before": "fa36187a3a9de13fdcf5922616b77ba53cd00212d64d43c05ab0ba0c832d5e3a",
+      "after": "e9254f69d6107d07cca96c9ca127af73677940115371c3503f8f05cf0f74a98e"
+    },
+    {
+      "path": "product/platform-gateway/package.json",
+      "status": "modified",
+      "before": "cd07b7976e209d77986f4cc332639449b6a57d47d96ebf374d48ac39fbeb5f84",
+      "after": "5d54f23d1e55447789cb7c5617c567a9add95cf66acbb30aad681eb30c195c20"
+    },
+    {
+      "path": "product/platform-gateway/src/gateway.mjs",
+      "status": "modified",
+      "before": "ec53f732f9cd507301bfc95a32019f01638b0328effd2cee695efa69858c100b",
+      "after": "ac23ad1476317ddd5a70dcea96cf9b903df3f15331d0fa0dc43cb3302060fcf2"
+    },
+    {
+      "path": "product/research-governance/package.json",
+      "status": "modified",
+      "before": "6c12709cbb4f94790978ca97784ebf15384be303c5b1501597f0ae41b4cbb31d",
+      "after": "bde6f7e32c7216498d6ec5357cbbb74cce86b5daba5ef73648a593a2c45abe6e"
+    },
+    {
+      "path": "product/research-governance/src/execution-service.mjs",
+      "status": "modified",
+      "before": "6381ec4fc129e68d3a4bf1b7258978b1f193ecf12b8c99e4d5ddf80cc93f4f34",
+      "after": "8c6984b29094e0f33691f18058962ae1c558b6905757bbaeebe3cda84f5b565b"
+    },
+    {
+      "path": "product/research-governance/tests/execution-service.test.mjs",
+      "status": "modified",
+      "before": "5dd2d9296a283ba02d0c0f4e87e13bce8623368b3b9457eca2d411e9e4fa85ba",
+      "after": "79e859079fd5c5672a4f5ee904579262ebfc6b7d691a86235583d903b1d44369"
+    },
+    {
+      "path": "product/tutor-governance/package.json",
+      "status": "modified",
+      "before": "4c69bba84943c11a97bdcd56b1b097e31310aba7d173e4094e40d327adb3b72a",
+      "after": "20b017ab3bf5fd1f457cc423949f647b1037b0b5c9b0d111a355b735208b4900"
+    },
+    {
+      "path": "provenance/R4_BASELINE_REPRO.json",
+      "status": "added",
+      "before": null,
+      "after": "b6bb5907de41ba144d49f6d457427e5c8506fbf8f44850f009f0182ac3c88018"
+    },
+    {
+      "path": "provenance/R4_BROWSER_REPORT.json",
+      "status": "added",
+      "before": null,
+      "after": "5b7e54850882c69e307cf5d094ee8554aecfd5ebcfb8021914156edd08c69613"
+    },
+    {
+      "path": "provenance/R4_CONFIGURED_ENV_QUALIFICATION.json",
+      "status": "added",
+      "before": null,
+      "after": "39fdad5a0b4132ad1c1e699a18ab8309ccb4b5f7cfe74eadb60f3525a7f8f54d"
+    },
+    {
+      "path": "provenance/R4_DOM_REPORT.json",
+      "status": "added",
+      "before": null,
+      "after": "c31da078bb224ef7d8d211eb4cffb4e51052dc162c187bfd558dfbefa7764c8f"
+    },
+    {
+      "path": "provenance/R4_ENVIRONMENT_PROBE.json",
+      "status": "added",
+      "before": null,
+      "after": "f4fe61c465a10edf051a7a98793af67f7a025ade41288b210b1aa3b931bf8404"
+    },
+    {
+      "path": "provenance/R4_EXECUTION_LEDGER.md",
+      "status": "added",
+      "before": null,
+      "after": "227334ccc7d0a98dd757139e002dea6f0cccc26db21fe1c937f3bb5c5694a71f"
+    },
+    {
+      "path": "provenance/R4_HTTP_SMOKE.json",
+      "status": "added",
+      "before": null,
+      "after": "fd754819b0daed3406b3c69b967e4ffa58f6d71ab400bf2f0ca0feda3206009e"
+    },
+    {
+      "path": "provenance/R4_INPUT_R3_CHECKS.json",
+      "status": "added",
+      "before": null,
+      "after": "2981b70f7e8695522baf175301d477963c44b1c44a6a55493a43cea7f5aba896"
+    },
+    {
+      "path": "provenance/R4_PRODUCT_CHECKS.json",
+      "status": "added",
+      "before": null,
+      "after": "4875306c53989ddff3fa910adc8dfad2af613432880fdfb93e19d8cd693fdbd0"
+    },
+    {
+      "path": "provenance/R4_QUALIFICATION_TESTS.tap",
+      "status": "added",
+      "before": null,
+      "after": "79cabf2bbb59cd371dbba137be9da94aff4bce870b927496c4cf717b271f8694"
+    },
+    {
+      "path": "provenance/R4_STABLE_IDENTITY.json",
+      "status": "added",
+      "before": null,
+      "after": "11a490b4450db1bd8972d43dd1fc566097ddd4a2250f8b8b45f6ff878d87a304"
+    },
+    {
+      "path": "provenance/R4_TARGET_REGRESSION.tap",
+      "status": "added",
+      "before": null,
+      "after": "2791089657b78ecab22eb42d3bd0ba06009b9865083f1e758cd5205b6b213761"
+    },
+    {
+      "path": "tools/fixtures/r4-http-backend.mjs",
+      "status": "added",
+      "before": null,
+      "after": "59907b25c48fad8ddbd57a2515b0f4ff848eaa1600e7d88223bfb4d8ca198129"
+    },
+    {
+      "path": "tools/qualification/runner.mjs",
+      "status": "added",
+      "before": null,
+      "after": "ce74c9b46931f22bb5fbdc9f461c457e581fdbd0ac0b32a4339bfcf1dba44218"
+    },
+    {
+      "path": "tools/r3-browser-smoke.py",
+      "status": "modified",
+      "before": "50f48aa6e75ee719e1f5e27568895195eb547f67c62df92633fda601d538ced4",
+      "after": "0f08fb43d1057cad187fa2f2b0a658bed137bc159d0ecc621bc5660e951b9402"
+    },
+    {
+      "path": "tools/r4-baseline-repro.mjs",
+      "status": "added",
+      "before": null,
+      "after": "e17d951395cadb1c58bc144c110dbd73bcca428ad77d8e84afe5d1f93c3c7925"
+    },
+    {
+      "path": "tools/r4-qualification-smoke.mjs",
+      "status": "added",
+      "before": null,
+      "after": "0458c589de15bb8fd5c6f3b5946af917cbda69bbd04745111f163a5c1aaf707e"
+    },
+    {
+      "path": "tools/r4-qualify-execution.mjs",
+      "status": "added",
+      "before": null,
+      "after": "823a27d49ad2a99f5364cbf40ba234825376e8af291dcbdbda03471e79a06a81"
+    },
+    {
+      "path": "tools/tests/r4-qualification.test.mjs",
+      "status": "added",
+      "before": null,
+      "after": "b3043aee5b83cdea03b5a1b7f7ebd811dcb58cf949d41727db8b0357252e7aed"
+    },
+    {
+      "path": "tools/verify-product.mjs",
+      "status": "modified",
+      "before": "c86b41f51e346b2a161afb160d33bd4adcf95df769db812bcb1f4cee99a2a403",
+      "after": "28da781104350e2827ae4fd1d2ecc177b29a1c7eceab1ec9bd3866263ee39500"
+    }
+  ]
+}

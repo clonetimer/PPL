@@ -1,0 +1,32 @@
+{
+  "name": "ppl-product-suite",
+  "version": "1.0.0-dev.5",
+  "private": true,
+  "type": "module",
+  "description": "PPL 1.0 multi-vertical governance product suite.",
+  "engines": {
+    "node": ">=22.16"
+  },
+  "workspaces": [
+    "platform/*",
+    "product/*"
+  ],
+  "scripts": {
+    "test:product": "node tools/verify-product.mjs",
+    "start": "node product/platform-gateway/bin/server.mjs",
+    "demo:research": "node product/research-governance/bin/demo.mjs",
+    "demo:tutor": "node product/tutor-governance/bin/demo.mjs",
+    "demo:life": "node product/life-governance/bin/demo.mjs",
+    "demo:character": "node product/character-governance/bin/demo.mjs",
+    "demo:agent": "node product/agent-governance/bin/demo.mjs",
+    "live:probe": "node platform/execution/bin/live-probe.mjs",
+    "smoke:r2": "node tools/r2-http-execution-smoke.mjs",
+    "demo:observatory": "node tools/r3-demo-server.mjs",
+    "smoke:r3": "node tools/r3-observatory-smoke.mjs",
+    "start:configured": "node --env-file=.env product/platform-gateway/bin/server.mjs",
+    "qualify:execution": "node --env-file-if-exists=.env tools/r4-qualify-execution.mjs",
+    "test:qualification": "node --test tools/tests/r4-qualification.test.mjs",
+    "smoke:r4": "node tools/r4-qualification-smoke.mjs",
+    "test:browser": "python tools/r3-browser-smoke.py --output local-results/r4-browser"
+  }
+}

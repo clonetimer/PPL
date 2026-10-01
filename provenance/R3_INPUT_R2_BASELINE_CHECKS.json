@@ -1,0 +1,99 @@
+{
+  "schema": "ppl.product-verify/3",
+  "version": "1.0.0-dev.3",
+  "passed": true,
+  "checks": [
+    {
+      "label": "product-surface-files",
+      "passed": true
+    },
+    {
+      "label": "stable-project-integrity",
+      "passed": true
+    },
+    {
+      "label": "stable-component-identity",
+      "passed": true
+    },
+    {
+      "label": "mag-regression",
+      "passed": true
+    },
+    {
+      "label": "host-offline-install",
+      "passed": true
+    },
+    {
+      "label": "host-regression",
+      "passed": true
+    },
+    {
+      "label": "local-provider-regression",
+      "passed": true
+    },
+    {
+      "label": "native-judge-regression",
+      "passed": true
+    },
+    {
+      "label": "platform-core-tests",
+      "passed": true
+    },
+    {
+      "label": "platform-execution-tests",
+      "passed": true
+    },
+    {
+      "label": "agent-governance-tests",
+      "passed": true
+    },
+    {
+      "label": "research-governance-tests",
+      "passed": true
+    },
+    {
+      "label": "tutor-governance-tests",
+      "passed": true
+    },
+    {
+      "label": "life-governance-tests",
+      "passed": true
+    },
+    {
+      "label": "character-governance-tests",
+      "passed": true
+    },
+    {
+      "label": "platform-gateway-tests",
+      "passed": true
+    },
+    {
+      "label": "agent-governance-demo",
+      "passed": true
+    },
+    {
+      "label": "research-governance-demo",
+      "passed": true
+    },
+    {
+      "label": "tutor-governance-demo",
+      "passed": true
+    },
+    {
+      "label": "life-governance-demo",
+      "passed": true
+    },
+    {
+      "label": "character-governance-demo",
+      "passed": true
+    },
+    {
+      "label": "multi-vertical-sqlite-smoke",
+      "passed": true
+    },
+    {
+      "label": "r2-http-execution-smoke",
+      "passed": true
+    }
+  ]
+}

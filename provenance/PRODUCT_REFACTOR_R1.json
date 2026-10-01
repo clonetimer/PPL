@@ -1,0 +1,33 @@
+{
+  "schema": "ppl.product-refactor-provenance/2",
+  "date": "2026-09-30",
+  "version": "1.0.0-dev.2",
+  "sourceBaseline": "PPL_1.0.0-dev.1_Governance_Refactor_R0",
+  "stableComponentSourceModified": false,
+  "sharedKernel": "platform/core",
+  "verticals": ["agent-governance","research-governance","tutor-governance","life-governance","character-governance"],
+  "gateway": "product/platform-gateway",
+  "qualification": {
+    "platformCore": "3/3 PASS",
+    "agentProduct": "2/2 PASS",
+    "researchProduct": "7/7 PASS",
+    "tutorProduct": "3/3 PASS",
+    "lifeProduct": "3/3 PASS",
+    "characterProduct": "3/3 PASS",
+    "gateway": "1/1 PASS",
+    "multiVerticalSqliteSmoke": "PASS",
+    "cleanOfflineInstall": "PASS",
+    "magRegression": "56/56 PASS",
+    "hostRegression": "145/145 PASS",
+    "profilesRegression": "28/28 PASS",
+    "experienceRuleEvolutionRegression": "33/33 PASS",
+    "observatoryRegression": "20/20 PASS",
+    "lmStudioJudgeRegression": "4/4 PASS",
+    "stableComponentIdentity": "PASS"
+  },
+  "knownBoundaries": [
+    "SQLite adapter uses node:sqlite and therefore this dev.2 product distribution requires Node >=22.5.",
+    "R1 does not yet connect real retrieval, real Agent LLM transport, semantic Judge transport, or the product UI.",
+    "Historical Stable Local Provider metadata debt is not rewritten in-place; R2 should integrate it through a product adapter or replacement package."
+  ]
+}

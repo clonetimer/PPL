@@ -1,0 +1,24 @@
+{
+  "schema": "ppl.product-refactor-provenance/1",
+  "date": "2026-09-30",
+  "version": "1.0.0-dev.1",
+  "sourceBaseline": "PPL_Stable_Project_2026-08-27_MAG_0.1.0",
+  "stableRuntimeSourceModified": false,
+  "newProductPath": "product/research-governance",
+  "qualification": {
+    "productTests": "6/6 PASS",
+    "productDemo": "PASS",
+    "magRegression": "56/56 PASS",
+    "hostRegression": "145/145 PASS",
+    "profilesRegression": "28/28 PASS",
+    "experienceRuleEvolutionRegression": "33/33 PASS",
+    "observatoryRegression": "20/20 PASS",
+    "lmStudioJudgeRegression": "4/4 PASS",
+    "stableComponentIdentity": "PASS",
+    "aggregateProductVerify": "PASS after manifest regeneration"
+  },
+  "notes": [
+    "R0 adds a product assembly layer over the Stable MAG source without changing MAG runtime source.",
+    "Legacy clean-install issues are recorded rather than silently rewriting Stable package metadata."
+  ]
+}

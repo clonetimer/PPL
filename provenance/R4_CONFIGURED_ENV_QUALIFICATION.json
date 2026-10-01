@@ -1,0 +1,28 @@
+{
+  "schema": "ppl.execution-qualification/1",
+  "version": "1.0.0-dev.5",
+  "generatedAt": "2026-09-30T15:52:46.161Z",
+  "scope": "endpoints",
+  "evidenceMode": "configured-endpoints-unattested",
+  "passed": false,
+  "status": "not-configured",
+  "exitCode": 2,
+  "externalModelIdentityVerified": false,
+  "statisticalIndependenceProven": false,
+  "stableEligible": false,
+  "businessStoreTouched": false,
+  "configuredEndpointTaskSmokePassed": null,
+  "checks": [
+    {
+      "name": "execution-config",
+      "status": "failed",
+      "code": "EXECUTION_NOT_CONFIGURED"
+    }
+  ],
+  "limitations": [
+    "Only the explicitly requested sample scope is tested.",
+    "Synthetic controls are not model quality benchmarks.",
+    "No real-model identity attestation, browser qualification, side-effect recovery or production security qualification."
+  ],
+  "identities": null
+}

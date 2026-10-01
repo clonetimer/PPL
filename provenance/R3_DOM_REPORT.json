@@ -1,0 +1,78 @@
+{
+  "schema": "ppl.r3-dom-smoke/1",
+  "passed": true,
+  "mode": "offline-dom-fixture",
+  "networkEndToEnd": false,
+  "cspBrowserEnforcementTested": false,
+  "moduleLoadingTested": false,
+  "checks": [
+    {
+      "name": "fixture-mode-visible",
+      "passed": true
+    },
+    {
+      "name": "delivered-report-preserves-support-and-oppose",
+      "passed": true
+    },
+    {
+      "name": "structured-evidence-view",
+      "passed": true
+    },
+    {
+      "name": "erasure-findings-visible-and-not-masked-by-domain-status",
+      "passed": true
+    },
+    {
+      "name": "judge-rejection-never-rendered-as-final-answer",
+      "passed": true
+    },
+    {
+      "name": "audit-filter",
+      "passed": true
+    },
+    {
+      "name": "host-tool-result-view",
+      "passed": true
+    },
+    {
+      "name": "research-manual-claim-request-uses-provisional-status-and-split-sources",
+      "passed": true
+    },
+    {
+      "name": "research-create-dialog-builds-domain-command",
+      "passed": true
+    },
+    {
+      "name": "tutor-commands-use-assessment-evidence-and-valid-verifier-enum",
+      "passed": true
+    },
+    {
+      "name": "life-explicit-confirmation-gates-browser-request",
+      "passed": true
+    },
+    {
+      "name": "character-independent-event-command",
+      "passed": true
+    },
+    {
+      "name": "stored-html-rendered-as-inert-text-and-known-credential-redacted",
+      "passed": true
+    },
+    {
+      "name": "disabled-execution-does-not-disable-history-display",
+      "passed": true
+    },
+    {
+      "name": "390px-mobile-layout-no-horizontal-overflow",
+      "passed": true
+    },
+    {
+      "name": "no-javascript-page-errors-and-no-browser-network-requests",
+      "passed": true
+    }
+  ],
+  "browserVersion": "144.0.7559.96",
+  "pageErrors": [],
+  "browserRequests": [],
+  "checkCount": 16
+}

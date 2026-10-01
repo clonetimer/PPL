@@ -1,0 +1,37 @@
+{
+  "schema": "ppl.r4-environment-observation/1",
+  "observedAt": "2026-09-30T15:55:12.133294+00:00",
+  "system": "Linux",
+  "node": "22.16.0",
+  "npm": "10.9.2",
+  "python": "3.13.5",
+  "loopbackPorts": [
+    {
+      "address": "127.0.0.1",
+      "port": 8000,
+      "tcpReachable": false
+    },
+    {
+      "address": "127.0.0.1",
+      "port": 8001,
+      "tcpReachable": false
+    },
+    {
+      "address": "127.0.0.1",
+      "port": 1234,
+      "tcpReachable": false
+    },
+    {
+      "address": "127.0.0.1",
+      "port": 11434,
+      "tcpReachable": false
+    },
+    {
+      "address": "127.0.0.1",
+      "port": 8790,
+      "tcpReachable": false
+    }
+  ],
+  "externalInferenceCompleted": false,
+  "note": "TCP probe is not a model request or a model identity verification."
+}

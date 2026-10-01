@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: all-scope qualification executes real localhost HTTP and separate Agent/Research pipelines
+ok 1 - all-scope qualification executes real localhost HTTP and separate Agent/Research pipelines
+  ---
+  duration_ms: 120.963189
+  type: 'test'
+  ...
+# Subtest: unconfigured and invalid environments report NOT_CONFIGURED rather than passing zero checks
+ok 2 - unconfigured and invalid environments report NOT_CONFIGURED rather than passing zero checks
+  ---
+  duration_ms: 0.479384
+  type: 'test'
+  ...
+# Subtest: full research qualification requires an explicit question before network activity
+ok 3 - full research qualification requires an explicit question before network activity
+  ---
+  duration_ms: 2.52339
+  type: 'test'
+  ...
+# Subtest: endpoint-only success does not claim task or judge-control qualification
+ok 4 - endpoint-only success does not claim task or judge-control qualification
+  ---
+  duration_ms: 15.309454
+  type: 'test'
+  ...
+# Subtest: generic Agent scope remains usable without research retrieval configuration
+ok 5 - generic Agent scope remains usable without research retrieval configuration
+  ---
+  duration_ms: 12.284827
+  type: 'test'
+  ...
+# Subtest: false probe success prevents task execution despite valid JSON
+ok 6 - false probe success prevents task execution despite valid JSON
+  ---
+  duration_ms: 12.14359
+  type: 'test'
+  ...
+# Subtest: an always-approve Judge fails the negative control and stops the research sample
+ok 7 - an always-approve Judge fails the negative control and stops the research sample
+  ---
+  duration_ms: 30.330873
+  type: 'test'
+  ...
+# Subtest: an always-reject Judge fails the positive control rather than looking safe
+ok 8 - an always-reject Judge fails the positive control rather than looking safe
+  ---
+  duration_ms: 16.283996
+  type: 'test'
+  ...
+# Subtest: malformed Judge binding does not count as a successful negative control
+ok 9 - malformed Judge binding does not count as a successful negative control
+  ---
+  duration_ms: 16.172667
+  type: 'test'
+  ...
+# Subtest: real HTTP analyst erasure is reported as a governance block, not a successful task
+ok 10 - real HTTP analyst erasure is reported as a governance block, not a successful task
+  ---
+  duration_ms: 41.796534
+  type: 'test'
+  ...
+# Subtest: empty retrieval cannot satisfy qualification or trigger research execution
+ok 11 - empty retrieval cannot satisfy qualification or trigger research execution
+  ---
+  duration_ms: 7.505722
+  type: 'test'
+  ...
+# Subtest: CLI writes a credential-minimized report and leaves configured business database bytes untouched
+ok 12 - CLI writes a credential-minimized report and leaves configured business database bytes untouched
+  ---
+  duration_ms: 238.26997
+  type: 'test'
+  ...
+# Subtest: CLI missing configuration exits 2 and persists an explicit non-pass report
+ok 13 - CLI missing configuration exits 2 and persists an explicit non-pass report
+  ---
+  duration_ms: 89.637078
+  type: 'test'
+  ...
+# Subtest: endpoint scope lacking retrieval configuration stops before consuming model calls
+ok 14 - endpoint scope lacking retrieval configuration stops before consuming model calls
+  ---
+  duration_ms: 1.319261
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 728.509813

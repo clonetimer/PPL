@@ -1,0 +1,29 @@
+{
+  "schema": "ppl.r4-dev4-regression-reproduction/1",
+  "baselineVersion": "1.0.0-dev.4",
+  "mode": "local-fixtures-only",
+  "allReproduced": true,
+  "findings": [
+    {
+      "id": "R4-001",
+      "name": "role-prefixed-groups-make-same-model-appear-independent",
+      "reproduced": true
+    },
+    {
+      "id": "R4-002",
+      "name": "JSON-parse-success-without-response-contract-validation",
+      "reproduced": true
+    },
+    {
+      "id": "R4-003",
+      "name": "retrieval-follows-redirect-without-boundary-recheck",
+      "reproduced": true
+    },
+    {
+      "id": "R4-004",
+      "name": "live-probe-accepts-semantic-ok-false",
+      "reproduced": true,
+      "observedExitCode": 0
+    }
+  ]
+}

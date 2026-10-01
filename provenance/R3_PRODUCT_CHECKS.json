@@ -1,0 +1,170 @@
+{
+  "schema": "ppl.product-verify/4",
+  "version": "1.0.0-dev.4",
+  "passed": true,
+  "checks": [
+    {
+      "label": "product-surface-files",
+      "passed": true
+    },
+    {
+      "label": "stable-project-integrity",
+      "passed": true,
+      "durationMs": 93
+    },
+    {
+      "label": "stable-component-identity",
+      "passed": true,
+      "durationMs": 79
+    },
+    {
+      "label": "mag-regression",
+      "passed": true,
+      "durationMs": 278,
+      "tests": 56,
+      "pass": 56,
+      "skipped": 0
+    },
+    {
+      "label": "host-offline-install",
+      "passed": true,
+      "durationMs": 1264
+    },
+    {
+      "label": "host-regression",
+      "passed": true,
+      "durationMs": 2851,
+      "tests": 145,
+      "pass": 145,
+      "skipped": 0
+    },
+    {
+      "label": "local-provider-regression",
+      "passed": true,
+      "durationMs": 1105,
+      "tests": 16,
+      "pass": 16,
+      "skipped": 0
+    },
+    {
+      "label": "native-judge-regression",
+      "passed": true,
+      "durationMs": 449,
+      "tests": 4,
+      "pass": 4,
+      "skipped": 0
+    },
+    {
+      "label": "platform-core-tests",
+      "passed": true,
+      "durationMs": 413,
+      "tests": 3,
+      "pass": 3,
+      "skipped": 0
+    },
+    {
+      "label": "observatory-tests",
+      "passed": true,
+      "durationMs": 856,
+      "tests": 12,
+      "pass": 12,
+      "skipped": 0
+    },
+    {
+      "label": "platform-execution-tests",
+      "passed": true,
+      "durationMs": 513,
+      "tests": 4,
+      "pass": 4,
+      "skipped": 0
+    },
+    {
+      "label": "agent-governance-tests",
+      "passed": true,
+      "durationMs": 569,
+      "tests": 5,
+      "pass": 5,
+      "skipped": 0
+    },
+    {
+      "label": "research-governance-tests",
+      "passed": true,
+      "durationMs": 727,
+      "tests": 10,
+      "pass": 10,
+      "skipped": 0
+    },
+    {
+      "label": "tutor-governance-tests",
+      "passed": true,
+      "durationMs": 693,
+      "tests": 3,
+      "pass": 3,
+      "skipped": 0
+    },
+    {
+      "label": "life-governance-tests",
+      "passed": true,
+      "durationMs": 506,
+      "tests": 3,
+      "pass": 3,
+      "skipped": 0
+    },
+    {
+      "label": "character-governance-tests",
+      "passed": true,
+      "durationMs": 755,
+      "tests": 3,
+      "pass": 3,
+      "skipped": 0
+    },
+    {
+      "label": "platform-gateway-tests",
+      "passed": true,
+      "durationMs": 1232,
+      "tests": 14,
+      "pass": 14,
+      "skipped": 0
+    },
+    {
+      "label": "agent-governance-demo",
+      "passed": true,
+      "durationMs": 398
+    },
+    {
+      "label": "research-governance-demo",
+      "passed": true,
+      "durationMs": 379
+    },
+    {
+      "label": "tutor-governance-demo",
+      "passed": true,
+      "durationMs": 790
+    },
+    {
+      "label": "life-governance-demo",
+      "passed": true,
+      "durationMs": 519
+    },
+    {
+      "label": "character-governance-demo",
+      "passed": true,
+      "durationMs": 516
+    },
+    {
+      "label": "multi-vertical-sqlite-smoke",
+      "passed": true,
+      "durationMs": 206
+    },
+    {
+      "label": "r2-http-execution-smoke",
+      "passed": true,
+      "durationMs": 327
+    },
+    {
+      "label": "r3-observatory-http-restart-smoke",
+      "passed": true,
+      "durationMs": 880
+    }
+  ]
+}

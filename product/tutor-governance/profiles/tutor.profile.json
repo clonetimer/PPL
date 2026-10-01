@@ -1,0 +1,296 @@
+{
+  "schema": "ppl.profile/0.2",
+  "id": "tutor.uncertainty-verifier.default",
+  "title": "不确定性感知学习导师",
+  "version": "0.2.0",
+  "kind": "tutor",
+  "engine": {
+    "id": "tutor/uncertainty-verifier",
+    "version": "0.2"
+  },
+  "application": {
+    "domain": "learning",
+    "maturity": "application-evolution",
+    "hostOwnsContentGeneration": true
+  },
+  "personaBinding": {
+    "optional": true,
+    "role": "communication-style-only"
+  },
+  "mission": {
+    "goal": "基于可追溯学习证据估计知识状态和不确定性，选择教学干预，并用逐轮 verifier 判断干预是否真正推动学习。",
+    "success": [
+      "知识状态不被单次答题过度确定",
+      "提示/揭示答案后的成功被降权",
+      "错误概念由累积证据形成",
+      "教学干预可被后续 verifier 审计"
+    ]
+  },
+  "interaction": {
+    "defaultMode": "diagnose",
+    "principles": [
+      "掌握度与不确定性同时展示",
+      "正确率不能直接等于掌握度",
+      "成功证据按 assistance 降权，但失败/求助证据不被对称抹除",
+      "显式区分直接 assessment 与 assisted observation",
+      "情绪状态必须由独立观察提供",
+      "策略建议不等于 Host 必须执行"
+    ]
+  },
+  "userModel": {
+    "owner": "profile-with-host-evidence",
+    "fields": [
+      "learner.skills",
+      "learner.misconceptions",
+      "learner.affect"
+    ]
+  },
+  "domainPolicy": {
+    "contentGenerationOwnedByHost": true,
+    "assessmentEvidenceRequired": true,
+    "affectInferenceFromCorrectnessForbidden": true
+  },
+  "capabilities": {
+    "required": [
+      "learner-observation"
+    ],
+    "optional": [
+      "assessment-adapter",
+      "affect-observer",
+      "exercise-generator",
+      "turn-verifier"
+    ]
+  },
+  "tutorModel": {
+    "betaPrior": {
+      "alpha": 2,
+      "beta": 4
+    },
+    "evidencePolicy": {
+      "directFirstAttemptSuccess": 1.0,
+      "multiAttemptSuccess": 0.6,
+      "hintedSuccess": 0.3,
+      "answerRevealedSuccess": 0.05,
+      "firstAttemptFailure": 1.0,
+      "assistedFailure": 0.9,
+      "bottomHintFailure": 0.95
+    },
+    "note": "Beta posterior 是透明工程基线。Evidence policy 是方向非对称的：帮助/多次尝试会削弱“成功=已掌握”的正证据，但首答错误或需要帮助仍保留为“尚未独立掌握”的负证据；不声称复现 UKT 的分布嵌入模型。"
+  },
+  "initialState": {
+    "learner": {
+      "currentSkillId": "fractions.addition",
+      "currentSkillKey": "fractions_addition",
+      "skills": {
+        "fractions_addition": {
+          "skillId": "fractions.addition",
+          "alpha": 2,
+          "beta": 4,
+          "mean": 0.3333,
+          "variance": 0.031746,
+          "posteriorStd": 0.178174,
+          "uncertainty": 0.7127,
+          "evidenceWeight": 0,
+          "observations": 0,
+          "directAssessments": 0,
+          "assistedAssessments": 0,
+          "lastEvidenceId": null,
+          "unaidedSuccesses": 0,
+          "firstAttemptFailures": 0,
+          "assistanceEpisodes": 0
+        }
+      },
+      "misconceptions": {},
+      "evidenceIds": [],
+      "affect": {
+        "confidence": 0.5,
+        "frustration": 0.3,
+        "observerConfidence": 0,
+        "source": "unknown"
+      }
+    },
+    "pedagogy": {
+      "recommendedMode": "diagnose",
+      "hintLevel": 1,
+      "policyReason": "high-knowledge-uncertainty",
+      "interventions": [],
+      "lastIntervention": null,
+      "verifier": {
+        "verified": 0,
+        "progress": 0,
+        "neutral": 0,
+        "regress": 0,
+        "effectiveness": 0.5,
+        "last": null
+      }
+    },
+    "task": {
+      "objective": "fractions.addition",
+      "recommendedDifficulty": 1
+    }
+  },
+  "stateSchema": {
+    "learner.currentSkillId": {
+      "type": "string",
+      "required": true
+    },
+    "learner.currentSkillKey": {
+      "type": "string",
+      "required": true
+    },
+    "learner.skills": {
+      "type": "object",
+      "required": true
+    },
+    "learner.misconceptions": {
+      "type": "object",
+      "required": true
+    },
+    "learner.evidenceIds": {
+      "type": "array",
+      "required": true
+    },
+    "learner.affect": {
+      "type": "object",
+      "required": true
+    },
+    "pedagogy.recommendedMode": {
+      "type": "string",
+      "enum": [
+        "diagnose",
+        "worked-example",
+        "socratic",
+        "challenge",
+        "misconception-repair"
+      ],
+      "required": true
+    },
+    "pedagogy.hintLevel": {
+      "type": "number",
+      "min": 0,
+      "max": 3,
+      "required": true
+    },
+    "pedagogy.interventions": {
+      "type": "array",
+      "required": true
+    },
+    "pedagogy.verifier": {
+      "type": "object",
+      "required": true
+    },
+    "task.recommendedDifficulty": {
+      "type": "number",
+      "min": 1,
+      "max": 5,
+      "required": true
+    }
+  },
+  "rules": [],
+  "transactionPolicy": {
+    "commitEndReasons": [
+      "completed",
+      "max-tokens"
+    ],
+    "abortPolicy": "rollback"
+  },
+  "evaluation": {
+    "metrics": [
+      {
+        "id": "current_skill",
+        "label": "当前技能",
+        "type": "path",
+        "path": "learner.currentSkillId"
+      },
+      {
+        "id": "policy",
+        "label": "教学策略",
+        "type": "path",
+        "path": "pedagogy.recommendedMode"
+      },
+      {
+        "id": "verifier_effectiveness",
+        "label": "干预有效性",
+        "type": "path",
+        "path": "pedagogy.verifier.effectiveness",
+        "target": 0.7
+      }
+    ]
+  },
+  "observability": {
+    "metrics": [
+      {
+        "path": "learner.skills.fractions_addition.mean",
+        "label": "掌握度均值",
+        "hint": "Beta posterior mean",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "path": "learner.skills.fractions_addition.uncertainty",
+        "label": "知识不确定性",
+        "hint": "posterior spread，越高越需诊断",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "path": "learner.skills.fractions_addition.evidenceWeight",
+        "label": "有效证据量",
+        "hint": "按 assessment validity 加权"
+      },
+      {
+        "path": "pedagogy.verifier.effectiveness",
+        "label": "干预有效性",
+        "hint": "turn-by-turn verifier EMA",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "path": "learner.affect.frustration",
+        "label": "挫败度",
+        "hint": "仅来自显式 affect observation",
+        "min": 0,
+        "max": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "skills",
+        "label": "知识状态",
+        "prefix": "learner.skills."
+      },
+      {
+        "id": "misconceptions",
+        "label": "错误概念证据",
+        "prefix": "learner.misconceptions."
+      },
+      {
+        "id": "pedagogy",
+        "label": "教学策略与验证",
+        "prefix": "pedagogy."
+      },
+      {
+        "id": "task",
+        "label": "任务建议",
+        "prefix": "task."
+      }
+    ]
+  },
+  "literature": [
+    {
+      "id": "arxiv:2501.05415",
+      "title": "Uncertainty-aware Knowledge Tracing",
+      "mechanismBorrowed": "知识状态应显式表达不确定性；本实现采用透明 Beta posterior 工程近似而非复制论文模型。"
+    },
+    {
+      "id": "arxiv:2502.13311",
+      "title": "Training Turn-by-Turn Verifiers for Dialogue Tutoring Agents",
+      "mechanismBorrowed": "知识状态追踪与逐轮教学效果 verifier 分离。"
+    },
+    {
+      "id": "ASSISTments-2009-2010",
+      "title": "ASSISTments Skill-builder data 2009-2010",
+      "mechanismBorrowed": "提示/分步帮助会影响 assessment 解释，数据适配器保留 hints/attempts/original provenance。"
+    }
+  ]
+}

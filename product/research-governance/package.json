@@ -1,0 +1,22 @@
+{
+  "name": "@ppl/product-research-governance",
+  "version": "1.0.0-dev.5",
+  "private": true,
+  "type": "module",
+  "description": "Evidence-safe multi-agent research governance vertical for PPL 1.0.",
+  "main": "./src/index.mjs",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "demo": "node bin/demo.mjs",
+    "start": "node bin/server.mjs",
+    "check": "npm test && npm run demo"
+  },
+  "dependencies": {
+    "@ppl/multi-agent-governance": "file:../../dist/npm/ppl-multi-agent-governance-0.1.0.tgz",
+    "@ppl/platform-core": "1.0.0-dev.5",
+    "@ppl/platform-execution": "1.0.0-dev.5"
+  },
+  "engines": {
+    "node": ">=22.16"
+  }
+}

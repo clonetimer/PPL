@@ -1,0 +1,19 @@
+{
+  "name": "@ppl/platform-execution",
+  "version": "1.0.0-dev.5",
+  "private": true,
+  "type": "module",
+  "description": "PPL product execution plane: real HTTP model/retrieval transports, deterministic test doubles, and governed execution runners.",
+  "exports": "./src/index.mjs",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "live:probe": "node bin/live-probe.mjs"
+  },
+  "dependencies": {
+    "@ppl/platform-core": "1.0.0-dev.5",
+    "ppl-llm-host-adapter": "file:../../dist/npm/ppl-llm-host-adapter-0.1.13.tgz"
+  },
+  "engines": {
+    "node": ">=22.16"
+  }
+}

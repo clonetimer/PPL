@@ -1,0 +1,322 @@
+TAP version 13
+# Subtest: static retrieval ranks and limits documents
+ok 1 - static retrieval ranks and limits documents
+  ---
+  duration_ms: 2.838878
+  type: 'test'
+  ...
+# Subtest: HTTP JSON retrieval uses real network transport contract
+ok 2 - HTTP JSON retrieval uses real network transport contract
+  ---
+  duration_ms: 40.463121
+  type: 'test'
+  ...
+# Subtest: OpenAI-compatible adapter performs structured HTTP invocation
+ok 3 - OpenAI-compatible adapter performs structured HTTP invocation
+  ---
+  duration_ms: 14.461255
+  type: 'test'
+  ...
+# Subtest: shared RecordStore persists completed Host tool ledger entries across restart
+ok 4 - shared RecordStore persists completed Host tool ledger entries across restart
+  ---
+  duration_ms: 3.985961
+  type: 'test'
+  ...
+# Subtest: structured output rejects false-as-string
+ok 5 - structured output rejects false-as-string
+  ---
+  duration_ms: 4.406637
+  type: 'test'
+  ...
+# Subtest: structured output rejects confidence-coercion
+ok 6 - structured output rejects confidence-coercion
+  ---
+  duration_ms: 0.687088
+  type: 'test'
+  ...
+# Subtest: structured output rejects confidence-overflow
+ok 7 - structured output rejects confidence-overflow
+  ---
+  duration_ms: 0.418992
+  type: 'test'
+  ...
+# Subtest: structured output rejects wrong-schema
+ok 8 - structured output rejects wrong-schema
+  ---
+  duration_ms: 0.432704
+  type: 'test'
+  ...
+# Subtest: structured output rejects missing-required
+ok 9 - structured output rejects missing-required
+  ---
+  duration_ms: 0.553966
+  type: 'test'
+  ...
+# Subtest: structured output rejects unknown-property
+ok 10 - structured output rejects unknown-property
+  ---
+  duration_ms: 0.46337
+  type: 'test'
+  ...
+# Subtest: structured output rejects null-root
+ok 11 - structured output rejects null-root
+  ---
+  duration_ms: 0.559755
+  type: 'test'
+  ...
+# Subtest: structured output rejects array-root
+ok 12 - structured output rejects array-root
+  ---
+  duration_ms: 0.488848
+  type: 'test'
+  ...
+# Subtest: irrelevant extraction can retain empty text without fabricating evidence
+ok 13 - irrelevant extraction can retain empty text without fabricating evidence
+  ---
+  duration_ms: 1.561859
+  type: 'test'
+  ...
+# Subtest: unsupported schema keywords fail closed instead of pretending full JSON Schema support
+ok 14 - unsupported schema keywords fail closed instead of pretending full JSON Schema support
+  ---
+  duration_ms: 1.256307
+  type: 'test'
+  ...
+# Subtest: nested schema rejects wrong field types and inherited required properties
+ok 15 - nested schema rejects wrong field types and inherited required properties
+  ---
+  duration_ms: 1.953591
+  type: 'test'
+  ...
+# Subtest: structured-only invocation rejects unsolicited tool calls without executing them
+ok 16 - structured-only invocation rejects unsolicited tool calls without executing them
+  ---
+  duration_ms: 0.440675
+  type: 'test'
+  ...
+# Subtest: same configured model cannot become independent by changing ports or role labels
+ok 17 - same configured model cannot become independent by changing ports or role labels
+  ---
+  duration_ms: 1.503201
+  type: 'test'
+  ...
+# Subtest: different model identifiers with a shared declared group are still rejected
+ok 18 - different model identifiers with a shared declared group are still rejected
+  ---
+  duration_ms: 0.289837
+  type: 'test'
+  ...
+# Subtest: preferred mode reports shared-model warning; distinct IDs do not prove statistical independence
+ok 19 - preferred mode reports shared-model warning; distinct IDs do not prove statistical independence
+  ---
+  duration_ms: 0.56908
+  type: 'test'
+  ...
+# Subtest: endpoint userinfo, remote-without-opt-in and invalid numeric limits fail before network
+ok 20 - endpoint userinfo, remote-without-opt-in and invalid numeric limits fail before network
+  ---
+  duration_ms: 0.418292
+  type: 'test'
+  ...
+# Subtest: HTTP response without a body arrives within a hard deadline
+ok 21 - HTTP response without a body arrives within a hard deadline
+  ---
+  duration_ms: 42.516773
+  type: 'test'
+  ...
+# Subtest: HTTP deadline also covers an unfinished chunked response body
+ok 22 - HTTP deadline also covers an unfinished chunked response body
+  ---
+  duration_ms: 45.549149
+  type: 'test'
+  ...
+# Subtest: caller abort is distinct from a network or schema failure
+ok 23 - caller abort is distinct from a network or schema failure
+  ---
+  duration_ms: 22.565631
+  type: 'test'
+  ...
+# Subtest: redirect is blocked before following even a same-origin Location
+ok 24 - redirect is blocked before following even a same-origin Location
+  ---
+  duration_ms: 14.324507
+  type: 'test'
+  ...
+# Subtest: declared and actual chunked response sizes are independently bounded
+ok 25 - declared and actual chunked response sizes are independently bounded
+  ---
+  duration_ms: 8.862743
+  type: 'test'
+  ...
+# Subtest: retrieval limits response count and rejects oversized text instead of truncating evidence
+ok 26 - retrieval limits response count and rejects oversized text instead of truncating evidence
+  ---
+  duration_ms: 15.586855
+  type: 'test'
+  ...
+# Subtest: malformed retrieval and SearXNG payloads do not count as successful empty results
+ok 27 - malformed retrieval and SearXNG payloads do not count as successful empty results
+  ---
+  duration_ms: 10.556677
+  type: 'test'
+  ...
+# Subtest: retrieval rejects an excessive result count before document normalization
+ok 28 - retrieval rejects an excessive result count before document normalization
+  ---
+  duration_ms: 5.784608
+  type: 'test'
+  ...
+# Subtest: backend error text cannot reflect credential values into configured model errors
+ok 29 - backend error text cannot reflect credential values into configured model errors
+  ---
+  duration_ms: 17.068853
+  type: 'test'
+  ...
+# Subtest: strict endpoint probe rejects false ok, replayed nonce and arbitrary JSON
+ok 30 - strict endpoint probe rejects false ok, replayed nonce and arbitrary JSON
+  ---
+  duration_ms: 2.329318
+  type: 'test'
+  ...
+# Subtest: strict endpoint probe checks a fresh nonce and does not imply model capability
+ok 31 - strict endpoint probe checks a fresh nonce and does not imply model capability
+  ---
+  duration_ms: 0.654119
+  type: 'test'
+  ...
+# Subtest: generic gateway detects receiver counter-evidence erasure
+ok 32 - generic gateway detects receiver counter-evidence erasure
+  ---
+  duration_ms: 7.524906
+  type: 'test'
+  ...
+# Subtest: generic agent session survives sqlite restart
+ok 33 - generic agent session survives sqlite restart
+  ---
+  duration_ms: 6.709275
+  type: 'test'
+  ...
+# Subtest: generic execution completes when model preserves canonical claims
+ok 34 - generic execution completes when model preserves canonical claims
+  ---
+  duration_ms: 9.410936
+  type: 'test'
+  ...
+# Subtest: generic execution blocks counter-evidence erasure by model
+ok 35 - generic execution blocks counter-evidence erasure by model
+  ---
+  duration_ms: 3.506487
+  type: 'test'
+  ...
+# Subtest: host owns allowlisted tool execution and continues model after tool result
+ok 36 - host owns allowlisted tool execution and continues model after tool result
+  ---
+  duration_ms: 3.540137
+  type: 'test'
+  ...
+# Subtest: non-string receiver message is rejected before fidelity assessment
+ok 37 - non-string receiver message is rejected before fidelity assessment
+  ---
+  duration_ms: 1.788401
+  type: 'test'
+  ...
+# Subtest: tool-enabled initial answer with no tool calls still receives full response validation
+ok 38 - tool-enabled initial answer with no tool calls still receives full response validation
+  ---
+  duration_ms: 1.776524
+  type: 'test'
+  ...
+# Subtest: research execution retrieves, extracts, preserves conflict, judges and delivers
+ok 39 - research execution retrieves, extracts, preserves conflict, judges and delivers
+  ---
+  duration_ms: 21.563804
+  type: 'test'
+  ...
+# Subtest: research execution stops before reviewer when analyst erases counter-evidence
+ok 40 - research execution stops before reviewer when analyst erases counter-evidence
+  ---
+  duration_ms: 6.484485
+  type: 'test'
+  ...
+# Subtest: research execution fails closed when bound-delivery semantic judge rejects conclusion
+ok 41 - research execution fails closed when bound-delivery semantic judge rejects conclusion
+  ---
+  duration_ms: 9.616256
+  type: 'test'
+  ...
+# Subtest: malformed boolean extraction is blocked before durable claim promotion
+ok 42 - malformed boolean extraction is blocked before durable claim promotion
+  ---
+  duration_ms: 1.595941
+  type: 'test'
+  ...
+# Subtest: analyst schema mismatch cannot bypass fidelity by copying valid claims
+ok 43 - analyst schema mismatch cannot bypass fidelity by copying valid claims
+  ---
+  duration_ms: 3.88639
+  type: 'test'
+  ...
+# Subtest: string false in judge response never becomes a truthy delivery approval
+ok 44 - string false in judge response never becomes a truthy delivery approval
+  ---
+  duration_ms: 6.385276
+  type: 'test'
+  ...
+# Subtest: invalid research resource limits fail before creating an execution or calling retrieval
+ok 45 - invalid research resource limits fail before creating an execution or calling retrieval
+  ---
+  duration_ms: 1.438002
+  type: 'test'
+  ...
+# Subtest: product service creates a research session and evidence ledger
+ok 46 - product service creates a research session and evidence ledger
+  ---
+  duration_ms: 3.152171
+  type: 'test'
+  ...
+# Subtest: handoff cannot silently drop one side of a material conflict
+ok 47 - handoff cannot silently drop one side of a material conflict
+  ---
+  duration_ms: 2.165611
+  type: 'test'
+  ...
+# Subtest: receiver-side counter-evidence erasure is detected
+ok 48 - receiver-side counter-evidence erasure is detected
+  ---
+  duration_ms: 2.803585
+  type: 'test'
+  ...
+# Subtest: final delivery is blocked until explicit semantic judge evidence passes
+ok 49 - final delivery is blocked until explicit semantic judge evidence passes
+  ---
+  duration_ms: 4.856216
+  type: 'test'
+  ...
+# Subtest: validated delivery deterministically renders both canonical evidence claims
+ok 50 - validated delivery deterministically renders both canonical evidence claims
+  ---
+  duration_ms: 2.089696
+  type: 'test'
+  ...
+# Subtest: research session and evidence survive sqlite restart
+ok 51 - research session and evidence survive sqlite restart
+  ---
+  duration_ms: 4.652167
+  type: 'test'
+  ...
+# Subtest: HTTP product surface exposes health and session creation
+ok 52 - HTTP product surface exposes health and session creation
+  ---
+  duration_ms: 40.316675
+  type: 'test'
+  ...
+1..52
+# tests 52
+# suites 0
+# pass 52
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 509.769067
